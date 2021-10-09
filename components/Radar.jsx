@@ -26,10 +26,9 @@ const posScale = scaleLinear()
   .domain([0, 17])
   .range([0, isMobileWithTablet ? (width - 60) / 2 : (width - 60) / 2]);
 
-const Radar = () => {
+const Radar = ({ selected }) => {
   const [data, setData] = useState({});
   const [keys, setKeys] = useState({});
-  const [selected, setSelected] = useState(0);
   const [selectedCompare, setSelectedCompare] = useState(0);
   const [multiple, setMultiple] = useState(false);
   const [sort, setSort] = useState("ccvi");
@@ -43,49 +42,19 @@ const Radar = () => {
 
   useEffect(() => {
     csv("/data/data.csv").then((values) => {
+      console.log(values);
       const acts = Object.fromEntries(
         Object.entries(values[selected]).filter(([key]) => key.includes("act1"))
       );
-      console.log("acts", Object.values(acts));
       setData(Object.values(acts));
     });
   }, []);
 
-  const previousState = () => {
-    setSelected(selected === 0 ? data.length - 1 : selected - 1);
-    setSelectedCounty("");
-  };
-
-  const nextState = () => {
-    setSelected(selected < data.length - 1 ? selected + 1 : 0);
-    setSelectedCounty("");
-  };
-
-  const previousCompareState = () => {
-    setSelectedCompare(
-      selectedCompare === 0 ? data.length - 1 : selectedCompare - 1
-    );
-    setSelectedCountyCompare("");
-  };
-
-  const nextCompareState = () => {
-    setSelectedCompare(
-      selectedCompare < data.length - 1 ? selectedCompare + 1 : 0
-    );
-    setSelectedCountyCompare("");
-  };
-
-  const resetSelectedCounty = () => {
-    setSelectedCounty("");
-  };
-
-  const resetSelectedCountyCompare = () => {
-    setSelectedCountyCompare("");
-  };
-
   return (
     <div className="radial-overview">
-      <div className="radial-overview-subtitle viz-explanation">VIZ 01</div>
+      <div className="radial-overview-subtitle viz-explanation">
+        VIZ {selected + 1}
+      </div>
       <div className="radial-overview-toolbar"></div>
 
       <div
@@ -100,11 +69,9 @@ const Radar = () => {
             className="date-selector-wrapper"
             style={{ display: "flex", width: "100%" }}
           >
-            <div className="date-previous" onClick={previousState}></div>
             <div style={{ width: "200px", textAlign: "center" }}>
               {keys[selected]}
             </div>
-            <div className="date-next" onClick={nextState}></div>
           </div>
           <div
             className="counties-autocomplete"
