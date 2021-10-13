@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
-import { degToRad } from "./utils.js";
+import { degToRad, activities } from "./utils.js";
 import ReactTooltip from "react-tooltip";
-
+import moment from "moment";
+import RadarCircle from "./RadarCircle";
 const isMobileWithTablet = false;
 
 const colorScale = scaleOrdinal()
@@ -21,25 +22,6 @@ let width = 700;
 // } else {
 //   width = 500;
 // }
-
-const activities = {
-  1: "absence",
-  2: "generic home activity",
-  3: "sleep",
-  4: "food preparation",
-  5: "laundry",
-  6: "dishwashing",
-  7: "travel to/from work",
-  8: "TV-related",
-  9: "IT-related",
-  10: "eating",
-  11: "personal care",
-  12: "work",
-  13: "household care",
-  14: "household Upkeep",
-  15: "shopping",
-  16: "other Travel",
-};
 
 const posScale = scaleLinear()
   .domain([0, 17])
@@ -111,14 +93,11 @@ const Radar = ({ selected, globalData }) => {
               position: "relative",
             }}
           ></div>
-          <div style={{ height: "30px", width: "100%", textAlign: "center" }}>
-            {hover}
-          </div>
+
           <svg width={width} height={width}>
             <g transform={`translate(${width / 2}, ${width / 2})`}>
               {data.length &&
                 data.map((v, i) => {
-                  const radius = 2;
                   const angle = degToRad(360 / data.length);
                   const value1 = posScale(Number(2));
                   const value2 = posScale(Number(3));
@@ -136,8 +115,6 @@ const Radar = ({ selected, globalData }) => {
                   const value14 = posScale(Number(15));
                   const value15 = posScale(Number(16));
                   const value16 = posScale(Number(17));
-                  const strokeColor = "black";
-                  const strokeWidth = 0.1;
 
                   return (
                     <g
@@ -154,7 +131,7 @@ const Radar = ({ selected, globalData }) => {
                         x2={posScale(18) * Math.cos(angle * i)}
                         y2={posScale(18) * Math.sin(angle * i)}
                         stroke="rgba(0,0,0,0.5)"
-                        strokeWidth={strokeWidth}
+                        strokeWidth={0.1}
                       />
 
                       <circle
@@ -162,187 +139,168 @@ const Radar = ({ selected, globalData }) => {
                         cx={posScale(18) * Math.cos(angle * i)}
                         cy={posScale(18) * Math.sin(angle * i)}
                         r={5}
-                        stroke="rgba(0,0,0,0.5)"
-                        strokeWidth={0.5}
+                        stroke={
+                          hover && hover === `i${i}`
+                            ? "rgba(0,0,0,1)"
+                            : "rgba(0,0,0,0.5)"
+                        }
+                        strokeWidth={hover && hover === `i${i}` ? 1 : 0.5}
                         fill={"white"}
-                        data-tip={`${timeScale.invert(i)}`}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                        data-tip={`${moment(timeScale.invert(i)).format(
+                          "h:mm:ss a"
+                        )}`}
+                        data-type="dark"
+                        onMouseEnter={() => {
+                          setHover(`i${i}`);
+                          ReactTooltip.rebuild();
+                        }}
+                        onMouseLeave={() => {
+                          setHover(null);
+                        }}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value1 * Math.cos(angle * i)}
-                        cy={value1 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 1 ? "#110e79" : "lightgray"}
-                        data-tip={activities[1]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value1}
+                        factor={1}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value2 * Math.cos(angle * i)}
-                        cy={value2 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 2 ? "#110e79" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[2]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value2}
+                        factor={2}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value3 * Math.cos(angle * i)}
-                        cy={value3 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 3 ? "#110e79" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[3]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value3}
+                        factor={3}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value4 * Math.cos(angle * i)}
-                        cy={value4 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 4 ? "#110e79" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[4]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value4}
+                        factor={4}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value5 * Math.cos(angle * i)}
-                        cy={value5 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 5 ? "#110e79" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[5]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value5}
+                        factor={5}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value6 * Math.cos(angle * i)}
-                        cy={value6 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 6 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[6]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value6}
+                        factor={6}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value7 * Math.cos(angle * i)}
-                        cy={value7 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 7 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[7]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value7}
+                        factor={7}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value8 * Math.cos(angle * i)}
-                        cy={value8 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 8 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[8]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value8}
+                        factor={8}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value9 * Math.cos(angle * i)}
-                        cy={value9 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 9 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[9]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        angle={angle}
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        index={i}
+                        value={value9}
+                        factor={9}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value10 * Math.cos(angle * i)}
-                        cy={value10 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 10 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[10]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        angle={angle}
+                        index={i}
+                        value={value10}
+                        factor={10}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value11 * Math.cos(angle * i)}
-                        cy={value11 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 11 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[11]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        angle={angle}
+                        index={i}
+                        value={value11}
+                        factor={11}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value12 * Math.cos(angle * i)}
-                        cy={value12 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 12 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[12]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        angle={angle}
+                        index={i}
+                        value={value12}
+                        factor={12}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value13 * Math.cos(angle * i)}
-                        cy={value13 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 13 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[13]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        angle={angle}
+                        index={i}
+                        value={value13}
+                        factor={13}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value14 * Math.cos(angle * i)}
-                        cy={value14 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 14 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[14]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        angle={angle}
+                        index={i}
+                        value={value14}
+                        factor={14}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value15 * Math.cos(angle * i)}
-                        cy={value15 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 15 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[15]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        angle={angle}
+                        index={i}
+                        value={value15}
+                        factor={15}
                       />
-                      <circle
-                        className="cursor-pointer"
-                        cx={value16 * Math.cos(angle * i)}
-                        cy={value16 * Math.sin(angle * i)}
-                        r={radius}
-                        fill={parseInt(v) === 16 ? "#1313b7" : "lightgray"}
-                        // stroke={strokeColor}
-                        // strokeWidth={strokeWidth}
-                        data-tip={activities[16]}
-                        onMouseEnter={() => ReactTooltip.rebuild()}
+                      <RadarCircle
+                        v={v}
+                        hover={hover}
+                        setHover={setHover}
+                        angle={angle}
+                        index={i}
+                        value={value16}
+                        factor={61}
                       />
                     </g>
                   );

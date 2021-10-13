@@ -28,8 +28,7 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <ReactTooltip />
-
+        <ReactTooltip effect="solid" backgroundColor="#333" />
         <Radar globalData={data} selected={0} />
         <Radar globalData={data} selected={1} />
         <Radar globalData={data} selected={2} />
