@@ -42,3 +42,22 @@ export const activities = {
   15: "shopping",
   16: "other Travel",
 };
+
+export const activitiesCode = {
+  ab: { index: 4, value: "absence" },
+  ha: { index: 5, value: "generic in-home activity" },
+  sl: { index: 6, value: "sleep" },
+  fp: { index: 7, value: "food preparation" },
+  ln: { index: 8, value: "laundry" },
+  dw: { index: 9, value: "dishwashing" },
+  tw: { index: 10, value: "trave to/from work" },
+  tv: { index: 11, value: "tv watching" },
+  it: { index: 12, value: "it-related" },
+  et: { index: 13, value: "eating" },
+  pc: { index: 14, value: "personal care" },
+  wr: { index: 15, value: "work" },
+  hc: { index: 16, value: "household care" },
+  hu: { index: 17, value: "household upkeep" },
+  sh: { index: 18, value: "shopping" },
+  ot: { index: 19, value: "other travel activity" },
+};

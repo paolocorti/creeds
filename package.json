@@ -6,13 +6,22 @@
     "start": "next start"
   },
   "dependencies": {
+    "@visx/axis": "^2.3.0",
+    "@visx/curve": "^2.1.0",
+    "@visx/gradient": "^2.1.0",
+    "@visx/grid": "^2.2.2",
+    "@visx/group": "^2.1.0",
+    "@visx/scale": "^2.2.2",
+    "@visx/shape": "^2.2.2",
     "d3-fetch": "^3.0.1",
     "d3-scale": "^4.0.2",
     "moment": "^2.29.1",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-tooltip": "^4.2.21"
+    "react-spring": "^9.3.0",
+    "react-tooltip": "^4.2.21",
+    "zustand": "^3.6.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
