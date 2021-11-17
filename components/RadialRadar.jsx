@@ -96,7 +96,7 @@ const RadialRadar = ({ width, height, data }) => {
         strokeWidth={1}
         fill={blue}
         fillOpacity={0}
-        strokeOpacity={1}
+        strokeOpacity={0.5}
       />
       <AxisLeft
         top={-height / 2 + padding}
