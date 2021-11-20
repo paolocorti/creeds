@@ -34,7 +34,7 @@ const close = (d) =>
   d && d.kw_demand_autumn ? Number(d.kw_demand_autumn) : null;
 const formatTicks = (val) => String(val);
 
-const RadialRadar = ({ width, height, data }) => {
+const EnergyPriceRadial = ({ width, height, data }) => {
   // scales
   const xScale = scaleTime({
     range: [0, Math.PI * 2],
@@ -75,7 +75,7 @@ const RadialRadar = ({ width, height, data }) => {
   if (width < 10) return null;
 
   // Update scale output to match component dimensions
-  yScale.range([0, height / 2 - padding]);
+  yScale.range([400, 450]);
   const reverseYScale = yScale.copy().range(yScale.range().reverse());
 
   return (
@@ -128,7 +128,7 @@ const RadialRadar = ({ width, height, data }) => {
                 strokeWidth={2}
                 strokeOpacity={0.8}
                 strokeLinecap="round"
-                fill={darkbackground}
+                fill={"#367C4E"}
                 stroke={darkbackground}
               />
               {shouldAnimate && (
@@ -167,4 +167,4 @@ const RadialRadar = ({ width, height, data }) => {
   );
 };
 
-export default RadialRadar;
+export default EnergyPriceRadial;

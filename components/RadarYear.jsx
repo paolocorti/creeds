@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
-import { degToRad, activitiesCode } from "./utils.js";
+import { degToRad, radToDeg, activitiesCode } from "./utils.js";
 import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import RadarCircleYear from "./RadarCircleYear";
 import RadialRadar from "./RadialRadar";
 import { useStore } from "../store.js";
+import EnergyPriceRadial from "./EnergyPriceRadial.jsx";
 const isMobileWithTablet = false;
 
 let width = 1000;
@@ -77,6 +78,11 @@ const RadarYear = ({
       >
         <div className="my-24 ">
           <svg width={width} height={width}>
+            <circle cx={width / 2} cy={width / 2} r={width / 2} fill={"#fff"} />
+            <g transform={`translate(${width / 2}, ${width / 2})`}>
+              <EnergyPriceRadial data={energyData} width={900} height={900} />
+            </g>
+            <circle cx={width / 2} cy={width / 2} r={400} fill={"#fff"} />
             <g transform={`translate(${width / 2}, ${width / 2})`}>
               {data.length &&
                 data
@@ -84,9 +90,9 @@ const RadarYear = ({
                   //   return i === 0;
                   // })
                   .map((v, i) => {
-                    const angle = degToRad((360 / 144) * 3);
+                    const degAngle = (360 / 144) * 3;
+                    const angle = degToRad(degAngle);
                     const angle2 = degToRad(360 / 48);
-                    console.log(i);
 
                     return (
                       <g
@@ -94,7 +100,7 @@ const RadarYear = ({
                         style={{
                           transtion: "opacity 0.2s",
                           opacity: 1,
-                          transform: "rotate(-30deg)",
+                          transform: "rotate(-120deg)",
                         }}
                       >
                         {v.actValues
@@ -106,33 +112,37 @@ const RadarYear = ({
                             const value = posScale(index);
 
                             return (
-                              <g>
+                              <g
+                                transform={`translate(0,0) rotate(${
+                                  (360 / 48) * j
+                                })`}
+                              >
                                 {i === 0 && (
                                   <g>
                                     <line
                                       x1={0}
                                       y1={0}
-                                      x2={posScale(22) * Math.cos(angle2 * j)}
-                                      y2={posScale(22) * Math.sin(angle2 * j)}
-                                      stroke="rgba(0,0,0,0.5)"
-                                      strokeWidth={0.2}
+                                      x2={0}
+                                      y2={posScale(23)}
+                                      stroke="rgba(0,0,0,1)"
+                                      strokeWidth={0.5}
+                                      strokeDasharray={"8 8"}
                                     />
                                     <circle
                                       className="cursor-pointer"
-                                      cx={posScale(22) * Math.cos(angle2 * j)}
-                                      cy={posScale(22) * Math.sin(angle2 * j)}
-                                      r={15}
+                                      cx={0}
+                                      cy={posScale(23)}
+                                      r={5}
                                       fill={
                                         hover && hover === `i${i}`
-                                          ? "rgba(155, 210, 211,1)"
-                                          : "rgba(155, 210, 211,0.5)"
+                                          ? "#555"
+                                          : "#fff"
                                       }
-                                      strokeWidth={
-                                        hover && hover === `i${i}` ? 1 : 0.5
-                                      }
+                                      stroke={"#555"}
+                                      strokeWidth={1}
                                       data-tip={`${moment(
                                         timeScale.invert(j)
-                                      ).format("h:mm:ss a")}`}
+                                      ).format("h:mm a")}`}
                                       data-type="dark"
                                       onMouseEnter={() => {
                                         ReactTooltip.rebuild();
@@ -141,6 +151,16 @@ const RadarYear = ({
                                       //   useStore.setState({ hover: null });
                                       // }}
                                     />
+                                    <text
+                                      dx={0}
+                                      dy={posScale(25)}
+                                      textAnchor={"middle"}
+                                      fontSize={10}
+                                    >
+                                      {moment(timeScale.invert(j)).format(
+                                        "h:mm a"
+                                      )}
+                                    </text>
                                   </g>
                                 )}
                                 <RadarCircleYear

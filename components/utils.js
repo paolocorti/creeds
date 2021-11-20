@@ -24,6 +24,11 @@ export const degToRad = (degrees) => {
   return degrees * (pi / 180);
 };
 
+export const radToDeg = (radians) => {
+  const pi = Math.PI;
+  return radians * (180 / pi);
+};
+
 export const activities = {
   1: "absence",
   2: "generic home activity",

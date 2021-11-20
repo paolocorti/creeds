@@ -14,18 +14,19 @@ const RadarCircleYear = ({
 }) => {
   const strokeColor = "black";
   const strokeWidth = 1;
-  const radiusScale = scalePow().domain([0, 1]).range([1, 20]);
+  //const radiusScale = scalePow().domain([0, 1]).range([1, 20]);
+  const radius = Math.sqrt(Number(v) / Math.PI) * 40;
   const hover = useStore((state) => state.hover);
 
   return (
     <g>
       <circle
         className="cursor-pointer"
-        cx={value * Math.cos(angle * index)}
-        cy={value * Math.sin(angle * index)}
-        r={radiusScale(v)}
-        fill={color === "main" ? "red" : "blue"}
-        fillOpacity={0.5}
+        cx={0}
+        cy={value}
+        r={radius}
+        fill={color === "main" ? "#EF96A7" : "#9A1D18"}
+        fillOpacity={0.8}
         data-tip={activitiesCode[factor].value}
         onMouseEnter={() => {
           useStore.setState({ hover: `i${index}:f${factor}` });
