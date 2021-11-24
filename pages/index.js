@@ -174,6 +174,27 @@ export default function Home() {
               >
                 north_east
               </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("north_west")}
+              >
+                north_west
+              </div>
+              <div className="mx-2" onClick={() => setSelectedRegion("wales")}>
+                wales
+              </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("scotland")}
+              >
+                scotland
+              </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("northern_ireland")}
+              >
+                northern_ireland
+              </div>
             </div>
             <RadarYear
               globalData={data}
