@@ -75,7 +75,7 @@ const EnergyPriceRadial = ({ width, height, data }) => {
   if (width < 10) return null;
 
   // Update scale output to match component dimensions
-  yScale.range([400, 450]);
+  yScale.range([420, 500]);
   const reverseYScale = yScale.copy().range(yScale.range().reverse());
 
   return (
@@ -129,7 +129,6 @@ const EnergyPriceRadial = ({ width, height, data }) => {
                 strokeOpacity={0.8}
                 strokeLinecap="round"
                 fill={"#367C4E"}
-                stroke={darkbackground}
               />
               {shouldAnimate && (
                 <animated.path

@@ -12,7 +12,7 @@ const isMobileWithTablet = false;
 let width = 1000;
 
 const posScale = scaleLinear()
-  .domain([0, 20])
+  .domain([20, 0])
   .range([50, isMobileWithTablet ? (width - 100) / 2 : (width - 200) / 2]);
 
 const RadarYear = ({
@@ -107,9 +107,10 @@ const RadarYear = ({
                           .filter((v, i) => {
                             return i % 3 === 0;
                           })
+                          .reverse()
                           .map((a, j) => {
                             const index = activitiesCode[v.actCategory].index;
-                            const value = posScale(index);
+                            const value = posScale(index - 4);
 
                             return (
                               <g
@@ -123,7 +124,7 @@ const RadarYear = ({
                                       x1={0}
                                       y1={0}
                                       x2={0}
-                                      y2={posScale(23)}
+                                      y2={posScale(-4)}
                                       stroke="rgba(0,0,0,1)"
                                       strokeWidth={0.5}
                                       strokeDasharray={"8 8"}
@@ -131,7 +132,7 @@ const RadarYear = ({
                                     <circle
                                       className="cursor-pointer"
                                       cx={0}
-                                      cy={posScale(23)}
+                                      cy={posScale(-4)}
                                       r={5}
                                       fill={
                                         hover && hover === `i${i}`
@@ -153,7 +154,7 @@ const RadarYear = ({
                                     />
                                     <text
                                       dx={0}
-                                      dy={posScale(25)}
+                                      dy={posScale(-5)}
                                       textAnchor={"middle"}
                                       fontSize={10}
                                     >

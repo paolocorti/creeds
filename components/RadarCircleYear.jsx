@@ -38,6 +38,9 @@ const RadarCircleYear = ({
         stroke={hover === `i${index}:f${factor}` ? strokeColor : "none"}
         strokeWidth={strokeWidth}
       />
+      {/* <text dx={0} dy={value} textAnchor={"middle"} fontSize={10}>
+        {parseFloat(v).toFixed(2)}
+      </text> */}
     </g>
   );
 };

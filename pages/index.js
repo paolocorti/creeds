@@ -8,6 +8,8 @@ import RadarYear from "../components/RadarYear";
 export default function Home() {
   const [data, setData] = useState([]);
   const [energyDemand, setEnergyDemand] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState("1");
+  const [selectedRegion, setSelectedRegion] = useState("all");
 
   useEffect(() => {
     csv("/data/activity_frequency_distributions.csv").then((values) => {
@@ -90,13 +92,96 @@ export default function Home() {
         <div>
           <div>Activities, demand and price every 30 minutes</div>
           {/* <Radar globalData={data} selected={"all"} /> */}
-
-          <RadarYear
-            globalData={data}
-            energyDemand={energyDemand}
-            selectedRegion={"all"}
-            selectedMonth={"1"}
-          />
+          <div className="flex justify-center flex-col items-center">
+            <div className="flex mt-8">
+              <div className="mx-2" onClick={() => setSelectedMonth("1")}>
+                JAN
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("2")}>
+                FEB
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("3")}>
+                MAR
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("4")}>
+                APR
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("5")}>
+                MAG
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("6")}>
+                JUN
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("7")}>
+                JUL
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("8")}>
+                AUG
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("9")}>
+                SET
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("10")}>
+                OCT
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("11")}>
+                NOV
+              </div>
+              <div className="mx-2" onClick={() => setSelectedMonth("12")}>
+                DIC
+              </div>
+            </div>
+            <div className="flex mt-8">
+              <div className="mx-2" onClick={() => setSelectedRegion("all")}>
+                all
+              </div>
+              <div className="mx-2" onClick={() => setSelectedRegion("london")}>
+                london
+              </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("south_east")}
+              >
+                south_east
+              </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("east_england")}
+              >
+                east_england
+              </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("east_midlands")}
+              >
+                east_midlands
+              </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("west_midlands")}
+              >
+                west_midlands
+              </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("yorkshire_humber")}
+              >
+                yorkshire_humber
+              </div>
+              <div
+                className="mx-2"
+                onClick={() => setSelectedRegion("north_east")}
+              >
+                north_east
+              </div>
+            </div>
+            <RadarYear
+              globalData={data}
+              energyDemand={energyDemand}
+              selectedRegion={selectedRegion}
+              selectedMonth={selectedMonth}
+            />
+          </div>
         </div>
       </main>
 
