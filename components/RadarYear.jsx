@@ -182,6 +182,20 @@ const RadarYear = ({
                                   color={v.actType}
                                   width={width}
                                 />
+                                {j === 40 && (
+                                  <text
+                                    dx={12}
+                                    dy={value + 4}
+                                    textAnchor={"middle"}
+                                    fontSize={width * 0.012}
+                                    style={{
+                                      textTransform: "uppercase",
+                                      transform: "rotateZ(180deg)",
+                                    }}
+                                  >
+                                    {v.actCategory}
+                                  </text>
+                                )}
                               </g>
                             );
                           })}
