@@ -114,103 +114,272 @@ export default function Home() {
           {/* <Radar globalData={data} selected={"all"} /> */}
           <div className="flex justify-center flex-col items-center">
             <div className="flex mt-8">
-              <div className="mx-2" onClick={() => setSelectedMonth("1")}>
-                JAN
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("1")}
+              >
+                <div>JAN</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "1" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("2")}>
-                FEB
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("2")}
+              >
+                <div>FEB</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "2" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("3")}>
-                MAR
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("3")}
+              >
+                <div>MAR</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "3" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("4")}>
-                APR
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("4")}
+              >
+                <div>APR</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "4" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("5")}>
-                MAG
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("5")}
+              >
+                <div>MAG</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "5" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("6")}>
-                JUN
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("6")}
+              >
+                <div>JUN</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "6" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("7")}>
-                JUL
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("7")}
+              >
+                <div>JUL</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "7" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("8")}>
-                AUG
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("8")}
+              >
+                <div>AUG</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "8" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("9")}>
-                SET
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("9")}
+              >
+                <div>SET</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "9" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("10")}>
-                OCT
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("10")}
+              >
+                <div>OCT</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "10" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("11")}>
-                NOV
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("11")}
+              >
+                <div>NOV</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "11" ? "black" : "white",
+                  }}
+                ></div>
               </div>
-              <div className="mx-2" onClick={() => setSelectedMonth("12")}>
-                DIC
+              <div
+                className="mx-2 flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedMonth("12")}
+              >
+                <div>DIC</div>
+                <div
+                  className="dot"
+                  style={{
+                    backgroundColor: selectedMonth === "12" ? "black" : "white",
+                  }}
+                ></div>
               </div>
             </div>
             <div className="flex mt-8">
-              <div className="mx-2" onClick={() => setSelectedRegion("all")}>
+              <div
+                className="mx-2 cursor-pointer"
+                onClick={() => setSelectedRegion("all")}
+                style={{
+                  textDecoration:
+                    selectedRegion === "all" ? "underline" : "none",
+                }}
+              >
                 all
               </div>
-              <div className="mx-2" onClick={() => setSelectedRegion("london")}>
+              <div
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "london" ? "underline" : "none",
+                }}
+                onClick={() => setSelectedRegion("london")}
+              >
                 london
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "south_east" ? "underline" : "none",
+                }}
                 onClick={() => setSelectedRegion("south_east")}
               >
                 south_east
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "east_england" ? "underline" : "none",
+                }}
                 onClick={() => setSelectedRegion("east_england")}
               >
                 east_england
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "east_midlands" ? "underline" : "none",
+                }}
                 onClick={() => setSelectedRegion("east_midlands")}
               >
                 east_midlands
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "west_midlands" ? "underline" : "none",
+                }}
                 onClick={() => setSelectedRegion("west_midlands")}
               >
                 west_midlands
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "yorkshire_humber"
+                      ? "underline"
+                      : "none",
+                }}
                 onClick={() => setSelectedRegion("yorkshire_humber")}
               >
                 yorkshire_humber
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "north_east" ? "underline" : "none",
+                }}
                 onClick={() => setSelectedRegion("north_east")}
               >
                 north_east
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "north_west" ? "underline" : "none",
+                }}
                 onClick={() => setSelectedRegion("north_west")}
               >
                 north_west
               </div>
-              <div className="mx-2" onClick={() => setSelectedRegion("wales")}>
+              <div
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "wales" ? "underline" : "none",
+                }}
+                onClick={() => setSelectedRegion("wales")}
+              >
                 wales
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "scotland" ? "underline" : "none",
+                }}
                 onClick={() => setSelectedRegion("scotland")}
               >
                 scotland
               </div>
               <div
-                className="mx-2"
+                className="mx-2 cursor-pointer"
+                style={{
+                  textDecoration:
+                    selectedRegion === "northern_ireland"
+                      ? "underline"
+                      : "none",
+                }}
                 onClick={() => setSelectedRegion("northern_ireland")}
               >
                 northern_ireland
@@ -235,26 +404,28 @@ export default function Home() {
           <h2 className="text-4xl">COMPARE</h2>
           <div className="flex w-full">
             <div className="w-1/2 pr-2">
+              <h5>London</h5>
               <ParentSize>
                 {(parent) => (
                   <RadarYear
                     globalData={data}
                     energyDemand={energyDemand}
-                    selectedRegion={selectedRegion}
-                    selectedMonth={selectedMonth}
+                    selectedRegion={"london"}
+                    selectedMonth={"1"}
                     width={parent.width}
                   />
                 )}
               </ParentSize>
             </div>
             <div className="w-1/2 pl-2">
+              <h5>Northern Ireland</h5>
               <ParentSize>
                 {(parent) => (
                   <RadarYear
                     globalData={data}
                     energyDemand={energyDemand}
-                    selectedRegion={selectedRegion}
-                    selectedMonth={selectedMonth}
+                    selectedRegion={"northern_ireland"}
+                    selectedMonth={"1"}
                     width={parent.width}
                   />
                 )}
