@@ -74,8 +74,9 @@ const EnergyPriceRadial = ({ width, height, data }) => {
 
   if (width < 10) return null;
 
+  const circleRadius = width / 2;
   // Update scale output to match component dimensions
-  yScale.range([420, 500]);
+  yScale.range([circleRadius * 0.9, circleRadius * 1]);
   const reverseYScale = yScale.copy().range(yScale.range().reverse());
 
   return (

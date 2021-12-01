@@ -11,6 +11,7 @@
     "@visx/gradient": "^2.1.0",
     "@visx/grid": "^2.2.2",
     "@visx/group": "^2.1.0",
+    "@visx/responsive": "^2.4.1",
     "@visx/scale": "^2.2.2",
     "@visx/shape": "^2.2.2",
     "d3-fetch": "^3.0.1",

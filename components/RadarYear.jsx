@@ -4,22 +4,17 @@ import { degToRad, radToDeg, activitiesCode } from "./utils.js";
 import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import RadarCircleYear from "./RadarCircleYear";
-import RadialRadar from "./RadialRadar";
+import EnergyDemandRadial from "./EnergyDemandRadial";
 import { useStore } from "../store.js";
 import EnergyPriceRadial from "./EnergyPriceRadial.jsx";
 const isMobileWithTablet = false;
-
-let width = 1000;
-
-const posScale = scaleLinear()
-  .domain([20, 0])
-  .range([50, isMobileWithTablet ? (width - 100) / 2 : (width - 200) / 2]);
 
 const RadarYear = ({
   selectedRegion,
   selectedMonth,
   globalData,
   energyDemand,
+  width,
 }) => {
   const hover = useStore((state) => state.hover);
   const selectedDataRegion = globalData.filter(
@@ -58,6 +53,10 @@ const RadarYear = ({
 
   const keys = Object.keys(selectedData);
 
+  const posScale = scaleLinear()
+    .domain([20, 0])
+    .range([50, isMobileWithTablet ? (width - 100) / 2 : (width * 0.8) / 2]);
+
   const timeScale = scaleTime()
     .range([0, 144 / 3])
     .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
@@ -80,9 +79,18 @@ const RadarYear = ({
           <svg width={width} height={width}>
             <circle cx={width / 2} cy={width / 2} r={width / 2} fill={"#fff"} />
             <g transform={`translate(${width / 2}, ${width / 2})`}>
-              <EnergyPriceRadial data={energyData} width={900} height={900} />
+              <EnergyPriceRadial
+                data={energyData}
+                width={width * 0.9}
+                height={width * 0.9}
+              />
             </g>
-            <circle cx={width / 2} cy={width / 2} r={400} fill={"#fff"} />
+            <circle
+              cx={width / 2}
+              cy={width / 2}
+              r={width * 0.4}
+              fill={"#fff"}
+            />
             <g transform={`translate(${width / 2}, ${width / 2})`}>
               {data.length &&
                 data
@@ -124,7 +132,7 @@ const RadarYear = ({
                                       x1={0}
                                       y1={0}
                                       x2={0}
-                                      y2={posScale(-4)}
+                                      y2={(width / 2) * 0.9}
                                       stroke="rgba(0,0,0,1)"
                                       strokeWidth={0.5}
                                       strokeDasharray={"8 8"}
@@ -132,7 +140,7 @@ const RadarYear = ({
                                     <circle
                                       className="cursor-pointer"
                                       cx={0}
-                                      cy={posScale(-4)}
+                                      cy={(width / 2) * 0.9}
                                       r={5}
                                       fill={
                                         hover && hover === `i${i}`
@@ -154,9 +162,9 @@ const RadarYear = ({
                                     />
                                     <text
                                       dx={0}
-                                      dy={posScale(-5)}
+                                      dy={(width / 2) * 0.95}
                                       textAnchor={"middle"}
-                                      fontSize={10}
+                                      fontSize={width * 0.012}
                                     >
                                       {moment(timeScale.invert(j)).format(
                                         "h:mm a"
@@ -172,6 +180,7 @@ const RadarYear = ({
                                   factor={v.actCategory}
                                   category={v.actCategory}
                                   color={v.actType}
+                                  width={width}
                                 />
                               </g>
                             );
@@ -181,7 +190,11 @@ const RadarYear = ({
                   })}
             </g>
             <g transform={`translate(${width / 2}, ${width / 2})`}>
-              <RadialRadar data={energyData} width={300} height={300} />
+              <EnergyDemandRadial
+                data={energyData}
+                width={width * 0.3}
+                height={width * 0.3}
+              />
             </g>
           </svg>
         </div>

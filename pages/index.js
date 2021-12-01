@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
 import RadarYear from "../components/RadarYear";
+import { ParentSize } from "@visx/responsive";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -44,8 +45,10 @@ export default function Home() {
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-24 text-center">
-        <div>
-          <h1>Energy flexibility and the rhythms of everyday life</h1>
+        <section className="w-full my-8">
+          <h1 className="text-6xl">
+            Energy flexibility and the rhythms of everyday life
+          </h1>
           <p>INTRO</p>
           <p>
             One of the greatest challenges for a Net Zero Carbon future is
@@ -88,9 +91,26 @@ export default function Home() {
             showing what the typical patterns of activity, demand, etc. look
             like.
           </p>
-        </div>
-        <div>
-          <div>Activities, demand and price every 30 minutes</div>
+        </section>
+        <section className="w-full my-8">
+          <h2 className="text-4xl">
+            Activities, demand and price every 30 minutes
+          </h2>
+          <p>
+            We visualise everyday life as happening inside the 24 hour clock
+            because we want to place what people do at the centre of our
+            understanding of energy demand. At the heart of this approach is the
+            position that the timing of energy demand is determined by the way
+            people’s activities are ordered in time.
+          </p>
+          <p>
+            This type of visualisation is a conscious effort to visualise
+            underlying regular patterns relating to the fundamental temporal
+            characteristics of social events. It shows the complexities and
+            regular trends in everyday life through the simultaneous
+            representation of the temporal rhythm of social practices and its
+            shaping influence over households’ energy demand throughout the day.
+          </p>
           {/* <Radar globalData={data} selected={"all"} /> */}
           <div className="flex justify-center flex-col items-center">
             <div className="flex mt-8">
@@ -196,14 +216,52 @@ export default function Home() {
                 northern_ireland
               </div>
             </div>
-            <RadarYear
-              globalData={data}
-              energyDemand={energyDemand}
-              selectedRegion={selectedRegion}
-              selectedMonth={selectedMonth}
-            />
+            <div className="w-2/3">
+              <ParentSize>
+                {(parent) => (
+                  <RadarYear
+                    globalData={data}
+                    energyDemand={energyDemand}
+                    selectedRegion={selectedRegion}
+                    selectedMonth={selectedMonth}
+                    width={parent.width}
+                  />
+                )}
+              </ParentSize>
+            </div>
           </div>
-        </div>
+        </section>
+        <section className="w-full my-8">
+          <h2 className="text-4xl">COMPARE</h2>
+          <div className="flex w-full">
+            <div className="w-1/2 pr-2">
+              <ParentSize>
+                {(parent) => (
+                  <RadarYear
+                    globalData={data}
+                    energyDemand={energyDemand}
+                    selectedRegion={selectedRegion}
+                    selectedMonth={selectedMonth}
+                    width={parent.width}
+                  />
+                )}
+              </ParentSize>
+            </div>
+            <div className="w-1/2 pl-2">
+              <ParentSize>
+                {(parent) => (
+                  <RadarYear
+                    globalData={data}
+                    energyDemand={energyDemand}
+                    selectedRegion={selectedRegion}
+                    selectedMonth={selectedMonth}
+                    width={parent.width}
+                  />
+                )}
+              </ParentSize>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t"></footer>

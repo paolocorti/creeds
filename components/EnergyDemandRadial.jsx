@@ -34,7 +34,7 @@ const close = (d) =>
   d && d.kw_demand_autumn ? Number(d.kw_demand_autumn) : null;
 const formatTicks = (val) => String(val);
 
-const RadialRadar = ({ width, height, data }) => {
+const EnergyDemandRadial = ({ width, height, data }) => {
   // scales
   const xScale = scaleTime({
     range: [0, Math.PI * 2],
@@ -167,4 +167,4 @@ const RadialRadar = ({ width, height, data }) => {
   );
 };
 
-export default RadialRadar;
+export default EnergyDemandRadial;
