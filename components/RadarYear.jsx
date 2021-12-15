@@ -133,9 +133,9 @@ const RadarYear = ({
                                       y1={0}
                                       x2={0}
                                       y2={(width / 2) * 0.9}
-                                      stroke="rgba(0,0,0,1)"
+                                      stroke="#49494a"
                                       strokeWidth={0.5}
-                                      strokeDasharray={"8 8"}
+                                      strokeDasharray={"0.5 3"}
                                     />
                                     <circle
                                       className="cursor-pointer"

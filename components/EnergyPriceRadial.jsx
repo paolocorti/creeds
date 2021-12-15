@@ -12,7 +12,7 @@ const green = "#e5fd3d";
 export const blue = "#999";
 const darkgreen = "#dff84d";
 export const background = "#fff";
-const darkbackground = "#603FA8";
+const darkbackground = "#232953";
 const strokeColor = "#744cca";
 const springConfig = {
   tension: 20,
@@ -129,7 +129,7 @@ const EnergyPriceRadial = ({ width, height, data }) => {
                 strokeWidth={2}
                 strokeOpacity={0.8}
                 strokeLinecap="round"
-                fill={"#367C4E"}
+                fill={"#232953"}
               />
               {shouldAnimate && (
                 <animated.path
