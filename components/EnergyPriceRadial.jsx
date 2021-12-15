@@ -44,7 +44,6 @@ const EnergyPriceRadial = ({ width, height, data }) => {
     domain: extent(data, close),
   });
 
-  console.log("data", data);
   // console.log(yScale.domain());
 
   const angle = (d) => xScale(date(d)) ?? 0;

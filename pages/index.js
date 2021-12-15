@@ -5,6 +5,7 @@ import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
 import RadarYear from "../components/RadarYear";
 import { ParentSize } from "@visx/responsive";
+import TrendYear from "../components/TrendYear";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -389,6 +390,19 @@ export default function Home() {
               <ParentSize>
                 {(parent) => (
                   <RadarYear
+                    globalData={data}
+                    energyDemand={energyDemand}
+                    selectedRegion={selectedRegion}
+                    selectedMonth={selectedMonth}
+                    width={parent.width}
+                  />
+                )}
+              </ParentSize>
+            </div>
+            <div className="w-2/3">
+              <ParentSize>
+                {(parent) => (
+                  <TrendYear
                     globalData={data}
                     energyDemand={energyDemand}
                     selectedRegion={selectedRegion}

@@ -3,13 +3,12 @@ import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
 import { degToRad, radToDeg, activitiesCode } from "./utils.js";
 import ReactTooltip from "react-tooltip";
 import moment from "moment";
-import RadarCircleYear from "./RadarCircleYear";
-import EnergyDemandRadial from "./EnergyDemandRadial";
+import TrendCircleYear from "./TrendCircleYear";
+import EnergyDemandTrend from "./EnergyDemandTrend";
 import { useStore } from "../store.js";
-import EnergyPriceRadial from "./EnergyPriceRadial.jsx";
 const isMobileWithTablet = false;
 
-const RadarYear = ({
+const TrendYear = ({
   selectedRegion,
   selectedMonth,
   globalData,
@@ -17,7 +16,6 @@ const RadarYear = ({
   width,
 }) => {
   const hover = useStore((state) => state.hover);
-  const hoverCategory = useStore((state) => state.hoverCategory);
   const selectedDataRegion = globalData.filter(
     (v) => v.region === selectedRegion
   );
@@ -78,64 +76,32 @@ const RadarYear = ({
       >
         <div className="my-24 ">
           <svg width={width} height={width}>
-            <circle cx={width / 2} cy={width / 2} r={width / 2} fill={"#fff"} />
-            <g transform={`translate(${width / 2}, ${width / 2})`}>
-              <EnergyPriceRadial
-                data={energyData}
-                width={width * 0.9}
-                height={width * 0.9}
-              />
-            </g>
-            <circle
-              cx={width / 2}
-              cy={width / 2}
-              r={width * 0.4}
-              fill={"#ecf6f4"}
-            />
-            <g transform={`translate(${width / 2}, ${width / 2})`}>
+            <g transform={`translate(0,0)`}>
               {data.length &&
                 data
                   // .filter((v, i) => {
                   //   return i === 0;
                   // })
                   .map((v, i) => {
-                    const degAngle = (360 / 144) * 3;
-                    const angle = degToRad(degAngle);
-                    const angle2 = degToRad(360 / 48);
-
                     return (
                       <g
                         key={i}
                         style={{
                           transtion: "opacity 0.2s",
                           opacity: 1,
-                          transform: "rotate(-120deg)",
                         }}
                       >
                         {v.actValues
                           .filter((v, i) => {
+                            console.log(i, v);
                             return i % 3 === 0;
                           })
-                          .reverse()
                           .map((a, j) => {
                             const index = activitiesCode[v.actCategory].index;
                             const value = posScale(index - 4);
 
-                            console.log(hoverCategory);
-
                             return (
-                              <g
-                                transform={`translate(0,0) rotate(${
-                                  (360 / 48) * j
-                                })`}
-                                style={{
-                                  opacity: hoverCategory
-                                    ? hoverCategory === v.actCategory
-                                      ? 1
-                                      : 0.5
-                                    : 1,
-                                }}
-                              >
+                              <g transform={`translate(${j * 20},0)`}>
                                 {i === 0 && (
                                   <g>
                                     <line
@@ -147,29 +113,7 @@ const RadarYear = ({
                                       strokeWidth={0.5}
                                       strokeDasharray={"0.5 3"}
                                     />
-                                    <circle
-                                      className="cursor-pointer"
-                                      cx={0}
-                                      cy={(width / 2) * 0.9}
-                                      r={5}
-                                      fill={
-                                        hover && hover === `i${i}`
-                                          ? "#555"
-                                          : "#fff"
-                                      }
-                                      stroke={"#555"}
-                                      strokeWidth={1}
-                                      data-tip={`${moment(
-                                        timeScale.invert(j)
-                                      ).format("h:mm a")}`}
-                                      data-type="dark"
-                                      onMouseEnter={() => {
-                                        ReactTooltip.rebuild();
-                                      }}
-                                      // onMouseLeave={() => {
-                                      //   useStore.setState({ hover: null });
-                                      // }}
-                                    />
+
                                     <text
                                       dx={0}
                                       dy={(width / 2) * 0.95}
@@ -182,8 +126,7 @@ const RadarYear = ({
                                     </text>
                                   </g>
                                 )}
-                                <RadarCircleYear
-                                  angle={angle}
+                                <TrendCircleYear
                                   v={a}
                                   index={j}
                                   value={value}
@@ -192,20 +135,6 @@ const RadarYear = ({
                                   color={v.actType}
                                   width={width}
                                 />
-                                {j === 40 && (
-                                  <text
-                                    dx={12}
-                                    dy={value + 4}
-                                    textAnchor={"middle"}
-                                    fontSize={width * 0.012}
-                                    style={{
-                                      textTransform: "uppercase",
-                                      transform: "rotateZ(180deg)",
-                                    }}
-                                  >
-                                    {v.actCategory}
-                                  </text>
-                                )}
                               </g>
                             );
                           })}
@@ -213,11 +142,11 @@ const RadarYear = ({
                     );
                   })}
             </g>
-            <g transform={`translate(${width / 2}, ${width / 2})`}>
-              <EnergyDemandRadial
+            <g transform={`translate(0, 0)`}>
+              <EnergyDemandTrend
                 data={energyData}
-                width={width * 0.3}
-                height={width * 0.3}
+                width={width}
+                height={width}
               />
             </g>
           </svg>
@@ -227,4 +156,4 @@ const RadarYear = ({
   );
 };
 
-export default RadarYear;
+export default TrendYear;

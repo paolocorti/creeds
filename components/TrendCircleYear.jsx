@@ -22,7 +22,7 @@ const colorByCategory = {
   ot: "#7EA17E",
 };
 
-const RadarCircleYear = ({
+const TrendCircleYear = ({
   v,
   value,
   index,
@@ -31,7 +31,6 @@ const RadarCircleYear = ({
   category,
   color,
   width,
-  setHovered,
 }) => {
   const strokeColor = "black";
   const strokeWidth = 1;
@@ -52,14 +51,11 @@ const RadarCircleYear = ({
         fillOpacity={0.8}
         data-tip={activitiesCode[factor].value}
         onMouseEnter={() => {
-          useStore.setState({
-            hover: `i${index}:f${factor}`,
-            hoverCategory: factor,
-          });
+          useStore.setState({ hover: `i${index}:f${factor}` });
           ReactTooltip.rebuild();
         }}
         onMouseLeave={() => {
-          useStore.setState({ hover: null, hoverCategory: null });
+          useStore.setState({ hover: null });
         }}
         stroke={hover === `i${index}:f${factor}` ? strokeColor : "none"}
         strokeWidth={strokeWidth}
@@ -71,4 +67,4 @@ const RadarCircleYear = ({
   );
 };
 
-export default RadarCircleYear;
+export default TrendCircleYear;
