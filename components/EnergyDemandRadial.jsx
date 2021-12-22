@@ -34,7 +34,7 @@ const close = (d) =>
   d && d.kw_demand_autumn ? Number(d.kw_demand_autumn) : null;
 const formatTicks = (val) => String(val);
 
-const EnergyDemandRadial = ({ width, height, data }) => {
+const EnergyDemandRadial = ({ width, height, data, svgWidth }) => {
   // scales
   const xScale = scaleTime({
     range: [0, Math.PI * 2],
@@ -79,9 +79,17 @@ const EnergyDemandRadial = ({ width, height, data }) => {
 
   return (
     <Group top={0} left={0}>
+      <circle cx={0} cy={0} r={width / 2 - 15} fill={"#fff"} />
+
       {/* <GridAngle
             scale={xScale}
-            outerRadius={height / 2 - padding}
+            outerRadius={height / 2 - 
+              <circle
+        cx={svgWidth / 2}
+        cy={svgWidth / 2}
+        r={circleRadius / 2}
+        fill={"#fff"}
+      />padding}
             stroke={green}
             strokeWidth={1}
             strokeOpacity={0.3}

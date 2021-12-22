@@ -28,7 +28,7 @@ const close = (d) =>
   d && d.kw_demand_autumn ? Number(d.kw_demand_autumn) : null;
 const formatTicks = (val) => String(val);
 
-const EnergyDemandTrend = ({ width, height, data }) => {
+const EnergyDemandTrend = ({ width, height, data, svgWidth }) => {
   // scales
   const xScale = scaleTime({
     range: [0, width],

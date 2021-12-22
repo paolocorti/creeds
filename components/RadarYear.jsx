@@ -9,6 +9,37 @@ import { useStore } from "../store.js";
 import EnergyPriceRadial from "./EnergyPriceRadial.jsx";
 const isMobileWithTablet = false;
 
+const sortBy = [
+  "sl",
+  "et",
+  "pc",
+  "hc",
+  "ha",
+  "tv",
+  "it",
+  "tw",
+  "wr",
+  "ab",
+  "sh",
+  "ot",
+  "fp",
+  "ln",
+  "dw",
+  "hu",
+];
+
+const customSort = ({ data, sortBy, sortField }) => {
+  const sortByObject = sortBy.reduce((obj, item, index) => {
+    return {
+      ...obj,
+      [item]: index,
+    };
+  }, {});
+  return data.sort(
+    (a, b) => sortByObject[a[sortField]] - sortByObject[b[sortField]]
+  );
+};
+
 const RadarYear = ({
   selectedRegion,
   selectedMonth,
@@ -64,6 +95,14 @@ const RadarYear = ({
 
   const energyData = energyDemand.filter((v) => v.timeline_weekday === "Mon");
 
+  const sorted = customSort({
+    data: data,
+    sortBy,
+    sortField: "actCategory",
+  });
+
+  console.log("sorted", sorted);
+
   return (
     <div className="radial-overview mt-8">
       <div className="radial-overview-subtitle viz-explanation"></div>
@@ -84,6 +123,7 @@ const RadarYear = ({
                 data={energyData}
                 width={width * 0.9}
                 height={width * 0.9}
+                svgWidth={width}
               />
             </g>
             <circle
@@ -93,15 +133,16 @@ const RadarYear = ({
               fill={"#ecf6f4"}
             />
             <g transform={`translate(${width / 2}, ${width / 2})`}>
-              {data.length &&
-                data
+              {sorted.length &&
+                sorted
                   // .filter((v, i) => {
-                  //   return i === 0;
+                  //   return i === 2;
                   // })
                   .map((v, i) => {
                     const degAngle = (360 / 144) * 3;
                     const angle = degToRad(degAngle);
                     const angle2 = degToRad(360 / 48);
+                    console.log(v);
 
                     return (
                       <g
@@ -116,10 +157,9 @@ const RadarYear = ({
                           .filter((v, i) => {
                             return i % 3 === 0;
                           })
-                          .reverse()
                           .map((a, j) => {
                             const index = activitiesCode[v.actCategory].index;
-                            const value = posScale(index - 4);
+                            const value = posScale(index - 3);
 
                             return (
                               <g
@@ -142,17 +182,18 @@ const RadarYear = ({
                                       x2={0}
                                       y2={(width / 2) * 0.9}
                                       stroke="#49494a"
-                                      strokeWidth={0.5}
+                                      strokeWidth={0.8}
                                       strokeDasharray={"0.5 3"}
                                     />
                                     <g
-                                      transform={`translate(-3, ${
+                                      transform={`translate(-4, ${
                                         (width / 2) * 0.9
                                       })`}
                                     >
                                       <path
                                         d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
-                                        fill={"#0D0D18"}
+                                        fill={"#fff"}
+                                        stroke={"#000"}
                                       />
                                     </g>
                                     {/* <rect
@@ -182,7 +223,7 @@ const RadarYear = ({
                                     {j % 2 === 0 && (
                                       <text
                                         dx={0}
-                                        dy={(width / 2) * 0.96}
+                                        dy={(width / 2) * 0.965}
                                         textAnchor={"middle"}
                                         className="radial-hour-label"
                                       >
@@ -229,6 +270,7 @@ const RadarYear = ({
                 data={energyData}
                 width={width * 0.3}
                 height={width * 0.3}
+                svgWidth={width}
               />
             </g>
           </svg>

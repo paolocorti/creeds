@@ -4,22 +4,22 @@ import { scalePow } from "d3-scale";
 import { useStore } from "../store.js";
 
 const colorByCategory = {
-  ab: "#9A1D18",
-  ha: "#888DBB",
   sl: "#e58f9c",
-  fp: "#e58f9c",
-  ln: "#e58f9c",
-  dw: "#e58f9c",
-  tw: "#9A1D18",
+  et: "#e58f9c",
+  pc: "#e58f9c",
+  hc: "#e58f9c",
+  ha: "#9A1D18",
   tv: "#9A1D18",
   it: "#9A1D18",
-  et: "#888DBB",
-  pc: "#888DBB",
-  wr: "#888DBB",
-  hc: "#7EA17E",
+  tw: "#00198f",
+  wr: "#00198f",
+  ab: "#888DBB",
+  sh: "#888DBB",
+  ot: "#888DBB",
+  fp: "#7EA17E",
+  ln: "#7EA17E",
+  dw: "#7EA17E",
   hu: "#7EA17E",
-  sh: "#7EA17E",
-  ot: "#7EA17E",
 };
 
 const RadarCircleYear = ({
@@ -46,9 +46,7 @@ const RadarCircleYear = ({
         cx={0}
         cy={value}
         r={radius}
-        fill={
-          color === "main" ? colorByCategory[factor] : colorByCategory[factor]
-        }
+        fill={colorByCategory[category]}
         fillOpacity={0.8}
         data-tip={activitiesCode[factor].value}
         onMouseEnter={() => {

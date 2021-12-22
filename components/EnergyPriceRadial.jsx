@@ -34,7 +34,7 @@ const close = (d) =>
   d && d.kw_demand_autumn ? Number(d.kw_demand_autumn) : null;
 const formatTicks = (val) => String(val);
 
-const EnergyPriceRadial = ({ width, height, data }) => {
+const EnergyPriceRadial = ({ width, height, data, svgWidth }) => {
   // scales
   const xScale = scaleTime({
     range: [0, Math.PI * 2],
@@ -80,24 +80,6 @@ const EnergyPriceRadial = ({ width, height, data }) => {
 
   return (
     <Group top={0} left={0}>
-      {/* <GridAngle
-            scale={xScale}
-            outerRadius={height / 2 - padding}
-            stroke={green}
-            strokeWidth={1}
-            strokeOpacity={0.3}
-            strokeDasharray="5,2"
-            numTicks={20}
-          /> */}
-      {/* <GridRadial
-        scale={yScale}
-        numTicks={5}
-        stroke={blue}
-        strokeWidth={1}
-        fill={blue}
-        fillOpacity={0}
-        strokeOpacity={0.5}
-      /> */}
       <AxisLeft
         top={-height / 2 + padding}
         scale={reverseYScale}

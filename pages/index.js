@@ -386,7 +386,7 @@ export default function Home() {
                 northern_ireland
               </div>
             </div>
-            <div className="w-2/3">
+            <div className="w-1/2">
               <ParentSize>
                 {(parent) => (
                   <RadarYear
