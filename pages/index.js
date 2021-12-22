@@ -399,7 +399,7 @@ export default function Home() {
                 )}
               </ParentSize>
             </div>
-            <div className="w-2/3">
+            <div className="w-full">
               <ParentSize>
                 {(parent) => (
                   <TrendYear

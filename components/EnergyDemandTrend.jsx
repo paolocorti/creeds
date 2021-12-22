@@ -8,15 +8,9 @@ import { AxisLeft } from "@visx/axis";
 import { GridRadial, GridAngle } from "@visx/grid";
 import { animated, useSpring } from "react-spring";
 
-const green = "#e5fd3d";
 export const blue = "#999";
-const darkgreen = "#dff84d";
 export const background = "#fff";
-const darkbackground = "#232953";
 const strokeColor = "#744cca";
-const springConfig = {
-  tension: 20,
-};
 
 // utils
 function extent(data, value) {
@@ -48,7 +42,6 @@ const EnergyDemandTrend = ({ width, height, data }) => {
 
   const angle = (d) => xScale(date(d)) ?? 0;
   const radius = (d) => yScale(close(d)) ?? 0;
-  const padding = 20;
 
   if (width < 10) return null;
 
@@ -57,7 +50,7 @@ const EnergyDemandTrend = ({ width, height, data }) => {
   const reverseYScale = yScale.copy().range(yScale.range().reverse());
 
   return (
-    <Group left={0} top={-10}>
+    <Group left={0} top={-20}>
       {/* <GridAngle
             scale={xScale}
             outerRadius={height / 2 - padding}
@@ -77,7 +70,7 @@ const EnergyDemandTrend = ({ width, height, data }) => {
         strokeOpacity={0.5}
       /> */}
       <AxisLeft
-        top={-height / 2 + padding}
+        top={-height / 2}
         scale={reverseYScale}
         numTicks={5}
         tickStroke="none"

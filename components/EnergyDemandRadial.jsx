@@ -103,7 +103,7 @@ const EnergyDemandRadial = ({ width, height, data }) => {
         numTicks={5}
         tickStroke="none"
         tickLabelProps={(val) => ({
-          fontSize: 8,
+          fontSize: 0,
           fill: blue,
           fillOpacity: 1,
           textAnchor: "middle",

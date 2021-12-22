@@ -121,8 +121,6 @@ const RadarYear = ({
                             const index = activitiesCode[v.actCategory].index;
                             const value = posScale(index - 4);
 
-                            console.log(hoverCategory);
-
                             return (
                               <g
                                 transform={`translate(0,0) rotate(${
@@ -132,7 +130,7 @@ const RadarYear = ({
                                   opacity: hoverCategory
                                     ? hoverCategory === v.actCategory
                                       ? 1
-                                      : 0.5
+                                      : 0.2
                                     : 1,
                                 }}
                               >
@@ -147,11 +145,22 @@ const RadarYear = ({
                                       strokeWidth={0.5}
                                       strokeDasharray={"0.5 3"}
                                     />
-                                    <circle
+                                    <g
+                                      transform={`translate(-3, ${
+                                        (width / 2) * 0.9
+                                      })`}
+                                    >
+                                      <path
+                                        d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
+                                        fill={"#0D0D18"}
+                                      />
+                                    </g>
+                                    {/* <rect
                                       className="cursor-pointer"
-                                      cx={0}
-                                      cy={(width / 2) * 0.9}
-                                      r={5}
+                                      x={-3}
+                                      y={(width / 2) * 0.9}
+                                      width={6}
+                                      height={6}
                                       fill={
                                         hover && hover === `i${i}`
                                           ? "#555"
@@ -169,17 +178,19 @@ const RadarYear = ({
                                       // onMouseLeave={() => {
                                       //   useStore.setState({ hover: null });
                                       // }}
-                                    />
-                                    <text
-                                      dx={0}
-                                      dy={(width / 2) * 0.95}
-                                      textAnchor={"middle"}
-                                      fontSize={width * 0.012}
-                                    >
-                                      {moment(timeScale.invert(j)).format(
-                                        "h:mm a"
-                                      )}
-                                    </text>
+                                    /> */}
+                                    {j % 2 === 0 && (
+                                      <text
+                                        dx={0}
+                                        dy={(width / 2) * 0.96}
+                                        textAnchor={"middle"}
+                                        className="radial-hour-label"
+                                      >
+                                        {moment(timeScale.invert(j)).format(
+                                          "ha"
+                                        )}
+                                      </text>
+                                    )}
                                   </g>
                                 )}
                                 <RadarCircleYear
@@ -192,7 +203,7 @@ const RadarYear = ({
                                   color={v.actType}
                                   width={width}
                                 />
-                                {j === 40 && (
+                                {/* {j === 40 && (
                                   <text
                                     dx={12}
                                     dy={value + 4}
@@ -205,7 +216,7 @@ const RadarYear = ({
                                   >
                                     {v.actCategory}
                                   </text>
-                                )}
+                                )} */}
                               </g>
                             );
                           })}
