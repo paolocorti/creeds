@@ -5,7 +5,7 @@ import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
 import RadarYear from "../components/RadarYear";
 import { ParentSize } from "@visx/responsive";
-import TrendYear from "../components/TrendYear";
+import TrendYear from "../components/Trend/TrendYear";
 
 export default function Home() {
   const [data, setData] = useState([]);

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
 import { degToRad, radToDeg, activitiesCode } from "./utils.js";
-import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import RadarCircleYear from "./RadarCircleYear";
 import EnergyDemandRadial from "./EnergyDemandRadial";
