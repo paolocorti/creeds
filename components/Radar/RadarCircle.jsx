@@ -1,5 +1,5 @@
 import ReactTooltip from "react-tooltip";
-import { activities } from "./utils.js";
+import { activities } from "../utils.js";
 import { scalePow } from "d3-scale";
 
 const RadarCircle = ({

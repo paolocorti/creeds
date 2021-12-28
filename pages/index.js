@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Radar from "../components/Radar";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
-import RadarYear from "../components/RadarYear";
+import RadarYear from "../components/Radar/RadarYear";
 import { ParentSize } from "@visx/responsive";
 import TrendYear from "../components/Trend/TrendYear";
 
@@ -41,6 +40,7 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap"
           rel="stylesheet"
         ></link>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"></link>
       </Head>
 
       <ReactTooltip effect="solid" backgroundColor="#111" />
@@ -399,6 +399,18 @@ export default function Home() {
                 )}
               </ParentSize>
             </div>
+
+          </div>
+        </section>
+        <section className="w-full my-8">
+          <h2 className="text-4xl">
+            Unpacking peaks
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+
+          <div>
             <div className="w-full">
               <ParentSize>
                 {(parent) => (
@@ -414,7 +426,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="w-full my-8">
+        {/* <section className="w-full my-8">
           <h2 className="text-4xl">COMPARE</h2>
           <div className="flex w-full">
             <div className="w-1/2 pr-2">
@@ -446,7 +458,7 @@ export default function Home() {
               </ParentSize>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t"></footer>

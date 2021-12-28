@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
-import { degToRad, activities } from "./utils.js";
+import { degToRad, activities } from "../utils.js";
 import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import RadarCircle from "./RadarCircle";
@@ -46,8 +46,7 @@ const Radar = ({ selected, globalData }) => {
         `${selectedData.DYEAR}-${selectedData.DMONTH}-${selectedData.DDAY}T04:00:00`
       ),
       new Date(
-        `${selectedData.DYEAR}-${selectedData.DMONTH}-${
-          Number(selectedData.DDAY) + 1
+        `${selectedData.DYEAR}-${selectedData.DMONTH}-${Number(selectedData.DDAY) + 1
         }T04:00:00`
       ),
     ]);

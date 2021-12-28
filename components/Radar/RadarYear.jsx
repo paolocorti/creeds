@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
-import { degToRad, radToDeg, activitiesCode } from "./utils.js";
+import { degToRad, radToDeg, activitiesCode } from "../utils.js";
 import moment from "moment";
 import RadarCircleYear from "./RadarCircleYear";
 import EnergyDemandRadial from "./EnergyDemandRadial";
-import { useStore } from "../store.js";
+import { useStore } from "../../store.js";
 import EnergyPriceRadial from "./EnergyPriceRadial.jsx";
 const isMobileWithTablet = false;
 
@@ -48,6 +48,7 @@ const RadarYear = ({
 }) => {
   const hover = useStore((state) => state.hover);
   const hoverCategory = useStore((state) => state.hoverCategory);
+  const hoverTime = useStore((state) => state.hoverTime);
   const selectedDataRegion = globalData.filter(
     (v) => v.region === selectedRegion
   );
@@ -100,12 +101,27 @@ const RadarYear = ({
     sortField: "actCategory",
   });
 
-  console.log("sorted", sorted);
 
   return (
     <div className="radial-overview mt-8">
       <div className="radial-overview-subtitle viz-explanation"></div>
-      <div className="radial-overview-toolbar"></div>
+      <div className="radial-overview-toolbar">
+        {
+          hoverTime &&
+          <div className="flex flex-col">
+            <div>
+              <b>
+                {moment(timeScale.invert(hoverTime)).format(
+                  "h:mm a"
+                )}
+              </b>
+            </div>
+            <div>
+              Top activity: sleeping | Energy consumpion: | Energy price:
+            </div>
+          </div>
+        }
+      </div>
 
       <div
         style={{
@@ -141,7 +157,6 @@ const RadarYear = ({
                     const degAngle = (360 / 144) * 3;
                     const angle = degToRad(degAngle);
                     const angle2 = degToRad(360 / 48);
-                    console.log(v);
 
                     return (
                       <g
@@ -162,15 +177,18 @@ const RadarYear = ({
 
                             return (
                               <g
-                                transform={`translate(0,0) rotate(${
-                                  (360 / 48) * j
-                                })`}
+                                transform={`translate(0,0) rotate(${(360 / 48) * j
+                                  })`}
                                 style={{
                                   opacity: hoverCategory
                                     ? hoverCategory === v.actCategory
                                       ? 1
                                       : 0.2
-                                    : 1,
+                                    :
+                                    hoverTime ?
+                                      hoverTime === j
+                                        ? 1
+                                        : 0.2 : 1
                                 }}
                               >
                                 {i === 0 && (
@@ -185,46 +203,41 @@ const RadarYear = ({
                                       strokeDasharray={"0.5 3"}
                                     />
                                     <g
-                                      transform={`translate(-4, ${
-                                        (width / 2) * 0.9
-                                      })`}
+                                      transform={`translate(-4, ${(width / 2) * 0.9
+                                        })`}
+                                      onMouseEnter={() => {
+                                        useStore.setState({
+                                          hoverTime: j,
+                                        });
+                                      }}
+                                      onMouseLeave={() => {
+                                        useStore.setState({ hoverTime: null });
+                                      }}
+                                      style={{
+                                        cursor: 'pointer'
+                                      }}
                                     >
                                       <path
                                         d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
-                                        fill={"#fff"}
+                                        fill={hoverTime === j ? '#000' : "#fff"}
                                         stroke={"#000"}
                                       />
                                     </g>
-                                    {/* <rect
-                                      className="cursor-pointer"
-                                      x={-3}
-                                      y={(width / 2) * 0.9}
-                                      width={6}
-                                      height={6}
-                                      fill={
-                                        hover && hover === `i${i}`
-                                          ? "#555"
-                                          : "#fff"
-                                      }
-                                      stroke={"#555"}
-                                      strokeWidth={1}
-                                      data-tip={`${moment(
-                                        timeScale.invert(j)
-                                      ).format("h:mm a")}`}
-                                      data-type="dark"
-                                      onMouseEnter={() => {
-                                        ReactTooltip.rebuild();
-                                      }}
-                                      // onMouseLeave={() => {
-                                      //   useStore.setState({ hover: null });
-                                      // }}
-                                    /> */}
+
                                     {j % 2 === 0 && (
                                       <text
                                         dx={0}
                                         dy={(width / 2) * 0.965}
                                         textAnchor={"middle"}
                                         className="radial-hour-label"
+                                        onMouseEnter={() => {
+                                          useStore.setState({
+                                            hoverTime: j,
+                                          });
+                                        }}
+                                        onMouseLeave={() => {
+                                          useStore.setState({ hoverTime: null });
+                                        }}
                                       >
                                         {moment(timeScale.invert(j)).format(
                                           "ha"

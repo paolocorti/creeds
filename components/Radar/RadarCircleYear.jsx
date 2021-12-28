@@ -1,26 +1,6 @@
 import ReactTooltip from "react-tooltip";
-import { activitiesCode } from "./utils.js";
-import { scalePow } from "d3-scale";
-import { useStore } from "../store.js";
-
-const colorByCategory = {
-  sl: "#e58f9c",
-  et: "#e58f9c",
-  pc: "#e58f9c",
-  hc: "#e58f9c",
-  ha: "#9A1D18",
-  tv: "#9A1D18",
-  it: "#9A1D18",
-  tw: "#00198f",
-  wr: "#00198f",
-  ab: "#888DBB",
-  sh: "#888DBB",
-  ot: "#888DBB",
-  fp: "#7EA17E",
-  ln: "#7EA17E",
-  dw: "#7EA17E",
-  hu: "#7EA17E",
-};
+import { activitiesCode, colorByCategory } from "../utils.js";
+import { useStore } from "../../store.js";
 
 const RadarCircleYear = ({
   v,

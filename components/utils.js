@@ -66,3 +66,22 @@ export const activitiesCode = {
   sh: { index: 15, value: "shopping" },
   ot: { index: 16, value: "other travel activity" },
 };
+
+export const colorByCategory = {
+  sl: "#e58f9c",
+  et: "#e58f9c",
+  pc: "#e58f9c",
+  hc: "#e58f9c",
+  ha: "#9A1D18",
+  tv: "#9A1D18",
+  it: "#9A1D18",
+  tw: "#C47B51",
+  wr: "#C47B51",
+  ab: "#888DBB",
+  sh: "#888DBB",
+  ot: "#888DBB",
+  fp: "#7EA17E",
+  ln: "#7EA17E",
+  dw: "#7EA17E",
+  hu: "#7EA17E",
+};
