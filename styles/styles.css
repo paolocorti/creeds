@@ -42,6 +42,25 @@ p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   line-height: 13px;
-
   color: #0d0d18;
+}
+
+.radial-hour-label-rot {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 13px;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(180deg);
+  color: #0d0d18;
+}
+
+.radial-hour-label-months {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 13px;
+  transform-box: fill-box;
+  transform-origin: center;
+  color: #0d0d18;
+  alignment-baseline: middle;
 }

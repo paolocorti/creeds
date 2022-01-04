@@ -85,3 +85,34 @@ export const colorByCategory = {
   dw: "#7EA17E",
   hu: "#7EA17E",
 };
+
+export const sortBy = [
+  "sl",
+  "et",
+  "pc",
+  "hc",
+  "ha",
+  "tv",
+  "it",
+  "tw",
+  "wr",
+  "ab",
+  "sh",
+  "ot",
+  "fp",
+  "ln",
+  "dw",
+  "hu",
+];
+
+export const customSort = ({ data, sortBy, sortField }) => {
+  const sortByObject = sortBy.reduce((obj, item, index) => {
+    return {
+      ...obj,
+      [item]: index,
+    };
+  }, {});
+  return data.sort(
+    (a, b) => sortByObject[a[sortField]] - sortByObject[b[sortField]]
+  );
+};

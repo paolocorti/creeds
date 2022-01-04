@@ -114,153 +114,8 @@ export default function Home() {
           </p>
           {/* <Radar globalData={data} selected={"all"} /> */}
           <div className="flex justify-center flex-col items-center">
-            <div className="flex mt-8">
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("1")}
-              >
-                <div>JAN</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "1" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("2")}
-              >
-                <div>FEB</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "2" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("3")}
-              >
-                <div>MAR</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "3" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("4")}
-              >
-                <div>APR</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "4" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("5")}
-              >
-                <div>MAG</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "5" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("6")}
-              >
-                <div>JUN</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "6" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("7")}
-              >
-                <div>JUL</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "7" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("8")}
-              >
-                <div>AUG</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "8" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("9")}
-              >
-                <div>SET</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "9" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("10")}
-              >
-                <div>OCT</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "10" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("11")}
-              >
-                <div>NOV</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "11" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-              <div
-                className="mx-2 flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedMonth("12")}
-              >
-                <div>DIC</div>
-                <div
-                  className="dot"
-                  style={{
-                    backgroundColor: selectedMonth === "12" ? "black" : "white",
-                  }}
-                ></div>
-              </div>
-            </div>
-            <div className="flex mt-8">
+
+            {/* <div className="flex mt-8">
               <div
                 className="mx-2 cursor-pointer"
                 onClick={() => setSelectedRegion("all")}
@@ -385,7 +240,7 @@ export default function Home() {
               >
                 northern_ireland
               </div>
-            </div>
+            </div> */}
             <div className="w-1/2">
               <ParentSize>
                 {(parent) => (
@@ -394,6 +249,7 @@ export default function Home() {
                     energyDemand={energyDemand}
                     selectedRegion={selectedRegion}
                     selectedMonth={selectedMonth}
+                    setSelectedMonth={setSelectedMonth}
                     width={parent.width}
                   />
                 )}

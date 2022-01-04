@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
-import { degToRad, radToDeg, activitiesCode } from "../utils.js";
+import { degToRad, radToDeg, activitiesCode, sortBy, customSort } from "../utils.js";
 import moment from "moment";
 import RadarCircleYear from "./RadarCircleYear";
 import EnergyDemandRadial from "./EnergyDemandRadial";
@@ -8,36 +8,34 @@ import { useStore } from "../../store.js";
 import EnergyPriceRadial from "./EnergyPriceRadial.jsx";
 const isMobileWithTablet = false;
 
-const sortBy = [
-  "sl",
-  "et",
-  "pc",
-  "hc",
-  "ha",
-  "tv",
-  "it",
-  "tw",
-  "wr",
-  "ab",
-  "sh",
-  "ot",
-  "fp",
-  "ln",
-  "dw",
-  "hu",
-];
 
-const customSort = ({ data, sortBy, sortField }) => {
-  const sortByObject = sortBy.reduce((obj, item, index) => {
-    return {
-      ...obj,
-      [item]: index,
-    };
-  }, {});
-  return data.sort(
-    (a, b) => sortByObject[a[sortField]] - sortByObject[b[sortField]]
-  );
-};
+
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+
+function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+  var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+
+  return {
+    x: centerX + (radius * Math.cos(angleInRadians)),
+    y: centerY + (radius * Math.sin(angleInRadians))
+  };
+}
+
+function describeArc(x, y, radius, startAngle, endAngle) {
+
+  var start = polarToCartesian(x, y, radius, endAngle);
+  var end = polarToCartesian(x, y, radius, startAngle);
+
+  var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+
+  var d = [
+    "M", start.x, start.y,
+    "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
+  ].join(" ");
+
+  return d;
+}
 
 const RadarYear = ({
   selectedRegion,
@@ -45,6 +43,7 @@ const RadarYear = ({
   globalData,
   energyDemand,
   width,
+  setSelectedMonth
 }) => {
   const hover = useStore((state) => state.hover);
   const hoverCategory = useStore((state) => state.hoverCategory);
@@ -101,6 +100,8 @@ const RadarYear = ({
     sortField: "actCategory",
   });
 
+  console.log('selectedMonth', selectedMonth)
+
 
   return (
     <div className="radial-overview mt-8">
@@ -121,6 +122,15 @@ const RadarYear = ({
             </div>
           </div>
         }
+        {
+          !hoverTime &&
+          <div className="flex flex-col">
+            <div>
+              Select the month or click on play. Mouse over
+              on the graphic to explore the data
+            </div>
+          </div>
+        }
       </div>
 
       <div
@@ -130,10 +140,11 @@ const RadarYear = ({
           flexDirection: isMobileWithTablet ? "column" : "row",
         }}
       >
-        <div className="my-24 ">
-          <svg width={width} height={width}>
-            <circle cx={width / 2} cy={width / 2} r={width / 2} fill={"#fff"} />
-            <g transform={`translate(${width / 2}, ${width / 2})`}>
+        <div className="my-12 relative flex" >
+
+          <svg width={width * 1.2} height={width * 1.2}>
+            <circle cx={width * 0.6} cy={width * 0.6} r={width / 2} fill={"#fff"} style={{ pointerEvents: 'none' }} />
+            <g transform={`translate(${width * .6}, ${width * .6})`}>
               <EnergyPriceRadial
                 data={energyData}
                 width={width * 0.9}
@@ -142,12 +153,12 @@ const RadarYear = ({
               />
             </g>
             <circle
-              cx={width / 2}
-              cy={width / 2}
+              cx={width * .6}
+              cy={width * .6}
               r={width * 0.4}
               fill={"#ecf6f4"}
             />
-            <g transform={`translate(${width / 2}, ${width / 2})`}>
+            <g transform={`translate(${width * .6}, ${width * .6})`}>
               {sorted.length &&
                 sorted
                   // .filter((v, i) => {
@@ -174,7 +185,6 @@ const RadarYear = ({
                           .map((a, j) => {
                             const index = activitiesCode[v.actCategory].index;
                             const value = posScale(index - 3);
-
                             return (
                               <g
                                 transform={`translate(0,0) rotate(${(360 / 48) * j
@@ -227,9 +237,9 @@ const RadarYear = ({
                                     {j % 2 === 0 && (
                                       <text
                                         dx={0}
-                                        dy={(width / 2) * 0.965}
+                                        dy={(width / 2) * 0.98}
                                         textAnchor={"middle"}
-                                        className="radial-hour-label"
+                                        className={j > 26 || j < 6 ? "radial-hour-label-rot" : "radial-hour-label"}
                                         onMouseEnter={() => {
                                           useStore.setState({
                                             hoverTime: j,
@@ -237,6 +247,9 @@ const RadarYear = ({
                                         }}
                                         onMouseLeave={() => {
                                           useStore.setState({ hoverTime: null });
+                                        }}
+                                        style={{
+                                          fontSize: width * 0.02
                                         }}
                                       >
                                         {moment(timeScale.invert(j)).format(
@@ -277,7 +290,7 @@ const RadarYear = ({
                     );
                   })}
             </g>
-            <g transform={`translate(${width / 2}, ${width / 2})`}>
+            <g transform={`translate(${width * .6}, ${width * .6})`}>
               <EnergyDemandRadial
                 data={energyData}
                 width={width * 0.3}
@@ -285,7 +298,35 @@ const RadarYear = ({
                 svgWidth={width}
               />
             </g>
+
+            <path id="jan" onClick={() => setSelectedMonth("1")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '1' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, -14, 14)} />
+            <path id="feb" onClick={() => setSelectedMonth("2")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '2' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 16, 44)} />
+            <path id="mar" onClick={() => setSelectedMonth("3")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '3' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 46, 74)} />
+            <path id="apr" onClick={() => setSelectedMonth("4")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '4' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 76, 104)} />
+            <path id="may" onClick={() => setSelectedMonth("5")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '5' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 106, 134)} />
+            <path id="jun" onClick={() => setSelectedMonth("6")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '6' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 136, 164)} />
+            <path id="jul" onClick={() => setSelectedMonth("7")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '7' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 166, 194)} />
+            <path id="aug" onClick={() => setSelectedMonth("8")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '8' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 196, 224)} />
+            <path id="sep" onClick={() => setSelectedMonth("9")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '9' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 226, 254)} />
+            <path id="oct" onClick={() => setSelectedMonth("10")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '10' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 256, 284)} />
+            <path id="nov" onClick={() => setSelectedMonth("11")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '11' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 286, 314)} />
+            <path id="dec" onClick={() => setSelectedMonth("12")} fill="none" style={{ pointerEvents: 'none' }} stroke={selectedMonth === '12' ? '#000' : "#fff"} stroke-width="5" d={describeArc(width * 0.6, width * 0.6, width * 0.54, 316, 344)} />
+            <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+              {[...Array(12).keys()].map((v) => {
+                const angle = v * 30;
+                return (
+                  <text x={width * 0.58 * Math.cos(degToRad(angle - 90))} y={width * 0.58 * Math.sin(degToRad(angle - 90))} dy={0} textAnchor="middle" fontSize={11} fill='#000' className={"radial-hour-label-months"} style={{
+                    transform: `rotate(${angle}deg)`,
+                    cursor: 'pointer'
+                  }} onClick={() => setSelectedMonth(String(v + 1))}>{months[v].toUpperCase()}</text>
+                )
+              })}
+            </g>
           </svg>
+
+          {/* <svg width={width * 1.2} height={width * 1.2} style={{ position: 'absolute', zIndex: 0, }}>
+            
+          </svg> */}
         </div>
       </div>
     </div>

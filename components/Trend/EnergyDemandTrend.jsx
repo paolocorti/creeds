@@ -50,26 +50,9 @@ const EnergyDemandTrend = ({ width, height, data, svgWidth }) => {
   const reverseYScale = yScale.copy().range(yScale.range().reverse());
 
   return (
-    <Group left={0} top={-20}>
-      {/* <GridAngle
-            scale={xScale}
-            outerRadius={height / 2 - padding}
-            stroke={green}
-            strokeWidth={1}
-            strokeOpacity={0.3}
-            strokeDasharray="5,2"
-            numTicks={20}
-          /> */}
-      {/* <GridRadial
-        scale={yScale}
-        numTicks={5}
-        stroke={blue}
-        strokeWidth={1}
-        fill={blue}
-        fillOpacity={0}
-        strokeOpacity={0.5}
-      /> */}
-      <AxisLeft
+    <Group left={-20} top={-20}>
+
+      {/* <AxisLeft
         top={-height / 2}
         scale={reverseYScale}
         numTicks={5}
@@ -88,7 +71,7 @@ const EnergyDemandTrend = ({ width, height, data, svgWidth }) => {
         })}
         tickFormat={formatTicks}
         hideAxisLine
-      />
+      /> */}
       <AreaClosed
         curve={curveBasisOpen}
         data={data}

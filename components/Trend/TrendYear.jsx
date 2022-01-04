@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
-import { degToRad, radToDeg, activitiesCode } from "../utils.js";
+import { degToRad, radToDeg, activitiesCode, sortBy, customSort } from "../utils.js";
 import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import TrendCircleYear from "./TrendCircleYear";
@@ -67,12 +67,18 @@ const TrendYear = ({
 
   const translateFactorStart = 81;
   const translateFactorEnd = 101;
+  const height = 1000
+
+  const sorted = customSort({
+    data: data,
+    sortBy,
+    sortField: "actCategory",
+  });
+
 
   return (
     <div className="radial-overview mt-8">
       <div className="radial-overview-subtitle viz-explanation"></div>
-      <div className="radial-overview-toolbar"></div>
-
       <div
         style={{
           display: "flex",
@@ -80,23 +86,43 @@ const TrendYear = ({
           flexDirection: isMobileWithTablet ? "column" : "row",
         }}
       >
-        <div className="my-24">
-          <svg width={width} height={width / 2}>
-            <g transform={`translate(${marginLeft},50)`}>
-              {data.length &&
-                data
+        <div className="my-12">
+          <svg width={width} height={height}>
+            <g transform={`translate(${marginLeft}, 150)`}>
+              {sorted.length &&
+                sorted
                   // .filter((v, i) => {
-                  //   return i === 0;
+                  //   return i % 2 === 0;
                   // })
                   .map((v, i) => {
+                    const rowIndex = parseInt(i / 2);
+                    const value = rowIndex * 60;
+
+
                     return (
                       <g
                         key={i}
-                        style={{
-                          transtion: "opacity 0.2s",
-                          opacity: 1,
-                        }}
+                        transform={`translate(0, ${value})`}
                       >
+                        <line
+                          x1={0}
+                          y1={0 + 20}
+                          x2={internalWidth}
+                          y2={20}
+                          stroke="#49494a"
+                          strokeWidth={0.5}
+                          strokeDasharray={"0.5 3"}
+                        />
+                        <line
+                          x1={0}
+                          y1={0 + 40}
+                          x2={internalWidth}
+                          y2={40}
+                          stroke="#49494a"
+                          strokeWidth={0.5}
+                          strokeDasharray={"0.5 3"}
+                        />
+
                         {v.actValues
                           .filter((v, i) => {
                             return (
@@ -105,66 +131,95 @@ const TrendYear = ({
                           })
                           .map((a, j) => {
                             const index = activitiesCode[v.actCategory].index;
-                            const value = posScale(index - 4);
 
                             return (
-                              <g>
+                              <g >
                                 {j === 0 && i % 2 === 0 && (
                                   <text
                                     dx={-30}
-                                    dy={value}
+                                    dy={4}
                                     textAnchor={"end"}
                                     fontSize={internalWidth * 0.012}
                                     className="radial-hour-label"
+                                    fontWeight='bold'
                                   >
                                     {activitiesCode[v.actCategory].value}
                                   </text>
                                 )}
+                                {j === 0 && i % 2 === 0 && (
+                                  <text
+                                    dx={-30}
+                                    dy={4 + 20}
+                                    textAnchor={"end"}
+                                    fontSize={internalWidth * 0.012}
+                                    className="radial-hour-label"
+                                  >
+                                    primary
+                                  </text>
+                                )}
+                                {j === 0 && i % 2 === 0 && (
+                                  <text
+                                    dx={-30}
+                                    dy={4 + 40}
+                                    textAnchor={"end"}
+                                    fontSize={internalWidth * 0.012}
+                                    className="radial-hour-label"
+                                  >
+                                    secondary
+                                  </text>
+                                )}
+
                                 <g
-                                  transform={`translate(${
-                                    j *
+                                  transform={`translate(${j *
                                     (internalWidth /
                                       (translateFactorEnd -
-                                        translateFactorStart +
-                                        1))
-                                  },0)`}
+                                        translateFactorStart - 1))
+                                    },0)`}
                                 >
                                   {i === 0 && (
                                     <g>
                                       <line
                                         x1={0}
-                                        y1={250}
+                                        y1={height - 50}
                                         x2={0}
-                                        y2={80}
+                                        y2={0}
                                         stroke="#49494a"
                                         strokeWidth={0.5}
                                         strokeDasharray={"0.5 3"}
                                       />
-
                                       <text
                                         dx={0}
-                                        dy={width / 3 + 10}
+                                        dy={height - 150}
                                         textAnchor={"middle"}
-                                        fontSize={internalWidth * 0.012}
+                                        fontSize={internalWidth * 0.01}
                                         className="radial-hour-label"
                                       >
                                         {moment(
                                           timeScale.invert(
                                             j + translateFactorStart
                                           )
-                                        ).format("kk:mm a")}
+                                        ).format("hh:mm a")}
                                       </text>
                                     </g>
                                   )}
-                                  <TrendCircleYear
+                                  {v.actType === 'main' && <TrendCircleYear
                                     v={a}
                                     index={j + translateFactorStart}
-                                    value={value}
+                                    value={20}
                                     factor={v.actCategory}
                                     category={v.actCategory}
                                     color={v.actType}
                                     width={internalWidth}
-                                  />
+                                  />}
+                                  {v.actType === 'secondary' && <TrendCircleYear
+                                    v={a}
+                                    index={j + translateFactorStart}
+                                    value={40}
+                                    factor={v.actCategory}
+                                    category={v.actCategory}
+                                    color={v.actType}
+                                    width={internalWidth}
+                                  />}
                                 </g>
                               </g>
                             );
@@ -177,7 +232,7 @@ const TrendYear = ({
               <EnergyDemandTrend
                 data={energyData}
                 width={internalWidth}
-                height={200}
+                height={150}
               />
             </g>
           </svg>
