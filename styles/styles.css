@@ -28,14 +28,14 @@ p {
 
 .radial-overview-toolbar {
   height: 60px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0em;
   text-align: center;
-  color: #0018EC;
+  color: #0018ec;
 }
 
 .radial-hour-label {
@@ -57,8 +57,6 @@ p {
 
 .radial-hour-label-months {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
-  line-height: 13px;
   transform-box: fill-box;
   transform-origin: center;
   color: #0d0d18;

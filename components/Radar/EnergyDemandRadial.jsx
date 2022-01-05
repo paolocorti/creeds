@@ -79,7 +79,7 @@ const EnergyDemandRadial = ({ width, height, data, svgWidth }) => {
 
   return (
     <Group top={0} left={0}>
-      <circle cx={0} cy={0} r={width * 0.7 / 2} fill={"#fff"} />
+      <circle cx={0} cy={0} r={(width * 0.7) / 2} fill={"#fff"} />
 
       {/* <GridAngle
             scale={xScale}

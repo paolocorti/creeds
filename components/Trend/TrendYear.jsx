@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
-import { degToRad, radToDeg, activitiesCode, sortBy, customSort } from "../utils.js";
+import {
+  degToRad,
+  radToDeg,
+  activitiesCode,
+  sortBy,
+  customSort,
+} from "../utils.js";
 import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import TrendCircleYear from "./TrendCircleYear";
@@ -67,14 +73,13 @@ const TrendYear = ({
 
   const translateFactorStart = 81;
   const translateFactorEnd = 101;
-  const height = 1000
+  const height = 1020;
 
   const sorted = customSort({
     data: data,
     sortBy,
     sortField: "actCategory",
   });
-
 
   return (
     <div className="radial-overview mt-8">
@@ -98,12 +103,8 @@ const TrendYear = ({
                     const rowIndex = parseInt(i / 2);
                     const value = rowIndex * 60;
 
-
                     return (
-                      <g
-                        key={i}
-                        transform={`translate(0, ${value})`}
-                      >
+                      <g key={i} transform={`translate(0, ${value})`}>
                         <line
                           x1={0}
                           y1={0 + 20}
@@ -133,7 +134,7 @@ const TrendYear = ({
                             const index = activitiesCode[v.actCategory].index;
 
                             return (
-                              <g >
+                              <g>
                                 {j === 0 && i % 2 === 0 && (
                                   <text
                                     dx={-30}
@@ -141,7 +142,7 @@ const TrendYear = ({
                                     textAnchor={"end"}
                                     fontSize={internalWidth * 0.012}
                                     className="radial-hour-label"
-                                    fontWeight='bold'
+                                    fontWeight="bold"
                                   >
                                     {activitiesCode[v.actCategory].value}
                                   </text>
@@ -170,17 +171,19 @@ const TrendYear = ({
                                 )}
 
                                 <g
-                                  transform={`translate(${j *
+                                  transform={`translate(${
+                                    j *
                                     (internalWidth /
                                       (translateFactorEnd -
-                                        translateFactorStart - 1))
-                                    },0)`}
+                                        translateFactorStart -
+                                        1))
+                                  },0)`}
                                 >
                                   {i === 0 && (
                                     <g>
                                       <line
                                         x1={0}
-                                        y1={height - 50}
+                                        y1={height - 200}
                                         x2={0}
                                         y2={0}
                                         stroke="#49494a"
@@ -189,7 +192,7 @@ const TrendYear = ({
                                       />
                                       <text
                                         dx={0}
-                                        dy={height - 150}
+                                        dy={height - 160}
                                         textAnchor={"middle"}
                                         fontSize={internalWidth * 0.01}
                                         className="radial-hour-label"
@@ -202,24 +205,28 @@ const TrendYear = ({
                                       </text>
                                     </g>
                                   )}
-                                  {v.actType === 'main' && <TrendCircleYear
-                                    v={a}
-                                    index={j + translateFactorStart}
-                                    value={20}
-                                    factor={v.actCategory}
-                                    category={v.actCategory}
-                                    color={v.actType}
-                                    width={internalWidth}
-                                  />}
-                                  {v.actType === 'secondary' && <TrendCircleYear
-                                    v={a}
-                                    index={j + translateFactorStart}
-                                    value={40}
-                                    factor={v.actCategory}
-                                    category={v.actCategory}
-                                    color={v.actType}
-                                    width={internalWidth}
-                                  />}
+                                  {v.actType === "main" && (
+                                    <TrendCircleYear
+                                      v={a}
+                                      index={j + translateFactorStart}
+                                      value={20}
+                                      factor={v.actCategory}
+                                      category={v.actCategory}
+                                      color={v.actType}
+                                      width={internalWidth}
+                                    />
+                                  )}
+                                  {v.actType === "secondary" && (
+                                    <TrendCircleYear
+                                      v={a}
+                                      index={j + translateFactorStart}
+                                      value={40}
+                                      factor={v.actCategory}
+                                      category={v.actCategory}
+                                      color={v.actType}
+                                      width={internalWidth}
+                                    />
+                                  )}
                                 </g>
                               </g>
                             );
