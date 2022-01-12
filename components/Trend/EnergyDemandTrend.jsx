@@ -46,12 +46,11 @@ const EnergyDemandTrend = ({ width, height, data, svgWidth }) => {
   if (width < 10) return null;
 
   // Update scale output to match component dimensions
-  yScale.range([100, 0]);
+  yScale.range([height, 0]);
   const reverseYScale = yScale.copy().range(yScale.range().reverse());
 
   return (
-    <Group left={-20} top={-20}>
-
+    <Group left={-20} top={0}>
       {/* <AxisLeft
         top={-height / 2}
         scale={reverseYScale}

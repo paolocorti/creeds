@@ -1,7 +1,3 @@
-* {
-  font-family: "Nanum Myeongjo", serif;
-}
-
 body {
   background-color: #ededed;
 }
@@ -13,17 +9,20 @@ h4,
 h5,
 h6 {
   font-family: "Nanum Myeongjo", serif;
+  font-weight: 600;
+  text-align: left;
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 65px;
+  line-height: 81px;
   margin: 20px 0;
 }
 
 p {
   text-align: justify;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 17px;
+  line-height: 25px;
   margin: 20px 0;
   font-family: "STIX Two Text", serif;
 }
@@ -39,19 +38,14 @@ p {
 .radial-overview-toolbar {
   height: 60px;
   font-family: "Inter", sans-serif;
-
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #0018ec;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 19px;
 }
 
 .radial-hour-label {
   font-family: "Inter", sans-serif;
-
   font-size: 11px;
   line-height: 13px;
   color: #0d0d18;
@@ -59,7 +53,6 @@ p {
 
 .radial-hour-label-rot {
   font-family: "Inter", sans-serif;
-
   font-size: 11px;
   line-height: 13px;
   transform-box: fill-box;
@@ -70,7 +63,6 @@ p {
 
 .radial-hour-label-months {
   font-family: "Inter", sans-serif;
-
   transform-box: fill-box;
   transform-origin: center;
   color: #0d0d18;

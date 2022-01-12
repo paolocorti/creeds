@@ -130,7 +130,7 @@ const RadarYear = ({
   console.log("selectedMonth", selectedMonth);
 
   return (
-    <div className="radial-overview mt-8">
+    <div className="radial-overview">
       <div className="radial-overview-subtitle viz-explanation"></div>
       <div className="radial-overview-toolbar">
         {hoverTime && (
@@ -160,7 +160,7 @@ const RadarYear = ({
           flexDirection: isMobileWithTablet ? "column" : "row",
         }}
       >
-        <div className="my-12 relative flex">
+        <div className="my-8 relative flex">
           <svg width={width * 1.2} height={width * 1.2}>
             <circle
               cx={width * 0.6}
@@ -345,7 +345,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "1" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, -14, 14)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, -14, 14)}
             />
             <path
               id="feb"
@@ -354,7 +354,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "2" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 16, 44)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 16, 44)}
             />
             <path
               id="mar"
@@ -363,7 +363,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "3" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 46, 74)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 46, 74)}
             />
             <path
               id="apr"
@@ -372,7 +372,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "4" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 76, 104)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 76, 104)}
             />
             <path
               id="may"
@@ -381,7 +381,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "5" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 106, 134)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 106, 134)}
             />
             <path
               id="jun"
@@ -390,7 +390,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "6" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 136, 164)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 136, 164)}
             />
             <path
               id="jul"
@@ -399,7 +399,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "7" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 166, 194)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 166, 194)}
             />
             <path
               id="aug"
@@ -408,7 +408,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "8" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 196, 224)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 196, 224)}
             />
             <path
               id="sep"
@@ -417,7 +417,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "9" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 226, 254)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 226, 254)}
             />
             <path
               id="oct"
@@ -426,7 +426,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "10" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 256, 284)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 256, 284)}
             />
             <path
               id="nov"
@@ -435,7 +435,7 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "11" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 286, 314)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 286, 314)}
             />
             <path
               id="dec"
@@ -444,15 +444,15 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "12" ? "#000" : "#fff"}
               stroke-width="5"
-              d={describeArc(width * 0.6, width * 0.6, width * 0.54, 316, 344)}
+              d={describeArc(width * 0.6, width * 0.6, width * 0.52, 316, 344)}
             />
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
               {[...Array(12).keys()].map((v) => {
                 const angle = v * 30;
                 return (
                   <text
-                    x={width * 0.56 * Math.cos(degToRad(angle - 90))}
-                    y={width * 0.56 * Math.sin(degToRad(angle - 90))}
+                    x={width * 0.55 * Math.cos(degToRad(angle - 90))}
+                    y={width * 0.55 * Math.sin(degToRad(angle - 90))}
                     dy={0}
                     textAnchor="middle"
                     fontSize={width * 0.02 < 14 ? width * 0.02 : 14}
@@ -470,10 +470,6 @@ const RadarYear = ({
               })}
             </g>
           </svg>
-
-          {/* <svg width={width * 1.2} height={width * 1.2} style={{ position: 'absolute', zIndex: 0, }}>
-            
-          </svg> */}
         </div>
       </div>
     </div>

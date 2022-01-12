@@ -22,7 +22,7 @@ const TrendYear = ({
   energyDemand,
   width,
 }) => {
-  const marginLeft = 200;
+  const marginLeft = 140;
   const marginRight = 20;
   const internalWidth = width - marginLeft - marginRight;
   const hover = useStore((state) => state.hover);
@@ -97,9 +97,13 @@ const TrendYear = ({
           flexDirection: isMobileWithTablet ? "column" : "row",
         }}
       >
-        <div className="my-12">
+        <div className="">
+          <div className="radial-overview-toolbar">
+            The blue external trend indicates the energy consumption by hour.
+            Each circle is an activity, the colors indicate macro-
+          </div>
           <svg width={width} height={height}>
-            <g transform={`translate(${marginLeft}, 150)`}>
+            <g transform={`translate(${marginLeft}, 100)`}>
               {sorted.length &&
                 sorted
                   // .filter((v, i) => {
@@ -213,7 +217,7 @@ const TrendYear = ({
                                         1))
                                   },0)`}
                                 >
-                                  {i === 0 && (
+                                  {i === 0 && j % 6 == 0 && (
                                     <g>
                                       <line
                                         x1={0}
@@ -270,11 +274,11 @@ const TrendYear = ({
                     );
                   })}
             </g>
-            <g transform={`translate(${marginLeft}, 50)`}>
+            <g transform={`translate(${marginLeft}, 0)`}>
               <EnergyDemandTrend
                 data={energyData}
                 width={internalWidth}
-                height={150}
+                height={100}
               />
             </g>
           </svg>

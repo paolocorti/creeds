@@ -63,25 +63,28 @@ export default function Home() {
               the balancing of demand with renewables. And since renewables are
               cheaper than other forms of producing electricity, this also means
               reducing the overall cost of electricity generation. So how do we
-              achieve that flexibility? Energy demand and what people do go hand
-              in hand, so if we want to change energy demand, we essentially
-              need to change either what people do or the way they do it. But
-              our everyday life – what we do at home, at work, at school, when
-              moving around – is extremely complex. It is somewhat difficult to
-              find examples of times of day, week, month or year when the timing
-              of the things we do changes. But in reality, we are constantly
-              doing just that, either out of own initiative or in response to
-              external factors such as the weather. We are a group of
-              researchers who are convinced – and trying to convince others –
-              that the idea of flexibility needs to be grounded in a thorough
-              understanding of the contemporary timing of energy demand
-              (domestic, non-domestic and in relation to the mobility of things
-              and people) and how it has come to be the way it is. Interventions
-              with a view to mitigating demand peaks through increasing
-              flexibility in the timing of energy demand encompass a variety of
-              technologies, pricing mechanisms and shifts in institutional
-              timings. But, as we mentioned before, energy demand is bound up
-              with the temporal rhythm of society and what people do. Therefore,
+              achieve that flexibility? <br />
+              <br />
+              Energy demand and what people do go hand in hand, so if we want to
+              change energy demand, we essentially need to change either what
+              people do or the way they do it. But our everyday life – what we
+              do at home, at work, at school, when moving around – is extremely
+              complex. It is somewhat difficult to find examples of times of
+              day, week, month or year when the timing of the things we do
+              changes. But in reality, we are constantly doing just that, either
+              out of own initiative or in response to external factors such as
+              the weather. We are a group of researchers who are convinced – and
+              trying to convince others – that the idea of flexibility needs to
+              be grounded in a thorough understanding of the contemporary timing
+              of energy demand (domestic, non-domestic and in relation to the
+              mobility of things and people) and how it has come to be the way
+              it is. Interventions with a view to mitigating demand peaks
+              through increasing flexibility in the timing of energy demand
+              encompass a variety of technologies, pricing mechanisms and shifts
+              in institutional timings.
+              <br />
+              <br /> But, as we mentioned before, energy demand is bound up with
+              the temporal rhythm of society and what people do. Therefore,
               these seemingly isolated aspects of flexibility cannot be studied
               in isolation. Our search for flexibility necessarily starts by
               looking at the rhythms of everyday life, and here we share with
@@ -100,7 +103,7 @@ export default function Home() {
         </section>
         <section className="w-full flex">
           <LeftColumn>
-            <h2 className="text-4xl">
+            <h2 className="text-4xl mb-8">
               Activities, demand and price every 30 minutes
             </h2>
             <p>
@@ -121,7 +124,7 @@ export default function Home() {
             </p>
           </LeftColumn>
           <RightColumn>
-            <div className="flex justify-center flex-col items-center">
+            <div className="flex justify-center items-center">
               {/* <div className="flex mt-8">
               <div
                 className="mx-2 cursor-pointer"
@@ -248,7 +251,7 @@ export default function Home() {
                 northern_ireland
               </div>
             </div> */}
-              <div className="w-1/2">
+              <div className="w-2/3 px-8">
                 <ParentSize>
                   {(parent) => (
                     <RadarYear
@@ -262,12 +265,23 @@ export default function Home() {
                   )}
                 </ParentSize>
               </div>
+              <div className="w-1/3 px-8">
+                <div className="flex flex-col">
+                  <div className="radial-overview-toolbar text-left">
+                    The blue external trend indicates the energy consumption by
+                    hour. Each circle is an activity, the colors indicate
+                    macro-categories, the size indicates the frequency. The blue
+                    internal shape indicates the price by hour.
+                  </div>
+                  <div></div>
+                </div>
+              </div>
             </div>
           </RightColumn>
         </section>
         <section className="w-full flex">
           <LeftColumn>
-            <h2 className="text-4xl">Unpacking peaks</h2>
+            <h2 className="text-4xl mb-8">Unpacking peaks</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
