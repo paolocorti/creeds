@@ -7,6 +7,7 @@ import { ParentSize } from "@visx/responsive";
 import TrendYear from "../components/Trend/TrendYear";
 import LeftColumn from "../components/LeftColumn";
 import RightColumn from "../components/RightColumn";
+import RadarVerticalLegend from "../components/Radar/RadarVeticalLegend";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -267,13 +268,18 @@ export default function Home() {
               </div>
               <div className="w-1/3 px-8">
                 <div className="flex flex-col">
-                  <div className="radial-overview-toolbar text-left">
+                  <div
+                    className="radial-overview-toolbar text-left"
+                    style={{ height: "auto" }}
+                  >
                     The blue external trend indicates the energy consumption by
                     hour. Each circle is an activity, the colors indicate
                     macro-categories, the size indicates the frequency. The blue
                     internal shape indicates the price by hour.
                   </div>
-                  <div></div>
+                  <div className="mt-4">
+                    <RadarVerticalLegend />
+                  </div>
                 </div>
               </div>
             </div>

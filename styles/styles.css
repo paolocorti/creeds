@@ -46,9 +46,10 @@ p {
 
 .radial-hour-label {
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 13px;
   color: #0d0d18;
+  font-weight: normal;
 }
 
 .radial-hour-label-rot {
@@ -67,4 +68,8 @@ p {
   transform-origin: center;
   color: #0d0d18;
   alignment-baseline: middle;
+}
+
+.animation-width {
+  transition: 0.2s width;
 }

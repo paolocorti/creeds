@@ -7,7 +7,7 @@ const LeftColumn = ({ children }) => {
     <div
       className={`${
         expanded ? "w-1/3" : "w-1/12"
-      } px-8 py-8 border-r-2 border-b-2 border-black relative`}
+      } px-8 py-8 border-r-2 border-b-2 border-black relative animation-width`}
       style={{ backgroundColor: "#FBAFA5" }}
     >
       {expanded && <>{children}</>}

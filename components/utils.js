@@ -55,7 +55,7 @@ export const activitiesCode = {
   fp: { index: 17, value: "food preparation" },
   ln: { index: 18, value: "laundry" },
   dw: { index: 19, value: "dishwashing" },
-  tw: { index: 12, value: "trave to/from work" },
+  tw: { index: 12, value: "travel to/from work" },
   tv: { index: 10, value: "tv watching" },
   it: { index: 11, value: "it-related" },
   et: { index: 6, value: "eating" },
