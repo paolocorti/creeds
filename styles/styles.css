@@ -6,6 +6,15 @@ body {
   background-color: #ededed;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nanum Myeongjo", serif;
+}
+
 h1 {
   font-size: 60px;
   margin: 20px 0;
@@ -16,6 +25,7 @@ p {
   font-size: 20px;
   line-height: 24px;
   margin: 20px 0;
+  font-family: "STIX Two Text", serif;
 }
 
 .dot {
@@ -28,7 +38,8 @@ p {
 
 .radial-overview-toolbar {
   height: 60px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
+
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -39,14 +50,16 @@ p {
 }
 
 .radial-hour-label {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+
   font-size: 11px;
   line-height: 13px;
   color: #0d0d18;
 }
 
 .radial-hour-label-rot {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+
   font-size: 11px;
   line-height: 13px;
   transform-box: fill-box;
@@ -56,7 +69,8 @@ p {
 }
 
 .radial-hour-label-months {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+
   transform-box: fill-box;
   transform-origin: center;
   color: #0d0d18;

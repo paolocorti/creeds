@@ -12,6 +12,7 @@ import moment from "moment";
 import TrendCircleYear from "./TrendCircleYear";
 import EnergyDemandTrend from "./EnergyDemandTrend";
 import { useStore } from "../../store.js";
+import TrendCategory from "./TrendCategory.jsx";
 const isMobileWithTablet = false;
 
 const TrendYear = ({
@@ -59,6 +60,8 @@ const TrendYear = ({
     };
   });
 
+  console.log("selectedData", selectedData);
+
   const keys = Object.keys(selectedData);
 
   const posScale = scaleLinear()
@@ -71,7 +74,10 @@ const TrendYear = ({
 
   const energyData = energyDemand.filter((v) => v.timeline_weekday === "Mon");
 
-  const translateFactorStart = 81;
+  // const translateFactorStart = 40;
+  // const translateFactorEnd = 100;
+
+  const translateFactorStart = 48;
   const translateFactorEnd = 101;
   const height = 1020;
 
@@ -105,7 +111,7 @@ const TrendYear = ({
 
                     return (
                       <g key={i} transform={`translate(0, ${value})`}>
-                        <line
+                        {/* <line
                           x1={0}
                           y1={0 + 20}
                           x2={internalWidth}
@@ -122,7 +128,35 @@ const TrendYear = ({
                           stroke="#49494a"
                           strokeWidth={0.5}
                           strokeDasharray={"0.5 3"}
-                        />
+                        /> */}
+                        <g transform={`translate(0, 20)`}>
+                          {v.actType === "main" && (
+                            <TrendCategory
+                              data={v.actValues}
+                              width={internalWidth}
+                              height={100}
+                              index={translateFactorStart}
+                              factor={v.actCategory}
+                              category={v.actCategory}
+                              color={v.actType}
+                              start={translateFactorStart}
+                              end={translateFactorEnd}
+                            />
+                          )}
+                        </g>
+                        {/* <g transform={`translate(0, 40)`}>
+                          {v.actType === "secondary" && (
+                            <TrendCategory
+                              data={v.actValues}
+                              width={internalWidth}
+                              height={100}
+                              index={translateFactorStart}
+                              factor={v.actCategory}
+                              category={v.actCategory}
+                              color={v.actType}
+                            />
+                          )}
+                        </g> */}
 
                         {v.actValues
                           .filter((v, i) => {
@@ -137,38 +171,38 @@ const TrendYear = ({
                               <g>
                                 {j === 0 && i % 2 === 0 && (
                                   <text
-                                    dx={-30}
-                                    dy={4}
+                                    dx={-20}
+                                    dy={50}
                                     textAnchor={"end"}
-                                    fontSize={internalWidth * 0.012}
+                                    fontSize={internalWidth * 0.02}
                                     className="radial-hour-label"
                                     fontWeight="bold"
                                   >
                                     {activitiesCode[v.actCategory].value}
                                   </text>
                                 )}
-                                {j === 0 && i % 2 === 0 && (
+                                {/* {j === 0 && i % 2 === 0 && (
                                   <text
                                     dx={-30}
-                                    dy={4 + 20}
+                                    dy={4 + 30}
                                     textAnchor={"end"}
                                     fontSize={internalWidth * 0.012}
                                     className="radial-hour-label"
                                   >
                                     primary
                                   </text>
-                                )}
-                                {j === 0 && i % 2 === 0 && (
+                                )} */}
+                                {/* {j === 0 && i % 2 === 0 && (
                                   <text
                                     dx={-30}
-                                    dy={4 + 40}
+                                    dy={4 + 60}
                                     textAnchor={"end"}
                                     fontSize={internalWidth * 0.012}
                                     className="radial-hour-label"
                                   >
                                     secondary
                                   </text>
-                                )}
+                                )} */}
 
                                 <g
                                   transform={`translate(${
@@ -205,7 +239,7 @@ const TrendYear = ({
                                       </text>
                                     </g>
                                   )}
-                                  {v.actType === "main" && (
+                                  {/* {v.actType === "main" && (
                                     <TrendCircleYear
                                       v={a}
                                       index={j + translateFactorStart}
@@ -215,8 +249,9 @@ const TrendYear = ({
                                       color={v.actType}
                                       width={internalWidth}
                                     />
-                                  )}
-                                  {v.actType === "secondary" && (
+                                  )} */}
+
+                                  {/* {v.actType === "secondary" && (
                                     <TrendCircleYear
                                       v={a}
                                       index={j + translateFactorStart}
@@ -226,7 +261,7 @@ const TrendYear = ({
                                       color={v.actType}
                                       width={internalWidth}
                                     />
-                                  )}
+                                  )} */}
                                 </g>
                               </g>
                             );

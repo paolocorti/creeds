@@ -296,16 +296,18 @@ const RadarYear = ({
                                     )}
                                   </g>
                                 )}
-                                <RadarCircleYear
-                                  angle={angle}
-                                  v={a}
-                                  index={j}
-                                  value={value}
-                                  factor={v.actCategory}
-                                  category={v.actCategory}
-                                  color={v.actType}
-                                  width={width}
-                                />
+                                {v.actType === "main" && (
+                                  <RadarCircleYear
+                                    angle={angle}
+                                    v={a}
+                                    index={j}
+                                    value={value}
+                                    factor={v.actCategory}
+                                    category={v.actCategory}
+                                    color={v.actType}
+                                    width={width}
+                                  />
+                                )}
                                 {/* {j === 40 && (
                                   <text
                                     dx={12}
