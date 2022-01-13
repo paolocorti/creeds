@@ -21,6 +21,7 @@ export default function Home() {
     "south_east",
   ]);
   const hoverCategory = useStore((state) => state.hoverCategory);
+  const selectedCategory = useStore((state) => state.selectedCategory);
 
   useEffect(() => {
     csv("/data/activity_frequency_distributions.csv").then((values) => {
@@ -527,14 +528,14 @@ export default function Home() {
                         className="mx-2 cursor-pointer categoryButton"
                         onClick={() => {
                           useStore.setState({
-                            hoverCategory: hoverCategory === el.key ? null : el.key,
+                            selectedCategory: selectedCategory === el.key ? null : el.key,
                           })
                         }}
                         style={{
-                          backgroundColor: hoverCategory === el.key
+                          backgroundColor: selectedCategory === el.key
                             ? "black"
                             : "rgba(255,255,255,.7)",
-                          color: hoverCategory === el.key ? "white" : "black",
+                          color: selectedCategory === el.key ? "white" : "black",
                         }}
                       >
                         <span
@@ -545,11 +546,11 @@ export default function Home() {
                         >
                         </span>
                         <span className="mr-4">{el.value}</span>
-                        {hoverCategory && (
+                        {selectedCategory && (
                           <span
                             className="ml-2 absolute right-2 top-2"
                             onClick={() => useStore.setState({
-                              hoverCategory: null,
+                              selectedCategory: null,
                             })}
                           >
                             <img src={"/close.svg"} width={9} />

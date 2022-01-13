@@ -73,6 +73,7 @@ const RadarYear = ({
 }) => {
   const hover = useStore((state) => state.hover);
   const hoverCategory = useStore((state) => state.hoverCategory);
+  const selectedCategory = useStore((state) => state.selectedCategory);
   const hoverTime = useStore((state) => state.hoverTime);
   const selectedDataRegion = globalData.filter(
     (v) => v.region === selectedRegion
@@ -217,19 +218,18 @@ const RadarYear = ({
                             const value = posScale(index + 2);
                             return (
                               <g
-                                transform={`translate(0,0) rotate(${
-                                  (360 / 48) * j
-                                })`}
+                                transform={`translate(0,0) rotate(${(360 / 48) * j
+                                  })`}
                                 style={{
-                                  opacity: hoverCategory
-                                    ? hoverCategory === v.actCategory
+                                  opacity: hoverCategory || selectedCategory
+                                    ? (hoverCategory === v.actCategory || selectedCategory === v.actCategory)
                                       ? 1
                                       : 0.2
                                     : hoverTime
-                                    ? hoverTime === j
-                                      ? 1
-                                      : 0.2
-                                    : 1,
+                                      ? hoverTime === j
+                                        ? 1
+                                        : 0.2
+                                      : 1,
                                 }}
                               >
                                 {i === 0 && (
@@ -244,9 +244,8 @@ const RadarYear = ({
                                       strokeDasharray={"0.5 3"}
                                     />
                                     <g
-                                      transform={`translate(-4, ${
-                                        (width / 2) * 0.9
-                                      })`}
+                                      transform={`translate(-4, ${(width / 2) * 0.9
+                                        })`}
                                       onMouseEnter={() => {
                                         useStore.setState({
                                           hoverTime: j,
