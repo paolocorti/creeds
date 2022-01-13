@@ -48,6 +48,25 @@ export const activities = {
   16: "other Travel",
 };
 
+export const activitiesArray = [
+  { key: 'ab', index: 14, value: "absence" },
+  { key: 'ha', index: 9, value: "generic in-home activity" },
+  { key: 'sl', index: 5, value: "sleep" },
+  { key: 'fp', index: 17, value: "food preparation" },
+  { key: 'ln', index: 18, value: "laundry" },
+  { key: 'dw', index: 19, value: "dishwashing" },
+  { key: 'tw', index: 12, value: "travel to/from work" },
+  { key: 'tv', index: 10, value: "tv watching" },
+  { key: 'it', index: 11, value: "it-related" },
+  { key: 'et', index: 6, value: "eating" },
+  { key: 'pc', index: 7, value: "personal care" },
+  { key: 'wr', index: 13, value: "work" },
+  { key: 'hc', index: 8, value: "household care" },
+  { key: 'hu', index: 20, value: "household upkeep" },
+  { key: 'sh', index: 15, value: "shopping" },
+  { key: 'ot', index: 16, value: "other travel activity" },
+];
+
 export const activitiesCode = {
   ab: { index: 14, value: "absence" },
   ha: { index: 9, value: "generic in-home activity" },

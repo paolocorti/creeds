@@ -8,7 +8,8 @@ import TrendYear from "../components/Trend/TrendYear";
 import LeftColumn from "../components/LeftColumn";
 import RightColumn from "../components/RightColumn";
 import RadarVerticalLegend from "../components/Radar/RadarVeticalLegend";
-import { regionLabels } from "../components/utils";
+import { colorByCategory, activitiesArray } from "../components/utils";
+import { useStore } from "../store.js";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -19,6 +20,7 @@ export default function Home() {
     "london",
     "south_east",
   ]);
+  const hoverCategory = useStore((state) => state.hoverCategory);
 
   useEffect(() => {
     csv("/data/activity_frequency_distributions.csv").then((values) => {
@@ -231,8 +233,8 @@ export default function Home() {
                   frequency.
                 </div>
               </div>
-              <div className="my-8">
-                <div className="flex flex-wrap mt-8">
+              <div className="my-2">
+                <div className="flex flex-wrap justify-center">
                   {/* <div
                     className="mx-2 cursor-pointer regionButton"
                     onClick={() => setSelectedRegion("all")}
@@ -517,6 +519,48 @@ export default function Home() {
                   </div>
                 </div>{" "}
               </div>
+              <div className="my-1">
+                <div className="flex flex-wrap ">
+                  {activitiesArray.map((el) => {
+                    return (
+                      <div
+                        className="mx-2 cursor-pointer categoryButton"
+                        onClick={() => {
+                          useStore.setState({
+                            hoverCategory: hoverCategory === el.key ? null : el.key,
+                          })
+                        }}
+                        style={{
+                          backgroundColor: hoverCategory === el.key
+                            ? "black"
+                            : "rgba(255,255,255,.7)",
+                          color: hoverCategory === el.key ? "white" : "black",
+                        }}
+                      >
+                        <span
+                          className="mr-1 colorDot"
+                          style={{
+                            backgroundColor: colorByCategory[el.key]
+                          }}
+                        >
+                        </span>
+                        <span className="mr-4">{el.value}</span>
+                        {hoverCategory && (
+                          <span
+                            className="ml-2 absolute right-2 top-2"
+                            onClick={() => useStore.setState({
+                              hoverCategory: null,
+                            })}
+                          >
+                            <img src={"/close.svg"} width={9} />
+                          </span>
+                        )}
+                      </div>
+                    )
+                  })}
+
+                </div>{" "}
+              </div>
               <div className="flex w-full">
                 <div className="w-1/2 px-8">
                   {selectedCompareRegion[0] && (
@@ -526,7 +570,8 @@ export default function Home() {
                           globalData={data}
                           energyDemand={energyDemand}
                           selectedRegion={selectedCompareRegion[0]}
-                          selectedMonth={"1"}
+                          selectedMonth={selectedMonth}
+                          setSelectedMonth={setSelectedMonth}
                           width={parent.width}
                           showDemand={false}
                         />
@@ -542,7 +587,8 @@ export default function Home() {
                           globalData={data}
                           energyDemand={energyDemand}
                           selectedRegion={selectedCompareRegion[1]}
-                          selectedMonth={"1"}
+                          selectedMonth={selectedMonth}
+                          setSelectedMonth={setSelectedMonth}
                           width={parent.width}
                           showDemand={false}
                         />

@@ -91,3 +91,24 @@ p {
   padding: 0 8px;
   margin: 4px;
 }
+
+.categoryButton {
+  min-width: 140px;
+  height: 24px;
+  background-color: rgba(255,255,255,.7);
+  border-radius: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 14px;
+  padding: 0 8px;
+  margin: 4px;
+  position: relative;
+}
+
+.colorDot {
+  width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    min-width: 12px;
+}
