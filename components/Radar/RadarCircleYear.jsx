@@ -22,7 +22,7 @@ const RadarCircleYear = ({
   return (
     <g>
       <circle
-        className="cursor-pointer"
+        className="cursor-pointer circleAnimation"
         cx={0}
         cy={value}
         r={radius}

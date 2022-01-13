@@ -116,3 +116,17 @@ export const customSort = ({ data, sortBy, sortField }) => {
     (a, b) => sortByObject[a[sortField]] - sortByObject[b[sortField]]
   );
 };
+
+export const regionLabels = {
+  london: "London",
+  south_east: "South East",
+  east_england: "East England",
+  east_midlands: "East Midlands",
+  west_midlands: "West Midlands",
+  yorkshire_humber: "Yorkshire Humber",
+  north_east: "North East",
+  north_west: "North West",
+  wales: "Wales",
+  scotland: "Scotland",
+  northern_ireland: "Northern Ireland",
+};

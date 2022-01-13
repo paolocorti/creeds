@@ -3,7 +3,7 @@ import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
 import {
   degToRad,
   radToDeg,
-  activitiesCode,
+  regionLabels,
   sortBy,
   customSort,
 } from "../utils.js";
@@ -68,6 +68,8 @@ const RadarYear = ({
   energyDemand,
   width,
   setSelectedMonth,
+  showPrice = true,
+  showDemand = true,
 }) => {
   const hover = useStore((state) => state.hover);
   const hoverCategory = useStore((state) => state.hoverCategory);
@@ -143,7 +145,7 @@ const RadarYear = ({
             </div>
           </div>
         )}
-        {!hoverTime && (
+        {!hoverTime && showDemand && (
           <div className="flex flex-col">
             <div>
               Select the month or click on play. Mouse over on the graphic to
@@ -170,12 +172,14 @@ const RadarYear = ({
               style={{ pointerEvents: "none" }}
             />
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-              <EnergyPriceRadial
-                data={energyData}
-                width={width * 0.9}
-                height={width * 0.9}
-                svgWidth={width}
-              />
+              {showPrice && (
+                <EnergyPriceRadial
+                  data={energyData}
+                  width={width * 0.9}
+                  height={width * 0.9}
+                  svgWidth={width}
+                />
+              )}
             </g>
             <circle
               cx={width * 0.6}
@@ -329,14 +333,23 @@ const RadarYear = ({
                     );
                   })}
             </g>
-            <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-              <EnergyDemandRadial
-                data={energyData}
-                width={width * 0.3}
-                height={width * 0.3}
-                svgWidth={width}
-              />
-            </g>
+            {showDemand ? (
+              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                <EnergyDemandRadial
+                  data={energyData}
+                  width={width * 0.3}
+                  height={width * 0.3}
+                  svgWidth={width}
+                />
+              </g>
+            ) : (
+              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                <circle fill="#fff" cx={0} cy={0} r={width * 0.1} />
+                <text x={0} y={4} textAnchor="middle" fontSize={10}>
+                  {regionLabels[selectedRegion]}
+                </text>
+              </g>
+            )}
 
             <path
               id="jan"

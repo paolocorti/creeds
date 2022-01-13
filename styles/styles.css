@@ -73,3 +73,21 @@ p {
 .animation-width {
   transition: 0.2s width;
 }
+
+.circleAnimation {
+  transition: 0.5s all;
+}
+
+.regionButton {
+  min-width: 135px;
+  width: 130px;
+  height: 24px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  padding: 0 8px;
+  margin: 4px;
+}

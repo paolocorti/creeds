@@ -8,12 +8,17 @@ import TrendYear from "../components/Trend/TrendYear";
 import LeftColumn from "../components/LeftColumn";
 import RightColumn from "../components/RightColumn";
 import RadarVerticalLegend from "../components/Radar/RadarVeticalLegend";
+import { regionLabels } from "../components/utils";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [energyDemand, setEnergyDemand] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
+  const [selectedCompareRegion, setSelCompareRegion] = useState([
+    "london",
+    "south_east",
+  ]);
 
   useEffect(() => {
     csv("/data/activity_frequency_distributions.csv").then((values) => {
@@ -24,6 +29,12 @@ export default function Home() {
       setEnergyDemand(values);
     });
   }, []);
+
+  const setSelectedCompareRegion = (val) => {
+    if (selectedRegion.length < 2) {
+      setSelCompareRegion((state) => [...state.selectedCompareRegion, val]);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -126,132 +137,6 @@ export default function Home() {
           </LeftColumn>
           <RightColumn>
             <div className="flex justify-center items-center">
-              {/* <div className="flex mt-8">
-              <div
-                className="mx-2 cursor-pointer"
-                onClick={() => setSelectedRegion("all")}
-                style={{
-                  textDecoration:
-                    selectedRegion === "all" ? "underline" : "none",
-                }}
-              >
-                all
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "london" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("london")}
-              >
-                london
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "south_east" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("south_east")}
-              >
-                south_east
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "east_england" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("east_england")}
-              >
-                east_england
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "east_midlands" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("east_midlands")}
-              >
-                east_midlands
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "west_midlands" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("west_midlands")}
-              >
-                west_midlands
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "yorkshire_humber"
-                      ? "underline"
-                      : "none",
-                }}
-                onClick={() => setSelectedRegion("yorkshire_humber")}
-              >
-                yorkshire_humber
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "north_east" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("north_east")}
-              >
-                north_east
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "north_west" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("north_west")}
-              >
-                north_west
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "wales" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("wales")}
-              >
-                wales
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "scotland" ? "underline" : "none",
-                }}
-                onClick={() => setSelectedRegion("scotland")}
-              >
-                scotland
-              </div>
-              <div
-                className="mx-2 cursor-pointer"
-                style={{
-                  textDecoration:
-                    selectedRegion === "northern_ireland"
-                      ? "underline"
-                      : "none",
-                }}
-                onClick={() => setSelectedRegion("northern_ireland")}
-              >
-                northern_ireland
-              </div>
-            </div> */}
               <div className="w-2/3 px-8">
                 <ParentSize>
                   {(parent) => (
@@ -311,39 +196,262 @@ export default function Home() {
             </div>
           </RightColumn>
         </section>
-        {/* <section className="w-full my-8">
-          <h2 className="text-4xl">COMPARE</h2>
-          <div className="flex w-full">
-            <div className="w-1/2 pr-2">
-              <h5>London</h5>
-              <ParentSize>
-                {(parent) => (
-                  <RadarYear
-                    globalData={data}
-                    energyDemand={energyDemand}
-                    selectedRegion={"london"}
-                    selectedMonth={"1"}
-                    width={parent.width}
-                  />
-                )}
-              </ParentSize>
+        <section className="w-full flex">
+          <LeftColumn>
+            <h2 className="text-4xl">Compare</h2>
+            <p>
+              Energy demand varies depending on where people live and work
+              within a country or region and this has implications for the grid.
+              Meeting peaks in electricity demand in a specific area is
+              expensive (because it increases balancing costs) and bad for the
+              environment (as extra supply is needed to meet demand peaks). But
+              people don’t just stay in the same place all the time. For many
+              people, moving around from one location to another is an essential
+              part of their everyday life – we go to work, we go to school, we
+              go places… And when we move around, we consume energy in different
+              spaces. This has repercussions on where and when electricity
+              demand occurs.
+            </p>
+          </LeftColumn>
+          <RightColumn>
+            <div className="flex w-full flex-col">
+              <div>
+                <div
+                  className="radial-overview-toolbar text-left"
+                  style={{ height: "auto" }}
+                >
+                  Select the region or the categories. Mouse over on the graphic
+                  to explore the data. The blue external trend indicates the
+                  energy consumption by hour. Each circle is an activity, the
+                  colors indicate macro-categories, the size indicates the
+                  frequency.
+                </div>
+              </div>
+              <div className="my-8">
+                <div className="flex flex-wrap mt-8">
+                  {/* <div
+                    className="mx-2 cursor-pointer regionButton"
+                    onClick={() => setSelectedRegion("all")}
+                    style={{
+                      backgroundColor: selectedRegion.includes("all")
+                        ? "black"
+                        : "white",
+                      color: selectedRegion.includes("all") ? "white" : "black",
+                    }}
+                  >
+                    All
+                  </div> */}
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes("london")
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("london")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("london")}
+                  >
+                    London
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "south_east"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("south_east")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("south_east")}
+                  >
+                    South East
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "east_england"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("east_england")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("east_england")}
+                  >
+                    East England
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "east_midlands"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("east_midlands")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("east_midlands")}
+                  >
+                    East Midlands
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "west_midlands"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("west_midlands")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("west_midlands")}
+                  >
+                    West Midlands
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "yorkshire_humber"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("yorkshire_humber")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("yorkshire_humber")}
+                  >
+                    Yorkshire Humber
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "north_east"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("north_east")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("north_east")}
+                  >
+                    North East
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "north_west"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("north_west")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("north_west")}
+                  >
+                    North West
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes("wales")
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("wales")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("wales")}
+                  >
+                    Wales
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "scotland"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("scotland")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("scotland")}
+                  >
+                    Scotland
+                  </div>
+                  <div
+                    className="mx-2 cursor-pointer regionButton"
+                    style={{
+                      backgroundColor: selectedCompareRegion.includes(
+                        "northern_ireland"
+                      )
+                        ? "black"
+                        : "white",
+                      color: selectedCompareRegion.includes("northern_ireland")
+                        ? "white"
+                        : "black",
+                    }}
+                    onClick={() => setSelectedCompareRegion("northern_ireland")}
+                  >
+                    Northern Ireland
+                  </div>
+                </div>{" "}
+              </div>
+              <div className="flex w-full">
+                <div className="w-1/2 px-8">
+                  {selectedCompareRegion[0] && (
+                    <ParentSize>
+                      {(parent) => (
+                        <RadarYear
+                          globalData={data}
+                          energyDemand={energyDemand}
+                          selectedRegion={selectedCompareRegion[0]}
+                          selectedMonth={"1"}
+                          width={parent.width}
+                          showDemand={false}
+                        />
+                      )}
+                    </ParentSize>
+                  )}
+                </div>
+                <div className="w-1/2 px-8">
+                  {selectedCompareRegion[1] && (
+                    <ParentSize>
+                      {(parent) => (
+                        <RadarYear
+                          globalData={data}
+                          energyDemand={energyDemand}
+                          selectedRegion={selectedCompareRegion[1]}
+                          selectedMonth={"1"}
+                          width={parent.width}
+                          showDemand={false}
+                        />
+                      )}
+                    </ParentSize>
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="w-1/2 pl-2">
-              <h5>Northern Ireland</h5>
-              <ParentSize>
-                {(parent) => (
-                  <RadarYear
-                    globalData={data}
-                    energyDemand={energyDemand}
-                    selectedRegion={"northern_ireland"}
-                    selectedMonth={"1"}
-                    width={parent.width}
-                  />
-                )}
-              </ParentSize>
-            </div>
-          </div>
-        </section> */}
+          </RightColumn>
+        </section>
       </main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t"></footer>
