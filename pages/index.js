@@ -31,9 +31,13 @@ export default function Home() {
   }, []);
 
   const setSelectedCompareRegion = (val) => {
-    if (selectedRegion.length < 2) {
-      setSelCompareRegion((state) => [...state.selectedCompareRegion, val]);
+    if (selectedCompareRegion.length < 2) {
+      setSelCompareRegion((state) => [...state, val]);
     }
+  };
+
+  const unsetSelectedCompareRegion = (val) => {
+    setSelCompareRegion(selectedCompareRegion.filter((state) => state !== val));
   };
 
   return (
@@ -254,6 +258,14 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("london")}
                   >
                     London
+                    {selectedCompareRegion.includes("london") && (
+                      <span
+                        className="ml-2"
+                        onClick={() => unsetSelectedCompareRegion("london")}
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -270,6 +282,14 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("south_east")}
                   >
                     South East
+                    {selectedCompareRegion.includes("south_east") && (
+                      <span
+                        className="ml-2"
+                        onClick={() => unsetSelectedCompareRegion("south_east")}
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -286,6 +306,16 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("east_england")}
                   >
                     East England
+                    {selectedCompareRegion.includes("east_england") && (
+                      <span
+                        className="ml-2"
+                        onClick={() =>
+                          unsetSelectedCompareRegion("east_england")
+                        }
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -302,6 +332,16 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("east_midlands")}
                   >
                     East Midlands
+                    {selectedCompareRegion.includes("east_midlands") && (
+                      <span
+                        className="ml-2"
+                        onClick={() =>
+                          unsetSelectedCompareRegion("east_midlands")
+                        }
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -318,6 +358,16 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("west_midlands")}
                   >
                     West Midlands
+                    {selectedCompareRegion.includes("west_midlands") && (
+                      <span
+                        className="ml-2"
+                        onClick={() =>
+                          unsetSelectedCompareRegion("west_midlands")
+                        }
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -334,6 +384,16 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("yorkshire_humber")}
                   >
                     Yorkshire Humber
+                    {selectedCompareRegion.includes("yorkshire_humber") && (
+                      <span
+                        className="ml-2"
+                        onClick={() =>
+                          unsetSelectedCompareRegion("yorkshire_humber")
+                        }
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -350,6 +410,14 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("north_east")}
                   >
                     North East
+                    {selectedCompareRegion.includes("north_east") && (
+                      <span
+                        className="ml-2"
+                        onClick={() => unsetSelectedCompareRegion("north_east")}
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -366,6 +434,14 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("north_west")}
                   >
                     North West
+                    {selectedCompareRegion.includes("north_west") && (
+                      <span
+                        className="ml-2"
+                        onClick={() => unsetSelectedCompareRegion("north_west")}
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -380,6 +456,14 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("wales")}
                   >
                     Wales
+                    {selectedCompareRegion.includes("wales") && (
+                      <span
+                        className="ml-2"
+                        onClick={() => unsetSelectedCompareRegion("wales")}
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -395,7 +479,15 @@ export default function Home() {
                     }}
                     onClick={() => setSelectedCompareRegion("scotland")}
                   >
-                    Scotland
+                    Scotland{" "}
+                    {selectedCompareRegion.includes("scotland") && (
+                      <span
+                        className="ml-2"
+                        onClick={() => unsetSelectedCompareRegion("scotland")}
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                   <div
                     className="mx-2 cursor-pointer regionButton"
@@ -412,6 +504,16 @@ export default function Home() {
                     onClick={() => setSelectedCompareRegion("northern_ireland")}
                   >
                     Northern Ireland
+                    {selectedCompareRegion.includes("northern_ireland") && (
+                      <span
+                        className="ml-2"
+                        onClick={() =>
+                          unsetSelectedCompareRegion("northern_ireland")
+                        }
+                      >
+                        <img src={"/close.svg"} width={9} />
+                      </span>
+                    )}
                   </div>
                 </div>{" "}
               </div>
