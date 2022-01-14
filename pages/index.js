@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Head>
-        <title>Creeds</title>
+        <title>Creds</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -528,38 +528,41 @@ export default function Home() {
                         className="mx-2 cursor-pointer categoryButton"
                         onClick={() => {
                           useStore.setState({
-                            selectedCategory: selectedCategory === el.key ? null : el.key,
-                          })
+                            selectedCategory:
+                              selectedCategory === el.key ? null : el.key,
+                          });
                         }}
                         style={{
-                          backgroundColor: selectedCategory === el.key
-                            ? "black"
-                            : "rgba(255,255,255,.7)",
-                          color: selectedCategory === el.key ? "white" : "black",
+                          backgroundColor:
+                            selectedCategory === el.key
+                              ? "black"
+                              : "rgba(255,255,255,.7)",
+                          color:
+                            selectedCategory === el.key ? "white" : "black",
                         }}
                       >
                         <span
                           className="mr-1 colorDot"
                           style={{
-                            backgroundColor: colorByCategory[el.key]
+                            backgroundColor: colorByCategory[el.key],
                           }}
-                        >
-                        </span>
+                        ></span>
                         <span className="mr-4">{el.value}</span>
                         {selectedCategory && (
                           <span
                             className="ml-2 absolute right-2 top-2"
-                            onClick={() => useStore.setState({
-                              selectedCategory: null,
-                            })}
+                            onClick={() =>
+                              useStore.setState({
+                                selectedCategory: null,
+                              })
+                            }
                           >
                             <img src={"/close.svg"} width={9} />
                           </span>
                         )}
                       </div>
-                    )
+                    );
                   })}
-
                 </div>{" "}
               </div>
               <div className="flex w-full">

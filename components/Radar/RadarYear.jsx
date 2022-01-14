@@ -218,14 +218,17 @@ const RadarYear = ({
                             const value = posScale(index + 2);
                             return (
                               <g
-                                transform={`translate(0,0) rotate(${(360 / 48) * j
-                                  })`}
+                                transform={`translate(0,0) rotate(${
+                                  (360 / 48) * j
+                                })`}
                                 style={{
-                                  opacity: hoverCategory || selectedCategory
-                                    ? (hoverCategory === v.actCategory || selectedCategory === v.actCategory)
-                                      ? 1
-                                      : 0.2
-                                    : hoverTime
+                                  opacity:
+                                    hoverCategory || selectedCategory
+                                      ? hoverCategory === v.actCategory ||
+                                        selectedCategory === v.actCategory
+                                        ? 1
+                                        : 0.2
+                                      : hoverTime
                                       ? hoverTime === j
                                         ? 1
                                         : 0.2
@@ -244,8 +247,9 @@ const RadarYear = ({
                                       strokeDasharray={"0.5 3"}
                                     />
                                     <g
-                                      transform={`translate(-4, ${(width / 2) * 0.9
-                                        })`}
+                                      transform={`translate(-4, ${
+                                        (width / 2) * 0.9
+                                      })`}
                                       onMouseEnter={() => {
                                         useStore.setState({
                                           hoverTime: j,
@@ -304,6 +308,9 @@ const RadarYear = ({
                                     angle={angle}
                                     v={a}
                                     index={j}
+                                    time={moment(timeScale.invert(j)).format(
+                                      "h:mma"
+                                    )}
                                     value={value}
                                     factor={v.actCategory}
                                     category={v.actCategory}
