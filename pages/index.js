@@ -183,8 +183,7 @@ export default function Home() {
             </div>
           </RightColumn>
         </section>
-
-        {/* <section className="w-full flex">
+        <section className="w-full flex">
           <LeftColumn>
             <h2 className="text-4xl mb-8">Unpacking peaks</h2>
             <p>
@@ -209,9 +208,8 @@ export default function Home() {
               </ParentSize>
             </div>
           </RightColumn>
-        </section> */}
-
-        {/* <section className="w-full flex">
+        </section>
+        <section className="w-full flex">
           <LeftColumn>
             <h2 className="text-4xl">Compare</h2>
             <p>
@@ -569,6 +567,7 @@ export default function Home() {
                         <RadarYear
                           globalData={data}
                           energyDemand={energyDemand}
+                          energyPrice={[]}
                           selectedRegion={selectedCompareRegion[0]}
                           selectedMonth={selectedMonth}
                           setSelectedMonth={setSelectedMonth}
@@ -586,6 +585,7 @@ export default function Home() {
                         <RadarYear
                           globalData={data}
                           energyDemand={energyDemand}
+                          energyPrice={[]}
                           selectedRegion={selectedCompareRegion[1]}
                           selectedMonth={selectedMonth}
                           setSelectedMonth={setSelectedMonth}
@@ -599,7 +599,7 @@ export default function Home() {
               </div>
             </div>
           </RightColumn>
-        </section> */}
+        </section>{" "}
       </main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t"></footer>

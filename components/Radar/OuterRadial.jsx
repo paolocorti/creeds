@@ -61,7 +61,7 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
 
   return (
     <Group top={0} left={0}>
-      <GridAngle
+      {/* <GridAngle
         scale={xScale}
         outerRadius={height / 2 - padding}
         stroke={"black"}
@@ -78,7 +78,7 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
         fill={"none"}
         fillOpacity={0.1}
         strokeOpacity={0.2}
-      />
+      /> */}
 
       <LineRadial angle={angle} radius={radius} curve={curveBasisOpen}>
         {({ path }) => {
@@ -98,7 +98,7 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
         }}
       </LineRadial>
 
-      <AxisLeft
+      {/* <AxisLeft
         top={0}
         scale={yScale}
         numTicks={5}
@@ -116,7 +116,7 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
         })}
         tickFormat={formatTicks}
         hideAxisLine
-      />
+      /> */}
     </Group>
   );
 };

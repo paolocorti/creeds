@@ -164,8 +164,6 @@ const RadarYear = ({
     });
   });
 
-  console.log("energyPriceData", energyPriceData);
-
   const sorted = customSort({
     data: data,
     sortBy,
