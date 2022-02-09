@@ -9,9 +9,9 @@ import {
 } from "../utils.js";
 import moment from "moment";
 import RadarCircleYear from "./RadarCircleYear";
-import EnergyDemandRadial from "./EnergyDemandRadial";
+import InnerRadial from "./InnerRadial";
 import { useStore } from "../../store.js";
-import EnergyPriceRadial from "./EnergyPriceRadial.jsx";
+import OuterRadial from "./OuterRadial.jsx";
 const isMobileWithTablet = false;
 
 const months = [
@@ -66,6 +66,7 @@ const RadarYear = ({
   selectedMonth,
   globalData,
   energyDemand,
+  energyPrice,
   width,
   setSelectedMonth,
   showPrice = true,
@@ -79,6 +80,17 @@ const RadarYear = ({
     (v) => v.region === selectedRegion
   );
   const selectedMonthData = selectedDataRegion.filter(
+    (v) => v.month === selectedMonth
+  );
+
+  const selectedEnergyDataRegion = energyDemand.filter(
+    (v) => v.region === selectedRegion
+  );
+  const selectedEnergyMonthData = selectedEnergyDataRegion.filter(
+    (v) => v.month === selectedMonth
+  );
+
+  const selectedEnergyPriceMonthData = energyPrice.filter(
     (v) => v.month === selectedMonth
   );
 
@@ -122,15 +134,43 @@ const RadarYear = ({
     .range([0, 144 / 3])
     .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
 
-  const energyData = energyDemand.filter((v) => v.timeline_weekday === "Mon");
+  const timeScale2 = scaleTime()
+    .range([0, 24])
+    .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
+
+  const energyData = selectedEnergyMonthData.map((v) => {
+    const filtered = Object.entries(v).filter(([key]) => {
+      return key !== "month" && key !== "region" && key !== "season";
+    });
+
+    return filtered.map((v) => {
+      return {
+        time: timeScale.invert(parseInt(v[0])),
+        value: parseFloat(v[1]),
+      };
+    });
+  });
+
+  const energyPriceData = selectedEnergyPriceMonthData.map((v) => {
+    const filtered = Object.entries(v).filter(([key]) => {
+      return key !== "month" && key !== "region" && key !== "season";
+    });
+
+    return filtered.map((v) => {
+      return {
+        time: timeScale2.invert(parseInt(v[0])),
+        value: parseFloat(v[1]),
+      };
+    });
+  });
+
+  console.log("energyPriceData", energyPriceData);
 
   const sorted = customSort({
     data: data,
     sortBy,
     sortField: "actCategory",
   });
-
-  console.log("selectedMonth", selectedMonth);
 
   return (
     <div className="radial-overview">
@@ -165,19 +205,19 @@ const RadarYear = ({
       >
         <div className="my-8 relative flex">
           <svg width={width * 1.2} height={width * 1.2}>
-            <circle
+            {/* <circle
               cx={width * 0.6}
               cy={width * 0.6}
               r={width / 2}
               fill={"#fff"}
               style={{ pointerEvents: "none" }}
-            />
+            /> */}
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
               {showPrice && (
-                <EnergyPriceRadial
-                  data={energyData}
-                  width={width * 0.9}
-                  height={width * 0.9}
+                <OuterRadial
+                  data={energyData.length ? energyData[0] : []}
+                  width={width * 0.95}
+                  height={width * 0.95}
                   svgWidth={width}
                 />
               )}
@@ -185,8 +225,8 @@ const RadarYear = ({
             <circle
               cx={width * 0.6}
               cy={width * 0.6}
-              r={width * 0.4}
-              fill={"#ecf6f4"}
+              r={width * 0.39}
+              fill={"#FEF7F5"}
             />
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
               {sorted.length &&
@@ -243,8 +283,8 @@ const RadarYear = ({
                                       x2={0}
                                       y2={(width / 2) * 0.9}
                                       stroke="#49494a"
-                                      strokeWidth={0.8}
-                                      strokeDasharray={"0.5 3"}
+                                      strokeWidth={0.5}
+                                      strokeOpacity={0.5}
                                     />
                                     <g
                                       transform={`translate(-4, ${
@@ -265,7 +305,6 @@ const RadarYear = ({
                                       <path
                                         d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
                                         fill={hoverTime === j ? "#000" : "#fff"}
-                                        stroke={"#000"}
                                       />
                                     </g>
 
@@ -341,8 +380,8 @@ const RadarYear = ({
             </g>
             {showDemand ? (
               <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-                <EnergyDemandRadial
-                  data={energyData}
+                <InnerRadial
+                  data={energyPriceData.length ? energyPriceData[0] : []}
                   width={width * 0.3}
                   height={width * 0.3}
                   svgWidth={width}

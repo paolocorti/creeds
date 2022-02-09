@@ -14,6 +14,7 @@ import { useStore } from "../store.js";
 export default function Home() {
   const [data, setData] = useState([]);
   const [energyDemand, setEnergyDemand] = useState([]);
+  const [energyPrice, setEnergyPrice] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion, setSelCompareRegion] = useState([
@@ -28,8 +29,12 @@ export default function Home() {
       setData(values);
     });
 
-    csv("/data/LCL.csv").then((values) => {
+    csv("/data/mean_daily_elec_demand_profiles.csv").then((values) => {
       setEnergyDemand(values);
+    });
+
+    csv("/data/hourly_average_price_electricity.csv").then((values) => {
+      setEnergyPrice(values);
     });
   }, []);
 
@@ -150,6 +155,7 @@ export default function Home() {
                     <RadarYear
                       globalData={data}
                       energyDemand={energyDemand}
+                      energyPrice={energyPrice}
                       selectedRegion={selectedRegion}
                       selectedMonth={selectedMonth}
                       setSelectedMonth={setSelectedMonth}
@@ -177,7 +183,8 @@ export default function Home() {
             </div>
           </RightColumn>
         </section>
-        <section className="w-full flex">
+
+        {/* <section className="w-full flex">
           <LeftColumn>
             <h2 className="text-4xl mb-8">Unpacking peaks</h2>
             <p>
@@ -202,8 +209,9 @@ export default function Home() {
               </ParentSize>
             </div>
           </RightColumn>
-        </section>
-        <section className="w-full flex">
+        </section> */}
+
+        {/* <section className="w-full flex">
           <LeftColumn>
             <h2 className="text-4xl">Compare</h2>
             <p>
@@ -236,18 +244,6 @@ export default function Home() {
               </div>
               <div className="my-2">
                 <div className="flex flex-wrap justify-center">
-                  {/* <div
-                    className="mx-2 cursor-pointer regionButton"
-                    onClick={() => setSelectedRegion("all")}
-                    style={{
-                      backgroundColor: selectedRegion.includes("all")
-                        ? "black"
-                        : "white",
-                      color: selectedRegion.includes("all") ? "white" : "black",
-                    }}
-                  >
-                    All
-                  </div> */}
                   <div
                     className="mx-2 cursor-pointer regionButton"
                     style={{
@@ -603,7 +599,7 @@ export default function Home() {
               </div>
             </div>
           </RightColumn>
-        </section>
+        </section> */}
       </main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t"></footer>

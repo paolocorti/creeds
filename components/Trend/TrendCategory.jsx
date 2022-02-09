@@ -30,8 +30,6 @@ const TrendCategory = ({
   start,
   end,
 }) => {
-  console.log("data", data, category);
-
   // scales
   const xScale = scaleTime({
     range: [0, width],
