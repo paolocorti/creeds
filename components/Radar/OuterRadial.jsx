@@ -27,10 +27,10 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
     domain: extent(data, date),
   });
   const yScale = scaleLinear({
-    domain: extent(data, close),
+    domain: [0, extent(data, close)[1]],
   });
 
-  // console.log(yScale.domain());
+  console.log(yScale.domain());
 
   const angle = (d) => xScale(date(d)) ?? 0;
   const radius = (d) => yScale(close(d)) ?? 0;
