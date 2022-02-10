@@ -35,7 +35,8 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
     .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
 
   const yScale = scaleLinear({
-    domain: extent(data, close),
+    //domain: extent(data, close),
+    domain: [0, extent(data, close)[1]],
   });
 
   const angle = (d) => xScale(date(d)) ?? 0;
