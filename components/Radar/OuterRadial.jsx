@@ -91,7 +91,7 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
                 strokeWidth={2}
                 strokeOpacity={0.8}
                 strokeLinecap="round"
-                fill={"#232953"}
+                fill={"#b9c7a1"}
               />
             </>
           );
