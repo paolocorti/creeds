@@ -274,13 +274,6 @@ const TrendYear = ({
                     );
                   })}
             </g>
-            <g transform={`translate(${marginLeft}, 0)`}>
-              <EnergyDemandTrend
-                data={energyData}
-                width={internalWidth}
-                height={100}
-              />
-            </g>
           </svg>
         </div>
       </div>

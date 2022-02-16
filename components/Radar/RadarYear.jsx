@@ -226,6 +226,24 @@ const RadarYear = ({
               r={width * 0.39}
               fill={"#FEF7F5"}
             />
+            {showDemand ? (
+              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                <InnerRadial
+                  data={energyPriceData.length ? energyPriceData[0] : []}
+                  width={width * 0.3}
+                  height={width * 0.3}
+                  svgWidth={width}
+                />
+              </g>
+            ) : (
+              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                <circle fill="#fff" cx={0} cy={0} r={width * 0.1} />
+                <text x={0} y={4} textAnchor="middle" fontSize={10}>
+                  {regionLabels[selectedRegion]}
+                </text>
+              </g>
+            )}
+
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
               {sorted.length &&
                 sorted
@@ -376,23 +394,6 @@ const RadarYear = ({
                     );
                   })}
             </g>
-            {showDemand ? (
-              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-                <InnerRadial
-                  data={energyPriceData.length ? energyPriceData[0] : []}
-                  width={width * 0.3}
-                  height={width * 0.3}
-                  svgWidth={width}
-                />
-              </g>
-            ) : (
-              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-                <circle fill="#fff" cx={0} cy={0} r={width * 0.1} />
-                <text x={0} y={4} textAnchor="middle" fontSize={10}>
-                  {regionLabels[selectedRegion]}
-                </text>
-              </g>
-            )}
 
             <path
               id="jan"
