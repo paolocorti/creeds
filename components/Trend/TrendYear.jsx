@@ -13,6 +13,30 @@ import TrendCircleYear from "./TrendCircleYear";
 import EnergyDemandTrend from "./EnergyDemandTrend";
 import { useStore } from "../../store.js";
 import TrendCategory from "./TrendCategory.jsx";
+import {
+  Tooltip,
+  TooltipWithBounds,
+  defaultStyles,
+  useTooltip,
+} from "@visx/tooltip";
+import { timeFormat } from "d3-time-format";
+
+const formatDate = timeFormat("%X");
+
+const tooltipStyles = {
+  ...defaultStyles,
+  backgroundColor: "rgba(0,0,0,.9)",
+  border: "0px solid white",
+  color: "white",
+  borderRadius: "6px",
+  padding: "10px",
+};
+
+const getDate = (d) => {
+  return d && d.time;
+};
+const getValue = (d) => parseFloat(d.value);
+
 const isMobileWithTablet = false;
 
 const TrendYear = ({
@@ -35,6 +59,13 @@ const TrendYear = ({
 
   const selectedData = selectedMonthData;
 
+  const selectedEnergyDataRegion = energyDemand.filter(
+    (v) => v.region === selectedRegion
+  );
+  const selectedEnergyMonthData = selectedEnergyDataRegion.filter(
+    (v) => v.month === selectedMonth
+  );
+
   if (!selectedData) {
     return <></>;
   }
@@ -47,38 +78,36 @@ const TrendYear = ({
     );
   });
 
+  const timeScale = scaleTime()
+    .range([0, 144])
+    .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
+
+  const timeScale2 = scaleTime()
+    .range([0, 48])
+    .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
+
   const data = acts.map((v) => {
     const actType = v.act_type;
     const actCategory = v.act_category;
     delete v.act_type;
     delete v.act_category;
 
+    const values = Object.entries(v).map((o) => {
+      return {
+        time: timeScale.invert(parseInt(o[0].replace("t_", "")) - 1),
+        value: parseFloat(o[1]),
+      };
+    });
+
     return {
       actType: actType,
       actCategory: actCategory,
-      actValues: Object.values(v),
+      actValues: values,
     };
   });
 
-  console.log("selectedData", selectedData);
-
-  const keys = Object.keys(selectedData);
-
-  const posScale = scaleLinear()
-    .domain([20, 0])
-    .range([50, width / 3]);
-
-  const timeScale = scaleTime()
-    .range([0, 144])
-    .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
-
-  const energyData = energyDemand.filter((v) => v.timeline_weekday === "Mon");
-
-  // const translateFactorStart = 40;
-  // const translateFactorEnd = 100;
-
   const translateFactorStart = 48;
-  const translateFactorEnd = 101;
+  const translateFactorEnd = 120;
   const height = 1020;
 
   const sorted = customSort({
@@ -86,6 +115,37 @@ const TrendYear = ({
     sortBy,
     sortField: "actCategory",
   });
+
+  const energyData = selectedEnergyMonthData.map((v) => {
+    const filtered = Object.entries(v).filter(([key]) => {
+      return key !== "month" && key !== "region" && key !== "season";
+    });
+
+    return filtered.map((v) => {
+      return {
+        time: timeScale2.invert(parseInt(v[0])),
+        value: parseFloat(v[1]),
+      };
+    });
+  });
+
+  const energyDataFiltered = energyData.length
+    ? energyData[0].filter((v, i) => {
+        return (
+          v.time >= timeScale.invert(translateFactorStart) &&
+          v.time <= timeScale.invert(translateFactorEnd)
+        );
+      })
+    : [];
+
+  const {
+    tooltipData,
+    tooltipLeft,
+    tooltipTop,
+    tooltipOpen,
+    showTooltip,
+    hideTooltip,
+  } = useTooltip();
 
   return (
     <div className="radial-overview mt-8">
@@ -97,184 +157,136 @@ const TrendYear = ({
           flexDirection: isMobileWithTablet ? "column" : "row",
         }}
       >
-        <div className="">
+        <div className="relative">
           <div className="radial-overview-toolbar">
             The blue external trend indicates the energy consumption by hour.
             Each circle is an activity, the colors indicate macro-
           </div>
           <svg width={width} height={height}>
+            <g transform={`translate(${marginLeft}, 0)`}>
+              <EnergyDemandTrend
+                data={energyDataFiltered}
+                width={internalWidth}
+                height={80}
+                start={translateFactorStart}
+                end={translateFactorEnd}
+              />
+            </g>
             <g transform={`translate(${marginLeft}, 100)`}>
               {sorted.length &&
-                sorted
-                  // .filter((v, i) => {
-                  //   return i % 2 === 0;
-                  // })
-                  .map((v, i) => {
-                    const rowIndex = parseInt(i / 2);
-                    const value = rowIndex * 60;
+                sorted.map((v, i) => {
+                  const rowIndex = parseInt(i / 2);
+                  const value = rowIndex * 60;
 
+                  const dataFiltered = v.actValues.filter((v, i) => {
                     return (
-                      <g key={i} transform={`translate(0, ${value})`}>
-                        {/* <line
-                          x1={0}
-                          y1={0 + 20}
-                          x2={internalWidth}
-                          y2={20}
-                          stroke="#49494a"
-                          strokeWidth={0.5}
-                          strokeDasharray={"0.5 3"}
-                        />
-                        <line
-                          x1={0}
-                          y1={0 + 40}
-                          x2={internalWidth}
-                          y2={40}
-                          stroke="#49494a"
-                          strokeWidth={0.5}
-                          strokeDasharray={"0.5 3"}
-                        /> */}
-                        <g transform={`translate(0, 20)`}>
-                          {v.actType === "main" && (
-                            <TrendCategory
-                              data={v.actValues}
-                              width={internalWidth}
-                              height={100}
-                              index={translateFactorStart}
-                              factor={v.actCategory}
-                              category={v.actCategory}
-                              color={v.actType}
-                              start={translateFactorStart}
-                              end={translateFactorEnd}
-                            />
-                          )}
-                        </g>
-                        {/* <g transform={`translate(0, 40)`}>
-                          {v.actType === "secondary" && (
-                            <TrendCategory
-                              data={v.actValues}
-                              width={internalWidth}
-                              height={100}
-                              index={translateFactorStart}
-                              factor={v.actCategory}
-                              category={v.actCategory}
-                              color={v.actType}
-                            />
-                          )}
-                        </g> */}
-
-                        {v.actValues
-                          .filter((v, i) => {
-                            return (
-                              i > translateFactorStart && i < translateFactorEnd
-                            );
-                          })
-                          .map((a, j) => {
-                            const index = activitiesCode[v.actCategory].index;
-
-                            return (
-                              <g>
-                                {j === 0 && i % 2 === 0 && (
-                                  <text
-                                    dx={-20}
-                                    dy={50}
-                                    textAnchor={"end"}
-                                    fontSize={internalWidth * 0.02}
-                                    className="radial-hour-label"
-                                    fontWeight="bold"
-                                  >
-                                    {activitiesCode[v.actCategory].value}
-                                  </text>
-                                )}
-                                {/* {j === 0 && i % 2 === 0 && (
-                                  <text
-                                    dx={-30}
-                                    dy={4 + 30}
-                                    textAnchor={"end"}
-                                    fontSize={internalWidth * 0.012}
-                                    className="radial-hour-label"
-                                  >
-                                    primary
-                                  </text>
-                                )} */}
-                                {/* {j === 0 && i % 2 === 0 && (
-                                  <text
-                                    dx={-30}
-                                    dy={4 + 60}
-                                    textAnchor={"end"}
-                                    fontSize={internalWidth * 0.012}
-                                    className="radial-hour-label"
-                                  >
-                                    secondary
-                                  </text>
-                                )} */}
-
-                                <g
-                                  transform={`translate(${
-                                    j *
-                                    (internalWidth /
-                                      (translateFactorEnd -
-                                        translateFactorStart -
-                                        1))
-                                  },0)`}
-                                >
-                                  {i === 0 && j % 6 == 0 && (
-                                    <g>
-                                      <line
-                                        x1={0}
-                                        y1={height - 200}
-                                        x2={0}
-                                        y2={0}
-                                        stroke="#49494a"
-                                        strokeWidth={0.5}
-                                        strokeDasharray={"0.5 3"}
-                                      />
-                                      <text
-                                        dx={0}
-                                        dy={height - 160}
-                                        textAnchor={"middle"}
-                                        fontSize={internalWidth * 0.01}
-                                        className="radial-hour-label"
-                                      >
-                                        {moment(
-                                          timeScale.invert(
-                                            j + translateFactorStart
-                                          )
-                                        ).format("hh:mm a")}
-                                      </text>
-                                    </g>
-                                  )}
-                                  {/* {v.actType === "main" && (
-                                    <TrendCircleYear
-                                      v={a}
-                                      index={j + translateFactorStart}
-                                      value={20}
-                                      factor={v.actCategory}
-                                      category={v.actCategory}
-                                      color={v.actType}
-                                      width={internalWidth}
-                                    />
-                                  )} */}
-
-                                  {/* {v.actType === "secondary" && (
-                                    <TrendCircleYear
-                                      v={a}
-                                      index={j + translateFactorStart}
-                                      value={40}
-                                      factor={v.actCategory}
-                                      category={v.actCategory}
-                                      color={v.actType}
-                                      width={internalWidth}
-                                    />
-                                  )} */}
-                                </g>
-                              </g>
-                            );
-                          })}
-                      </g>
+                      v.time >= timeScale.invert(translateFactorStart) &&
+                      v.time <= timeScale.invert(translateFactorEnd)
                     );
-                  })}
+                  });
+                  return (
+                    <g key={i} transform={`translate(0, ${value})`}>
+                      <g transform={`translate(0, 20)`}>
+                        {v.actType === "main" && (
+                          <TrendCategory
+                            data={dataFiltered}
+                            width={internalWidth}
+                            height={60}
+                            index={translateFactorStart}
+                            factor={v.actCategory}
+                            category={v.actCategory}
+                            color={v.actType}
+                            start={translateFactorStart}
+                            end={translateFactorEnd}
+                            showTooltip={showTooltip}
+                            hideTooltip={hideTooltip}
+                            tooltipData={tooltipData}
+                            marginLeft={marginLeft}
+                            marginTop={value}
+                            tooltipLeft={tooltipLeft}
+                          />
+                        )}
+                      </g>
+                      {v.actValues
+                        .filter((v, i) => {
+                          return (
+                            i > translateFactorStart && i <= translateFactorEnd
+                          );
+                        })
+                        .map((a, j) => {
+                          const index = activitiesCode[v.actCategory].index;
+
+                          return (
+                            <g>
+                              {j === 0 && i % 2 === 0 && (
+                                <text
+                                  dx={-20}
+                                  dy={50}
+                                  textAnchor={"end"}
+                                  fontSize={internalWidth * 0.02}
+                                  className="radial-hour-label"
+                                  fontWeight="bold"
+                                >
+                                  {activitiesCode[v.actCategory].value}
+                                </text>
+                              )}
+                              <g
+                                transform={`translate(${
+                                  j *
+                                  (internalWidth /
+                                    (translateFactorEnd -
+                                      translateFactorStart -
+                                      1))
+                                },0)`}
+                              >
+                                {i === 0 && j % 6 == 0 && (
+                                  <g>
+                                    <line
+                                      x1={0}
+                                      y1={height - 200}
+                                      x2={0}
+                                      y2={0}
+                                      stroke="#49494a"
+                                      strokeWidth={0.5}
+                                      strokeDasharray={"0.5 3"}
+                                    />
+                                    <text
+                                      dx={0}
+                                      dy={height - 160}
+                                      textAnchor={"middle"}
+                                      fontSize={internalWidth * 0.01}
+                                      className="radial-hour-label"
+                                    >
+                                      {moment(
+                                        timeScale.invert(
+                                          j + translateFactorStart
+                                        )
+                                      ).format("hh a")}
+                                    </text>
+                                  </g>
+                                )}
+                              </g>
+                            </g>
+                          );
+                        })}
+                    </g>
+                  );
+                })}
             </g>
           </svg>
+          {tooltipData && (
+            <div>
+              <TooltipWithBounds
+                key={Math.random()}
+                top={tooltipTop - 12 + 200}
+                left={tooltipLeft + 12}
+                style={tooltipStyles}
+              >
+                {`${getValue(tooltipData).toFixed(2)}`} <br /> <br />
+                {formatDate(getDate(tooltipData))}
+              </TooltipWithBounds>
+            </div>
+          )}
         </div>
       </div>
     </div>

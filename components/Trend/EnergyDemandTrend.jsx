@@ -1,16 +1,15 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Group } from "@visx/group";
 import { AreaClosed } from "@visx/shape";
 import { scaleTime, scaleLog, NumberLike, scaleLinear } from "@visx/scale";
-import { curveBasisOpen } from "@visx/curve";
-import { LinearGradient } from "@visx/gradient";
-import { AxisLeft } from "@visx/axis";
-import { GridRadial, GridAngle } from "@visx/grid";
-import { animated, useSpring } from "react-spring";
-
-export const blue = "#999";
-export const background = "#fff";
-const strokeColor = "#744cca";
+import { curveLinear } from "@visx/curve";
+import {
+  withTooltip,
+  Tooltip,
+  TooltipWithBounds,
+  defaultStyles,
+  useTooltip,
+} from "@visx/tooltip";
 
 // utils
 function extent(data, value) {
@@ -18,68 +17,95 @@ function extent(data, value) {
   return [Math.min(...values), Math.max(...values)];
 }
 
-// accessors
-const date = (d) => {
-  return d && d.timeline_time
-    ? new Date(`2021-01-01T${d.timeline_time}:00`).valueOf()
-    : null;
+const getDate = (d) => {
+  return d && d.time;
 };
-const close = (d) =>
-  d && d.kw_demand_autumn ? Number(d.kw_demand_autumn) : null;
-const formatTicks = (val) => String(val);
+const getValue = (d) => parseFloat(d.value);
 
-const EnergyDemandTrend = ({ width, height, data, svgWidth }) => {
-  // scales
+const EnergyDemandTrend = ({ width, height, data }) => {
+  if (!data) {
+    return <></>;
+  }
+
+  const {
+    tooltipData,
+    tooltipLeft,
+    tooltipTop,
+    tooltipOpen,
+    showTooltip,
+    hideTooltip,
+  } = useTooltip();
+
   const xScale = scaleTime({
     range: [0, width],
-    domain: extent(data, date),
+    domain: extent(data, getDate),
   });
   const yScale = scaleLinear({
-    domain: extent(data, close),
+    domain: [0, extent(data, getValue)[1]],
   });
 
-  // console.log(yScale.domain());
+  yScale.range([40, 0]);
 
-  const angle = (d) => xScale(date(d)) ?? 0;
-  const radius = (d) => yScale(close(d)) ?? 0;
-
-  if (width < 10) return null;
-
-  // Update scale output to match component dimensions
-  yScale.range([height, 0]);
-  const reverseYScale = yScale.copy().range(yScale.range().reverse());
+  const handleTooltip = useCallback(
+    (event) => {
+      const { x } = localPoint(event) || { x: 0 };
+      const x0 = xScale.invert(x);
+      const index = bisectDate(stock, x0, 1);
+      const d0 = stock[index - 1];
+      const d1 = stock[index];
+      let d = d0;
+      if (d1 && getDate(d1)) {
+        d =
+          x0.valueOf() - getDate(d0).valueOf() >
+          getDate(d1).valueOf() - x0.valueOf()
+            ? d1
+            : d0;
+      }
+      showTooltip({
+        tooltipData: d,
+        tooltipLeft: x,
+        tooltipTop: yScale(getValue(d)),
+      });
+    },
+    [showTooltip, yScale, xScale]
+  );
 
   return (
-    <Group left={-20} top={0}>
-      {/* <AxisLeft
-        top={-height / 2}
-        scale={reverseYScale}
-        numTicks={5}
-        tickStroke="none"
-        tickLabelProps={(val) => ({
-          fontSize: 8,
-          fill: blue,
-          fillOpacity: 1,
-          textAnchor: "middle",
-          dx: "1em",
-          dy: "-0.5em",
-          stroke: strokeColor,
-          strokeWidth: 0.5,
-          paintOrder: "stroke",
-          fontFamily: "Arial",
-        })}
-        tickFormat={formatTicks}
-        hideAxisLine
-      /> */}
+    <Group left={0} top={0}>
       <AreaClosed
-        curve={curveBasisOpen}
+        curve={curveLinear}
         data={data}
-        x={(d) => xScale(date(d))}
-        y={(d) => yScale(close(d))}
+        x={(d) => {
+          return xScale(getDate(d));
+        }}
+        y={(d) => yScale(getValue(d))}
         yScale={yScale}
-        strokeWidth={1}
         fill="#232953"
       />
+      {/* {tooltipData && (
+        <div>
+          <TooltipWithBounds
+            key={Math.random()}
+            top={tooltipTop - 12}
+            left={tooltipLeft + 12}
+            style={tooltipStyles}
+          >
+            {`$${getValue(tooltipData)}`}
+          </TooltipWithBounds>
+          <TooltipWithBounds
+            top={innerHeight + margin.top - 14}
+            left={tooltipLeft}
+            style={{
+              ...defaultStyles,
+              minWidth: 72,
+              textAlign: "center",
+              transform: "translateX(-50%)",
+            }}
+          >
+            {formatDate(getDate(tooltipData))}
+          </Tooltip>
+        </div>
+      )} */}
     </Group>
   );
 };

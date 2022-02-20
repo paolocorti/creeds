@@ -30,8 +30,6 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
     domain: [0, extent(data, close)[1]],
   });
 
-  console.log(yScale.domain());
-
   const angle = (d) => xScale(date(d)) ?? 0;
   const radius = (d) => yScale(close(d)) ?? 0;
   const padding = 20;
@@ -56,8 +54,6 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
   const circleRadius = width / 2;
   yScale.range([circleRadius * 0.85, circleRadius * 0.95]);
   const reverseYScale = yScale.copy().range(yScale.range().reverse());
-
-  console.log(data);
 
   return (
     <Group top={0} left={0}>
