@@ -224,7 +224,7 @@ const RadarYear = ({
               cx={width * 0.6}
               cy={width * 0.6}
               r={width * 0.39}
-              fill={"#FEF7F5"}
+              fill={"#F5E3E0"}
             />
             {showDemand ? (
               <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
@@ -320,7 +320,9 @@ const RadarYear = ({
                                     >
                                       <path
                                         d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
-                                        fill={hoverTime === j ? "#000" : "#fff"}
+                                        fill={hoverTime === j ? "#000" : "none"}
+                                        stroke="#000"
+                                        strokeWidth={0.5}
                                       />
                                     </g>
 

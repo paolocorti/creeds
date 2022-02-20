@@ -266,6 +266,34 @@ const TrendYear = ({
                                   </g>
                                 )}
                               </g>
+
+                              <g
+                                transform={`translate(${
+                                  j *
+                                  (internalWidth /
+                                    (translateFactorEnd -
+                                      translateFactorStart -
+                                      1))
+                                },0)`}
+                              >
+                                {i === 0 && j % 6 == 0 && (
+                                  <g>
+                                    <text
+                                      dx={0}
+                                      dy={0}
+                                      textAnchor={"middle"}
+                                      fontSize={internalWidth * 0.01}
+                                      className="radial-hour-label"
+                                    >
+                                      {moment(
+                                        timeScale.invert(
+                                          j + translateFactorStart
+                                        )
+                                      ).format("hh a")}
+                                    </text>
+                                  </g>
+                                )}
+                              </g>
                             </g>
                           );
                         })}
