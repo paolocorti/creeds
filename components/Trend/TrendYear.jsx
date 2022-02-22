@@ -163,13 +163,19 @@ const TrendYear = ({
             Each circle is an activity, the colors indicate macro-
           </div>
           <svg width={width} height={height}>
-            <g transform={`translate(${marginLeft}, 0)`}>
+            <g transform={`translate(${marginLeft}, 10)`}>
               <EnergyDemandTrend
                 data={energyDataFiltered}
                 width={internalWidth}
-                height={80}
+                height={60}
                 start={translateFactorStart}
                 end={translateFactorEnd}
+                showTooltip={showTooltip}
+                hideTooltip={hideTooltip}
+                tooltipData={tooltipData}
+                marginLeft={marginLeft}
+                marginTop={-100}
+                tooltipLeft={tooltipLeft}
               />
             </g>
             <g transform={`translate(${marginLeft}, 100)`}>

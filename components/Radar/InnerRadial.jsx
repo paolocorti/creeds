@@ -64,7 +64,7 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
 
   return (
     <Group top={0} left={0}>
-      {/* <circle cx={0} cy={0} r={(width * 0.7) / 2} fill={"#F5E3E0"} /> */}
+      {/* <circle cx={0} cy={0} r={(width * 0.7) / 2} fill={"#ffd6cc"} /> */}
       {/* <GridAngle
         scale={xScale}
         outerRadius={height / 2 - padding}
@@ -95,7 +95,7 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
                 strokeWidth={2}
                 strokeOpacity={0.8}
                 strokeLinecap="round"
-                fill={"#b9c7a1"}
+                fill={"#fff"}
               />
             </>
           );

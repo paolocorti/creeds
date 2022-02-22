@@ -1,15 +1,12 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Group } from "@visx/group";
-import { AreaClosed } from "@visx/shape";
-import { scaleTime, scaleLog, NumberLike, scaleLinear } from "@visx/scale";
+import { scaleTime, scaleLinear } from "@visx/scale";
 import { curveLinear } from "@visx/curve";
-import {
-  withTooltip,
-  Tooltip,
-  TooltipWithBounds,
-  defaultStyles,
-  useTooltip,
-} from "@visx/tooltip";
+import { AreaClosed, Line, Bar } from "@visx/shape";
+import { bisector } from "d3-array";
+import { localPoint } from "@visx/event";
+
+const bisectDate = bisector((d) => d.time).left;
 
 // utils
 function extent(data, value) {
@@ -22,19 +19,20 @@ const getDate = (d) => {
 };
 const getValue = (d) => parseFloat(d.value);
 
-const EnergyDemandTrend = ({ width, height, data }) => {
+const EnergyDemandTrend = ({
+  width,
+  height,
+  data,
+  tooltipData,
+  showTooltip,
+  hideTooltip,
+  marginLeft,
+  marginTop,
+  tooltipLeft,
+}) => {
   if (!data) {
     return <></>;
   }
-
-  const {
-    tooltipData,
-    tooltipLeft,
-    tooltipTop,
-    tooltipOpen,
-    showTooltip,
-    hideTooltip,
-  } = useTooltip();
 
   const xScale = scaleTime({
     range: [0, width],
@@ -49,10 +47,13 @@ const EnergyDemandTrend = ({ width, height, data }) => {
   const handleTooltip = useCallback(
     (event) => {
       const { x } = localPoint(event) || { x: 0 };
-      const x0 = xScale.invert(x);
-      const index = bisectDate(stock, x0, 1);
-      const d0 = stock[index - 1];
-      const d1 = stock[index];
+      const shifted = x - marginLeft;
+      const x0 = xScale.invert(shifted);
+      const index = bisectDate(data, x0, 1);
+
+      const d0 = data[index - 1];
+      const d1 = data[index];
+
       let d = d0;
       if (d1 && getDate(d1)) {
         d =
@@ -61,15 +62,17 @@ const EnergyDemandTrend = ({ width, height, data }) => {
             ? d1
             : d0;
       }
+
+      d.factor = "demand";
+
       showTooltip({
         tooltipData: d,
-        tooltipLeft: x,
-        tooltipTop: yScale(getValue(d)),
+        tooltipLeft: shifted,
+        tooltipTop: yScale(getValue(d)) + marginTop,
       });
     },
     [showTooltip, yScale, xScale]
   );
-
   return (
     <Group left={0} top={0}>
       <AreaClosed
@@ -80,32 +83,32 @@ const EnergyDemandTrend = ({ width, height, data }) => {
         }}
         y={(d) => yScale(getValue(d))}
         yScale={yScale}
-        fill="#232953"
+        fill="#fff"
       />
-      {/* {tooltipData && (
-        <div>
-          <TooltipWithBounds
-            key={Math.random()}
-            top={tooltipTop - 12}
-            left={tooltipLeft + 12}
-            style={tooltipStyles}
-          >
-            {`$${getValue(tooltipData)}`}
-          </TooltipWithBounds>
-          <TooltipWithBounds
-            top={innerHeight + margin.top - 14}
-            left={tooltipLeft}
-            style={{
-              ...defaultStyles,
-              minWidth: 72,
-              textAlign: "center",
-              transform: "translateX(-50%)",
-            }}
-          >
-            {formatDate(getDate(tooltipData))}
-          </Tooltip>
-        </div>
-      )} */}
+      <Bar
+        x={0}
+        y={0}
+        width={width}
+        height={height}
+        fill="transparent"
+        rx={14}
+        onTouchStart={handleTooltip}
+        onTouchMove={handleTooltip}
+        onMouseMove={handleTooltip}
+        onMouseLeave={() => hideTooltip()}
+      />
+      {tooltipData && tooltipData.factor === "demand" && (
+        <g>
+          <Line
+            from={{ x: tooltipLeft, y: 0 }}
+            to={{ x: tooltipLeft, y: height - 20 }}
+            stroke={"black"}
+            strokeWidth={0.5}
+            pointerEvents="none"
+            strokeDasharray="2,2"
+          />
+        </g>
+      )}
     </Group>
   );
 };

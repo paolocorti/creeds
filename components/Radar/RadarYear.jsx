@@ -71,10 +71,11 @@ const RadarYear = ({
   setSelectedMonth,
   showPrice = true,
   showDemand = true,
+  selectedCategory,
 }) => {
+  console.log("selectedCategory", selectedCategory);
   const hover = useStore((state) => state.hover);
   const hoverCategory = useStore((state) => state.hoverCategory);
-  const selectedCategory = useStore((state) => state.selectedCategory);
   const hoverTime = useStore((state) => state.hoverTime);
   const selectedDataRegion = globalData.filter(
     (v) => v.region === selectedRegion
@@ -203,13 +204,13 @@ const RadarYear = ({
       >
         <div className="my-8 relative flex">
           <svg width={width * 1.2} height={width * 1.2}>
-            {/* <circle
+            <circle
               cx={width * 0.6}
               cy={width * 0.6}
               r={width / 2}
-              fill={"#fff"}
+              fill={"#ffd6cc"}
               style={{ pointerEvents: "none" }}
-            /> */}
+            />
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
               {showPrice && (
                 <OuterRadial
@@ -224,25 +225,8 @@ const RadarYear = ({
               cx={width * 0.6}
               cy={width * 0.6}
               r={width * 0.39}
-              fill={"#F5E3E0"}
+              fill={"#ffd6cc"}
             />
-            {showDemand ? (
-              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-                <InnerRadial
-                  data={energyPriceData.length ? energyPriceData[0] : []}
-                  width={width * 0.3}
-                  height={width * 0.3}
-                  svgWidth={width}
-                />
-              </g>
-            ) : (
-              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-                <circle fill="#fff" cx={0} cy={0} r={width * 0.1} />
-                <text x={0} y={4} textAnchor="middle" fontSize={10}>
-                  {regionLabels[selectedRegion]}
-                </text>
-              </g>
-            )}
 
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
               {sorted.length &&
@@ -397,13 +381,37 @@ const RadarYear = ({
                   })}
             </g>
 
+            {showDemand ? (
+              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                <InnerRadial
+                  data={energyPriceData.length ? energyPriceData[0] : []}
+                  width={width * 0.3}
+                  height={width * 0.3}
+                  svgWidth={width}
+                />
+              </g>
+            ) : (
+              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                <circle fill="#ffd6cc" cx={0} cy={0} r={width * 0.1} />
+                <text
+                  x={0}
+                  y={4}
+                  textAnchor="middle"
+                  fontSize={10}
+                  style={{ textTransform: "uppercase" }}
+                >
+                  {regionLabels[selectedRegion]}
+                </text>
+              </g>
+            )}
+
             <path
               id="jan"
               onClick={() => setSelectedMonth("1")}
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "1" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, -14, 14)}
             />
             <path
@@ -412,7 +420,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "2" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 16, 44)}
             />
             <path
@@ -421,7 +429,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "3" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 46, 74)}
             />
             <path
@@ -430,7 +438,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "4" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 76, 104)}
             />
             <path
@@ -439,7 +447,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "5" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 106, 134)}
             />
             <path
@@ -448,7 +456,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "6" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 136, 164)}
             />
             <path
@@ -457,7 +465,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "7" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 166, 194)}
             />
             <path
@@ -466,7 +474,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "8" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 196, 224)}
             />
             <path
@@ -475,7 +483,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "9" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 226, 254)}
             />
             <path
@@ -484,7 +492,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "10" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 256, 284)}
             />
             <path
@@ -493,7 +501,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "11" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 286, 314)}
             />
             <path
@@ -502,7 +510,7 @@ const RadarYear = ({
               fill="none"
               style={{ pointerEvents: "none" }}
               stroke={selectedMonth === "12" ? "#000" : "#fff"}
-              stroke-width="5"
+              stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 316, 344)}
             />
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>

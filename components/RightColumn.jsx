@@ -8,7 +8,7 @@ const RightColumn = ({ children }) => {
       className={`${
         expanded ? "w-2/3" : "w-11/12"
       } px-8 py-8 border-b-2 border-black animation-width`}
-      style={{ backgroundColor: "#F5E3E0" }}
+      style={{ backgroundColor: "#ffd6cc" }}
     >
       {children}
     </div>

@@ -5,8 +5,6 @@ import { scaleTime, scaleLinear, scalePower } from "@visx/scale";
 import { curveLinear } from "@visx/curve";
 import { activitiesCode, colorByCategory } from "../utils.js";
 import { bisector } from "d3-array";
-
-import { timeFormat } from "d3-time-format";
 import { localPoint } from "@visx/event";
 
 const bisectDate = bisector((d) => d.time).left;
