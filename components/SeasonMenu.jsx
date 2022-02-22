@@ -9,17 +9,17 @@ const SeasonMenu = ({
         <div
           className="mx-2 cursor-pointer regionButton"
           style={{
-            textDecoration: selectedCompareSeason.includes("winter")
+            textDecoration: selectedCompareSeason.includes(0)
               ? "underline"
               : "none",
           }}
-          onClick={() => setSelectedCompareSeason("winter")}
+          onClick={() => setSelectedCompareSeason(0)}
         >
           Winter
-          {selectedCompareSeason.includes("winter") && (
+          {selectedCompareSeason.includes(0) && (
             <span
               className="ml-2"
-              onClick={() => unsetSelectedCompareSeason("winter")}
+              onClick={() => unsetSelectedCompareSeason(0)}
             >
               <img src={"/close.svg"} width={9} />
             </span>
@@ -28,17 +28,17 @@ const SeasonMenu = ({
         <div
           className="mx-2 cursor-pointer regionButton"
           style={{
-            textDecoration: selectedCompareSeason.includes("spring")
+            textDecoration: selectedCompareSeason.includes(1)
               ? "underline"
               : "none",
           }}
-          onClick={() => setSelectedCompareSeason("spring")}
+          onClick={() => setSelectedCompareSeason(1)}
         >
           Spring
-          {selectedCompareSeason.includes("spring") && (
+          {selectedCompareSeason.includes(1) && (
             <span
               className="ml-2"
-              onClick={() => unsetSelectedCompareSeason("spring")}
+              onClick={() => unsetSelectedCompareSeason(1)}
             >
               <img src={"/close.svg"} width={9} />
             </span>
@@ -47,17 +47,17 @@ const SeasonMenu = ({
         <div
           className="mx-2 cursor-pointer regionButton"
           style={{
-            textDecoration: selectedCompareSeason.includes("summer")
+            textDecoration: selectedCompareSeason.includes(2)
               ? "underline"
               : "none",
           }}
-          onClick={() => setSelectedCompareSeason("summer")}
+          onClick={() => setSelectedCompareSeason(2)}
         >
           Summer
-          {selectedCompareSeason.includes("summer") && (
+          {selectedCompareSeason.includes(2) && (
             <span
               className="ml-2"
-              onClick={() => unsetSelectedCompareSeason("summer")}
+              onClick={() => unsetSelectedCompareSeason(2)}
             >
               <img src={"/close.svg"} width={9} />
             </span>
@@ -66,17 +66,17 @@ const SeasonMenu = ({
         <div
           className="mx-2 cursor-pointer regionButton"
           style={{
-            textDecoration: selectedCompareSeason.includes("autumn")
+            textDecoration: selectedCompareSeason.includes(3)
               ? "underline"
               : "none",
           }}
-          onClick={() => setSelectedCompareSeason("autumn")}
+          onClick={() => setSelectedCompareSeason(3)}
         >
           Autumn
-          {selectedCompareSeason.includes("autumn") && (
+          {selectedCompareSeason.includes(3) && (
             <span
               className="ml-2"
-              onClick={() => unsetSelectedCompareSeason("autumn")}
+              onClick={() => unsetSelectedCompareSeason(3)}
             >
               <img src={"/close.svg"} width={9} />
             </span>

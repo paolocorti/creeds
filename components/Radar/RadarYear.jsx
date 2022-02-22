@@ -72,17 +72,23 @@ const RadarYear = ({
   showPrice = true,
   showDemand = true,
   selectedCategory,
+  innerLabel,
 }) => {
-  console.log("selectedCategory", selectedCategory);
   const hover = useStore((state) => state.hover);
   const hoverCategory = useStore((state) => state.hoverCategory);
   const hoverTime = useStore((state) => state.hoverTime);
   const selectedDataRegion = globalData.filter(
     (v) => v.region === selectedRegion
   );
-  const selectedMonthData = selectedDataRegion.filter(
-    (v) => v.month === selectedMonth
-  );
+
+  let selectedMonthData;
+  if (selectedMonth) {
+    selectedMonthData = selectedDataRegion.filter(
+      (v) => v.month === selectedMonth
+    );
+  } else {
+    selectedMonthData = selectedDataRegion;
+  }
 
   const selectedEnergyDataRegion = energyDemand.filter(
     (v) => v.region === selectedRegion
@@ -400,115 +406,151 @@ const RadarYear = ({
                   fontSize={10}
                   style={{ textTransform: "uppercase" }}
                 >
-                  {regionLabels[selectedRegion]}
+                  {innerLabel || regionLabels[selectedRegion]}
                 </text>
               </g>
             )}
 
             <path
               id="jan"
-              onClick={() => setSelectedMonth("1")}
+              onClick={() => (selectedMonth ? setSelectedMonth("1") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "1" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, -14, 14)}
             />
             <path
               id="feb"
-              onClick={() => setSelectedMonth("2")}
+              onClick={() => (selectedMonth ? setSelectedMonth("2") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "2" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 16, 44)}
             />
             <path
               id="mar"
-              onClick={() => setSelectedMonth("3")}
+              onClick={() => (selectedMonth ? setSelectedMonth("3") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "3" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 46, 74)}
             />
             <path
               id="apr"
-              onClick={() => setSelectedMonth("4")}
+              onClick={() => (selectedMonth ? setSelectedMonth("4") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "4" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 76, 104)}
             />
             <path
               id="may"
-              onClick={() => setSelectedMonth("5")}
+              onClick={() => (selectedMonth ? setSelectedMonth("5") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "5" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 106, 134)}
             />
             <path
               id="jun"
-              onClick={() => setSelectedMonth("6")}
+              onClick={() => (selectedMonth ? setSelectedMonth("6") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "6" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 136, 164)}
             />
             <path
               id="jul"
-              onClick={() => setSelectedMonth("7")}
+              onClick={() => (selectedMonth ? setSelectedMonth("7") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "7" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 166, 194)}
             />
             <path
               id="aug"
-              onClick={() => setSelectedMonth("8")}
+              onClick={() => (selectedMonth ? setSelectedMonth("8") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "8" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 196, 224)}
             />
             <path
               id="sep"
-              onClick={() => setSelectedMonth("9")}
+              onClick={() => (selectedMonth ? setSelectedMonth("9") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "9" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 226, 254)}
             />
             <path
               id="oct"
-              onClick={() => setSelectedMonth("10")}
+              onClick={() => (selectedMonth ? setSelectedMonth("10") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "10" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 256, 284)}
             />
             <path
               id="nov"
-              onClick={() => setSelectedMonth("11")}
+              onClick={() => (selectedMonth ? setSelectedMonth("11") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "11" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 286, 314)}
             />
             <path
               id="dec"
-              onClick={() => setSelectedMonth("12")}
+              onClick={() => (selectedMonth ? setSelectedMonth("12") : null)}
               fill="none"
-              style={{ pointerEvents: "none" }}
+              style={{
+                pointerEvents: "none",
+                opacity: selectedMonth ? 1 : 0.4,
+              }}
               stroke={selectedMonth === "12" ? "#000" : "#fff"}
               stroke-width="2"
               d={describeArc(width * 0.6, width * 0.6, width * 0.52, 316, 344)}
@@ -528,8 +570,11 @@ const RadarYear = ({
                     style={{
                       transform: `rotate(${angle}deg)`,
                       cursor: "pointer",
+                      opacity: selectedMonth ? 1 : 0.4,
                     }}
-                    onClick={() => setSelectedMonth(String(v + 1))}
+                    onClick={() =>
+                      selectedMonth ? setSelectedMonth(String(v + 1)) : null
+                    }
                   >
                     {months[v].toUpperCase()}
                   </text>
