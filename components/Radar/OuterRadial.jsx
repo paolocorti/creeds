@@ -23,7 +23,7 @@ const formatTicks = (val) => String(val);
 const OuterRadial = ({ width, height, data, svgWidth }) => {
   // scales
   const xScale = scaleTime({
-    range: [1.047, 7.33],
+    range: [0, 6.28],
     domain: extent(data, date),
   });
   const yScale = scaleLinear({

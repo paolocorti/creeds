@@ -26,9 +26,9 @@ const Section2 = ({ data, energyDemand }) => {
   };
 
   return (
-    <section className="w-full flex">
+    <section className="w-full flex flex-col md:flex-row">
       <LeftColumn>
-        <h2 className="text-4xl mb-8">Unpacking peaks</h2>
+        <h2 className="subtitle">Unpacking peaks</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

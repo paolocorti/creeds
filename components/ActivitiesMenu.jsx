@@ -7,8 +7,8 @@ const ActivitiesMenu = ({
   setSelectedCategory,
 }) => {
   return (
-    <div className="my-1">
-      <div className="flex flex-wrap ">
+    <div className="my-0 px-4">
+      <div className="flex flex-wrap justify-start" style={{ width: "90%" }}>
         {activitiesArray.map((el) => {
           return (
             <div

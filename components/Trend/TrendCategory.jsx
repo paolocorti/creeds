@@ -36,7 +36,7 @@ const TrendCategory = ({
     domain: extent(data, getDate),
   });
   const yScale = scaleLinear({
-    domain: [0, 0.5],
+    domain: [0, 0.4],
     clamp: false,
   });
 

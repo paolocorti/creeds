@@ -18,6 +18,7 @@ const RadarCircleYear = ({
   const strokeWidth = 1;
   //const radiusScale = scalePow().domain([0, 1]).range([1, 20]);
   const radius = Math.sqrt(Number(v) / Math.PI) * (width * 0.05);
+  //const radius = Number(v) * (width * 0.05)
   const hover = useStore((state) => state.hover);
 
   return (

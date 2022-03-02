@@ -27,9 +27,9 @@ const Section1 = ({ data, energyDemand, energyPrice }) => {
   };
 
   return (
-    <section className="w-full flex">
+    <section className="w-full min-h-screen flex flex-col md:flex-row">
       <LeftColumn>
-        <h2 className="text-4xl mb-8">
+        <h2 className="subtitle">
           Activities, demand and price every 30 minutes
         </h2>
         <p>
@@ -49,35 +49,50 @@ const Section1 = ({ data, energyDemand, energyPrice }) => {
         </p>
       </LeftColumn>
       <RightColumn>
-        <div className="flex justify-center items-center">
-          <div className="w-2/3 px-8">
-            <ParentSize>
-              {(parent) => (
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  energyPrice={energyPrice}
-                  selectedRegion={selectedRegion}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={parent.width}
-                />
-              )}
-            </ParentSize>
+        <div className="flex flex-col justify-center items-center">
+          <div className="flex w-full">
+            <p className="text-center">
+              The graphic shows energy demand, activities and energy price every
+              30 minutes. The circle’s area represents the activity’s frequency.
+              Select the month or the activities in the graphic or in the legend
+              to explore the data
+            </p>
           </div>
-          <div className="w-1/3 px-8">
-            <div className="flex flex-col">
-              <div
-                className="radial-overview-toolbar text-left"
-                style={{ height: "auto" }}
-              >
-                The blue external trend indicates the energy consumption by
-                hour. Each circle is an activity, the colors indicate
-                macro-categories, the size indicates the frequency. The blue
-                internal shape indicates the price by hour.
-              </div>
-              <div className="mt-4">
-                <RadarVerticalLegend />
+          <div className="flex w-full justify-center">
+            <div
+              className="w-full md:w-2/3 px-8"
+              style={{
+                maxWidth: "85vh",
+              }}
+            >
+              <ParentSize>
+                {(parent) => (
+                  <RadarYear
+                    globalData={data}
+                    energyDemand={energyDemand}
+                    energyPrice={energyPrice}
+                    selectedRegion={selectedRegion}
+                    selectedMonth={selectedMonth}
+                    setSelectedMonth={setSelectedMonth}
+                    width={parent.width}
+                  />
+                )}
+              </ParentSize>
+            </div>
+            <div className="w-full md:w-1/3 px-8">
+              <div className="flex flex-col">
+                <div
+                  className="radial-overview-toolbar text-left"
+                  style={{ height: "auto" }}
+                >
+                  The blue external trend indicates the energy consumption by
+                  hour. Each circle is an activity, the colors indicate
+                  macro-categories, the size indicates the frequency. The blue
+                  internal shape indicates the price by hour.
+                </div>
+                <div className="mt-4">
+                  <RadarVerticalLegend />
+                </div>
               </div>
             </div>
           </div>

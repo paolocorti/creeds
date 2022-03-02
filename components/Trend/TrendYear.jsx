@@ -46,7 +46,7 @@ const TrendYear = ({
   energyDemand,
   width,
 }) => {
-  const marginLeft = 140;
+  const marginLeft = 180;
   const marginRight = 20;
   const internalWidth = width - marginLeft - marginRight;
   const hover = useStore((state) => state.hover);
@@ -84,7 +84,11 @@ const TrendYear = ({
 
   const timeScale2 = scaleTime()
     .range([0, 48])
-    .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
+    .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
+
+  const xScale = scaleTime()
+    .range([marginLeft, internalWidth])
+    .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
 
   const data = acts.map((v) => {
     const actType = v.act_type;
@@ -106,9 +110,9 @@ const TrendYear = ({
     };
   });
 
-  const translateFactorStart = 48;
-  const translateFactorEnd = 120;
-  const height = 1020;
+  const translateFactorStart = 66;
+  const translateFactorEnd = 108;
+  const height = 800;
 
   const sorted = customSort({
     data: data,
@@ -163,7 +167,7 @@ const TrendYear = ({
             Each circle is an activity, the colors indicate macro-
           </div>
           <svg width={width} height={height}>
-            <g transform={`translate(${marginLeft}, 10)`}>
+            {/* <g transform={`translate(${marginLeft}, 10)`}>
               <EnergyDemandTrend
                 data={energyDataFiltered}
                 width={internalWidth}
@@ -177,12 +181,20 @@ const TrendYear = ({
                 marginTop={-100}
                 tooltipLeft={tooltipLeft}
               />
-            </g>
-            <g transform={`translate(${marginLeft}, 100)`}>
+            </g> */}
+            <rect
+              fill="#fff"
+              width={270}
+              height={height - 80}
+              x={xScale(new Date(`2021-01-01T16:00:00`))}
+              y={20}
+              fillOpacity={0.4}
+            ></rect>
+            <g transform={`translate(${marginLeft}, 10)`}>
               {sorted.length &&
                 sorted.map((v, i) => {
                   const rowIndex = parseInt(i / 2);
-                  const value = rowIndex * 60;
+                  const value = rowIndex * 50;
 
                   const dataFiltered = v.actValues.filter((v, i) => {
                     return (
@@ -227,7 +239,7 @@ const TrendYear = ({
                               {j === 0 && i % 2 === 0 && (
                                 <text
                                   dx={-20}
-                                  dy={50}
+                                  dy={60}
                                   textAnchor={"end"}
                                   fontSize={internalWidth * 0.02}
                                   className="radial-hour-label"
@@ -245,20 +257,22 @@ const TrendYear = ({
                                       1))
                                 },0)`}
                               >
-                                {i === 0 && j % 6 == 0 && (
+                                {i === 0 && j % 2 == 0 && (
                                   <g>
                                     <line
                                       x1={0}
-                                      y1={height - 200}
+                                      y1={height - 88}
                                       x2={0}
-                                      y2={0}
+                                      y2={5}
                                       stroke="#49494a"
-                                      strokeWidth={0.5}
-                                      strokeDasharray={"0.5 3"}
+                                      strokeWidth={0.3}
+                                      strokeDasharray={
+                                        j % 6 == 0 ? "0 0" : "0.5 3"
+                                      }
                                     />
-                                    <text
+                                    {/* <text
                                       dx={0}
-                                      dy={height - 160}
+                                      dy={height - 25}
                                       textAnchor={"middle"}
                                       fontSize={internalWidth * 0.01}
                                       className="radial-hour-label"
@@ -268,7 +282,7 @@ const TrendYear = ({
                                           j + translateFactorStart
                                         )
                                       ).format("hh a")}
-                                    </text>
+                                    </text> */}
                                   </g>
                                 )}
                               </g>
@@ -312,8 +326,8 @@ const TrendYear = ({
             <div>
               <TooltipWithBounds
                 key={Math.random()}
-                top={tooltipTop - 12 + 200}
-                left={tooltipLeft + 12}
+                top={tooltipTop + 100}
+                left={tooltipLeft + 30}
                 style={tooltipStyles}
               >
                 {`${getValue(tooltipData).toFixed(2)}`} <br /> <br />

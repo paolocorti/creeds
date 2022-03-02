@@ -5,10 +5,8 @@ const RightColumn = ({ children }) => {
 
   return (
     <div
-      className={`${
-        expanded ? "w-2/3" : "w-11/12"
-      } px-8 py-8 border-b-2 border-black animation-width`}
-      style={{ backgroundColor: "#ffd6cc" }}
+      className={`w-full px-8 py-8 border-b border-black animation-width overflow-hidden`}
+      style={{ backgroundColor: "#ffd6cc", width: expanded ? "72%" : "93%" }}
     >
       {children}
     </div>

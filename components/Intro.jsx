@@ -2,9 +2,15 @@ import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 const Intro = () => {
   return (
-    <section className="w-full flex">
+    <section className="w-full flex flex-col md:flex-row min-h-screen">
       <LeftColumn>
-        <h1 className="text-6xl text-left">
+        <h1
+          className="text-left leading-snug"
+          style={{
+            fontSize: "65px",
+            lineHeight: "75px",
+          }}
+        >
           Energy flexibility and the rhythms of everyday life
         </h1>
       </LeftColumn>

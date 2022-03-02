@@ -44,11 +44,16 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Nanum+Myeongjo:wght@400;700&family=STIX+Two+Text:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <meta charset="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,shrink-to-fit=no"
+        />
       </Head>
 
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 text-center">
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Intro />
         <Section1
           data={data}

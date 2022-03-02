@@ -800,9 +800,9 @@ const Section4 = ({ data, energyDemand }) => {
   // });
 
   return (
-    <section className="w-full flex">
+    <section className="w-full min-h-screen flex flex-col md:flex-row">
       <LeftColumn>
-        <h2 className="text-4xl">Seasons of the year</h2>
+        <h2 className="subtitle">Seasons of the year</h2>
         <p>
           Seasons are emerging as relevant to many aspects of research on
           flexibility and yet in energy research they tend to be dominated by
@@ -831,13 +831,15 @@ const Section4 = ({ data, energyDemand }) => {
             unsetSelectedCompareSeason={unsetSelectedCompareSeason}
             selectedCompareSeason={selectedCompareSeason}
           />
-          <ActivitiesMenu
-            activitiesArray={activitiesArray}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
-          <div className="flex w-full">
-            <div className="w-1/2 px-8">
+          <div className="mt-4">
+            <ActivitiesMenu
+              activitiesArray={activitiesArray}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-8 w-full">
+            <div className="px-8">
               {selectedCompareSeason[0] !== undefined && (
                 <ParentSize>
                   {(parent) => (
@@ -856,7 +858,7 @@ const Section4 = ({ data, energyDemand }) => {
                 </ParentSize>
               )}
             </div>
-            <div className="w-1/2 px-8">
+            <div className="px-8">
               {selectedCompareSeason[1] && (
                 <ParentSize>
                   {(parent) => (

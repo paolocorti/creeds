@@ -31,8 +31,8 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
   }
 
   const xScale = scaleTime()
-    .range([1.0472, 7.33038])
-    .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
+    .range([0, 6.28])
+    .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
 
   const yScale = scaleLinear({
     //domain: extent(data, close),
@@ -59,7 +59,7 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
   if (width < 10) return null;
 
   // Update scale output to match component dimensions
-  yScale.range([0, height / 2 - 2 * padding]);
+  yScale.range([0, height / 2 - padding]);
   const reverseYScale = yScale.copy().range(yScale.range().reverse());
 
   return (
@@ -84,7 +84,7 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
         strokeOpacity={0.2}
       /> */}
 
-      <LineRadial angle={angle} radius={radius} curve={curveBasisOpen}>
+      {/* <LineRadial angle={angle} radius={radius} curve={curveBasisOpen}>
         {({ path }) => {
           const d = path(data) || "";
           return (
@@ -100,32 +100,41 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
             </>
           );
         }}
-      </LineRadial>
-      {/* <g transform="rotate(270 0 0)">
+      </LineRadial> */}
+
+      <g transform="rotate(0 0 0)">
         {data.map((v) => {
           const thisAngle = xScale(date(v));
           const thisValue = yScale(close(v));
           return (
             <g>
-              <circle
+              {/* <circle
                 className="cursor-pointer"
                 cx={thisValue * Math.cos(thisAngle)}
                 cy={thisValue * Math.sin(thisAngle)}
                 r={2}
                 fill={"red"}
-              />
-              <text
+              /> */}
+              {/* <text
                 x={thisValue * Math.cos(thisAngle)}
                 y={thisValue * Math.sin(thisAngle)}
                 fontSize="8"
                 fill="red"
               >
                 {v.value.toFixed(1)}
-              </text>
+              </text> */}
+              <line
+                x1={0}
+                y1={0}
+                x2={thisValue * Math.cos(thisAngle)}
+                y2={thisValue * Math.sin(thisAngle)}
+                stroke={"#000"}
+                strokeWidth={2}
+              ></line>
             </g>
           );
         })}
-      </g> */}
+      </g>
 
       {/* <AxisLeft
         top={-height / 2 + padding}

@@ -4,8 +4,8 @@ const RegionMenu = ({
   unsetSelectedCompareRegion,
 }) => {
   return (
-    <div className="my-2">
-      <div className="flex flex-wrap justify-center">
+    <div className="my-0 px-4">
+      <div className="flex flex-wrap justify-start">
         <div
           className="mx-2 cursor-pointer regionButton"
           style={{

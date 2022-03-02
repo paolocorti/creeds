@@ -30,9 +30,9 @@ const Section3 = ({ data, energyDemand }) => {
   };
 
   return (
-    <section className="w-full flex">
+    <section className="w-full min-h-screen flex flex-col md:flex-row">
       <LeftColumn>
-        <h2 className="text-4xl">Spatial variation</h2>
+        <h2 className="subtitle">Spatial variation</h2>
         <p>
           Energy demand varies depending on where people live and work within a
           country or region and this has implications for the grid. Meeting
@@ -49,14 +49,14 @@ const Section3 = ({ data, energyDemand }) => {
       <RightColumn>
         <div className="flex w-full flex-col">
           <div>
-            <div
-              className="radial-overview-toolbar text-left"
-              style={{ height: "auto" }}
-            >
-              Select the region or the categories. Mouse over on the graphic to
-              explore the data. The blue external trend indicates the energy
-              consumption by hour. Each circle is an activity, the colors
-              indicate macro-categories, the size indicates the frequency.
+            <div className="" style={{ height: "auto" }}>
+              <p className="text-center">
+                Select the region or the categories. Mouse over on the graphic
+                to explore the data. The blue external trend indicates the
+                energy consumption by hour. Each circle is an activity, the
+                colors indicate macro-categories, the size indicates the
+                frequency.
+              </p>
             </div>
           </div>
           <RegionMenu
@@ -64,13 +64,20 @@ const Section3 = ({ data, energyDemand }) => {
             unsetSelectedCompareRegion={unsetSelectedCompareRegion}
             selectedCompareRegion={selectedCompareRegion}
           />
-          <ActivitiesMenu
-            activitiesArray={activitiesArray}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
-          <div className="flex w-full">
-            <div className="w-1/2 px-8">
+          <div className="mt-4">
+            <ActivitiesMenu
+              activitiesArray={activitiesArray}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          </div>
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div
+              className="px-12"
+              style={{
+                maxWidth: "85vh",
+              }}
+            >
               {selectedCompareRegion[0] && (
                 <ParentSize>
                   {(parent) => (
@@ -89,9 +96,13 @@ const Section3 = ({ data, energyDemand }) => {
                 </ParentSize>
               )}
             </div>
-            <div className="w-1/2 px-8">
+            <div className="px-12">
               {selectedCompareRegion[1] && (
-                <ParentSize>
+                <ParentSize
+                  style={{
+                    maxWidth: "85vh",
+                  }}
+                >
                   {(parent) => (
                     <RadarYear
                       globalData={data}

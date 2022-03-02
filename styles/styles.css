@@ -1,5 +1,8 @@
-body {
+html,
+body,
+#next {
   background-color: #ededed;
+  width: 100%;
 }
 
 h1,
@@ -9,7 +12,7 @@ h4,
 h5,
 h6 {
   font-family: "Nanum Myeongjo", serif;
-  font-weight: 600;
+  font-weight: 500;
   text-align: left;
 }
 
@@ -20,11 +23,12 @@ h1 {
 }
 
 p {
-  text-align: justify;
+  text-align: left;
   font-size: 17px;
   line-height: 25px;
   margin: 20px 0;
   font-family: "STIX Two Text", serif;
+  font-weight: 400;
 }
 
 .dot {
@@ -50,6 +54,7 @@ p {
   line-height: 13px;
   color: #0d0d18;
   font-weight: normal;
+  text-transform: uppercase;
 }
 
 .radial-hour-label-rot {
@@ -71,7 +76,7 @@ p {
 }
 
 .animation-width {
-  transition: 0.2s width;
+  transition: 0.5s width;
 }
 
 .circleAnimation {
@@ -79,27 +84,27 @@ p {
 }
 
 .regionButton {
-  min-width: 140px;
-  width: 130px;
-  height: 24px;
+  width: 200px;
+  height: 14px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
   padding: 0 8px;
+  text-transform: uppercase;
   margin: 4px;
 }
 
 .categoryButton {
-  min-width: 140px;
-  height: 24px;
-  border-radius: 30px;
+  width: 200px;
+  height: 14px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
   padding: 0 8px;
   margin: 4px;
+  text-transform: uppercase;
   position: relative;
 }
 
@@ -108,4 +113,11 @@ p {
   height: 12px;
   border-radius: 12px;
   min-width: 12px;
+}
+
+.subtitle {
+  font-size: 50px;
+  line-height: 58px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
