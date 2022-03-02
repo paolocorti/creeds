@@ -8,7 +8,7 @@ import RegionMenu from "./RegionMenu.jsx";
 import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 
-const Section3 = ({ data, energyDemand }) => {
+const Section3 = ({ data, energyDemand, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion, setSelCompareRegion] = useState([
@@ -30,7 +30,10 @@ const Section3 = ({ data, energyDemand }) => {
   };
 
   return (
-    <section className="w-full min-h-screen flex flex-col md:flex-row">
+    <section
+      name="section3"
+      className="w-full min-h-screen flex flex-col md:flex-row"
+    >
       <LeftColumn>
         <h2 className="subtitle">Spatial variation</h2>
         <p>
@@ -51,11 +54,10 @@ const Section3 = ({ data, energyDemand }) => {
           <div>
             <div className="" style={{ height: "auto" }}>
               <p className="text-center">
-                Select the region or the categories. Mouse over on the graphic
-                to explore the data. The blue external trend indicates the
-                energy consumption by hour. Each circle is an activity, the
-                colors indicate macro-categories, the size indicates the
-                frequency.
+                The graphic shows energy demand, activities’ frequency and
+                energy price every 30 minutes in UK’s region. The circle’s area
+                represents the activity’s frequency. Select the regions, the
+                monts and the activities to explore the data
               </p>
             </div>
           </div>
@@ -119,6 +121,17 @@ const Section3 = ({ data, energyDemand }) => {
                 </ParentSize>
               )}
             </div>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <div
+            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer"
+            style={{
+              fontSize: "11px",
+            }}
+            onClick={nextChapter}
+          >
+            NEXT CHAPTER ↓
           </div>
         </div>
       </RightColumn>

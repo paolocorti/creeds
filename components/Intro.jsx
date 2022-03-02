@@ -1,8 +1,11 @@
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
-const Intro = () => {
+const Intro = ({ nextChapter }) => {
   return (
-    <section className="w-full flex flex-col md:flex-row min-h-screen">
+    <section
+      name="intro"
+      className="w-full flex flex-col md:flex-row min-h-screen"
+    >
       <LeftColumn>
         <h1
           className="text-left leading-snug"
@@ -58,6 +61,17 @@ const Intro = () => {
           it. But perhaps it is best to start by showing what the typical
           patterns of activity, demand, etc. look like.
         </p>
+        <div className="flex justify-center">
+          <div
+            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer"
+            style={{
+              fontSize: "11px",
+            }}
+            onClick={nextChapter}
+          >
+            NEXT CHAPTER ↓
+          </div>
+        </div>
       </RightColumn>
     </section>
   );

@@ -87,8 +87,8 @@ const TrendYear = ({
     .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
 
   const xScale = scaleTime()
-    .range([marginLeft, internalWidth])
-    .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
+    .range([0, internalWidth])
+    .domain([new Date(`2021-01-01T15:00:00`), new Date(`2021-01-01T22:00:00`)]);
 
   const data = acts.map((v) => {
     const actType = v.act_type;
@@ -111,7 +111,7 @@ const TrendYear = ({
   });
 
   const translateFactorStart = 66;
-  const translateFactorEnd = 108;
+  const translateFactorEnd = 109;
   const height = 800;
 
   const sorted = customSort({
@@ -162,9 +162,10 @@ const TrendYear = ({
         }}
       >
         <div className="relative">
-          <div className="radial-overview-toolbar">
-            The blue external trend indicates the energy consumption by hour.
-            Each circle is an activity, the colors indicate macro-
+          <div className="">
+            <p className="text-center mb-8">
+              The graphic shows the activities’ frequentcy every 10 minutes.
+            </p>
           </div>
           <svg width={width} height={height}>
             {/* <g transform={`translate(${marginLeft}, 10)`}>
@@ -182,15 +183,19 @@ const TrendYear = ({
                 tooltipLeft={tooltipLeft}
               />
             </g> */}
-            <rect
-              fill="#fff"
-              width={270}
-              height={height - 80}
-              x={xScale(new Date(`2021-01-01T16:00:00`))}
-              y={20}
-              fillOpacity={0.4}
-            ></rect>
+
             <g transform={`translate(${marginLeft}, 10)`}>
+              <rect
+                fill="#fff"
+                width={
+                  xScale(new Date(`2021-01-01T20:00:00`)) -
+                  xScale(new Date(`2021-01-01T16:00:00`))
+                }
+                height={height - 100}
+                x={xScale(new Date(`2021-01-01T16:00:00`))}
+                y={10}
+                fillOpacity={0.4}
+              ></rect>
               {sorted.length &&
                 sorted.map((v, i) => {
                   const rowIndex = parseInt(i / 2);
@@ -265,7 +270,7 @@ const TrendYear = ({
                                       x2={0}
                                       y2={5}
                                       stroke="#49494a"
-                                      strokeWidth={0.3}
+                                      strokeWidth={j % 6 == 0 ? 0.3 : 0.8}
                                       strokeDasharray={
                                         j % 6 == 0 ? "0 0" : "0.5 3"
                                       }

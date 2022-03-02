@@ -7,10 +7,21 @@ import Section1 from "../components/Section1";
 import Section2 from "../components/Section2";
 import Section3 from "../components/Section3";
 import Section4 from "../components/Section4";
+import Landing from "../components/Landing";
+import {
+  Link,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [energyDemand, setEnergyDemand] = useState([]);
+  const [gasDemand, setGasDemand] = useState([]);
   const [energyPrice, setEnergyPrice] = useState([]);
 
   useEffect(() => {
@@ -20,6 +31,10 @@ export default function Home() {
 
     csv("/data/mean_daily_elec_demand_profiles.csv").then((values) => {
       setEnergyDemand(values);
+    });
+
+    csv("/data/mean_daily_gas_demand_profiles.csv").then((values) => {
+      setGasDemand(values);
     });
 
     csv("/data/hourly_average_price_electricity.csv").then((values) => {
@@ -54,17 +69,58 @@ export default function Home() {
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
-        <Intro />
+        <Landing
+          nextChapter={() => {
+            scroller.scrollTo("intro", {
+              duration: 500,
+              delay: 100,
+              smooth: true,
+            });
+          }}
+        />
+        <Intro
+          nextChapter={() => {
+            scroller.scrollTo("section1", {
+              duration: 500,
+              delay: 100,
+              smooth: true,
+            });
+          }}
+        />
         <Section1
           data={data}
           energyDemand={energyDemand}
           energyPrice={energyPrice}
+          nextChapter={() => {
+            scroller.scrollTo("section2", {
+              duration: 500,
+              delay: 100,
+              smooth: true,
+            });
+          }}
         />
-        <Section2 data={data} energyDemand={energyDemand} />{" "}
+        <Section2
+          data={data}
+          energyDemand={energyDemand}
+          nextChapter={() => {
+            scroller.scrollTo("section3", {
+              duration: 500,
+              delay: 100,
+              smooth: true,
+            });
+          }}
+        />{" "}
         <Section3
           data={data}
           energyDemand={energyDemand}
           energyPrice={energyPrice}
+          nextChapter={() => {
+            scroller.scrollTo("section4", {
+              duration: 500,
+              delay: 100,
+              smooth: true,
+            });
+          }}
         />
         <Section4
           data={data}
@@ -73,7 +129,12 @@ export default function Home() {
         />
       </main>
 
-      <footer className="flex items-center justify-center w-full h-24 border-t"></footer>
+      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full h-24 border-t px-8">
+        <div>Research: credits lorem ipsum</div>
+        <div>
+          Website: design by Federica Fragapane, development by Paolo Corti
+        </div>
+      </footer>
     </div>
   );
 }

@@ -13,6 +13,7 @@ import InnerRadial from "./InnerRadial";
 import { useStore } from "../../store.js";
 import OuterRadial from "./OuterRadial.jsx";
 const isMobileWithTablet = false;
+import ReactTooltip from "react-tooltip";
 
 const months = [
   "January",
@@ -158,6 +159,8 @@ const RadarYear = ({
     });
   });
 
+  console.log("energyData", energyData);
+
   const energyPriceData = selectedEnergyPriceMonthData.map((v) => {
     const filtered = Object.entries(v).filter(([key]) => {
       return key !== "month" && key !== "region" && key !== "season";
@@ -254,6 +257,9 @@ const RadarYear = ({
                             //const index = activitiesCode[v.actCategory].index;
                             const index = parseInt(i / 2);
                             const value = posScale(index + 2);
+                            const time = moment(timeScale.invert(j)).format(
+                              "h:mma"
+                            );
                             return (
                               <g
                                 transform={`translate(0,0) rotate(${
@@ -292,6 +298,7 @@ const RadarYear = ({
                                         useStore.setState({
                                           hoverTime: j,
                                         });
+                                        ReactTooltip.rebuild();
                                       }}
                                       onMouseLeave={() => {
                                         useStore.setState({ hoverTime: null });
@@ -305,6 +312,10 @@ const RadarYear = ({
                                         fill={hoverTime === j ? "#000" : "none"}
                                         stroke="#000"
                                         strokeWidth={0.5}
+                                        data-tip={`<b>${time}</b> <br/> top activity: ${
+                                          v ? parseFloat(v).toFixed(2) : ""
+                                        } <br/> energy demand: x <br/> energy price: x`}
+                                        data-html="true"
                                       />
                                     </g>
 
@@ -347,9 +358,7 @@ const RadarYear = ({
                                     angle={angle}
                                     v={a}
                                     index={j}
-                                    time={moment(timeScale.invert(j)).format(
-                                      "h:mma"
-                                    )}
+                                    time={time}
                                     value={value}
                                     factor={v.actCategory}
                                     category={v.actCategory}
@@ -635,25 +644,37 @@ const RadarYear = ({
                 {[...Array(12).keys()].map((v) => {
                   const angle = v * 30;
                   return (
-                    <text
-                      x={width * 0.521 * Math.cos(degToRad(angle - 90))}
-                      y={width * 0.521 * Math.sin(degToRad(angle - 90))}
-                      dy={0}
-                      textAnchor="middle"
-                      fontSize={width * 0.02 < 14 ? width * 0.02 : 14}
-                      fill="#000"
-                      className={"radial-hour-label-months"}
-                      style={{
-                        transform: `rotate(${angle}deg)`,
-                        cursor: "pointer",
-                        opacity: selectedMonth ? 1 : 0.4,
-                      }}
-                      onClick={() =>
-                        selectedMonth ? setSelectedMonth(String(v + 1)) : null
+                    <g
+                      className={
+                        v >= 4 && v <= 9
+                          ? "radial-hour-label-months-rot"
+                          : "radial-hour-label-months"
                       }
                     >
-                      {months[v].toUpperCase()}
-                    </text>
+                      <text
+                        x={width * 0.521 * Math.cos(degToRad(angle - 90))}
+                        y={width * 0.521 * Math.sin(degToRad(angle - 90))}
+                        dy={0}
+                        textAnchor="middle"
+                        fontSize={width * 0.02 < 14 ? width * 0.02 : 14}
+                        fill="#000"
+                        className={
+                          v >= 5 && v <= 9
+                            ? "radial-hour-label-months-rot"
+                            : "radial-hour-label-months"
+                        }
+                        style={{
+                          transform: `rotate(${angle}deg)`,
+                          cursor: "pointer",
+                          opacity: selectedMonth ? 1 : 0.4,
+                        }}
+                        onClick={() =>
+                          selectedMonth ? setSelectedMonth(String(v + 1)) : null
+                        }
+                      >
+                        {months[v].toUpperCase()}
+                      </text>
+                    </g>
                   );
                 })}
               </g>

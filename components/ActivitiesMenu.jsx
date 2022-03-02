@@ -8,7 +8,7 @@ const ActivitiesMenu = ({
 }) => {
   return (
     <div className="my-0 px-4">
-      <div className="flex flex-wrap justify-start" style={{ width: "90%" }}>
+      <div className="flex flex-wrap justify-start">
         {activitiesArray.map((el) => {
           return (
             <div

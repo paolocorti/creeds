@@ -5,7 +5,7 @@ import RightColumn from "./RightColumn";
 import TrendYear from "./Trend/TrendYear";
 import { ParentSize } from "@visx/responsive";
 
-const Section2 = ({ data, energyDemand }) => {
+const Section2 = ({ data, energyDemand, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion, setSelCompareRegion] = useState([
@@ -26,7 +26,7 @@ const Section2 = ({ data, energyDemand }) => {
   };
 
   return (
-    <section className="w-full flex flex-col md:flex-row">
+    <section name="section2" className="w-full flex flex-col md:flex-row">
       <LeftColumn>
         <h2 className="subtitle">Unpacking peaks</h2>
         <p>
@@ -49,6 +49,17 @@ const Section2 = ({ data, energyDemand }) => {
               />
             )}
           </ParentSize>
+        </div>
+        <div className="flex justify-center">
+          <div
+            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer hover:bg-black"
+            style={{
+              fontSize: "11px",
+            }}
+            onClick={nextChapter}
+          >
+            NEXT CHAPTER ↓
+          </div>
         </div>
       </RightColumn>
     </section>

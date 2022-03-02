@@ -782,7 +782,281 @@ const Section4 = ({ data, energyDemand }) => {
     return flatten(final);
   });
 
-  //console.log("grouped2", grouped2);
+  const groupedEnergy = groupBy(energyDemand, "season");
+  const groupedEnergy1 = Object.values(groupedEnergy).map((v) =>
+    groupBy(v, "region")
+  );
+  const groupedEnergy2 = groupedEnergy1.map((v) => {
+    const values = Object.values(v);
+    const final = values.map((arr) => {
+      const filteredValues = Object.values(groupBy(arr, "act_category"));
+      const filteredReduced = filteredValues.map((values) => {
+        const filteredGroupedValues = Object.values(
+          groupBy(values, "act_type")
+        );
+        const reducedGroup = filteredGroupedValues.map((groupedValues) => {
+          const reduced = groupedValues.reduce(
+            (previousValue, currentValue) => {
+              const newObj = {
+                region: currentValue.region,
+                season: currentValue.season,
+                1: previousValue["1"]
+                  ? (parseFloat(previousValue["1"]) +
+                      parseFloat(currentValue["1"])) /
+                    2
+                  : parseFloat(currentValue["1"]),
+                2: previousValue["2"]
+                  ? (parseFloat(previousValue["2"]) +
+                      parseFloat(currentValue["2"])) /
+                    2
+                  : parseFloat(currentValue["2"]),
+                3: previousValue["3"]
+                  ? (parseFloat(previousValue["3"]) +
+                      parseFloat(currentValue["3"])) /
+                    2
+                  : parseFloat(currentValue["3"]),
+                4: previousValue["4"]
+                  ? (parseFloat(previousValue["4"]) +
+                      parseFloat(currentValue["4"])) /
+                    2
+                  : parseFloat(currentValue["4"]),
+                5: previousValue["5"]
+                  ? (parseFloat(previousValue["5"]) +
+                      parseFloat(currentValue["5"])) /
+                    2
+                  : parseFloat(currentValue["5"]),
+                6: previousValue["6"]
+                  ? (parseFloat(previousValue["6"]) +
+                      parseFloat(currentValue["6"])) /
+                    2
+                  : parseFloat(currentValue["6"]),
+                7: previousValue["7"]
+                  ? (parseFloat(previousValue["7"]) +
+                      parseFloat(currentValue["7"])) /
+                    2
+                  : parseFloat(currentValue["7"]),
+                8: previousValue["8"]
+                  ? (parseFloat(previousValue["8"]) +
+                      parseFloat(currentValue["8"])) /
+                    2
+                  : parseFloat(currentValue["8"]),
+                9: previousValue["9"]
+                  ? (parseFloat(previousValue["9"]) +
+                      parseFloat(currentValue["9"])) /
+                    2
+                  : parseFloat(currentValue["9"]),
+                10: previousValue["10"]
+                  ? (parseFloat(previousValue["10"]) +
+                      parseFloat(currentValue["10"])) /
+                    2
+                  : parseFloat(currentValue["10"]),
+                11: previousValue["11"]
+                  ? (parseFloat(previousValue["11"]) +
+                      parseFloat(currentValue["11"])) /
+                    2
+                  : parseFloat(currentValue["11"]),
+                12: previousValue["12"]
+                  ? (parseFloat(previousValue["12"]) +
+                      parseFloat(currentValue["12"])) /
+                    2
+                  : parseFloat(currentValue["12"]),
+                13: previousValue["13"]
+                  ? (parseFloat(previousValue["13"]) +
+                      parseFloat(currentValue["13"])) /
+                    2
+                  : parseFloat(currentValue["13"]),
+                14: previousValue["14"]
+                  ? (parseFloat(previousValue["14"]) +
+                      parseFloat(currentValue["14"])) /
+                    2
+                  : parseFloat(currentValue["14"]),
+                15: previousValue["15"]
+                  ? (parseFloat(previousValue["15"]) +
+                      parseFloat(currentValue["15"])) /
+                    2
+                  : parseFloat(currentValue["15"]),
+                16: previousValue["16"]
+                  ? (parseFloat(previousValue["16"]) +
+                      parseFloat(currentValue["16"])) /
+                    2
+                  : parseFloat(currentValue["16"]),
+                17: previousValue["17"]
+                  ? (parseFloat(previousValue["17"]) +
+                      parseFloat(currentValue["17"])) /
+                    2
+                  : parseFloat(currentValue["17"]),
+                18: previousValue["18"]
+                  ? (parseFloat(previousValue["18"]) +
+                      parseFloat(currentValue["18"])) /
+                    2
+                  : parseFloat(currentValue["18"]),
+                19: previousValue["19"]
+                  ? (parseFloat(previousValue["19"]) +
+                      parseFloat(currentValue["19"])) /
+                    2
+                  : parseFloat(currentValue["19"]),
+                20: previousValue["20"]
+                  ? (parseFloat(previousValue["20"]) +
+                      parseFloat(currentValue["20"])) /
+                    2
+                  : parseFloat(currentValue["20"]),
+                21: previousValue["21"]
+                  ? (parseFloat(previousValue["21"]) +
+                      parseFloat(currentValue["21"])) /
+                    2
+                  : parseFloat(currentValue["21"]),
+                22: previousValue["22"]
+                  ? (parseFloat(previousValue["22"]) +
+                      parseFloat(currentValue["22"])) /
+                    2
+                  : parseFloat(currentValue["22"]),
+                23: previousValue["23"]
+                  ? (parseFloat(previousValue["23"]) +
+                      parseFloat(currentValue["23"])) /
+                    2
+                  : parseFloat(currentValue["23"]),
+                24: previousValue["24"]
+                  ? (parseFloat(previousValue["24"]) +
+                      parseFloat(currentValue["24"])) /
+                    2
+                  : parseFloat(currentValue["24"]),
+                25: previousValue["25"]
+                  ? (parseFloat(previousValue["25"]) +
+                      parseFloat(currentValue["25"])) /
+                    2
+                  : parseFloat(currentValue["25"]),
+                26: previousValue["26"]
+                  ? (parseFloat(previousValue["26"]) +
+                      parseFloat(currentValue["26"])) /
+                    2
+                  : parseFloat(currentValue["26"]),
+                27: previousValue["27"]
+                  ? (parseFloat(previousValue["27"]) +
+                      parseFloat(currentValue["27"])) /
+                    2
+                  : parseFloat(currentValue["27"]),
+                28: previousValue["28"]
+                  ? (parseFloat(previousValue["28"]) +
+                      parseFloat(currentValue["28"])) /
+                    2
+                  : parseFloat(currentValue["28"]),
+                29: previousValue["29"]
+                  ? (parseFloat(previousValue["29"]) +
+                      parseFloat(currentValue["29"])) /
+                    2
+                  : parseFloat(currentValue["29"]),
+                30: previousValue["30"]
+                  ? (parseFloat(previousValue["30"]) +
+                      parseFloat(currentValue["30"])) /
+                    2
+                  : parseFloat(currentValue["30"]),
+                31: previousValue["31"]
+                  ? (parseFloat(previousValue["31"]) +
+                      parseFloat(currentValue["31"])) /
+                    2
+                  : parseFloat(currentValue["31"]),
+                32: previousValue["32"]
+                  ? (parseFloat(previousValue["32"]) +
+                      parseFloat(currentValue["32"])) /
+                    2
+                  : parseFloat(currentValue["32"]),
+                33: previousValue["33"]
+                  ? (parseFloat(previousValue["33"]) +
+                      parseFloat(currentValue["33"])) /
+                    2
+                  : parseFloat(currentValue["33"]),
+                34: previousValue["34"]
+                  ? (parseFloat(previousValue["34"]) +
+                      parseFloat(currentValue["34"])) /
+                    2
+                  : parseFloat(currentValue["34"]),
+                35: previousValue["35"]
+                  ? (parseFloat(previousValue["35"]) +
+                      parseFloat(currentValue["35"])) /
+                    2
+                  : parseFloat(currentValue["35"]),
+                36: previousValue["36"]
+                  ? (parseFloat(previousValue["36"]) +
+                      parseFloat(currentValue["36"])) /
+                    2
+                  : parseFloat(currentValue["36"]),
+                37: previousValue["37"]
+                  ? (parseFloat(previousValue["37"]) +
+                      parseFloat(currentValue["37"])) /
+                    2
+                  : parseFloat(currentValue["37"]),
+                38: previousValue["38"]
+                  ? (parseFloat(previousValue["38"]) +
+                      parseFloat(currentValue["38"])) /
+                    2
+                  : parseFloat(currentValue["38"]),
+                39: previousValue["39"]
+                  ? (parseFloat(previousValue["39"]) +
+                      parseFloat(currentValue["39"])) /
+                    2
+                  : parseFloat(currentValue["39"]),
+                40: previousValue["40"]
+                  ? (parseFloat(previousValue["40"]) +
+                      parseFloat(currentValue["40"])) /
+                    2
+                  : parseFloat(currentValue["40"]),
+                41: previousValue["41"]
+                  ? (parseFloat(previousValue["41"]) +
+                      parseFloat(currentValue["41"])) /
+                    2
+                  : parseFloat(currentValue["41"]),
+                42: previousValue["42"]
+                  ? (parseFloat(previousValue["42"]) +
+                      parseFloat(currentValue["42"])) /
+                    2
+                  : parseFloat(currentValue["42"]),
+                43: previousValue["43"]
+                  ? (parseFloat(previousValue["43"]) +
+                      parseFloat(currentValue["43"])) /
+                    2
+                  : parseFloat(currentValue["43"]),
+                44: previousValue["44"]
+                  ? (parseFloat(previousValue["44"]) +
+                      parseFloat(currentValue["44"])) /
+                    2
+                  : parseFloat(currentValue["44"]),
+                45: previousValue["45"]
+                  ? (parseFloat(previousValue["45"]) +
+                      parseFloat(currentValue["45"])) /
+                    2
+                  : parseFloat(currentValue["45"]),
+                46: previousValue["46"]
+                  ? (parseFloat(previousValue["46"]) +
+                      parseFloat(currentValue["46"])) /
+                    2
+                  : parseFloat(currentValue["46"]),
+                47: previousValue["47"]
+                  ? (parseFloat(previousValue["47"]) +
+                      parseFloat(currentValue["47"])) /
+                    2
+                  : parseFloat(currentValue["47"]),
+                48: previousValue["48"]
+                  ? (parseFloat(previousValue["48"]) +
+                      parseFloat(currentValue["48"])) /
+                    2
+                  : parseFloat(currentValue["48"]),
+              };
+              return newObj;
+            },
+            {}
+          );
+          return reduced;
+        });
+        return reducedGroup;
+      });
+
+      return flatten(filteredReduced);
+    });
+
+    return flatten(final);
+  });
+
+  console.log("groupedEnergy2", groupedEnergy2);
 
   const seasonData1 =
     selectedCompareSeason[0] !== undefined
@@ -792,15 +1066,11 @@ const Section4 = ({ data, energyDemand }) => {
     ? flatten(grouped2[selectedCompareSeason[1]])
     : [];
 
-  console.log("seasonData1", seasonData1);
-  console.log("seasonData2", seasonData2);
-
-  // const aggregated = grouped.map((v) => {
-  //   console.log(v);
-  // });
-
   return (
-    <section className="w-full min-h-screen flex flex-col md:flex-row">
+    <section
+      name="section4"
+      className="w-full min-h-screen flex flex-col md:flex-row"
+    >
       <LeftColumn>
         <h2 className="subtitle">Seasons of the year</h2>
         <p>
@@ -821,10 +1091,15 @@ const Section4 = ({ data, energyDemand }) => {
       <RightColumn>
         <div className="flex w-full flex-col">
           <div>
-            <div
-              className="radial-overview-toolbar text-left"
-              style={{ height: "auto" }}
-            ></div>
+            <div className="" style={{ height: "auto" }}>
+              <p className="text-center">
+                The graphic shows electricity demand (the extrernal white
+                trend), gas demand (the extrernal black trend), activities’
+                frequency and energy price every 30 minutes by season. The
+                circle’s area represents the activity’s frequency. Select the
+                seasons and the activities to explore the data
+              </p>
+            </div>
           </div>
           <SeasonMenu
             setSelectedCompareSeason={setSelectedCompareSeason}
@@ -845,7 +1120,7 @@ const Section4 = ({ data, energyDemand }) => {
                   {(parent) => (
                     <RadarYear
                       globalData={seasonData1 || []}
-                      energyDemand={energyDemand}
+                      energyDemand={groupedEnergy2 || []}
                       energyPrice={[]}
                       selectedRegion={"all"}
                       selectedMonth={selectedMonth}

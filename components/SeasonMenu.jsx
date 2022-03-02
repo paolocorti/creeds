@@ -7,7 +7,7 @@ const SeasonMenu = ({
     <div className="my-0 px-4">
       <div className="flex flex-wrap justify-start">
         <div
-          className="mx-2 cursor-pointer regionButton"
+          className="mx-2 cursor-pointer seasonButton"
           style={{
             textDecoration: selectedCompareSeason.includes(0)
               ? "underline"
@@ -26,7 +26,7 @@ const SeasonMenu = ({
           )}
         </div>
         <div
-          className="mx-2 cursor-pointer regionButton"
+          className="mx-2 cursor-pointer seasonButton"
           style={{
             textDecoration: selectedCompareSeason.includes(1)
               ? "underline"
@@ -45,7 +45,7 @@ const SeasonMenu = ({
           )}
         </div>
         <div
-          className="mx-2 cursor-pointer regionButton"
+          className="mx-2 cursor-pointer seasonButton"
           style={{
             textDecoration: selectedCompareSeason.includes(2)
               ? "underline"
@@ -64,7 +64,7 @@ const SeasonMenu = ({
           )}
         </div>
         <div
-          className="mx-2 cursor-pointer regionButton"
+          className="mx-2 cursor-pointer seasonButton"
           style={{
             textDecoration: selectedCompareSeason.includes(3)
               ? "underline"

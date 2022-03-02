@@ -6,7 +6,7 @@ import RadarVerticalLegend from "./Radar/RadarVeticalLegend";
 import RadarYear from "./Radar/RadarYear";
 import { ParentSize } from "@visx/responsive";
 
-const Section1 = ({ data, energyDemand, energyPrice }) => {
+const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion, setSelCompareRegion] = useState([
@@ -14,7 +14,7 @@ const Section1 = ({ data, energyDemand, energyPrice }) => {
     "south_east",
   ]);
   const hoverCategory = useStore((state) => state.hoverCategory);
-  const selectedCategory = useStore((state) => state.selectedCategory);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const setSelectedCompareRegion = (val) => {
     if (selectedCompareRegion.length < 2) {
@@ -27,7 +27,10 @@ const Section1 = ({ data, energyDemand, energyPrice }) => {
   };
 
   return (
-    <section className="w-full min-h-screen flex flex-col md:flex-row">
+    <section
+      name="section1"
+      className="w-full min-h-screen flex flex-col md:flex-row"
+    >
       <LeftColumn>
         <h2 className="subtitle">
           Activities, demand and price every 30 minutes
@@ -52,15 +55,15 @@ const Section1 = ({ data, energyDemand, energyPrice }) => {
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full">
             <p className="text-center">
-              The graphic shows energy demand, activities and energy price every
-              30 minutes. The circle’s area represents the activity’s frequency.
-              Select the month or the activities in the graphic or in the legend
-              to explore the data
+              The graphic shows energy demand, activities’ frequency and energy
+              price every 30 minutes. The circle’s area represents the
+              activity’s frequency. Select the month or the activities in the
+              graphic or in the legend to explore the data
             </p>
           </div>
           <div className="flex w-full justify-center">
             <div
-              className="w-full md:w-2/3 px-8"
+              className="w-full md:w-1/2 px-8"
               style={{
                 maxWidth: "85vh",
               }}
@@ -75,13 +78,14 @@ const Section1 = ({ data, energyDemand, energyPrice }) => {
                     selectedMonth={selectedMonth}
                     setSelectedMonth={setSelectedMonth}
                     width={parent.width}
+                    selectedCategory={selectedCategory}
                   />
                 )}
               </ParentSize>
             </div>
             <div className="w-full md:w-1/3 px-8">
               <div className="flex flex-col">
-                <div
+                {/* <div
                   className="radial-overview-toolbar text-left"
                   style={{ height: "auto" }}
                 >
@@ -89,12 +93,26 @@ const Section1 = ({ data, energyDemand, energyPrice }) => {
                   hour. Each circle is an activity, the colors indicate
                   macro-categories, the size indicates the frequency. The blue
                   internal shape indicates the price by hour.
-                </div>
+                </div> */}
                 <div className="mt-4">
-                  <RadarVerticalLegend />
+                  <RadarVerticalLegend
+                    setSelectedCategory={setSelectedCategory}
+                    selectedCategory={selectedCategory}
+                  />
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <div
+            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer"
+            style={{
+              fontSize: "11px",
+            }}
+            onClick={nextChapter}
+          >
+            NEXT CHAPTER ↓
           </div>
         </div>
       </RightColumn>

@@ -30,9 +30,11 @@ const RadarCircleYear = ({
         r={radius}
         fill={colorByCategory[category]}
         fillOpacity={0.8}
-        data-tip={`<b>${time}</b> <br/> ${activitiesCode[factor].value} | ${
+        data-tip={`<b>${time}</b> <br/> ${
+          activitiesCode[factor].value
+        } frequency: ${
           v ? parseFloat(v).toFixed(2) : ""
-        } <br/> Energy Demand: x <br/> Energy Price: x`}
+        } <br/> energy demand: x <br/> energy price: x`}
         data-html="true"
         onMouseEnter={() => {
           useStore.setState({
