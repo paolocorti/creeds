@@ -85,13 +85,13 @@ p {
   transform: rotate(180deg);
 }
 
-.animation-width {
+/* .animation-width {
   transition: 0.5s width;
-}
+} */
 
-.circleAnimation {
-  transition: 0.5s all;
-}
+/* .circleAnimation {
+  transition: 0.2s radius;
+} */
 
 .regionButton {
   width: 200px;

@@ -15,7 +15,7 @@ const RightColumn = ({ children }) => {
           onClick={() => useStore.setState({ expanded: !expanded })}
           style={{ left: "-2px" }}
         >
-          <img src={"/expand.svg"} width={30} />
+          <img src={"/expand.svg"} width={26} />
         </div>
       )}
     </div>
