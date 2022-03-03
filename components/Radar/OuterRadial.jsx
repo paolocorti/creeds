@@ -1,12 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Group } from "@visx/group";
 import { LineRadial } from "@visx/shape";
-import { scaleTime, scaleLog, NumberLike, scaleLinear } from "@visx/scale";
-import { curveBasisOpen } from "@visx/curve";
-import { LinearGradient } from "@visx/gradient";
-import { AxisLeft } from "@visx/axis";
-import { GridRadial, GridAngle } from "@visx/grid";
-import { animated, useSpring } from "react-spring";
+import { scaleTime, scaleLinear } from "@visx/scale";
+import { curveLinear } from "@visx/curve";
+import { animated } from "react-spring";
 
 // utils
 function extent(data, value) {
@@ -18,10 +15,8 @@ const date = (d) => {
   return d && d.time;
 };
 const close = (d) => parseFloat(d.value);
-const formatTicks = (val) => String(val);
 
-const OuterRadial = ({ width, height, data, svgWidth }) => {
-  // scales
+const OuterRadial = ({ width, height, data, line }) => {
   const xScale = scaleTime({
     range: [0, 6.28],
     domain: extent(data, date),
@@ -34,14 +29,9 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
   const radius = (d) => yScale(close(d)) ?? 0;
   const padding = 20;
 
-  const firstPoint = data[0];
-  const lastPoint = data[data.length - 1];
-
   const lineRef = useRef(null);
   const [lineLength, setLineLength] = useState(0);
-  const [shouldAnimate, setShouldAnimate] = useState(false);
 
-  // set line length once it is known after initial render
   const effectDependency = lineRef.current;
   useEffect(() => {
     if (lineRef.current) {
@@ -53,11 +43,10 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
 
   const circleRadius = width / 2;
   yScale.range([circleRadius * 0.85, circleRadius * 0.95]);
-  const reverseYScale = yScale.copy().range(yScale.range().reverse());
 
   return (
     <Group top={0} left={0}>
-      <LineRadial angle={angle} radius={radius} curve={curveBasisOpen}>
+      <LineRadial angle={angle} radius={radius} curve={curveLinear}>
         {({ path }) => {
           const d = path(data) || "";
           return (
@@ -65,35 +54,16 @@ const OuterRadial = ({ width, height, data, svgWidth }) => {
               <animated.path
                 d={d}
                 ref={lineRef}
-                strokeWidth={2}
+                strokeWidth={1}
                 strokeOpacity={0.8}
                 strokeLinecap="round"
-                fill={"#fff"}
+                fill={line ? "none" : "#fff"}
+                stroke={line ? "#000" : "none"}
               />
             </>
           );
         }}
       </LineRadial>
-
-      {/* <AxisLeft
-        top={0}
-        scale={yScale}
-        numTicks={5}
-        tickStroke="none"
-        tickLabelProps={(val) => ({
-          fontSize: 8,
-          fill: "red",
-          fillOpacity: 1,
-          textAnchor: "middle",
-          dx: "1em",
-          dy: "-0.5em",
-          stroke: "black",
-          strokeWidth: 0.5,
-          paintOrder: "stroke",
-        })}
-        tickFormat={formatTicks}
-        hideAxisLine
-      /> */}
     </Group>
   );
 };

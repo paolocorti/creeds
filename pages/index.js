@@ -35,6 +35,8 @@ export default function Home() {
 
     csv("/data/mean_daily_gas_demand_profiles.csv").then((values) => {
       setGasDemand(values);
+
+      console.log(values);
     });
 
     csv("/data/hourly_average_price_electricity.csv").then((values) => {
@@ -125,6 +127,7 @@ export default function Home() {
         <Section4
           data={data}
           energyDemand={energyDemand}
+          gasDemand={gasDemand}
           energyPrice={energyPrice}
         />
       </main>

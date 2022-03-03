@@ -67,6 +67,7 @@ const RadarYear = ({
   selectedMonth,
   globalData,
   energyDemand,
+  gasDemand = [],
   energyPrice,
   width,
   setSelectedMonth,
@@ -94,9 +95,28 @@ const RadarYear = ({
   const selectedEnergyDataRegion = energyDemand.filter(
     (v) => v.region === selectedRegion
   );
-  const selectedEnergyMonthData = selectedEnergyDataRegion.filter(
-    (v) => v.month === selectedMonth
+
+  let selectedEnergyMonthData;
+  if (selectedMonth) {
+    selectedEnergyMonthData = selectedEnergyDataRegion.filter(
+      (v) => v.month === selectedMonth
+    );
+  } else {
+    selectedEnergyMonthData = selectedEnergyDataRegion;
+  }
+
+  const selectedGasDataRegion = gasDemand.filter(
+    (v) => v.region === selectedRegion
   );
+
+  let selectedGasMonthData;
+  if (selectedMonth) {
+    selectedGasMonthData = selectedGasDataRegion.filter(
+      (v) => v.month === selectedMonth
+    );
+  } else {
+    selectedGasMonthData = selectedGasDataRegion;
+  }
 
   const selectedEnergyPriceMonthData = energyPrice.filter(
     (v) => v.month === selectedMonth
@@ -146,6 +166,14 @@ const RadarYear = ({
     .range([0, 24])
     .domain([new Date(`2021-01-01T04:00:00`), new Date(`2021-01-02T04:00:00`)]);
 
+  const timeScale3 = scaleTime()
+    .range([0, 144 / 3])
+    .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
+
+  const timeScale4 = scaleTime()
+    .range([0, 24])
+    .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
+
   const energyData = selectedEnergyMonthData.map((v) => {
     const filtered = Object.entries(v).filter(([key]) => {
       return key !== "month" && key !== "region" && key !== "season";
@@ -153,13 +181,27 @@ const RadarYear = ({
 
     return filtered.map((v) => {
       return {
-        time: timeScale.invert(parseInt(v[0])),
+        time: timeScale3.invert(parseInt(v[0])),
         value: parseFloat(v[1]),
       };
     });
   });
 
-  console.log("energyData", energyData);
+  let gasData;
+  if (selectedGasMonthData) {
+    gasData = selectedGasMonthData.map((v) => {
+      const filtered = Object.entries(v).filter(([key]) => {
+        return key !== "month" && key !== "region" && key !== "season";
+      });
+
+      return filtered.map((v) => {
+        return {
+          time: timeScale3.invert(parseInt(v[0])),
+          value: parseFloat(v[1]),
+        };
+      });
+    });
+  }
 
   const energyPriceData = selectedEnergyPriceMonthData.map((v) => {
     const filtered = Object.entries(v).filter(([key]) => {
@@ -168,7 +210,7 @@ const RadarYear = ({
 
     return filtered.map((v) => {
       return {
-        time: timeScale2.invert(parseInt(v[0])),
+        time: timeScale4.invert(parseInt(v[0])),
         value: parseFloat(v[1]),
       };
     });
@@ -221,6 +263,15 @@ const RadarYear = ({
                   svgWidth={width}
                 />
               )}
+              {showPrice && gasData && (
+                <OuterRadial
+                  data={gasData.length ? gasData[0] : []}
+                  width={width * 0.95}
+                  height={width * 0.95}
+                  svgWidth={width}
+                  line={true}
+                />
+              )}
             </g>
             <circle
               cx={width * 0.6}
@@ -231,142 +282,137 @@ const RadarYear = ({
 
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
               {sorted.length &&
-                sorted
-                  // .filter((v, i) => {
-                  //   return i === 2;
-                  // })
-                  .map((v, i) => {
-                    const degAngle = (360 / 144) * 3;
-                    const angle = degToRad(degAngle);
-                    const angle2 = degToRad(360 / 48);
+                sorted.map((v, i) => {
+                  const degAngle = (360 / 144) * 3;
+                  const angle = degToRad(degAngle);
+                  const angle2 = degToRad(360 / 48);
 
-                    return (
-                      <g
-                        key={i}
-                        style={{
-                          transtion: "opacity 0.2s",
-                          opacity: 1,
-                          transform: "rotate(-120deg)",
-                        }}
-                      >
-                        {v.actValues
-                          .filter((v, i) => {
-                            return i % 3 === 0;
-                          })
-                          .map((a, j) => {
-                            //const index = activitiesCode[v.actCategory].index;
-                            const index = parseInt(i / 2);
-                            const value = posScale(index + 2);
-                            const time = moment(timeScale.invert(j)).format(
-                              "h:mma"
-                            );
-                            return (
-                              <g
-                                transform={`translate(0,0) rotate(${
-                                  (360 / 48) * j
-                                })`}
-                                style={{
-                                  opacity:
-                                    hoverCategory || selectedCategory
-                                      ? hoverCategory === v.actCategory ||
-                                        selectedCategory === v.actCategory
-                                        ? 1
-                                        : 0.2
-                                      : hoverTime
-                                      ? hoverTime === j
-                                        ? 1
-                                        : 0.2
-                                      : 1,
-                                }}
-                              >
-                                {i === 0 && (
-                                  <g>
-                                    <line
-                                      x1={0}
-                                      y1={0}
-                                      x2={0}
-                                      y2={(width / 2) * 0.9}
-                                      stroke="#49494a"
+                  return (
+                    <g
+                      key={i}
+                      style={{
+                        transtion: "opacity 0.2s",
+                        opacity: 1,
+                        transform: "rotate(-120deg)",
+                      }}
+                    >
+                      {v.actValues
+                        .filter((v, i) => {
+                          return i % 3 === 0;
+                        })
+                        .map((a, j) => {
+                          //const index = activitiesCode[v.actCategory].index;
+                          const index = parseInt(i / 2);
+                          const value = posScale(index + 2);
+                          const time = moment(timeScale.invert(j)).format(
+                            "h:mma"
+                          );
+
+                          console.log(v.actCategory, a, time, j);
+
+                          return (
+                            <g
+                              transform={`translate(0,0) rotate(${
+                                (360 / 48) * j
+                              })`}
+                              style={{
+                                opacity:
+                                  hoverCategory || selectedCategory
+                                    ? hoverCategory === v.actCategory ||
+                                      selectedCategory === v.actCategory
+                                      ? 1
+                                      : 0.2
+                                    : hoverTime
+                                    ? hoverTime === j
+                                      ? 1
+                                      : 0.2
+                                    : 1,
+                              }}
+                            >
+                              {i === 0 && (
+                                <g>
+                                  <line
+                                    x1={0}
+                                    y1={0}
+                                    x2={0}
+                                    y2={(width / 2) * 0.9}
+                                    stroke="#49494a"
+                                    strokeWidth={0.5}
+                                    strokeOpacity={0.5}
+                                  />
+                                  <g
+                                    transform={`translate(-4, ${
+                                      (width / 2) * 0.9
+                                    })`}
+                                    onMouseEnter={() => {
+                                      useStore.setState({
+                                        hoverTime: j,
+                                      });
+                                      ReactTooltip.rebuild();
+                                    }}
+                                    onMouseLeave={() => {
+                                      useStore.setState({ hoverTime: null });
+                                    }}
+                                    style={{
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    <path
+                                      d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
+                                      fill={hoverTime === j ? "#000" : "none"}
+                                      stroke="#000"
                                       strokeWidth={0.5}
-                                      strokeOpacity={0.5}
+                                      data-tip={`<b>${time}</b> <br/> top activity: ${
+                                        v ? parseFloat(v).toFixed(2) : ""
+                                      } <br/> energy demand: x <br/> energy price: x`}
+                                      data-html="true"
                                     />
-                                    <g
-                                      transform={`translate(-4, ${
-                                        (width / 2) * 0.9
-                                      })`}
+                                  </g>
+
+                                  {j % 2 === 0 && (
+                                    <text
+                                      dx={0}
+                                      dy={(width / 2) * 0.98}
+                                      textAnchor={"middle"}
+                                      className={
+                                        j > 26 || j < 6
+                                          ? "radial-hour-label-rot"
+                                          : "radial-hour-label"
+                                      }
                                       onMouseEnter={() => {
                                         useStore.setState({
                                           hoverTime: j,
                                         });
-                                        ReactTooltip.rebuild();
                                       }}
                                       onMouseLeave={() => {
-                                        useStore.setState({ hoverTime: null });
+                                        useStore.setState({
+                                          hoverTime: null,
+                                        });
                                       }}
                                       style={{
-                                        cursor: "pointer",
+                                        fontSize:
+                                          width * 0.02 < 14 ? width * 0.02 : 14,
                                       }}
                                     >
-                                      <path
-                                        d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
-                                        fill={hoverTime === j ? "#000" : "none"}
-                                        stroke="#000"
-                                        strokeWidth={0.5}
-                                        data-tip={`<b>${time}</b> <br/> top activity: ${
-                                          v ? parseFloat(v).toFixed(2) : ""
-                                        } <br/> energy demand: x <br/> energy price: x`}
-                                        data-html="true"
-                                      />
-                                    </g>
-
-                                    {j % 2 === 0 && (
-                                      <text
-                                        dx={0}
-                                        dy={(width / 2) * 0.98}
-                                        textAnchor={"middle"}
-                                        className={
-                                          j > 26 || j < 6
-                                            ? "radial-hour-label-rot"
-                                            : "radial-hour-label"
-                                        }
-                                        onMouseEnter={() => {
-                                          useStore.setState({
-                                            hoverTime: j,
-                                          });
-                                        }}
-                                        onMouseLeave={() => {
-                                          useStore.setState({
-                                            hoverTime: null,
-                                          });
-                                        }}
-                                        style={{
-                                          fontSize:
-                                            width * 0.02 < 14
-                                              ? width * 0.02
-                                              : 14,
-                                        }}
-                                      >
-                                        {moment(timeScale.invert(j)).format(
-                                          "ha"
-                                        )}
-                                      </text>
-                                    )}
-                                  </g>
-                                )}
-                                {v.actType === "main" && (
-                                  <RadarCircleYear
-                                    angle={angle}
-                                    v={a}
-                                    index={j}
-                                    time={time}
-                                    value={value}
-                                    factor={v.actCategory}
-                                    category={v.actCategory}
-                                    color={v.actType}
-                                    width={width}
-                                  />
-                                )}
-                                {/* {j === 40 && (
+                                      {moment(timeScale.invert(j)).format("ha")}
+                                    </text>
+                                  )}
+                                </g>
+                              )}
+                              {v.actType === "main" && (
+                                <RadarCircleYear
+                                  angle={angle}
+                                  v={a}
+                                  index={j}
+                                  time={time}
+                                  value={value}
+                                  factor={v.actCategory}
+                                  category={v.actCategory}
+                                  color={v.actType}
+                                  width={width}
+                                />
+                              )}
+                              {/* {j === 40 && (
                                   <text
                                     dx={12}
                                     dy={value + 4}
@@ -380,12 +426,12 @@ const RadarYear = ({
                                     {v.actCategory}
                                   </text>
                                 )} */}
-                              </g>
-                            );
-                          })}
-                      </g>
-                    );
-                  })}
+                            </g>
+                          );
+                        })}
+                    </g>
+                  );
+                })}
             </g>
 
             {showDemand ? (
