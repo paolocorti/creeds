@@ -161,3 +161,7 @@ p {
   align-items: center;
   margin-top: 45px;
 }
+
+.blend {
+  mix-blend-mode: hard-light;
+}
