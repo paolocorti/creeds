@@ -143,3 +143,9 @@ p {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
+
+.slick-slider {
+  display: flex;
+  align-items: center;
+  margin-top: 45px;
+}

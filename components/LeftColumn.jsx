@@ -5,7 +5,7 @@ const LeftColumn = ({ children }) => {
 
   return (
     <div
-      className={`w-full bg-green px-8 py-8 border-r border-b border-black relative animation-width overflow-hidden`}
+      className={`w-full bg-green px-8 py-8 border-b border-black relative animation-width overflow-hidden`}
       style={{ width: expanded ? "28%" : "7%" }}
     >
       {expanded && <>{children}</>}

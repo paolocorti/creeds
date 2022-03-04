@@ -66,6 +66,12 @@ export default function Home() {
           name="viewport"
           content="width=device-width,initial-scale=1,shrink-to-fit=no"
         />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charset="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
       </Head>
 
       <ReactTooltip effect="solid" backgroundColor="#111" />
@@ -132,7 +138,7 @@ export default function Home() {
         />
       </main>
 
-      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full h-24 border-t px-8">
+      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full h-24  px-8">
         <div>Research: credits lorem ipsum</div>
         <div>
           Website: design by Federica Fragapane, development by Paolo Corti

@@ -1,5 +1,7 @@
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
+import Link from "next/link";
+
 const Intro = ({ nextChapter }) => {
   return (
     <section
@@ -7,6 +9,11 @@ const Intro = ({ nextChapter }) => {
       className="w-full flex flex-col md:flex-row min-h-screen"
     >
       <LeftColumn>
+        <div className="cursor-pointer">
+          <Link href={"/about"}>
+            <img src="/about.svg" width={80} />
+          </Link>
+        </div>
         <h1
           className="text-left leading-snug"
           style={{

@@ -1,88 +1,63 @@
-const SeasonMenu = ({
-  selectedCompareSeason,
-  setSelectedCompareSeason,
-  unsetSelectedCompareSeason,
-}) => {
-  return (
-    <div className="my-0 px-4">
-      <div className="flex flex-wrap justify-start">
-        <div
-          className="mx-2 cursor-pointer seasonButton"
-          style={{
-            textDecoration: selectedCompareSeason.includes(0)
-              ? "underline"
-              : "none",
-          }}
-          onClick={() => setSelectedCompareSeason(0)}
+import Slider from "react-slick";
+
+const SeasonMenu = ({ selectedCompareSeason, setSelected }) => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    afterChange: (current) => {
+      setSelected(current);
+    },
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div className={className} onClick={onClick}>
+        <svg
+          width="8"
+          height="14"
+          viewBox="0 0 8 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="cursor-pointer"
         >
-          Winter
-          {selectedCompareSeason.includes(0) && (
-            <span
-              className="ml-2"
-              onClick={() => unsetSelectedCompareSeason(0)}
-            >
-              <img src={"/close.svg"} width={9} />
-            </span>
-          )}
-        </div>
-        <div
-          className="mx-2 cursor-pointer seasonButton"
-          style={{
-            textDecoration: selectedCompareSeason.includes(1)
-              ? "underline"
-              : "none",
-          }}
-          onClick={() => setSelectedCompareSeason(1)}
-        >
-          Spring
-          {selectedCompareSeason.includes(1) && (
-            <span
-              className="ml-2"
-              onClick={() => unsetSelectedCompareSeason(1)}
-            >
-              <img src={"/close.svg"} width={9} />
-            </span>
-          )}
-        </div>
-        <div
-          className="mx-2 cursor-pointer seasonButton"
-          style={{
-            textDecoration: selectedCompareSeason.includes(2)
-              ? "underline"
-              : "none",
-          }}
-          onClick={() => setSelectedCompareSeason(2)}
-        >
-          Summer
-          {selectedCompareSeason.includes(2) && (
-            <span
-              className="ml-2"
-              onClick={() => unsetSelectedCompareSeason(2)}
-            >
-              <img src={"/close.svg"} width={9} />
-            </span>
-          )}
-        </div>
-        <div
-          className="mx-2 cursor-pointer seasonButton"
-          style={{
-            textDecoration: selectedCompareSeason.includes(3)
-              ? "underline"
-              : "none",
-          }}
-          onClick={() => setSelectedCompareSeason(3)}
-        >
-          Autumn
-          {selectedCompareSeason.includes(3) && (
-            <span
-              className="ml-2"
-              onClick={() => unsetSelectedCompareSeason(3)}
-            >
-              <img src={"/close.svg"} width={9} />
-            </span>
-          )}
-        </div>
+          <path d="M1 1L7 7L1 13" stroke="black" />
+        </svg>
       </div>
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div className={className} onClick={onClick}>
+        <svg
+          width="8"
+          height="14"
+          viewBox="0 0 8 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="cursor-pointer"
+        >
+          <path d="M7 13L1 7L7 1" stroke="black" />
+        </svg>
+      </div>
+    );
+  }
+
+  return (
+    <div className="my-0 px-32">
+      <Slider {...settings}>
+        <div className="mx-2 cursor-pointer seasonButton">Winter</div>
+        <div className="mx-2 cursor-pointer seasonButton">Spring</div>
+        <div className="mx-2 cursor-pointer seasonButton">Summer</div>
+        <div className="mx-2 cursor-pointer seasonButton">Autumn</div>
+      </Slider>
     </div>
   );
 };

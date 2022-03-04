@@ -13,20 +13,11 @@ const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
 const Section4 = ({ data, energyDemand, gasDemand }) => {
   const [selectedMonth, setSelectedMonth] = useState(null);
-  const [selectedCompareSeason, setSelCompareSeason] = useState([0, 1]);
+  const [selectedCompareSeason1, setSelectedCompareSeason1] = useState(0);
+  const [selectedCompareSeason2, setSelectedCompareSeason2] = useState(1);
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const hoverCategory = useStore((state) => state.hoverCategory);
-
-  const setSelectedCompareSeason = (val) => {
-    if (selectedCompareSeason.length < 2) {
-      setSelCompareSeason((state) => [...state, val]);
-    }
-  };
-
-  const unsetSelectedCompareSeason = (val) => {
-    setSelCompareSeason(selectedCompareSeason.filter((state) => state !== val));
-  };
 
   const grouped = groupBy(data, "season");
   const grouped1 = Object.values(grouped).map((v) => groupBy(v, "region"));
@@ -1331,27 +1322,27 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
   });
 
   const seasonData1 =
-    selectedCompareSeason[0] !== undefined
-      ? flatten(grouped2[selectedCompareSeason[0]])
+    selectedCompareSeason1 !== undefined
+      ? flatten(grouped2[selectedCompareSeason1])
       : [];
-  const seasonData2 = selectedCompareSeason[1]
-    ? flatten(grouped2[selectedCompareSeason[1]])
+  const seasonData2 = selectedCompareSeason2
+    ? flatten(grouped2[selectedCompareSeason2])
     : [];
 
   const energyData1 =
-    selectedCompareSeason[0] !== undefined
-      ? flatten(groupedEnergy2[selectedCompareSeason[0]])
+    selectedCompareSeason1 !== undefined
+      ? flatten(groupedEnergy2[selectedCompareSeason1])
       : [];
-  const energyData2 = selectedCompareSeason[1]
-    ? flatten(groupedEnergy2[selectedCompareSeason[1]])
+  const energyData2 = selectedCompareSeason2
+    ? flatten(groupedEnergy2[selectedCompareSeason2])
     : [];
 
   const gasData1 =
-    selectedCompareSeason[0] !== undefined
-      ? flatten(groupedGas2[selectedCompareSeason[0]])
+    selectedCompareSeason1 !== undefined
+      ? flatten(groupedGas2[selectedCompareSeason1])
       : [];
-  const gasData2 = selectedCompareSeason[1]
-    ? flatten(groupedGas2[selectedCompareSeason[1]])
+  const gasData2 = selectedCompareSeason2
+    ? flatten(groupedGas2[selectedCompareSeason2])
     : [];
 
   return (
@@ -1389,11 +1380,7 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
               </p>
             </div>
           </div>
-          <SeasonMenu
-            setSelectedCompareSeason={setSelectedCompareSeason}
-            unsetSelectedCompareSeason={unsetSelectedCompareSeason}
-            selectedCompareSeason={selectedCompareSeason}
-          />
+
           <div className="mt-4">
             <ActivitiesMenu
               activitiesArray={activitiesArray}
@@ -1403,7 +1390,13 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
           </div>
           <div className="grid grid-cols-2 gap-8 w-full">
             <div className="px-8">
-              {selectedCompareSeason[0] !== undefined && (
+              <div>
+                <SeasonMenu
+                  setSelected={setSelectedCompareSeason1}
+                  selected={selectedCompareSeason1}
+                />
+              </div>
+              {selectedCompareSeason1 !== undefined && (
                 <ParentSize>
                   {(parent) => (
                     <RadarYear
@@ -1416,14 +1409,20 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
                       setSelectedMonth={setSelectedMonth}
                       width={parent.width}
                       showDemand={false}
-                      innerLabel={seasonLabel[selectedCompareSeason[0]]}
+                      innerLabel={seasonLabel[selectedCompareSeason1]}
                     />
                   )}
                 </ParentSize>
               )}
             </div>
             <div className="px-8">
-              {selectedCompareSeason[1] && (
+              <div>
+                <SeasonMenu
+                  setSelected={setSelectedCompareSeason2}
+                  selected={selectedCompareSeason2}
+                />
+              </div>
+              {selectedCompareSeason2 && (
                 <ParentSize>
                   {(parent) => (
                     <RadarYear
@@ -1436,7 +1435,7 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
                       setSelectedMonth={setSelectedMonth}
                       width={parent.width}
                       showDemand={false}
-                      innerLabel={seasonLabel[selectedCompareSeason[1]]}
+                      innerLabel={seasonLabel[selectedCompareSeason2]}
                     />
                   )}
                 </ParentSize>
