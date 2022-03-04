@@ -314,7 +314,7 @@ const TrendYear = ({
                                       dx={0}
                                       dy={0}
                                       textAnchor={"middle"}
-                                      fontSize={internalWidth * 0.01}
+                                      fontSize={internalWidth * 0.008}
                                       className="radial-hour-label"
                                     >
                                       {moment(

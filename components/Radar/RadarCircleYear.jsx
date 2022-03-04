@@ -29,7 +29,7 @@ const RadarCircleYear = ({
         cy={value}
         r={radius}
         fill={colorByCategory[category]}
-        fillOpacity={0.8}
+        fillOpacity={1}
         data-tip={`<b>${time}</b> <br/> ${
           activitiesCode[factor].value
         } frequency: ${
@@ -48,6 +48,9 @@ const RadarCircleYear = ({
         }}
         stroke={hover === `i${index}:f${factor}` ? strokeColor : "none"}
         strokeWidth={strokeWidth}
+        style={{
+          mixBlendMode: "multiply",
+        }}
       />
       {/* <text dx={0} dy={value} textAnchor={"middle"} fontSize={10}>
         {parseFloat(v).toFixed(2)}
