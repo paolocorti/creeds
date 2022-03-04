@@ -308,7 +308,7 @@ const RadarYear = ({
                             "h:mma"
                           );
 
-                          console.log(v.actCategory, a, time, j);
+                          //console.log(v.actCategory, a, time, j);
 
                           return (
                             <g

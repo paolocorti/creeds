@@ -1,6 +1,7 @@
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import Link from "next/link";
+import Button from "./Button";
 
 const Intro = ({ nextChapter }) => {
   return (
@@ -76,17 +77,7 @@ const Intro = ({ nextChapter }) => {
           it. But perhaps it is best to start by showing what the typical
           patterns of activity, demand, etc. look like.
         </p>
-        <div className="flex justify-center">
-          <div
-            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer hover:bg-black hover:text-pink"
-            style={{
-              fontSize: "11px",
-            }}
-            onClick={nextChapter}
-          >
-            NEXT CHAPTER ↓
-          </div>
-        </div>
+        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
       </RightColumn>
     </section>
   );
