@@ -51,7 +51,7 @@ const SeasonMenu = ({ selectedCompareSeason, setSelected }) => {
   }
 
   return (
-    <div className="my-0 px-32">
+    <div className="my-0 w-24 mx-auto">
       <Slider {...settings}>
         <div className="mx-2 cursor-pointer seasonButton">Winter</div>
         <div className="mx-2 cursor-pointer seasonButton">Spring</div>

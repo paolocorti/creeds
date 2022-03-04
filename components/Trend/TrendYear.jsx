@@ -20,6 +20,7 @@ import {
   useTooltip,
 } from "@visx/tooltip";
 import { timeFormat } from "d3-time-format";
+import { isMobile } from "react-device-detect";
 
 const formatDate = timeFormat("%X");
 
@@ -46,8 +47,14 @@ const TrendYear = ({
   energyDemand,
   width,
 }) => {
-  const marginLeft = 180;
-  const marginRight = 20;
+  const [mobile, setMobile] = useState(false);
+
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [isMobile]);
+
+  const marginLeft = mobile ? 15 : 180;
+  const marginRight = mobile ? 15 : 20;
   const internalWidth = width - marginLeft - marginRight;
   const hover = useStore((state) => state.hover);
   const selectedDataRegion = globalData.filter(

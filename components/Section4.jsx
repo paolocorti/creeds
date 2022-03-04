@@ -8,6 +8,7 @@ import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import { groupBy, flatten } from "lodash";
 import SeasonMenu from "./SeasonMenu.jsx";
+import Button from "./Button";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
@@ -1388,7 +1389,7 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
               setSelectedCategory={setSelectedCategory}
             />
           </div>
-          <div className="grid grid-cols-2 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
             <div className="px-8">
               <div>
                 <SeasonMenu

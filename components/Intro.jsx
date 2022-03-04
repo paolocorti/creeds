@@ -13,7 +13,7 @@ const Intro = ({ nextChapter }) => {
         <div className="cursor-pointer">
           <Link href={"/about"}>
             <div
-              className="border rounded-2xl w-32 z-40 px-4 py-2 cursor-pointer hover:bg-black hover:text-green"
+              className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
               style={{
                 fontSize: "11px",
               }}

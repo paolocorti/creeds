@@ -5,6 +5,7 @@ import RightColumn from "./RightColumn";
 import RadarVerticalLegend from "./Radar/RadarVeticalLegend";
 import RadarYear from "./Radar/RadarYear";
 import { ParentSize } from "@visx/responsive";
+import Button from "./Button";
 
 const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
@@ -61,7 +62,7 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
               graphic or in the legend to explore the data
             </p>
           </div>
-          <div className="flex w-full justify-center">
+          <div className="flex w-full justify-center flex-col md:flex-row">
             <div
               className="w-full md:w-1/2 px-8"
               style={{
@@ -83,7 +84,7 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
                 )}
               </ParentSize>
             </div>
-            <div className="w-full md:w-1/3 px-8">
+            <div className="w-full md:w-1/3 px-8 hidden md:visible">
               <div className="flex flex-col">
                 {/* <div
                   className="radial-overview-toolbar text-left"
@@ -104,17 +105,7 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center">
-          <div
-            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer hover:bg-black hover:text-pink"
-            style={{
-              fontSize: "11px",
-            }}
-            onClick={nextChapter}
-          >
-            NEXT CHAPTER ↓
-          </div>
-        </div>
+        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
       </RightColumn>
     </section>
   );

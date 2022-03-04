@@ -7,6 +7,7 @@ import { ParentSize } from "@visx/responsive";
 import RegionMenu from "./RegionMenu.jsx";
 import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
+import Button from "./Button";
 
 const Section3 = ({ data, energyDemand, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
@@ -123,17 +124,7 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center">
-          <div
-            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer hover:bg-black hover:text-pink"
-            style={{
-              fontSize: "11px",
-            }}
-            onClick={nextChapter}
-          >
-            NEXT CHAPTER ↓
-          </div>
-        </div>
+        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
       </RightColumn>
     </section>
   );

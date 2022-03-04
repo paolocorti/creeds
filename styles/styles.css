@@ -5,6 +5,10 @@ body,
   width: 100%;
 }
 
+* {
+  font-family: "Inter";
+}
+
 h1,
 h2,
 h3,
@@ -115,6 +119,14 @@ p {
   padding: 0 8px;
   text-transform: uppercase;
   margin: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .categoryButton {
+    width: 50% !important;
+    font-size: 11px !important;
+    margin: 4px 0 !important;
+  }
 }
 
 .categoryButton {

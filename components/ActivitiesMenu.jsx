@@ -7,12 +7,12 @@ const ActivitiesMenu = ({
   setSelectedCategory,
 }) => {
   return (
-    <div className="my-0 px-4">
-      <div className="flex flex-wrap justify-start">
+    <div className="my-0 md:px-4">
+      <div className="flex flex-wrap justify-start w-full">
         {activitiesArray.map((el) => {
           return (
             <div
-              className="mx-2 cursor-pointer categoryButton"
+              className="md:mx-2 cursor-pointer categoryButton"
               onClick={() => {
                 setSelectedCategory(
                   selectedCategory === el.key ? null : el.key
