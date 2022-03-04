@@ -55,7 +55,7 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
       <RightColumn>
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full">
-            <p className="text-center">
+            <p className="text-center mt-0">
               The graphic shows energy demand, activities’ frequency and energy
               price every 30 minutes. The circle’s area represents the
               activity’s frequency. Select the month or the activities in the
@@ -84,7 +84,7 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
                 )}
               </ParentSize>
             </div>
-            <div className="w-full md:w-1/3 px-8 hidden md:visible">
+            <div className="w-full md:w-1/3 px-8 ">
               <div className="flex flex-col">
                 {/* <div
                   className="radial-overview-toolbar text-left"

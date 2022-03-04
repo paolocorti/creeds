@@ -28,13 +28,13 @@ const ActivitiesMenu = ({
                   backgroundColor: colorByCategory[el.key],
                 }}
               ></span>
-              <span className="mr-4">{el.value}</span>
+              <span className="mr-0">{el.value}</span>
               {selectedCategory === el.key && (
                 <span
-                  className="ml-2 absolute right-2 top-2"
+                  className="ml-2"
                   onClick={() => setSelectedCategory(null)}
                 >
-                  <img src={"/close.svg"} width={9} />
+                  <img src={"/close.svg"} width={7} />
                 </span>
               )}
             </div>

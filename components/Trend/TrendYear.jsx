@@ -159,7 +159,7 @@ const TrendYear = ({
   } = useTooltip();
 
   return (
-    <div className="radial-overview mt-8">
+    <div className="radial-overview mt-0">
       <div className="radial-overview-subtitle viz-explanation"></div>
       <div
         style={{
@@ -170,8 +170,8 @@ const TrendYear = ({
       >
         <div className="relative">
           <div className="">
-            <p className="text-center mb-8">
-              The graphic shows the activities’ frequentcy every 10 minutes.
+            <p className="text-center mb-8 mt-0">
+              The graphic shows the activities’ frequency every 10 minutes.
             </p>
           </div>
           <svg width={width} height={height}>
@@ -234,6 +234,7 @@ const TrendYear = ({
                             marginLeft={marginLeft}
                             marginTop={value}
                             tooltipLeft={tooltipLeft}
+                            tooltipTop={tooltipTop}
                           />
                         )}
                       </g>
@@ -282,19 +283,6 @@ const TrendYear = ({
                                         j % 6 == 0 ? "0 0" : "0.5 3"
                                       }
                                     />
-                                    {/* <text
-                                      dx={0}
-                                      dy={height - 25}
-                                      textAnchor={"middle"}
-                                      fontSize={internalWidth * 0.01}
-                                      className="radial-hour-label"
-                                    >
-                                      {moment(
-                                        timeScale.invert(
-                                          j + translateFactorStart
-                                        )
-                                      ).format("hh a")}
-                                    </text> */}
                                   </g>
                                 )}
                               </g>
@@ -338,8 +326,8 @@ const TrendYear = ({
             <div>
               <TooltipWithBounds
                 key={Math.random()}
-                top={tooltipTop + 100}
-                left={tooltipLeft + 30}
+                top={tooltipTop + 110}
+                left={tooltipLeft + 120}
                 style={tooltipStyles}
               >
                 {`${getValue(tooltipData).toFixed(2)}`} <br /> <br />

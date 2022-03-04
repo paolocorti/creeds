@@ -35,7 +35,7 @@ const Intro = ({ nextChapter }) => {
       </LeftColumn>
 
       <RightColumn>
-        <p>
+        <p className="px-6">
           One of the greatest challenges for a Net Zero Carbon future is making
           the most out of our clean energy sources, and most of the time, that
           means shifting our electricity demand to those times of day when clean

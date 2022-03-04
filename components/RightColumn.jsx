@@ -20,7 +20,7 @@ const RightColumn = ({ children }) => {
         <div
           className="absolute top-2/4 cursor-pointer z-2"
           onClick={() => useStore.setState({ expanded: !expanded })}
-          style={{ left: "-2px" }}
+          style={{ left: "-2px", top: "200px" }}
         >
           <img src={"/expand.svg"} width={26} />
         </div>

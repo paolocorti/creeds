@@ -18,9 +18,9 @@ const LeftColumn = ({ children }) => {
       {expanded && <>{children}</>}
       {expanded && !mobile && (
         <div
-          className="absolute top-2/4 cursor-pointer z-2 md:visible"
+          className="absolute cursor-pointer z-2 md:visible"
           onClick={() => useStore.setState({ expanded: !expanded })}
-          style={{ right: "-9px" }}
+          style={{ right: "-9px", top: "200px" }}
         >
           <img src={"/collapse.svg"} width={30} />
         </div>

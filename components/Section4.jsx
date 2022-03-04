@@ -1372,7 +1372,7 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
         <div className="flex w-full flex-col">
           <div>
             <div className="" style={{ height: "auto" }}>
-              <p className="text-center">
+              <p className="text-center mt-0">
                 The graphic shows electricity demand (the extrernal white
                 trend), gas demand (the extrernal black trend), activities’
                 frequency and energy price every 30 minutes by season. The

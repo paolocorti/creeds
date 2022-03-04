@@ -30,6 +30,7 @@ const TrendCategory = ({
   marginLeft,
   marginTop,
   tooltipLeft,
+  tooltipTop,
 }) => {
   const xScale = scaleTime({
     range: [0, width],
@@ -85,6 +86,11 @@ const TrendCategory = ({
         }}
         yScale={yScale}
         fill={colorByCategory[factor]}
+        style={{
+          mixBlendMode: "multiply",
+        }}
+        stroke={"black"}
+        strokeWidth={tooltipData && tooltipData.factor === factor ? 0.5 : 0}
       />
 
       <Bar
@@ -102,12 +108,19 @@ const TrendCategory = ({
       {tooltipData && tooltipData.factor === factor && (
         <g>
           <Line
-            from={{ x: tooltipLeft, y: 0 }}
+            from={{ x: tooltipLeft, y: -10 }}
             to={{ x: tooltipLeft, y: height - 20 }}
             stroke={"black"}
             strokeWidth={0.5}
             pointerEvents="none"
-            strokeDasharray="2,2"
+          />
+          <circle
+            cx={tooltipLeft}
+            cy={tooltipTop - marginTop}
+            r={3}
+            fill={"black"}
+            strokeWidth={2}
+            pointerEvents="none"
           />
         </g>
       )}

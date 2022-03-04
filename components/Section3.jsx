@@ -54,7 +54,7 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
         <div className="flex w-full flex-col">
           <div>
             <div className="" style={{ height: "auto" }}>
-              <p className="text-center">
+              <p className="text-center mt-0">
                 The graphic shows energy demand, activities’ frequency and
                 energy price every 30 minutes in UK’s region. The circle’s area
                 represents the activity’s frequency. Select the regions, the
