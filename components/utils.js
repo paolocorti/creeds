@@ -29,6 +29,20 @@ export const radToDeg = (radians) => {
   return radians * (180 / pi);
 };
 
+export const regions = [
+  "london",
+  "south_east",
+  "east_england",
+  "east_midlands",
+  "west_midlands",
+  "yorkshire_humber",
+  "north_east",
+  "north_west",
+  "wales",
+  "scotland",
+  "northern_ireland",
+];
+
 export const activities = {
   1: "absence",
   2: "generic home activity",

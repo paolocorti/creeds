@@ -12,23 +12,12 @@ import Button from "./Button";
 const Section3 = ({ data, energyDemand, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
-  const [selectedCompareRegion, setSelCompareRegion] = useState([
-    "london",
-    "south_east",
-  ]);
+  const [selectedCompareRegion1, setSelectedCompareRegion1] =
+    useState("london");
+  const [selectedCompareRegion2, setSelectedCompareRegion2] =
+    useState("south_east");
 
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const hoverCategory = useStore((state) => state.hoverCategory);
-
-  const setSelectedCompareRegion = (val) => {
-    if (selectedCompareRegion.length < 2) {
-      setSelCompareRegion((state) => [...state, val]);
-    }
-  };
-
-  const unsetSelectedCompareRegion = (val) => {
-    setSelCompareRegion(selectedCompareRegion.filter((state) => state !== val));
-  };
 
   return (
     <section
@@ -62,11 +51,6 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
               </p>
             </div>
           </div>
-          <RegionMenu
-            setSelectedCompareRegion={setSelectedCompareRegion}
-            unsetSelectedCompareRegion={unsetSelectedCompareRegion}
-            selectedCompareRegion={selectedCompareRegion}
-          />
           <div className="mt-4">
             <ActivitiesMenu
               activitiesArray={activitiesArray}
@@ -81,14 +65,17 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
                 maxWidth: "85vh",
               }}
             >
-              {selectedCompareRegion[0] && (
+              <div>
+                <RegionMenu setSelected={setSelectedCompareRegion1} />
+              </div>
+              {selectedCompareRegion1 && (
                 <ParentSize>
                   {(parent) => (
                     <RadarYear
                       globalData={data}
                       energyDemand={energyDemand}
                       energyPrice={[]}
-                      selectedRegion={selectedCompareRegion[0]}
+                      selectedRegion={selectedCompareRegion1}
                       selectedMonth={selectedMonth}
                       setSelectedMonth={setSelectedMonth}
                       width={parent.width}
@@ -100,7 +87,10 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
               )}
             </div>
             <div className="px-12">
-              {selectedCompareRegion[1] && (
+              <div>
+                <RegionMenu setSelected={setSelectedCompareRegion2} />
+              </div>
+              {selectedCompareRegion2 && (
                 <ParentSize
                   style={{
                     maxWidth: "85vh",
@@ -111,7 +101,7 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
                       globalData={data}
                       energyDemand={energyDemand}
                       energyPrice={[]}
-                      selectedRegion={selectedCompareRegion[1]}
+                      selectedRegion={selectedCompareRegion2}
                       selectedMonth={selectedMonth}
                       setSelectedMonth={setSelectedMonth}
                       width={parent.width}

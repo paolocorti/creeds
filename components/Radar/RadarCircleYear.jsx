@@ -48,9 +48,9 @@ const RadarCircleYear = ({
         }}
         stroke={hover === `i${index}:f${factor}` ? strokeColor : "none"}
         strokeWidth={strokeWidth}
-        style={{
-          mixBlendMode: "multiply",
-        }}
+        // style={{
+        //   mixBlendMode: "multiply",
+        // }}
       />
       {/* <text dx={0} dy={value} textAnchor={"middle"} fontSize={10}>
         {parseFloat(v).toFixed(2)}

@@ -77,6 +77,8 @@ const RadarYear = React.memo(
     selectedCategory,
     innerLabel,
   }) => {
+    console.log("RadarYear Render");
+
     const hover = useStore((state) => state.hover);
     const hoverCategory = useStore((state) => state.hoverCategory);
     const hoverTime = useStore((state) => state.hoverTime);
@@ -462,7 +464,7 @@ const RadarYear = React.memo(
                     x={0}
                     y={4}
                     textAnchor="middle"
-                    fontSize={10}
+                    fontSize={width * 0.02}
                     style={{ textTransform: "uppercase" }}
                   >
                     {innerLabel || regionLabels[selectedRegion]}
