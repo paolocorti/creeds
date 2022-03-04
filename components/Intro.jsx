@@ -11,7 +11,15 @@ const Intro = ({ nextChapter }) => {
       <LeftColumn>
         <div className="cursor-pointer">
           <Link href={"/about"}>
-            <img src="/about.svg" width={80} />
+            <div
+              className="border rounded-2xl w-32 z-40 px-4 py-2 cursor-pointer hover:bg-black hover:text-green"
+              style={{
+                fontSize: "11px",
+              }}
+              onClick={nextChapter}
+            >
+              ABOUT
+            </div>
           </Link>
         </div>
         <h1
@@ -70,7 +78,7 @@ const Intro = ({ nextChapter }) => {
         </p>
         <div className="flex justify-center">
           <div
-            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer"
+            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer hover:bg-black hover:text-pink"
             style={{
               fontSize: "11px",
             }}

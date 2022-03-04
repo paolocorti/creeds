@@ -125,7 +125,7 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
         </div>
         <div className="flex justify-center">
           <div
-            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer"
+            className="border rounded-2xl z-40 px-4 py-2 cursor-pointer hover:bg-black hover:text-pink"
             style={{
               fontSize: "11px",
             }}

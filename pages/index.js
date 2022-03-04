@@ -138,7 +138,7 @@ export default function Home() {
         />
       </main>
 
-      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full h-24  px-8">
+      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-8">
         <div>Research: credits lorem ipsum</div>
         <div>
           Website: design by Federica Fragapane, development by Paolo Corti

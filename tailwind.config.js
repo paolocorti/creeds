@@ -7,6 +7,8 @@ module.exports = {
     colors: {
       green: "#67B281",
       lightgreen: "#74C590",
+      black: "#000",
+      pink: "#ffd6cc",
     },
   },
   variants: {
