@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../store.js";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
@@ -7,25 +7,38 @@ import RadarYear from "./Radar/RadarYear";
 import { ParentSize } from "@visx/responsive";
 import Button from "./Button";
 
+let interval;
+const intervalTime = 500;
+
 const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
-  const [selectedMonth, setSelectedMonth] = useState("1");
+  const [selectedMonth, setSelectedMonth] = useState(1);
+  const [playStarted, setPlayStarted] = useState(1);
   const [selectedRegion, setSelectedRegion] = useState("all");
-  const [selectedCompareRegion, setSelCompareRegion] = useState([
-    "london",
-    "south_east",
-  ]);
   const hoverCategory = useStore((state) => state.hoverCategory);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const setSelectedCompareRegion = (val) => {
-    if (selectedCompareRegion.length < 2) {
-      setSelCompareRegion((state) => [...state, val]);
+  const changeMonth = () => {
+    if (selectedMonth < 13) {
+      setSelectedMonth((month) => month + 1);
     }
   };
 
-  const unsetSelectedCompareRegion = (val) => {
-    setSelCompareRegion(selectedCompareRegion.filter((state) => state !== val));
+  const startPlay = () => {
+    setPlayStarted(true);
+    interval = setInterval(changeMonth, intervalTime);
   };
+
+  useEffect(() => {
+    if (playStarted) {
+      console.log(selectedMonth);
+      if (selectedMonth === 13) {
+        clearInterval(interval);
+        interval = null;
+        setSelectedMonth(1);
+        setPlayStarted(false);
+      }
+    }
+  }, [selectedMonth]);
 
   return (
     <section
@@ -64,11 +77,16 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
           </div>
           <div className="flex w-full justify-center flex-col md:flex-row">
             <div
-              className="w-full md:w-1/2 px-8"
+              className="w-full md:w-1/2 px-8 flex flex-col"
               style={{
                 maxWidth: "85vh",
               }}
             >
+              <div className="w-full flex justify-center">
+                <button onClick={startPlay} className="text-md">
+                  PLAY
+                </button>
+              </div>
               <ParentSize>
                 {(parent) => (
                   <RadarYear
@@ -76,7 +94,7 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
                     energyDemand={energyDemand}
                     energyPrice={energyPrice}
                     selectedRegion={selectedRegion}
-                    selectedMonth={selectedMonth}
+                    selectedMonth={String(selectedMonth)}
                     setSelectedMonth={setSelectedMonth}
                     width={parent.width}
                     selectedCategory={selectedCategory}

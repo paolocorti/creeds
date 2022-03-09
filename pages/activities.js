@@ -2,12 +2,7 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
-import Intro from "../components/Intro";
 import Section1 from "../components/Section1";
-import Section2 from "../components/Section2";
-import Section3 from "../components/Section3";
-import Section4 from "../components/Section4";
-import Landing from "../components/Landing";
 import {
   Link,
   Button,
@@ -35,6 +30,8 @@ export default function Home() {
 
     csv("/data/mean_daily_gas_demand_profiles.csv").then((values) => {
       setGasDemand(values);
+
+      console.log(values);
     });
 
     csv("/data/hourly_average_price_electricity.csv").then((values) => {
@@ -77,24 +74,6 @@ export default function Home() {
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
-        <Landing
-          nextChapter={() => {
-            scroller.scrollTo("intro", {
-              duration: 500,
-              delay: 100,
-              smooth: true,
-            });
-          }}
-        />
-        <Intro
-          nextChapter={() => {
-            scroller.scrollTo("section1", {
-              duration: 500,
-              delay: 100,
-              smooth: true,
-            });
-          }}
-        />
         <Section1
           data={data}
           energyDemand={energyDemand}
@@ -107,43 +86,7 @@ export default function Home() {
             });
           }}
         />
-        {/* <Section2
-          data={data}
-          energyDemand={energyDemand}
-          nextChapter={() => {
-            scroller.scrollTo("section3", {
-              duration: 500,
-              delay: 100,
-              smooth: true,
-            });
-          }}
-        />{" "}
-        <Section3
-          data={data}
-          energyDemand={energyDemand}
-          energyPrice={energyPrice}
-          nextChapter={() => {
-            scroller.scrollTo("section4", {
-              duration: 500,
-              delay: 100,
-              smooth: true,
-            });
-          }}
-        />
-        <Section4
-          data={data}
-          energyDemand={energyDemand}
-          gasDemand={gasDemand}
-          energyPrice={energyPrice}
-        /> */}
       </main>
-
-      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-8">
-        <div>Research: credits lorem ipsum</div>
-        <div>
-          Website: design by Federica Fragapane, development by Paolo Corti
-        </div>
-      </footer>
     </div>
   );
 }

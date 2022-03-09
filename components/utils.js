@@ -163,3 +163,21 @@ export const regionLabels = {
   scotland: "Scotland",
   northern_ireland: "Northern Ireland",
 };
+
+export const getEnergyPrice = (data, index) => {
+  const d = data[0].filter((v) => {
+    return String(v.time) === String(index);
+  });
+  const value = d && d[0] ? d[0].value.toFixed(1) : null;
+
+  return value;
+};
+
+export const getEnergyDemand = (data, index) => {
+  const d = data[0].filter((v) => {
+    return String(v.time) === String(index);
+  });
+  const value = d && d[0] ? d[0].value.toFixed(1) : null;
+
+  return value;
+};

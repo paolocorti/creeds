@@ -2,8 +2,11 @@ import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import Link from "next/link";
 import Button from "./Button";
+import { useState } from "react";
 
 const Intro = ({ nextChapter }) => {
+  const [aboutOpen, setAboutOpen] = useState(false);
+
   return (
     <section
       name="intro"
@@ -11,17 +14,15 @@ const Intro = ({ nextChapter }) => {
     >
       <LeftColumn>
         <div className="cursor-pointer">
-          <Link href={"/about"}>
-            <div
-              className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
-              style={{
-                fontSize: "11px",
-              }}
-              onClick={nextChapter}
-            >
-              ABOUT
-            </div>
-          </Link>
+          <div
+            className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+            style={{
+              fontSize: "11px",
+            }}
+            onClick={() => setAboutOpen((open) => !open)}
+          >
+            ABOUT
+          </div>
         </div>
         <h1
           className="text-left leading-snug"
@@ -35,7 +36,7 @@ const Intro = ({ nextChapter }) => {
       </LeftColumn>
 
       <RightColumn>
-        <p className="px-6">
+        <p className="px-0 md:px-6">
           One of the greatest challenges for a Net Zero Carbon future is making
           the most out of our clean energy sources, and most of the time, that
           means shifting our electricity demand to those times of day when clean
@@ -79,6 +80,95 @@ const Intro = ({ nextChapter }) => {
         </p>
         <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
       </RightColumn>
+
+      <div
+        className={`w-full bg-green p-8 absolute z-50 md:h-full ${
+          aboutOpen ? "left-0" : "-left-full"
+        } transition-all duration-500	`}
+      >
+        <div className="flex w-full justify-end">
+          <div
+            className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+            style={{
+              fontSize: "11px",
+            }}
+            onClick={() => setAboutOpen((open) => !open)}
+          >
+            CLOSE
+          </div>
+        </div>
+        <p className="px-0 md:px-6">
+          The aim of this project was to provide you with accessible,
+          user-friendly visualisations that show the ways in which our
+          activities impact our energy demands. These visualisations condense a
+          wealth of data from a variety of sources into a single graphic that
+          allows you to explore how our everyday lives unfold over the course of
+          a day, and what impacts they have on the amount of energy required to
+          provide us with the services we have become used to have access to.
+          More importantly, the visuals also show us the opportunities for
+          shifting those energy- intensive activities away from those busy
+          periods of the day and into those periods where there is potential to
+          be more flexible, thus reducing the strain on out power systems.
+        </p>
+        <p className="px-0 md:px-6">
+          {" "}
+          This project was brought to you by the Flexibility of Demand theme at
+          the Centre for research into{" "}
+          <a
+            href="https://www.creds.ac.uk/"
+            target="_blank"
+            className="text-bold underline"
+          >
+            Energy Demand Solutions (CREDS)
+          </a>
+          . The project was funded through CREDS by UK Research and Innovation
+          through the grant agreement EP/R035288/1.{" "}
+        </p>
+
+        <p className="px-0 md:px-6">
+          The Team Project management:<br></br>
+          <br></br>{" "}
+          <div className="text-base">Dr. Jose Luis Ramirez-Mendiola</div>
+          <div className="text-sm	">
+            Research Fellow on Flexibility in Energy Demand at the University of
+            Reading, UK
+          </div>
+          <a href="mailto:j.ramirez-mendiola@reading.ac.uk" target="_blank">
+            <div className="border rounded-2xl w-36 flex justify-center mt-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
+              CONTACT
+            </div>
+          </a>{" "}
+          <br></br>
+          <div className="text-base">Professor Jacopo Torriti</div>
+          <div className="text-sm">
+            Professor of Energy Economics and Policy at the University of
+            Reading and co-director of CREDS
+          </div>
+          <a href="mailto:j.torriti@reading.ac.uk " target="_blank">
+            <div className="border rounded-2xl w-36 flex justify-center mt-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
+              CONTACT
+            </div>
+          </a>{" "}
+          <br></br>
+          <br></br>Visual design:{" "}
+          <a
+            href="https://twitter.com/fedfragapane"
+            target="_blank"
+            className="text-bold underline"
+          >
+            {" "}
+            Federica Fragapane
+          </a>{" "}
+          <br></br> Web development:{" "}
+          <a
+            href="https://twitter.com/paolocorti_"
+            target="_blank"
+            className="text-bold underline"
+          >
+            Paolo Corti
+          </a>
+        </p>
+      </div>
     </section>
   );
 };

@@ -16,9 +16,7 @@ const RadarCircleYear = ({
 }) => {
   const strokeColor = "black";
   const strokeWidth = 1;
-  //const radiusScale = scalePow().domain([0, 1]).range([1, 20]);
   const radius = Math.sqrt(Number(v) / Math.PI) * (width * 0.05);
-  //const radius = Number(v) * (width * 0.05)
   const hover = useStore((state) => state.hover);
 
   return (
@@ -30,11 +28,9 @@ const RadarCircleYear = ({
         r={radius}
         fill={colorByCategory[category]}
         fillOpacity={1}
-        data-tip={`<b>${time}</b> <br/> ${
-          activitiesCode[factor].value
-        } frequency: ${
+        data-tip={`<b>${time}</b> <br/> ${activitiesCode[factor].value}: ${
           v ? parseFloat(v).toFixed(2) : ""
-        } <br/> energy demand: x <br/> energy price: x`}
+        }% <br/>`}
         data-html="true"
         onMouseEnter={() => {
           useStore.setState({

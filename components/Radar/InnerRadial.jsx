@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Group } from "@visx/group";
 import { scaleTime, scaleLinear } from "@visx/scale";
+import moment from "moment";
 
 function extent(data, value) {
   const values = data.map(value);
@@ -32,10 +33,20 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
 
   yScale.range([0, height / 2 - padding]);
 
+  const newData = [];
+
+  data.forEach((d) => {
+    newData.push(d);
+    const newD = { ...d };
+    var newDateObj = moment(newD.time).add(30, "m").toDate();
+    newD.time = newDateObj;
+    newData.push(newD);
+  });
+
   return (
     <Group top={0} left={0}>
       <g>
-        {data.map((v) => {
+        {newData.map((v) => {
           const thisAngle = xScale(date(v));
           const thisValue = yScale(close(v));
           return (
@@ -46,7 +57,7 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
                 x2={thisValue * Math.cos(thisAngle)}
                 y2={thisValue * Math.sin(thisAngle)}
                 stroke={"#000"}
-                strokeWidth={2}
+                strokeWidth={1.2}
               ></line>
             </g>
           );

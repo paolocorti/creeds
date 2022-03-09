@@ -6,6 +6,8 @@ import {
   regionLabels,
   sortBy,
   customSort,
+  getEnergyPrice,
+  getEnergyDemand,
 } from "../utils.js";
 import moment from "moment";
 import RadarCircleYear from "./RadarCircleYear";
@@ -322,8 +324,21 @@ const RadarYear = React.memo(
                             const time = moment(timeScale.invert(j)).format(
                               "h:mma"
                             );
+                            const dateTime = moment(
+                              timeScale3.invert(j)
+                            ).toDate();
 
-                            //console.log(v.actCategory, a, time, j);
+                            console.log({ dateTime });
+
+                            const energyPrice = getEnergyPrice(
+                              energyPriceData,
+                              dateTime
+                            );
+
+                            const energyDemand = getEnergyDemand(
+                              energyData,
+                              dateTime
+                            );
 
                             return (
                               <g
@@ -366,7 +381,7 @@ const RadarYear = React.memo(
                                         strokeWidth={0.5}
                                         data-tip={`<b>${time}</b> <br/> top activity: ${
                                           v ? parseFloat(v).toFixed(2) : ""
-                                        } <br/> energy demand: x <br/> energy price: x`}
+                                        } <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
                                         data-html="true"
                                       />
                                     </g>
@@ -394,7 +409,7 @@ const RadarYear = React.memo(
                                         }}
                                         data-tip={`<b>${time}</b> <br/> top activity: ${
                                           v ? parseFloat(v).toFixed(2) : ""
-                                        } <br/> energy demand: x <br/> energy price: x`}
+                                        } <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
                                         data-html="true"
                                         style={{
                                           fontSize:
@@ -437,6 +452,8 @@ const RadarYear = React.memo(
                                       category={v.actCategory}
                                       color={v.actType}
                                       width={width}
+                                      energyPrice={energyPrice}
+                                      energyDemand={energyDemand}
                                     />
                                   )}
                                 </g>

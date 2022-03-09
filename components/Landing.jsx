@@ -4,7 +4,7 @@ const Landing = ({ nextChapter }) => {
   return (
     <section className="w-full bg-green flex flex-col justify-center items-center h-screen border-b border-black overflow-hidden relative">
       <h1 className="px-36 text-center">
-        Energy flexibility
+        Energy demand flexibility
         <br /> and the rhythms <br />
         of everyday life
       </h1>
