@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useStore } from "../store.js";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
@@ -10,16 +10,14 @@ import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import { groupBy, flatten } from "lodash";
 import SeasonMenu from "./SeasonMenu.jsx";
 import Button from "./Button";
+import { useWindowSize, getVizWidth } from "./utils";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
 const Section4 = ({ data, energyDemand, gasDemand }) => {
-  console.log("Section4 Render");
-
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedCompareSeason1, setSelectedCompareSeason1] = useState(0);
   const [selectedCompareSeason2, setSelectedCompareSeason2] = useState(1);
-
   const [selectedCategory, setSelectedCategory] = useState(null);
   const grouped = groupBy(data, "season");
   const grouped1 = Object.values(grouped).map((v) => groupBy(v, "region"));
@@ -67,12 +65,15 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
     ? flatten(groupedGas2[selectedCompareSeason2])
     : [];
 
+  const size = useWindowSize();
+  const vizWidth = getVizWidth("multiple", size);
+
   return (
     <section
       name="section4"
       className="w-full min-h-screen flex flex-col md:flex-row"
     >
-      <LeftColumn>
+      <LeftColumn sectionTitle={"/5.seasons-vertical.svg"}>
         <h2 className="subtitle">Seasons of the year</h2>
         <p>
           Seasons are emerging as relevant to many aspects of research on
@@ -119,22 +120,18 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
                 />
               </div>
               {selectedCompareSeason1 !== undefined && (
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={seasonData1 || []}
-                      energyDemand={energyData1 || []}
-                      gasDemand={gasData1 || []}
-                      energyPrice={[]}
-                      selectedRegion={"all"}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      width={parent.width}
-                      showDemand={false}
-                      innerLabel={seasonLabel[selectedCompareSeason1]}
-                    />
-                  )}
-                </ParentSize>
+                <RadarYear
+                  globalData={seasonData1 || []}
+                  energyDemand={energyData1 || []}
+                  gasDemand={gasData1 || []}
+                  energyPrice={[]}
+                  selectedRegion={"all"}
+                  selectedMonth={selectedMonth}
+                  setSelectedMonth={setSelectedMonth}
+                  width={vizWidth}
+                  showDemand={false}
+                  innerLabel={seasonLabel[selectedCompareSeason1]}
+                />
               )}
             </div>
             <div className="px-8">
@@ -145,22 +142,18 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
                 />
               </div>
               {selectedCompareSeason2 && (
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={seasonData2 || []}
-                      energyDemand={energyData2 || []}
-                      gasDemand={gasData2 || []}
-                      energyPrice={[]}
-                      selectedRegion={"all"}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      width={parent.width}
-                      showDemand={false}
-                      innerLabel={seasonLabel[selectedCompareSeason2]}
-                    />
-                  )}
-                </ParentSize>
+                <RadarYear
+                  globalData={seasonData2 || []}
+                  energyDemand={energyData2 || []}
+                  gasDemand={gasData2 || []}
+                  energyPrice={[]}
+                  selectedRegion={"all"}
+                  selectedMonth={selectedMonth}
+                  setSelectedMonth={setSelectedMonth}
+                  width={vizWidth}
+                  showDemand={false}
+                  innerLabel={seasonLabel[selectedCompareSeason2]}
+                />
               )}
             </div>
           </div>

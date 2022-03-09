@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStore } from "../store.js";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import TrendYear from "./Trend/TrendYear";
 import { ParentSize } from "@visx/responsive";
 import Button from "./Button";
+import { useWindowSize, getVizWidth } from "./utils";
 
 const Section2 = ({ data, energyDemand, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
@@ -13,22 +14,12 @@ const Section2 = ({ data, energyDemand, nextChapter }) => {
     "london",
     "south_east",
   ]);
-  const hoverCategory = useStore((state) => state.hoverCategory);
-  const selectedCategory = useStore((state) => state.selectedCategory);
-
-  const setSelectedCompareRegion = (val) => {
-    if (selectedCompareRegion.length < 2) {
-      setSelCompareRegion((state) => [...state, val]);
-    }
-  };
-
-  const unsetSelectedCompareRegion = (val) => {
-    setSelCompareRegion(selectedCompareRegion.filter((state) => state !== val));
-  };
+  const size = useWindowSize();
+  const vizWidth = getVizWidth("trend", size);
 
   return (
     <section name="section2" className="w-full flex flex-col md:flex-row">
-      <LeftColumn>
+      <LeftColumn sectionTitle={"/3.unpacking-vertical.svg"}>
         <h2 className="subtitle">Unpacking peaks</h2>
         <p>
           Whilst the volume of energy demand relates to many factors (e.g.
@@ -47,18 +38,14 @@ const Section2 = ({ data, energyDemand, nextChapter }) => {
         </p>
       </LeftColumn>
       <RightColumn>
-        <div className="w-full">
-          <ParentSize>
-            {(parent) => (
-              <TrendYear
-                globalData={data}
-                energyDemand={energyDemand}
-                selectedRegion={selectedRegion}
-                selectedMonth={selectedMonth}
-                width={parent.width}
-              />
-            )}
-          </ParentSize>
+        <div className="w-full flex justify-center">
+          <TrendYear
+            globalData={data}
+            energyDemand={energyDemand}
+            selectedRegion={selectedRegion}
+            selectedMonth={selectedMonth}
+            width={vizWidth}
+          />
         </div>
         <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
       </RightColumn>

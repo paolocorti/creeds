@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStore } from "../store.js";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import RadarYear from "./Radar/RadarYear";
-import { ParentSize } from "@visx/responsive";
 import RegionMenu from "./RegionMenu.jsx";
 import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import Button from "./Button";
+import { useWindowSize, getVizWidth } from "./utils";
 
-const Section3 = ({ data, energyDemand, nextChapter }) => {
+const Section3 = ({ data, energyDemand, gasDemand, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion1, setSelectedCompareRegion1] =
@@ -18,13 +18,15 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
     useState("south_east");
 
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const size = useWindowSize();
+  const vizWidth = getVizWidth("multiple", size);
 
   return (
     <section
       name="section3"
       className="w-full min-h-screen flex flex-col md:flex-row"
     >
-      <LeftColumn>
+      <LeftColumn sectionTitle={"/4.spatial-vertical.svg"}>
         <h2 className="subtitle">Spatial variation</h2>
         <p>
           Energy demand varies depending on where people live and work within a
@@ -69,21 +71,18 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
                 <RegionMenu setSelected={setSelectedCompareRegion1} />
               </div>
               {selectedCompareRegion1 && (
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={data}
-                      energyDemand={energyDemand}
-                      energyPrice={[]}
-                      selectedRegion={selectedCompareRegion1}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      width={parent.width}
-                      showDemand={false}
-                      selectedCategory={selectedCategory}
-                    />
-                  )}
-                </ParentSize>
+                <RadarYear
+                  globalData={data}
+                  energyDemand={energyDemand}
+                  gasDemand={gasDemand}
+                  energyPrice={[]}
+                  selectedRegion={selectedCompareRegion1}
+                  selectedMonth={selectedMonth}
+                  setSelectedMonth={setSelectedMonth}
+                  width={vizWidth}
+                  showDemand={false}
+                  selectedCategory={selectedCategory}
+                />
               )}
             </div>
             <div className="px-12">
@@ -91,25 +90,18 @@ const Section3 = ({ data, energyDemand, nextChapter }) => {
                 <RegionMenu setSelected={setSelectedCompareRegion2} />
               </div>
               {selectedCompareRegion2 && (
-                <ParentSize
-                  style={{
-                    maxWidth: "85vh",
-                  }}
-                >
-                  {(parent) => (
-                    <RadarYear
-                      globalData={data}
-                      energyDemand={energyDemand}
-                      energyPrice={[]}
-                      selectedRegion={selectedCompareRegion2}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      width={parent.width}
-                      showDemand={false}
-                      selectedCategory={selectedCategory}
-                    />
-                  )}
-                </ParentSize>
+                <RadarYear
+                  globalData={data}
+                  energyDemand={energyDemand}
+                  gasDemand={gasDemand}
+                  energyPrice={[]}
+                  selectedRegion={selectedCompareRegion2}
+                  selectedMonth={selectedMonth}
+                  setSelectedMonth={setSelectedMonth}
+                  width={vizWidth}
+                  showDemand={false}
+                  selectedCategory={selectedCategory}
+                />
               )}
             </div>
           </div>

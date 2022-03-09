@@ -1,24 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
-import {
-  degToRad,
-  radToDeg,
-  activitiesCode,
-  sortBy,
-  customSort,
-} from "../utils.js";
+import { activitiesCode, sortBy, customSort } from "../utils.js";
 import ReactTooltip from "react-tooltip";
 import moment from "moment";
-import TrendCircleYear from "./TrendCircleYear";
-import EnergyDemandTrend from "./EnergyDemandTrend";
 import { useStore } from "../../store.js";
 import TrendCategory from "./TrendCategory.jsx";
-import {
-  Tooltip,
-  TooltipWithBounds,
-  defaultStyles,
-  useTooltip,
-} from "@visx/tooltip";
+import { TooltipWithBounds, defaultStyles, useTooltip } from "@visx/tooltip";
 import { timeFormat } from "d3-time-format";
 import { isMobile } from "react-device-detect";
 
@@ -40,13 +27,7 @@ const getValue = (d) => parseFloat(d.value);
 
 const isMobileWithTablet = false;
 
-const TrendYear = ({
-  selectedRegion,
-  selectedMonth,
-  globalData,
-  energyDemand,
-  width,
-}) => {
+const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
@@ -65,13 +46,6 @@ const TrendYear = ({
   );
 
   const selectedData = selectedMonthData;
-
-  const selectedEnergyDataRegion = energyDemand.filter(
-    (v) => v.region === selectedRegion
-  );
-  const selectedEnergyMonthData = selectedEnergyDataRegion.filter(
-    (v) => v.month === selectedMonth
-  );
 
   if (!selectedData) {
     return <></>;
@@ -127,28 +101,6 @@ const TrendYear = ({
     sortField: "actCategory",
   });
 
-  const energyData = selectedEnergyMonthData.map((v) => {
-    const filtered = Object.entries(v).filter(([key]) => {
-      return key !== "month" && key !== "region" && key !== "season";
-    });
-
-    return filtered.map((v) => {
-      return {
-        time: timeScale2.invert(parseInt(v[0])),
-        value: parseFloat(v[1]),
-      };
-    });
-  });
-
-  const energyDataFiltered = energyData.length
-    ? energyData[0].filter((v, i) => {
-        return (
-          v.time >= timeScale.invert(translateFactorStart) &&
-          v.time <= timeScale.invert(translateFactorEnd)
-        );
-      })
-    : [];
-
   const {
     tooltipData,
     tooltipLeft,
@@ -168,7 +120,7 @@ const TrendYear = ({
           flexDirection: isMobileWithTablet ? "column" : "row",
         }}
       >
-        <div className="relative">
+        <div className="relative flex flex-col items-center">
           <div className="">
             <p className="text-center mb-8 mt-0">
               The graphic shows the activities’ frequency every 10 minutes.

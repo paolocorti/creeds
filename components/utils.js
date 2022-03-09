@@ -1,15 +1,4 @@
-// export const mapStyle =
-//   "mapbox://styles/surgooperations/ck8yxwsns04au1iry19qpedz8";
-// export const mapAfricaStyle =
-//   "mapbox://styles/surgooperations/ckc08htbs394h1imng3lhau7l";
-// export const mapToken =
-//   "pk.eyJ1Ijoic3VyZ29vcGVyYXRpb25zIiwiYSI6ImNrOHl3dmt1ZDA4dGMzZWxjNTN4a2U4ejgifQ.2IX1o8wvWycKJqMx5GEu0w";
-// export const serverUrl =
-//   process.env.NODE_ENV === "development"
-//     ? "https://rest.aws-surgofoundation.org"
-//     : "https://restapi.aws-surgofoundation.org";
-
-// //console.log(process.env.NODE_ENV === 'development')
+import React, { useState, useEffect } from "react";
 
 export const mobileZoom = 2.5;
 export const desktopZoom = 3.75;
@@ -187,10 +176,75 @@ export const getEnergyDemand = (data, index) => {
 };
 
 export const getTopActivity = (data, index) => {
-  const d = data[0].filter((v) => {
+  if (data.length === 0) return;
+
+  const d = data.filter((v) => {
     return String(v.time) === String(index);
   });
-  const value = d && d[0] ? d[0].value.toFixed(1) : null;
 
+  const value = d && d[0] ? d[0].maxCategory : null;
   return value;
+};
+
+export function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    // only execute all the code below in client side
+    if (typeof window !== "undefined") {
+      // Handler to call on window resize
+      function handleResize() {
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+
+      // Call handler right away so state gets updated with initial window size
+      handleResize();
+
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
+}
+
+export const getVizWidth = (type, size, expanded) => {
+  if (!size.width) {
+    return 300;
+  }
+
+  if (type === "single") {
+    return size.width > 1200
+      ? size.width * 0.32
+      : size.width > 700
+      ? size.width * 0.34
+      : size.width * 0.8;
+  }
+
+  if (type === "multiple") {
+    return size.width > 1200
+      ? size.width * 0.3
+      : size.width > 700
+      ? size.width * 0.3
+      : size.width * 0.8;
+  }
+
+  if (type === "trend") {
+    return size.width > 1200
+      ? size.width * 0.65
+      : size.width > 700
+      ? size.width * 0.65
+      : size.width * 0.9;
+  }
 };

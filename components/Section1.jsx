@@ -6,16 +6,25 @@ import RadarVerticalLegend from "./Radar/RadarVeticalLegend";
 import RadarYear from "./Radar/RadarYear";
 import { ParentSize } from "@visx/responsive";
 import Button from "./Button";
+import { useWindowSize, getVizWidth } from "./utils";
 
 let interval;
 const intervalTime = 1000;
 
-const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
+const Section1 = ({
+  data,
+  energyDemand,
+  energyPrice,
+  gasDemand,
+  nextChapter,
+}) => {
   const [selectedMonth, setSelectedMonth] = useState(1);
   const [playStarted, setPlayStarted] = useState(1);
   const [selectedRegion, setSelectedRegion] = useState("all");
   const hoverCategory = useStore((state) => state.hoverCategory);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const size = useWindowSize();
+  const vizWidth = getVizWidth("single", size);
 
   const changeMonth = () => {
     if (selectedMonth < 13) {
@@ -40,12 +49,14 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
     }
   }, [selectedMonth]);
 
+  console.log({ vizWidth });
+
   return (
     <section
       name="section1"
       className="w-full min-h-screen flex flex-col md:flex-row"
     >
-      <LeftColumn>
+      <LeftColumn sectionTitle={"/2.activities-vertical.svg"}>
         <h2 className="subtitle">
           Activities, demand and price every 30 minutes
         </h2>
@@ -87,32 +98,21 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
                   PLAY
                 </button>
               </div>
-              <ParentSize>
-                {(parent) => (
-                  <RadarYear
-                    globalData={data}
-                    energyDemand={energyDemand}
-                    energyPrice={energyPrice}
-                    selectedRegion={selectedRegion}
-                    selectedMonth={String(selectedMonth)}
-                    setSelectedMonth={setSelectedMonth}
-                    width={parent.width}
-                    selectedCategory={selectedCategory}
-                  />
-                )}
-              </ParentSize>
+
+              <RadarYear
+                globalData={data}
+                energyDemand={energyDemand}
+                gasDemand={gasDemand}
+                energyPrice={energyPrice}
+                selectedRegion={selectedRegion}
+                selectedMonth={String(selectedMonth)}
+                setSelectedMonth={setSelectedMonth}
+                width={vizWidth}
+                selectedCategory={selectedCategory}
+              />
             </div>
             <div className="w-full md:w-1/3 px-8 ">
-              <div className="flex flex-col">
-                {/* <div
-                  className="radial-overview-toolbar text-left"
-                  style={{ height: "auto" }}
-                >
-                  The blue external trend indicates the energy consumption by
-                  hour. Each circle is an activity, the colors indicate
-                  macro-categories, the size indicates the frequency. The blue
-                  internal shape indicates the price by hour.
-                </div> */}
+              <div className="flex flex-col" style={{ width: "280px" }}>
                 <div className="mt-4">
                   <RadarVerticalLegend
                     setSelectedCategory={setSelectedCategory}

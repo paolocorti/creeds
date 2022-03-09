@@ -8,11 +8,8 @@ const Intro = ({ nextChapter }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
-    <section
-      name="intro"
-      className="w-full flex flex-col md:flex-row min-h-screen"
-    >
-      <LeftColumn>
+    <section name="intro" className="w-full flex flex-col md:flex-row ">
+      <LeftColumn sectionTitle={"/1.energy-vertical.svg"}>
         <div className="cursor-pointer">
           <div
             className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"

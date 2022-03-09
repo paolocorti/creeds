@@ -8,7 +8,10 @@ import {
   customSort,
   getEnergyPrice,
   getEnergyDemand,
+  getTopActivity,
+  activitiesCode,
 } from "../utils.js";
+import { flatten, groupBy } from "lodash";
 import moment from "moment";
 import RadarCircleYear from "./RadarCircleYear";
 import InnerRadial from "./InnerRadial";
@@ -79,8 +82,6 @@ const RadarYear = React.memo(
     selectedCategory,
     innerLabel,
   }) => {
-    console.log("RadarYear Render");
-
     const hover = useStore((state) => state.hover);
     const hoverCategory = useStore((state) => state.hoverCategory);
     const hoverTime = useStore((state) => state.hoverTime);
@@ -164,7 +165,14 @@ const RadarYear = React.memo(
       ]);
 
     const timeScale = scaleTime()
-      .range([0, 144 / 3])
+      .range([0, 48])
+      .domain([
+        new Date(`2021-01-01T04:00:00`),
+        new Date(`2021-01-02T04:00:00`),
+      ]);
+
+    const timeScale5 = scaleTime()
+      .range([0, 144])
       .domain([
         new Date(`2021-01-01T04:00:00`),
         new Date(`2021-01-02T04:00:00`),
@@ -178,7 +186,7 @@ const RadarYear = React.memo(
       ]);
 
     const timeScale3 = scaleTime()
-      .range([0, 144 / 3])
+      .range([0, 48])
       .domain([
         new Date(`2021-01-01T00:00:00`),
         new Date(`2021-01-02T00:00:00`),
@@ -198,7 +206,7 @@ const RadarYear = React.memo(
 
       return filtered.map((v) => {
         return {
-          time: timeScale3.invert(parseInt(v[0])),
+          time: timeScale3.invert(parseInt(v[0] - 1)),
           value: parseFloat(v[1]),
         };
       });
@@ -213,7 +221,7 @@ const RadarYear = React.memo(
 
         return filtered.map((v) => {
           return {
-            time: timeScale3.invert(parseInt(v[0])),
+            time: timeScale3.invert(parseInt(v[0] - 1)),
             value: parseFloat(v[1]),
           };
         });
@@ -238,6 +246,45 @@ const RadarYear = React.memo(
       sortBy,
       sortField: "actCategory",
     });
+
+    const mainActivities = sorted.filter((v) => v.actType === "main");
+    const parsedActivities = flatten(
+      mainActivities.map((v) => {
+        const filtered = v.actValues.filter((v, i) => {
+          return i % 3 === 0;
+        });
+        return filtered.map((d, j) => {
+          return {
+            time: timeScale.invert(parseInt(j)),
+            value: parseFloat(d),
+            category: v.actCategory,
+          };
+        });
+      })
+    );
+    const groupedByActivties = Object.values(groupBy(parsedActivities, "time"));
+    const maxParsedActivties = groupedByActivties.map((v) => {
+      const maxObject = v.reduce(function (prev, current) {
+        return prev.value > current.value ? prev : current;
+      });
+      return {
+        time: v[0].time,
+        maxCategory: activitiesCode[maxObject.category].value,
+        maxValue: maxObject.value,
+      };
+    });
+
+    const maxParsedActivtiesObject = maxParsedActivties.reduce(function (
+      acc,
+      cur,
+      i
+    ) {
+      acc[cur.time] = cur;
+      return acc;
+    },
+    {});
+
+    console.log(maxParsedActivtiesObject);
 
     return (
       <div className="radial-overview">
@@ -327,8 +374,9 @@ const RadarYear = React.memo(
                             const dateTime = moment(
                               timeScale3.invert(j)
                             ).toDate();
-
-                            console.log(j);
+                            const dateTime2 = moment(
+                              timeScale.invert(j)
+                            ).toDate();
 
                             const energyPrice = getEnergyPrice(
                               energyPriceData,
@@ -339,6 +387,13 @@ const RadarYear = React.memo(
                               energyData,
                               dateTime
                             );
+
+                            const topActivity = maxParsedActivtiesObject[
+                              String(dateTime2)
+                            ]
+                              ? maxParsedActivtiesObject[String(dateTime2)]
+                                  .maxCategory
+                              : "N/A";
 
                             return (
                               <g
@@ -379,9 +434,7 @@ const RadarYear = React.memo(
                                         fill={hoverTime === j ? "#000" : "none"}
                                         stroke="#000"
                                         strokeWidth={0.5}
-                                        data-tip={`<b>${time}</b> <br/> top activity: ${
-                                          v ? parseFloat(v).toFixed(2) : ""
-                                        } <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
+                                        data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
                                         data-html="true"
                                       />
                                     </g>
@@ -407,9 +460,7 @@ const RadarYear = React.memo(
                                             hoverTime: null,
                                           });
                                         }}
-                                        data-tip={`<b>${time}</b> <br/> top activity: ${
-                                          v ? parseFloat(v).toFixed(2) : ""
-                                        } <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
+                                        data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
                                         data-html="true"
                                         style={{
                                           fontSize:
