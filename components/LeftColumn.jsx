@@ -12,7 +12,7 @@ const LeftColumn = ({ children }) => {
 
   return (
     <div
-      className={`w-full bg-green px-4 md:px-8 py-8 border-b border-black relative animation-width overflow-hidden`}
+      className={`w-full bg-green px-4 md:px-8 py-8 border-b border-black relative animation-width overflow-hidden transition-all duration-500`}
       style={{ width: mobile ? "100%" : expanded ? "28%" : "7%" }}
     >
       {expanded && <>{children}</>}

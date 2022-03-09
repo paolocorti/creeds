@@ -181,3 +181,12 @@ export const getEnergyDemand = (data, index) => {
 
   return value;
 };
+
+export const getTopActivity = (data, index) => {
+  const d = data[0].filter((v) => {
+    return String(v.time) === String(index);
+  });
+  const value = d && d[0] ? d[0].value.toFixed(1) : null;
+
+  return value;
+};

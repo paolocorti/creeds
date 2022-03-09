@@ -8,7 +8,7 @@ import { ParentSize } from "@visx/responsive";
 import Button from "./Button";
 
 let interval;
-const intervalTime = 500;
+const intervalTime = 1000;
 
 const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
   const [selectedMonth, setSelectedMonth] = useState(1);
@@ -123,7 +123,9 @@ const Section1 = ({ data, energyDemand, energyPrice, nextChapter }) => {
             </div>
           </div>
         </div>
-        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+        <div className="mt-8">
+          <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+        </div>
       </RightColumn>
     </section>
   );

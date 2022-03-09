@@ -107,7 +107,7 @@ export default function Home() {
             });
           }}
         />
-        {/* <Section2
+        <Section2
           data={data}
           energyDemand={energyDemand}
           nextChapter={() => {
@@ -135,7 +135,7 @@ export default function Home() {
           energyDemand={energyDemand}
           gasDemand={gasDemand}
           energyPrice={energyPrice}
-        /> */}
+        />
       </main>
 
       <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-8">
