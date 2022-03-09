@@ -328,7 +328,7 @@ const RadarYear = React.memo(
                               timeScale3.invert(j)
                             ).toDate();
 
-                            console.log({ dateTime });
+                            console.log(j);
 
                             const energyPrice = getEnergyPrice(
                               energyPriceData,
