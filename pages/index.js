@@ -74,8 +74,6 @@ export default function Home() {
         />
       </Head>
 
-      <ReactTooltip effect="solid" backgroundColor="#111" />
-
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Landing
           nextChapter={() => {

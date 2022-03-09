@@ -284,8 +284,6 @@ const RadarYear = React.memo(
     },
     {});
 
-    console.log(maxParsedActivtiesObject);
-
     return (
       <div className="radial-overview">
         {/* <div className="radial-overview-subtitle viz-explanation"></div>
@@ -301,6 +299,7 @@ const RadarYear = React.memo(
           </div>
         )}
       </div> */}
+        <ReactTooltip effect="solid" backgroundColor="#111" delayShow={100} />
 
         <div
           style={{
@@ -318,7 +317,10 @@ const RadarYear = React.memo(
                 fill={"#ffd6cc"}
                 style={{ pointerEvents: "none" }}
               />
-              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+              <g
+                transform={`translate(${width * 0.6}, ${width * 0.6})`}
+                style={{ pointerEvents: "none" }}
+              >
                 {showPrice && (
                   <OuterRadial
                     data={energyData.length ? energyData[0] : []}
@@ -342,6 +344,7 @@ const RadarYear = React.memo(
                 cy={width * 0.6}
                 r={width * 0.39}
                 fill={"#ffd6cc"}
+                style={{ pointerEvents: "none" }}
               />
 
               <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
@@ -411,32 +414,41 @@ const RadarYear = React.memo(
                                       stroke="#49494a"
                                       strokeWidth={0.5}
                                       strokeOpacity={0.5}
+                                      style={{ pointerEvents: "none" }}
                                     />
                                     <g
                                       transform={`translate(-4, ${
                                         (width / 2) * 0.9
                                       })`}
-                                      onMouseEnter={() => {
-                                        useStore.setState({
-                                          hoverTime: j,
-                                        });
-                                        ReactTooltip.rebuild();
-                                      }}
-                                      onMouseLeave={() => {
-                                        useStore.setState({ hoverTime: null });
-                                      }}
-                                      style={{
-                                        cursor: "pointer",
-                                      }}
                                     >
                                       <path
                                         d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
                                         fill={hoverTime === j ? "#000" : "none"}
                                         stroke="#000"
                                         strokeWidth={0.5}
+                                        style={{ pointerEvents: "none" }}
+                                      />
+                                      <circle
+                                        r={width * 0.03}
+                                        cx={5}
+                                        cy={5}
+                                        fill="none"
                                         data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
                                         data-html="true"
-                                      />
+                                        onMouseEnter={() => {
+                                          useStore.setState({
+                                            hoverTime: j,
+                                          });
+                                        }}
+                                        onMouseLeave={() => {
+                                          useStore.setState({
+                                            hoverTime: null,
+                                          });
+                                        }}
+                                        style={{
+                                          cursor: "pointer",
+                                        }}
+                                      ></circle>
                                     </g>
 
                                     {j % 2 === 0 && (
@@ -449,19 +461,18 @@ const RadarYear = React.memo(
                                             ? "radial-hour-label-rot"
                                             : "radial-hour-label"
                                         }
-                                        onMouseEnter={() => {
-                                          useStore.setState({
-                                            hoverTime: j,
-                                          });
-                                          ReactTooltip.rebuild();
-                                        }}
-                                        onMouseLeave={() => {
-                                          useStore.setState({
-                                            hoverTime: null,
-                                          });
-                                        }}
-                                        data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
-                                        data-html="true"
+                                        // onMouseEnter={() => {
+                                        //   useStore.setState({
+                                        //     hoverTime: j,
+                                        //   });
+                                        // }}
+                                        // onMouseLeave={() => {
+                                        //   useStore.setState({
+                                        //     hoverTime: null,
+                                        //   });
+                                        // }}
+                                        // data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
+                                        // data-html="true"
                                         style={{
                                           fontSize:
                                             width * 0.02 < 14
