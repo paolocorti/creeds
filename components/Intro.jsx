@@ -82,7 +82,7 @@ const Intro = ({ nextChapter }) => {
       </RightColumn>
 
       <div
-        className={`w-full bg-green p-8 absolute z-50 md:h-full ${
+        className={`w-full md:w-2/3 bg-lightgreen p-8 absolute z-50 h-screen overflow-y-auto	 overflow ${
           aboutOpen ? "left-0" : "-left-full"
         } transition-all duration-500	`}
       >
