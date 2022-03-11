@@ -9,7 +9,14 @@ import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 
-const Section3 = ({ data, energyDemand, gasDemand, nextChapter }) => {
+const Section3 = ({
+  data,
+  energyDemand,
+  gasDemand,
+  nextChapter,
+  expanded,
+  setExpanded,
+}) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion1, setSelectedCompareRegion1] =
@@ -25,7 +32,11 @@ const Section3 = ({ data, energyDemand, gasDemand, nextChapter }) => {
       name="section3"
       className="w-full min-h-screen flex flex-col md:flex-row"
     >
-      <LeftColumn sectionTitle={"/4.spatial-vertical.svg"}>
+      <LeftColumn
+        sectionTitle={"/4.spatial-vertical.svg"}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      >
         <h2 className="subtitle">Spatial variation</h2>
         <p>
           Energy demand varies depending on where people live and work within a
@@ -40,7 +51,7 @@ const Section3 = ({ data, energyDemand, gasDemand, nextChapter }) => {
           and when electricity demand occurs.
         </p>
       </LeftColumn>
-      <RightColumn>
+      <RightColumn expanded={expanded} setExpanded={setExpanded}>
         <div className="flex w-full flex-col">
           <div>
             <div className="" style={{ height: "auto" }}>

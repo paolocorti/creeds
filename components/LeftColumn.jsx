@@ -2,8 +2,7 @@ import { useStore } from "../store.js";
 import { isMobile } from "react-device-detect";
 import { useState, useEffect } from "react";
 
-const LeftColumn = ({ children, sectionTitle }) => {
-  const expanded = useStore((state) => state.expanded);
+const LeftColumn = ({ children, sectionTitle, expanded, setExpanded }) => {
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const LeftColumn = ({ children, sectionTitle }) => {
       {expanded && !mobile && (
         <div
           className="absolute cursor-pointer z-2 md:visible"
-          onClick={() => useStore.setState({ expanded: !expanded })}
+          onClick={() => setExpanded(!expanded)}
           style={{ right: "-9px", top: "200px" }}
         >
           <img src={"/collapse.svg"} width={30} />

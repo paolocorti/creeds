@@ -30,7 +30,7 @@ const RadarCircleYear = ({
         fill={colorByCategory[category]}
         fillOpacity={1}
         data-tip={`<b>${time}</b> <br/> ${activitiesCode[factor].value}: ${
-          v ? parseFloat(v).toFixed(2) * 100 : ""
+          v ? (parseFloat(v) * 100).toFixed(1) : ""
         }% <br/>`}
         data-html="true"
         onMouseEnter={() => {

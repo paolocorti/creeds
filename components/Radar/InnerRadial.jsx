@@ -46,11 +46,11 @@ const InnerRadial = ({ width, height, data, maximum }) => {
   return (
     <Group top={0} left={0}>
       <g>
-        {newData.map((v) => {
+        {newData.map((v, i) => {
           const thisAngle = xScale(date(v));
           const thisValue = yScale(close(v));
           return (
-            <g transform="rotate(180 0 0)">
+            <g transform="rotate(180 0 0)" key={`inner-${i}`}>
               <line
                 x1={0}
                 y1={0}

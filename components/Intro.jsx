@@ -4,12 +4,16 @@ import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
 
-const Intro = ({ nextChapter }) => {
+const Intro = ({ nextChapter, expanded, setExpanded }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
     <section name="intro" className="w-full flex flex-col md:flex-row ">
-      <LeftColumn sectionTitle={"/1.energy-vertical.svg"}>
+      <LeftColumn
+        sectionTitle={"/1.energy-vertical.svg"}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      >
         <div className="cursor-pointer">
           <div
             className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
@@ -32,7 +36,7 @@ const Intro = ({ nextChapter }) => {
         </h1>
       </LeftColumn>
 
-      <RightColumn>
+      <RightColumn expanded={expanded} setExpanded={setExpanded}>
         <p className="px-0 md:px-6">
           One of the greatest challenges for a Net Zero Carbon future is making
           the most out of our clean energy sources, and most of the time, that

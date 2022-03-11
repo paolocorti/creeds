@@ -1,10 +1,8 @@
 import { useState, useMemo, useEffect } from "react";
-import { useStore } from "../store.js";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import RadarYear from "./Radar/RadarYear";
-import { ParentSize } from "@visx/responsive";
-import { colorByCategory, activitiesArray } from "./utils";
+import { activitiesArray } from "./utils";
 import { getEnergyData, getGasData, getData } from "./data";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import { groupBy, flatten } from "lodash";
@@ -14,7 +12,14 @@ import { useWindowSize, getVizWidth } from "./utils";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
-const Section4 = ({ data, energyDemand, gasDemand }) => {
+const Section4 = ({
+  data,
+  energyDemand,
+  gasDemand,
+  expanded,
+  setExpanded,
+  nextChapter,
+}) => {
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedCompareSeason1, setSelectedCompareSeason1] = useState(0);
   const [selectedCompareSeason2, setSelectedCompareSeason2] = useState(1);
@@ -76,7 +81,11 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
       name="section4"
       className="w-full min-h-screen flex flex-col md:flex-row"
     >
-      <LeftColumn sectionTitle={"/5.seasons-vertical.svg"}>
+      <LeftColumn
+        sectionTitle={"/5.seasons-vertical.svg"}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      >
         <h2 className="subtitle">Seasons of the year</h2>
         <p>
           Seasons are emerging as relevant to many aspects of research on
@@ -93,7 +102,7 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
           centuries) are taken into account.
         </p>
       </LeftColumn>
-      <RightColumn>
+      <RightColumn expanded={expanded} setExpanded={setExpanded}>
         <div className="flex w-full flex-col">
           <div>
             <div className="" style={{ height: "auto" }}>
@@ -163,6 +172,7 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
             </div>
           </div>
         </div>
+        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
       </RightColumn>
     </section>
   );

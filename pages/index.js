@@ -7,6 +7,7 @@ import Section1 from "../components/Section1";
 import Section2 from "../components/Section2";
 import Section3 from "../components/Section3";
 import Section4 from "../components/Section4";
+import Section5 from "../components/Section5";
 import Landing from "../components/Landing";
 import {
   Link,
@@ -25,6 +26,7 @@ export default function Home() {
   const [energyDemand, setEnergyDemand] = useState([]);
   const [gasDemand, setGasDemand] = useState([]);
   const [energyPrice, setEnergyPrice] = useState([]);
+  const [expanded, setExpanded] = useState(true);
 
   useEffect(() => {
     csv("/data/activity_frequency_distributions.csv").then((values) => {
@@ -47,7 +49,6 @@ export default function Home() {
         })
       );
       const max = Math.max(...allValues);
-      console.log("energyMaximum", max);
       useStore.setState({
         energyMaximum: max,
       });
@@ -89,7 +90,6 @@ export default function Home() {
         })
       );
       const max = Math.max(...allValues);
-      console.log("energyPriceMaximum", max);
       useStore.setState({
         energyPriceMaximum: max,
       });
@@ -146,6 +146,8 @@ export default function Home() {
               smooth: true,
             });
           }}
+          expanded={expanded}
+          setExpanded={setExpanded}
         />
         <Section1
           data={data}
@@ -159,6 +161,8 @@ export default function Home() {
               smooth: true,
             });
           }}
+          expanded={expanded}
+          setExpanded={setExpanded}
         />
         <Section2
           data={data}
@@ -169,6 +173,8 @@ export default function Home() {
               smooth: true,
             });
           }}
+          expanded={expanded}
+          setExpanded={setExpanded}
         />{" "}
         <Section3
           data={data}
@@ -182,12 +188,31 @@ export default function Home() {
               smooth: true,
             });
           }}
+          expanded={expanded}
+          setExpanded={setExpanded}
         />
         <Section4
           data={data}
           energyDemand={energyDemand}
           gasDemand={gasDemand}
           energyPrice={energyPrice}
+          nextChapter={() => {
+            scroller.scrollTo("section5", {
+              duration: 500,
+              delay: 100,
+              smooth: true,
+            });
+          }}
+          expanded={expanded}
+          setExpanded={setExpanded}
+        />
+        <Section5
+          data={data}
+          energyDemand={energyDemand}
+          gasDemand={gasDemand}
+          energyPrice={energyPrice}
+          expanded={expanded}
+          setExpanded={setExpanded}
         />
       </main>
 

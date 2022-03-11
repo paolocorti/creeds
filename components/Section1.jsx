@@ -17,6 +17,8 @@ const Section1 = ({
   energyPrice,
   gasDemand,
   nextChapter,
+  expanded,
+  setExpanded,
 }) => {
   const [selectedMonth, setSelectedMonth] = useState(1);
   const [playStarted, setPlayStarted] = useState(1);
@@ -53,7 +55,11 @@ const Section1 = ({
       name="section1"
       className="w-full min-h-screen flex flex-col md:flex-row"
     >
-      <LeftColumn sectionTitle={"/2.activities-vertical.svg"}>
+      <LeftColumn
+        sectionTitle={"/2.activities-vertical.svg"}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      >
         <h2 className="subtitle">
           Activities, demand and price every 30 minutes
         </h2>
@@ -73,7 +79,7 @@ const Section1 = ({
           shaping influence over households’ energy demand throughout the day.
         </p>
       </LeftColumn>
-      <RightColumn>
+      <RightColumn expanded={expanded} setExpanded={setExpanded}>
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full">
             <p className="text-center mt-0">

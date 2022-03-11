@@ -5,7 +5,6 @@ export const useStore = create(() => ({
   hoverCategory: null,
   selectedCategory: null,
   hoverTime: null,
-  expanded: true,
   gasMaximum: 0,
   energyMaximum: 0,
   energyPriceMaximum: 0,

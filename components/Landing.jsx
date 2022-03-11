@@ -8,7 +8,7 @@ const Landing = ({ nextChapter }) => {
         <br /> and the rhythms <br />
         of everyday life
       </h1>
-      <LandingCircles />
+      {/* <LandingCircles /> */}
       <div className="flex justify-center">
         <div
           className="border rounded-2xl z-40 px-4 py-1 cursor-pointer bg-green hover:bg-black  hover:text-green"

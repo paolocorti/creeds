@@ -2,8 +2,8 @@ import { useStore } from "../store.js";
 import { isMobile } from "react-device-detect";
 import { useState, useEffect } from "react";
 
-const RightColumn = ({ children }) => {
-  const expanded = useStore((state) => state.expanded);
+const RightColumn = ({ children, expanded, setExpanded }) => {
+  //const expanded = useStore((state) => state.expanded);
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const RightColumn = ({ children }) => {
       {!expanded && !mobile && (
         <div
           className="absolute top-2/4 cursor-pointer z-2"
-          onClick={() => useStore.setState({ expanded: !expanded })}
+          onClick={() => setExpanded(!expanded)}
           style={{ left: "-2px", top: "200px" }}
         >
           <img src={"/expand.svg"} width={26} />

@@ -7,7 +7,13 @@ import { ParentSize } from "@visx/responsive";
 import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 
-const Section2 = ({ data, energyDemand, nextChapter }) => {
+const Section2 = ({
+  data,
+  energyDemand,
+  nextChapter,
+  expanded,
+  setExpanded,
+}) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion, setSelCompareRegion] = useState([
@@ -19,7 +25,11 @@ const Section2 = ({ data, energyDemand, nextChapter }) => {
 
   return (
     <section name="section2" className="w-full flex flex-col md:flex-row">
-      <LeftColumn sectionTitle={"/3.unpacking-vertical.svg"}>
+      <LeftColumn
+        sectionTitle={"/3.unpacking-vertical.svg"}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      >
         <h2 className="subtitle">Unpacking peaks</h2>
         <p>
           Whilst the volume of energy demand relates to many factors (e.g.
@@ -37,7 +47,7 @@ const Section2 = ({ data, energyDemand, nextChapter }) => {
           peaks is inextricably related to providing answers to these questions.
         </p>
       </LeftColumn>
-      <RightColumn>
+      <RightColumn expanded={expanded} setExpanded={setExpanded}>
         <div className="w-full flex justify-center">
           <TrendYear
             globalData={data}
