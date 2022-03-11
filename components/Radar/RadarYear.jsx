@@ -431,7 +431,12 @@ const RadarYear = React.memo(
                                         cx={5}
                                         cy={5}
                                         fill="#ffd6cc"
-                                        data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
+                                        data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} ${
+                                          showDemand
+                                            ? "<br/> energy price:" +
+                                              energyPrice
+                                            : ""
+                                        }`}
                                         data-html="true"
                                         data-position="top"
                                         onMouseEnter={() => {
