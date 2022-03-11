@@ -36,14 +36,16 @@ function SamplePrevArrow(props) {
   );
 }
 
-const SeasonMenu = ({ selectedCompareSeason, setSelected }) => {
+const SeasonMenu = ({ selectedCompareSeason, setSelected, initialSlide }) => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    initialSlide: initialSlide,
     afterChange: (current) => {
+      console.log(current);
       setSelected(current);
     },
     nextArrow: <SampleNextArrow />,

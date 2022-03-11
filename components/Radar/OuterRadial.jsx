@@ -16,13 +16,13 @@ const date = (d) => {
 };
 const close = (d) => parseFloat(d.value);
 
-const OuterRadial = ({ width, height, data, line }) => {
+const OuterRadial = ({ width, height, data, line, maximum }) => {
   const xScale = scaleTime({
     range: [0, 6.28],
     domain: extent(data, date),
   });
   const yScale = scaleLinear({
-    domain: [0, extent(data, close)[1]],
+    domain: [0, maximum],
   });
 
   const angle = (d) => xScale(date(d)) ?? 0;

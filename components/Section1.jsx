@@ -39,7 +39,6 @@ const Section1 = ({
 
   useEffect(() => {
     if (playStarted) {
-      console.log(selectedMonth);
       if (selectedMonth === 13) {
         clearInterval(interval);
         interval = null;
@@ -48,8 +47,6 @@ const Section1 = ({
       }
     }
   }, [selectedMonth]);
-
-  console.log({ vizWidth });
 
   return (
     <section

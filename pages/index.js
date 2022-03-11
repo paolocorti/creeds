@@ -17,6 +17,8 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
+import { flatten } from "lodash";
+import { useStore } from "../store.js";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -31,14 +33,66 @@ export default function Home() {
 
     csv("/data/mean_daily_elec_demand_profiles.csv").then((values) => {
       setEnergyDemand(values);
+
+      const copiedValues = JSON.parse(JSON.stringify(values));
+      delete copiedValues.columns;
+      const allValues = flatten(
+        copiedValues.map((v) => {
+          delete v.month;
+          delete v.region;
+          delete v.season;
+          const val = Object.values(v);
+          const parsed = val.map((n) => parseFloat(n));
+          return parsed;
+        })
+      );
+      const max = Math.max(...allValues);
+      console.log("energyMaximum", max);
+      useStore.setState({
+        energyMaximum: max,
+      });
     });
 
     csv("/data/mean_daily_gas_demand_profiles.csv").then((values) => {
       setGasDemand(values);
+      const copiedValues = JSON.parse(JSON.stringify(values));
+      delete copiedValues.columns;
+      const allValues = flatten(
+        copiedValues.map((v) => {
+          delete v.month;
+          delete v.region;
+          delete v.season;
+          const val = Object.values(v);
+          const parsed = val.map((n) => parseFloat(n));
+          return parsed;
+        })
+      );
+      const max = Math.max(...allValues);
+      useStore.setState({
+        gasMaximum: max,
+      });
     });
 
     csv("/data/hourly_average_price_electricity.csv").then((values) => {
       setEnergyPrice(values);
+
+      const copiedValues = JSON.parse(JSON.stringify(values));
+      delete copiedValues.columns;
+      const allValues = flatten(
+        copiedValues.map((v) => {
+          delete v.month;
+          delete v.region;
+          delete v.season;
+          const val = Object.values(v);
+          const parsed = val.map((n) => parseFloat(n));
+          return parsed;
+        })
+      );
+      const max = Math.max(...allValues);
+      console.log("energyPriceMaximum", max);
+      useStore.setState({
+        energyPriceMaximum: max,
+      });
     });
   }, []);
 

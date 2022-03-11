@@ -11,13 +11,14 @@ const RadarCircleYear = ({
   category,
   color,
   width,
-  setHovered,
+  hover,
+  setHover,
+  setHoverCategory,
   time,
 }) => {
   const strokeColor = "black";
   const strokeWidth = 1;
   const radius = Math.sqrt(Number(v) / Math.PI) * (width * 0.05);
-  const hover = useStore((state) => state.hover);
 
   return (
     <g>
@@ -33,13 +34,18 @@ const RadarCircleYear = ({
         }% <br/>`}
         data-html="true"
         onMouseEnter={() => {
-          useStore.setState({
-            hover: `i${index}:f${factor}`,
-            hoverCategory: factor,
-          });
+          // useStore.setState({
+          //   hover: ,
+          //   hoverCategory: factor,
+          // });
+          setHover(`i${index}:f${factor}`);
+          setHoverCategory(factor);
+          ReactTooltip.rebuild();
         }}
         onMouseLeave={() => {
-          useStore.setState({ hover: null, hoverCategory: null });
+          //useStore.setState({ hover: null, hoverCategory: null });
+          setHover(null);
+          setHoverCategory(null);
         }}
         stroke={hover === `i${index}:f${factor}` ? strokeColor : "none"}
         strokeWidth={strokeWidth}
@@ -47,9 +53,6 @@ const RadarCircleYear = ({
         //   mixBlendMode: "multiply",
         // }}
       />
-      {/* <text dx={0} dy={value} textAnchor={"middle"} fontSize={10}>
-        {parseFloat(v).toFixed(2)}
-      </text> */}
     </g>
   );
 };

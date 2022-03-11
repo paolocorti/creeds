@@ -16,7 +16,6 @@ const Section3 = ({ data, energyDemand, gasDemand, nextChapter }) => {
     useState("london");
   const [selectedCompareRegion2, setSelectedCompareRegion2] =
     useState("south_east");
-
   const [selectedCategory, setSelectedCategory] = useState(null);
   const size = useWindowSize();
   const vizWidth = getVizWidth("multiple", size);
@@ -68,9 +67,12 @@ const Section3 = ({ data, energyDemand, gasDemand, nextChapter }) => {
               }}
             >
               <div>
-                <RegionMenu setSelected={setSelectedCompareRegion1} />
+                <RegionMenu
+                  setSelected={setSelectedCompareRegion1}
+                  initialSlide={0}
+                />
               </div>
-              {selectedCompareRegion1 && (
+              {selectedCompareRegion1 !== undefined && (
                 <RadarYear
                   globalData={data}
                   energyDemand={energyDemand}
@@ -87,9 +89,12 @@ const Section3 = ({ data, energyDemand, gasDemand, nextChapter }) => {
             </div>
             <div className="px-12">
               <div>
-                <RegionMenu setSelected={setSelectedCompareRegion2} />
+                <RegionMenu
+                  setSelected={setSelectedCompareRegion2}
+                  initialSlide={1}
+                />
               </div>
-              {selectedCompareRegion2 && (
+              {selectedCompareRegion2 !== undefined && (
                 <RadarYear
                   globalData={data}
                   energyDemand={energyDemand}

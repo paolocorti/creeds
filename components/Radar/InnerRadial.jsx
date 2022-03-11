@@ -13,7 +13,7 @@ const date = (d) => {
 };
 const close = (d) => parseFloat(d.value);
 
-const InnerRadial = ({ width, height, data, svgWidth }) => {
+const InnerRadial = ({ width, height, data, maximum }) => {
   if (data.length === 0) {
     return <></>;
   }
@@ -24,7 +24,7 @@ const InnerRadial = ({ width, height, data, svgWidth }) => {
     .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
 
   const yScale = scaleLinear({
-    domain: [0, extent(data, close)[1]],
+    domain: [0, maximum],
   });
 
   const padding = 20;

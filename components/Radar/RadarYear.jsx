@@ -82,9 +82,12 @@ const RadarYear = React.memo(
     selectedCategory,
     innerLabel,
   }) => {
-    const hover = useStore((state) => state.hover);
-    const hoverCategory = useStore((state) => state.hoverCategory);
-    const hoverTime = useStore((state) => state.hoverTime);
+    const [hover, setHover] = useState(null);
+    const [hoverCategory, setHoverCategory] = useState(null);
+    const [hoverTime, setHoverTime] = useState(null);
+    const gasMaximum = useStore((state) => state.gasMaximum);
+    const energyMaximum = useStore((state) => state.energyMaximum);
+    const energyPriceMaximum = useStore((state) => state.energyPriceMaximum);
     const selectedDataRegion = globalData.filter(
       (v) => v.region === selectedRegion
     );
@@ -299,7 +302,7 @@ const RadarYear = React.memo(
           </div>
         )}
       </div> */}
-        <ReactTooltip effect="solid" backgroundColor="#111" delayShow={100} />
+        <ReactTooltip effect="solid" backgroundColor="#111" delayShow={50} />
 
         <div
           style={{
@@ -327,11 +330,13 @@ const RadarYear = React.memo(
                     width={width * 0.95}
                     height={width * 0.95}
                     svgWidth={width}
+                    maximum={energyMaximum}
                   />
                 )}
                 {showPrice && gasData && (
                   <OuterRadial
                     data={gasData.length ? gasData[0] : []}
+                    maximum={gasMaximum}
                     width={width * 0.95}
                     height={width * 0.95}
                     svgWidth={width}
@@ -418,6 +423,32 @@ const RadarYear = React.memo(
                                     />
                                     <g
                                       transform={`translate(-4, ${
+                                        (width / 2) * 0.925
+                                      })`}
+                                    >
+                                      <circle
+                                        r={width * 0.025}
+                                        cx={5}
+                                        cy={5}
+                                        fill="#ffd6cc"
+                                        data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
+                                        data-html="true"
+                                        data-position="top"
+                                        onMouseEnter={() => {
+                                          setHoverTime(j);
+                                          ReactTooltip.rebuild();
+                                        }}
+                                        onMouseLeave={() => {
+                                          setHoverTime(null);
+                                        }}
+                                        style={{
+                                          cursor: "pointer",
+                                        }}
+                                      ></circle>
+                                    </g>
+
+                                    <g
+                                      transform={`translate(-4, ${
                                         (width / 2) * 0.9
                                       })`}
                                     >
@@ -428,27 +459,6 @@ const RadarYear = React.memo(
                                         strokeWidth={0.5}
                                         style={{ pointerEvents: "none" }}
                                       />
-                                      <circle
-                                        r={width * 0.03}
-                                        cx={5}
-                                        cy={5}
-                                        fill="none"
-                                        data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
-                                        data-html="true"
-                                        onMouseEnter={() => {
-                                          useStore.setState({
-                                            hoverTime: j,
-                                          });
-                                        }}
-                                        onMouseLeave={() => {
-                                          useStore.setState({
-                                            hoverTime: null,
-                                          });
-                                        }}
-                                        style={{
-                                          cursor: "pointer",
-                                        }}
-                                      ></circle>
                                     </g>
 
                                     {j % 2 === 0 && (
@@ -461,24 +471,13 @@ const RadarYear = React.memo(
                                             ? "radial-hour-label-rot"
                                             : "radial-hour-label"
                                         }
-                                        // onMouseEnter={() => {
-                                        //   useStore.setState({
-                                        //     hoverTime: j,
-                                        //   });
-                                        // }}
-                                        // onMouseLeave={() => {
-                                        //   useStore.setState({
-                                        //     hoverTime: null,
-                                        //   });
-                                        // }}
-                                        // data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} <br/> energy price: ${energyPrice}`}
-                                        // data-html="true"
                                         style={{
                                           fontSize:
                                             width * 0.02 < 14
                                               ? width * 0.02
                                               : 14,
                                           cursor: "pointer",
+                                          pointerEvents: "none",
                                         }}
                                       >
                                         {moment(timeScale.invert(j)).format(
@@ -516,6 +515,9 @@ const RadarYear = React.memo(
                                       width={width}
                                       energyPrice={energyPrice}
                                       energyDemand={energyDemand}
+                                      hover={hover}
+                                      setHover={setHover}
+                                      setHoverCategory={setHoverCategory}
                                     />
                                   )}
                                 </g>
@@ -534,6 +536,7 @@ const RadarYear = React.memo(
                     width={width * 0.3}
                     height={width * 0.3}
                     svgWidth={width}
+                    maximum={energyPriceMaximum}
                   />
                 </g>
               ) : (

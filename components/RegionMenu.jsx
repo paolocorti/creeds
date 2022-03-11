@@ -1,13 +1,14 @@
 import Slider from "react-slick";
 import { regions } from "./utils";
 
-const RegionMenu = ({ setSelected }) => {
+const RegionMenu = ({ setSelected, initialSlide }) => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    initialSlide: initialSlide,
     afterChange: (current) => {
       console.log(regions[current]);
       setSelected(regions[current]);

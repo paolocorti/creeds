@@ -45,25 +45,28 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
     selectedCompareSeason1 !== undefined
       ? flatten(grouped2[selectedCompareSeason1])
       : [];
-  const seasonData2 = selectedCompareSeason2
-    ? flatten(grouped2[selectedCompareSeason2])
-    : [];
+  const seasonData2 =
+    selectedCompareSeason2 !== undefined
+      ? flatten(grouped2[selectedCompareSeason2])
+      : [];
 
   const energyData1 =
     selectedCompareSeason1 !== undefined
       ? flatten(groupedEnergy2[selectedCompareSeason1])
       : [];
-  const energyData2 = selectedCompareSeason2
-    ? flatten(groupedEnergy2[selectedCompareSeason2])
-    : [];
+  const energyData2 =
+    selectedCompareSeason2 !== undefined
+      ? flatten(groupedEnergy2[selectedCompareSeason2])
+      : [];
 
   const gasData1 =
     selectedCompareSeason1 !== undefined
       ? flatten(groupedGas2[selectedCompareSeason1])
       : [];
-  const gasData2 = selectedCompareSeason2
-    ? flatten(groupedGas2[selectedCompareSeason2])
-    : [];
+  const gasData2 =
+    selectedCompareSeason2 !== undefined
+      ? flatten(groupedGas2[selectedCompareSeason2])
+      : [];
 
   const size = useWindowSize();
   const vizWidth = getVizWidth("multiple", size);
@@ -117,6 +120,7 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
                 <SeasonMenu
                   setSelected={setSelectedCompareSeason1}
                   selected={selectedCompareSeason1}
+                  initialSlide={0}
                 />
               </div>
               {selectedCompareSeason1 !== undefined && (
@@ -139,9 +143,10 @@ const Section4 = ({ data, energyDemand, gasDemand }) => {
                 <SeasonMenu
                   setSelected={setSelectedCompareSeason2}
                   selected={selectedCompareSeason2}
+                  initialSlide={1}
                 />
               </div>
-              {selectedCompareSeason2 && (
+              {selectedCompareSeason2 !== undefined && (
                 <RadarYear
                   globalData={seasonData2 || []}
                   energyDemand={energyData2 || []}
