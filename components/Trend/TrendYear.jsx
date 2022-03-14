@@ -200,7 +200,7 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
                           const index = activitiesCode[v.actCategory].index;
 
                           return (
-                            <g>
+                            <g key={`group-${j}`}>
                               {j === 0 && i % 2 === 0 && (
                                 <text
                                   dx={-20}

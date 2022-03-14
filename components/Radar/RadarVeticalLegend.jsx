@@ -89,9 +89,10 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
           </div>
         </div>
         <div className="relative">
-          {activitiesArray.map((v) => {
+          {activitiesArray.map((v, i) => {
             return (
               <div
+                key={`legend-${i}`}
                 className="flex items-center cursor-pointer z-10"
                 style={{ marginBottom: "1px" }}
                 onClick={() => {
@@ -163,7 +164,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
                 x2="0.300003"
                 y2="68"
                 stroke="black"
-                stroke-width="0.6"
+                strokeWidth="0.6"
               />
               <path
                 opacity="0.5"
@@ -177,7 +178,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
                 x2="0.300002"
                 y2="186"
                 stroke="black"
-                stroke-width="0.6"
+                strokeWidth="0.6"
               />
               <line
                 opacity="0.5"
@@ -186,7 +187,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
                 x2="0.299998"
                 y2="128"
                 stroke="black"
-                stroke-width="0.6"
+                strokeWidth="0.6"
               />
               <path
                 opacity="0.5"
@@ -200,7 +201,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
                 x2="0.300003"
                 y2="263"
                 stroke="black"
-                stroke-width="0.6"
+                strokeWidth="0.6"
               />
             </svg>
           </div>

@@ -9,15 +9,7 @@ import Section3 from "../components/Section3";
 import Section4 from "../components/Section4";
 import Section5 from "../components/Section5";
 import Landing from "../components/Landing";
-import {
-  Link,
-  Button,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
+import { animateScroll as scroll, scroller } from "react-scroll";
 import { flatten } from "lodash";
 import { useStore } from "../store.js";
 
@@ -133,7 +125,6 @@ export default function Home() {
           nextChapter={() => {
             scroller.scrollTo("intro", {
               duration: 500,
-              delay: 100,
               smooth: true,
             });
           }}
@@ -142,7 +133,6 @@ export default function Home() {
           nextChapter={() => {
             scroller.scrollTo("section1", {
               duration: 500,
-              delay: 100,
               smooth: true,
             });
           }}
@@ -157,7 +147,6 @@ export default function Home() {
           nextChapter={() => {
             scroller.scrollTo("section2", {
               duration: 500,
-              delay: 100,
               smooth: true,
             });
           }}
@@ -169,7 +158,6 @@ export default function Home() {
           nextChapter={() => {
             scroller.scrollTo("section3", {
               duration: 500,
-              delay: 100,
               smooth: true,
             });
           }}
@@ -184,7 +172,6 @@ export default function Home() {
           nextChapter={() => {
             scroller.scrollTo("section4", {
               duration: 500,
-              delay: 100,
               smooth: true,
             });
           }}
@@ -199,7 +186,6 @@ export default function Home() {
           nextChapter={() => {
             scroller.scrollTo("section5", {
               duration: 500,
-              delay: 100,
               smooth: true,
             });
           }}
@@ -216,7 +202,7 @@ export default function Home() {
         />
       </main>
 
-      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-8">
+      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">
         <div className="text-xs">
           © Copyright 2022
           <br />

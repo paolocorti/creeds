@@ -16,6 +16,7 @@ const Section3 = ({
   nextChapter,
   expanded,
   setExpanded,
+  fullscreen = false,
 }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
@@ -32,34 +33,41 @@ const Section3 = ({
       name="section3"
       className="w-full min-h-screen flex flex-col md:flex-row"
     >
-      <LeftColumn
-        sectionTitle={"/4.spatial-vertical.svg"}
+      {!fullscreen && (
+        <LeftColumn
+          sectionTitle={"/4.spatial-vertical.svg"}
+          expanded={expanded}
+          setExpanded={setExpanded}
+        >
+          <h2 className="subtitle">Spatial variation</h2>
+          <p>
+            Energy demand varies depending on where people live and work within
+            a country or region and this has implications for the grid. Meeting
+            peaks in electricity demand in a specific area is expensive (because
+            it increases balancing costs) and bad for the environment (as extra
+            supply is needed to meet demand peaks). But people don’t just stay
+            in the same place all the time. For many people, moving around from
+            one location to another is an essential part of their everyday life
+            – we go to work, we go to school, we go places… And when we move
+            around, we consume energy in different spaces. This has
+            repercussions on where and when electricity demand occurs.
+          </p>
+        </LeftColumn>
+      )}
+      <RightColumn
         expanded={expanded}
         setExpanded={setExpanded}
+        fullscreen={fullscreen}
       >
-        <h2 className="subtitle">Spatial variation</h2>
-        <p>
-          Energy demand varies depending on where people live and work within a
-          country or region and this has implications for the grid. Meeting
-          peaks in electricity demand in a specific area is expensive (because
-          it increases balancing costs) and bad for the environment (as extra
-          supply is needed to meet demand peaks). But people don’t just stay in
-          the same place all the time. For many people, moving around from one
-          location to another is an essential part of their everyday life – we
-          go to work, we go to school, we go places… And when we move around, we
-          consume energy in different spaces. This has repercussions on where
-          and when electricity demand occurs.
-        </p>
-      </LeftColumn>
-      <RightColumn expanded={expanded} setExpanded={setExpanded}>
         <div className="flex w-full flex-col">
           <div>
             <div className="" style={{ height: "auto" }}>
               <p className="text-center mt-0">
                 The graphic shows energy demand, activities’ frequency and
-                energy price every 30 minutes in UK’s region. The circle’s area
-                represents the activity’s frequency. Select the regions, the
-                monts and the activities to explore the data
+                energy price every 30 minutes in UK’s region.
+                <br /> The circle’s area represents the activity’s frequency.
+                Select the regions, the monts and the activities to explore the
+                data
               </p>
             </div>
           </div>
@@ -122,7 +130,9 @@ const Section3 = ({
             </div>
           </div>
         </div>
-        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+        {!fullscreen && (
+          <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+        )}
       </RightColumn>
     </section>
   );

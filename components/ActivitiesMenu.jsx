@@ -9,9 +9,10 @@ const ActivitiesMenu = ({
   return (
     <div className="my-0 md:px-4">
       <div className="flex flex-wrap justify-start w-full">
-        {activitiesArray.map((el) => {
+        {activitiesArray.map((el, i) => {
           return (
             <div
+              key={`menu-${i}`}
               className="md:mx-2 cursor-pointer categoryButton"
               onClick={() => {
                 setSelectedCategory(

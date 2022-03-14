@@ -19,6 +19,7 @@ const Section4 = ({
   expanded,
   setExpanded,
   nextChapter,
+  fullscreen = false,
 }) => {
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedCompareSeason1, setSelectedCompareSeason1] = useState(0);
@@ -81,37 +82,43 @@ const Section4 = ({
       name="section4"
       className="w-full min-h-screen flex flex-col md:flex-row"
     >
-      <LeftColumn
-        sectionTitle={"/5.seasons-vertical.svg"}
+      {!fullscreen && (
+        <LeftColumn
+          sectionTitle={"/5.seasons-vertical.svg"}
+          expanded={expanded}
+          setExpanded={setExpanded}
+        >
+          <h2 className="subtitle">Seasons of the year</h2>
+          <p>
+            Seasons are emerging as relevant to many aspects of research on
+            flexibility and yet in energy research they tend to be dominated by
+            discourses around averages of volumes (e.g. demand is higher when
+            the weather is cold). Seasonal variations in energy demand have
+            significant implications for system balancing between demand and
+            supply and flexibility. Everyday life and energy demand follow
+            seasonal patterns. What if demand itself could provide
+            inter-seasonal flexibility? The seasonality of electricity and gas
+            consumption offers an indication of how what constitutes demand
+            changes depending on the season. In essence, the rhythms of demand
+            are better understood if all types of temporal variation (from
+            seconds to decades, perhaps even centuries) are taken into account.
+          </p>
+        </LeftColumn>
+      )}
+      <RightColumn
         expanded={expanded}
         setExpanded={setExpanded}
+        fullscreen={fullscreen}
       >
-        <h2 className="subtitle">Seasons of the year</h2>
-        <p>
-          Seasons are emerging as relevant to many aspects of research on
-          flexibility and yet in energy research they tend to be dominated by
-          discourses around averages of volumes (e.g. demand is higher when the
-          weather is cold). Seasonal variations in energy demand have
-          significant implications for system balancing between demand and
-          supply and flexibility. Everyday life and energy demand follow
-          seasonal patterns. What if demand itself could provide inter-seasonal
-          flexibility? The seasonality of electricity and gas consumption offers
-          an indication of how what constitutes demand changes depending on the
-          season. In essence, the rhythms of demand are better understood if all
-          types of temporal variation (from seconds to decades, perhaps even
-          centuries) are taken into account.
-        </p>
-      </LeftColumn>
-      <RightColumn expanded={expanded} setExpanded={setExpanded}>
         <div className="flex w-full flex-col">
           <div>
             <div className="" style={{ height: "auto" }}>
               <p className="text-center mt-0">
                 The graphic shows electricity demand (the extrernal white
                 trend), gas demand (the extrernal black trend), activities’
-                frequency and energy price every 30 minutes by season. The
-                circle’s area represents the activity’s frequency. Select the
-                seasons and the activities to explore the data
+                frequency and energy price every 30 minutes by season.
+                <br /> The circle’s area represents the activity’s frequency.
+                Select the seasons and the activities to explore the data
               </p>
             </div>
           </div>
@@ -141,6 +148,7 @@ const Section4 = ({
                   selectedRegion={"all"}
                   selectedMonth={selectedMonth}
                   setSelectedMonth={setSelectedMonth}
+                  selectedCategory={selectedCategory}
                   width={vizWidth}
                   showDemand={false}
                   innerLabel={seasonLabel[selectedCompareSeason1]}
@@ -164,6 +172,7 @@ const Section4 = ({
                   selectedRegion={"all"}
                   selectedMonth={selectedMonth}
                   setSelectedMonth={setSelectedMonth}
+                  selectedCategory={selectedCategory}
                   width={vizWidth}
                   showDemand={false}
                   innerLabel={seasonLabel[selectedCompareSeason2]}
@@ -172,7 +181,9 @@ const Section4 = ({
             </div>
           </div>
         </div>
-        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+        {!fullscreen && (
+          <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+        )}{" "}
       </RightColumn>
     </section>
   );

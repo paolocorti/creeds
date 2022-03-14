@@ -13,11 +13,11 @@ const LeftColumn = ({ children, sectionTitle, expanded, setExpanded }) => {
     <div
       className={`w-full bg-green px-4 ${
         expanded ? "md:px-8" : "md:px-2"
-      } py-8 border-b border-black relative animation-width overflow-hidden transition-all duration-500`}
+      } py-8 border-b border-black relative overflow-hidden `}
       style={{ width: mobile ? "100%" : expanded ? "28%" : "7%" }}
     >
       {expanded && <>{children}</>}
-      {expanded && !mobile && (
+      {/* {expanded && !mobile && (
         <div
           className="absolute cursor-pointer z-2 md:visible"
           onClick={() => setExpanded(!expanded)}
@@ -33,7 +33,7 @@ const LeftColumn = ({ children, sectionTitle, expanded, setExpanded }) => {
         >
           <img src={sectionTitle} className="w-2/3" />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

@@ -2,18 +2,10 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
-import Section1 from "../components/Section1";
-import {
-  Link,
-  Button,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
+import Section2 from "../components/Section2";
+import { animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
 
-export default function Home() {
+export default function UnpackingPeaks() {
   const [data, setData] = useState([]);
   const [energyDemand, setEnergyDemand] = useState([]);
   const [gasDemand, setGasDemand] = useState([]);
@@ -30,8 +22,6 @@ export default function Home() {
 
     csv("/data/mean_daily_gas_demand_profiles.csv").then((values) => {
       setGasDemand(values);
-
-      console.log(values);
     });
 
     csv("/data/hourly_average_price_electricity.csv").then((values) => {
@@ -74,17 +64,15 @@ export default function Home() {
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
-        <Section1
+        <Section2
           data={data}
-          energyDemand={energyDemand}
-          energyPrice={energyPrice}
           nextChapter={() => {
-            scroller.scrollTo("section2", {
+            scroller.scrollTo("section3", {
               duration: 500,
-              delay: 100,
               smooth: true,
             });
           }}
+          expanded={false}
           fullscreen={true}
         />
       </main>
