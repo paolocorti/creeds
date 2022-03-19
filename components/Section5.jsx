@@ -70,7 +70,7 @@ const Section5 = ({
                 The graphic shows energy demand and activities’ frequency every
                 30 minutes for urban and rural regions.
               </p>
-              <div className="text-xs font-light uppercase text-left mb-1">
+              <div className="text-xs font-light uppercase text-left mb-2">
                 Select THE season or the activities to explore the data. MOUSE
                 OVER ON THE GRAPHICS TO READ THEM
               </div>
@@ -114,6 +114,7 @@ const Section5 = ({
                   showDemand={false}
                   selectedCategory={selectedCategory}
                   innerLabel={"URBAN"}
+                  type={"urban_rural"}
                 />
               )}
             </div>
@@ -137,6 +138,7 @@ const Section5 = ({
                   showDemand={false}
                   selectedCategory={selectedCategory}
                   innerLabel={"RURAL"}
+                  type={"urban_rural"}
                 />
               )}
             </div>

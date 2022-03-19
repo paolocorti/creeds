@@ -125,7 +125,7 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
             <p className="text-center mb-1">
               The graphic shows the activities’ frequency every 10 minutes.
             </p>
-            <div className="text-xs font-light uppercase text-left mb-1">
+            <div className="text-xs font-light uppercase text-left mb-2">
               MOUSE OVER ON THE GRAPHIC TO READ THE DATA
             </div>
             <div className="text-xs font-bold uppercase text-left">

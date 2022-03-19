@@ -81,7 +81,7 @@ const Section3 = ({
                 The graphic shows energy demand and activities’ frequency every
                 30 minutes in UK’s region.
               </p>
-              <div className="text-xs font-light uppercase text-left mb-1">
+              <div className="text-xs font-light uppercase text-left mb-2">
                 Select the month, THE REGIONS or the activities to explore the
                 data. MOUSE OVER ON THE GRAPHICS TO READ THEM
               </div>

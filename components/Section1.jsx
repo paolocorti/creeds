@@ -108,7 +108,7 @@ const Section1 = ({
               The graphic shows the half-hourly evolution of three key elements
               over the course of a day.
             </p>
-            <div className="text-xs font-light uppercase text-left mb-1">
+            <div className="text-xs font-light uppercase text-left mb-2">
               Select the month or the activities in the graphic or in the legend
               to explore the data. MOUSE OVER ON THE GRAPHIC TO READ THEM
             </div>

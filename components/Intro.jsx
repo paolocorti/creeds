@@ -102,7 +102,7 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
           visualise more easily these complex relations, and the ways in which
           we can increase our ability to be flexible.
         </p>
-        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+        <Button title="START EXPLORING ↓" callback={nextChapter} />
       </RightColumn>
 
       <div

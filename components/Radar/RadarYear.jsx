@@ -67,6 +67,35 @@ function describeArc(x, y, radius, startAngle, endAngle) {
   return d;
 }
 
+function describeArcPortion(x, y, radius, startAngle, endAngle) {
+  var start = polarToCartesian(x, y, radius, endAngle);
+  var end = polarToCartesian(x, y, radius, startAngle);
+
+  var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+
+  var d = [
+    "M",
+    start.x,
+    start.y,
+    "A",
+    radius,
+    radius,
+    0,
+    largeArcFlag,
+    0,
+    end.x,
+    end.y,
+    "L",
+    x,
+    y,
+    "L",
+    start.x,
+    start.y,
+  ].join(" ");
+
+  return d;
+}
+
 const RadarYear = ({
   selectedRegion,
   selectedMonth,
@@ -80,6 +109,7 @@ const RadarYear = ({
   showDemand = true,
   selectedCategory,
   innerLabel,
+  type = null,
 }) => {
   const [hover, setHover] = useState(null);
   const [hoverCategory, setHoverCategory] = useState(null);
@@ -303,6 +333,7 @@ const RadarYear = ({
               fill={"#ffd6cc"}
               style={{ pointerEvents: "none" }}
             />
+
             <g
               transform={`translate(${width * 0.6}, ${width * 0.6})`}
               style={{ pointerEvents: "none" }}
@@ -336,6 +367,26 @@ const RadarYear = ({
             />
 
             <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+              {type === "urban_rural" && (
+                <g>
+                  <path
+                    style={{
+                      pointerEvents: "none",
+                      opacity: 0.6,
+                    }}
+                    fill={"#fff"}
+                    d={describeArcPortion(0, 0, width * 0.5, 90, 135)}
+                  />
+                  <path
+                    style={{
+                      pointerEvents: "none",
+                      opacity: 0.6,
+                    }}
+                    fill={"#fff"}
+                    d={describeArcPortion(0, 0, width * 0.5, 240, 300)}
+                  />
+                </g>
+              )}
               {sorted.length &&
                 sorted.map((v, i) => {
                   const degAngle = (360 / 144) * 3;
@@ -414,10 +465,13 @@ const RadarYear = ({
                                       r={width * 0.025}
                                       cx={5}
                                       cy={5}
-                                      fill="#ffd6cc"
+                                      fill={"#ffd6cc"}
+                                      fillOpacity={
+                                        type === "urban_rural" ? 0 : 1
+                                      }
                                       data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} ${
                                         showDemand
-                                          ? "<br/> energy price:" + energyPrice
+                                          ? "<br/> energy price: " + energyPrice
                                           : ""
                                       }`}
                                       data-html="true"
