@@ -6,6 +6,7 @@ import RadarVerticalLegend from "./Radar/RadarVeticalLegend";
 import RadarYear from "./Radar/RadarYear";
 import { ParentSize } from "@visx/responsive";
 import Button from "./Button";
+import HowToRead from "./HowToRead";
 import { useWindowSize, getVizWidth } from "./utils";
 import { isMobile } from "react-device-detect";
 
@@ -23,12 +24,13 @@ const Section1 = ({
   fullscreen = false,
 }) => {
   const [selectedMonth, setSelectedMonth] = useState(1);
-  const [playStarted, setPlayStarted] = useState(1);
+  const [playStarted, setPlayStarted] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("all");
   const hoverCategory = useStore((state) => state.hoverCategory);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const size = useWindowSize();
   const vizWidth = getVizWidth("single", size);
+  const [open, setHowToReadOpen] = useState(false);
 
   const changeMonth = () => {
     if (selectedMonth < 13) {
@@ -55,7 +57,7 @@ const Section1 = ({
   return (
     <section
       name="section1"
-      className="w-full min-h-screen flex flex-col md:flex-row"
+      className="w-full min-h-screen flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
         <LeftColumn
@@ -66,20 +68,32 @@ const Section1 = ({
           <h2 className="subtitle">
             Activities, demand and price every 30 minutes
           </h2>
+          <div
+            className="mt-8 flex justify-start"
+            onClick={() => setHowToReadOpen((open) => !open)}
+          >
+            <Button title="HOW TO READ THE GRAPHIC" bold callback={null} />
+          </div>
           <p>
-            We visualise everyday life as happening inside the 24 hour clock
-            because we want to place what people do at the centre of our
-            understanding of energy demand. At the heart of this approach is the
-            position that the timing of energy demand is determined by the way
-            people’s activities are ordered in time.
+            Naturally, different people do different things over the course of a
+            day. And even the same people may do things differently from one day
+            to the next. Ultimately though, we all get the same 24 hours in a
+            day and, overall, we are still consistent enough so that when we
+            look at the bigger picture some clear, identifiable patterns emerge.
           </p>
           <p>
-            This type of visualisation is a conscious effort to visualise
-            underlying regular patterns relating to the fundamental temporal
-            characteristics of social events. It shows the complexities and
-            regular trends in everyday life through the simultaneous
-            representation of the temporal rhythm of social practices and its
-            shaping influence over households’ energy demand throughout the day.
+            To get this bird’s eye view, we visualise everyday life as happening
+            inside a 24 hour clock where, quite literally, we place what people
+            do at the centre of our understanding of energy demand. At the heart
+            of this approach to visualising energy demand and everyday life is
+            the position that the timing of energy demand is determined by the
+            way people’s activities are ordered in time.{" "}
+          </p>
+          <p>
+            This type of visualisation shows the complexities and regular trends
+            in everyday life through the simultaneous representation of the
+            temporal rhythm of social practices and its shaping influence over
+            households’ energy demand throughout the day.
           </p>
         </LeftColumn>
       )}
@@ -89,13 +103,18 @@ const Section1 = ({
         fullscreen={fullscreen}
       >
         <div className="flex flex-col justify-center items-center">
-          <div className="flex w-full">
-            <p className="text-center mt-0">
-              The graphic shows energy demand, activities’ frequency and energy
-              price every 30 minutes. The circle’s area represents the
-              activity’s frequency. Select the month or the activities in the
-              graphic or in the legend to explore the data
+          <div className="flex w-full flex-col items-start mb-4">
+            <p className="text-center mb-1">
+              The graphic shows the half-hourly evolution of three key elements
+              over the course of a day.
             </p>
+            <div className="text-xs font-light uppercase text-left mb-1">
+              Select the month or the activities in the graphic or in the legend
+              to explore the data. MOUSE OVER ON THE GRAPHIC TO READ THEM
+            </div>
+            <div className="text-xs font-bold uppercase text-left">
+              SHARE THE GRAPHIC
+            </div>
           </div>
           <div className="flex w-full justify-center flex-col md:flex-row">
             <div
@@ -104,10 +123,33 @@ const Section1 = ({
                 maxWidth: "85vh",
               }}
             >
-              <div className="w-full flex justify-center">
-                <button onClick={startPlay} className="text-md">
-                  PLAY
-                </button>
+              <div
+                className="w-full flex justify-center"
+                style={{
+                  pointerEvents: playStarted ? "none" : "all",
+                  opacity: playStarted ? 0.4 : 1,
+                }}
+              >
+                <div onClick={startPlay} className="text-md">
+                  <div className="relative">
+                    <img
+                      src={"/play.svg"}
+                      width={28}
+                      className="cursor-pointer"
+                    />
+                    <span
+                      className="ml-2 uppercase font-light absolute"
+                      style={{
+                        fontSize: "10px",
+                        left: "30px",
+                        top: "8px",
+                        width: "220px",
+                      }}
+                    >
+                      play to see the changes over months
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <RadarYear
@@ -142,6 +184,14 @@ const Section1 = ({
           </div>
         )}
       </RightColumn>
+      <HowToRead
+        text={
+          "The graphic shows the half-hourly evolution of three key elements over the course of a day.<br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>- The price of electricity, to reflect the impact of energy demand on our power generation systems (inner layer)<br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+        }
+        image={"/legend01.svg"}
+        readOpen={open}
+        setHowToReadOpen={setHowToReadOpen}
+      />
     </section>
   );
 };

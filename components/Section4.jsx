@@ -9,6 +9,8 @@ import { groupBy, flatten } from "lodash";
 import SeasonMenu from "./SeasonMenu.jsx";
 import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import HowToRead from "./HowToRead";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
@@ -76,11 +78,12 @@ const Section4 = ({
 
   const size = useWindowSize();
   const vizWidth = getVizWidth("multiple", size);
+  const [open, setHowToReadOpen] = useState(false);
 
   return (
     <section
       name="section4"
-      className="w-full min-h-screen flex flex-col md:flex-row"
+      className="w-full min-h-screen flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
         <LeftColumn
@@ -89,19 +92,31 @@ const Section4 = ({
           setExpanded={setExpanded}
         >
           <h2 className="subtitle">Seasons of the year</h2>
+          <div
+            className="mt-8 flex justify-start"
+            onClick={() => setHowToReadOpen((open) => !open)}
+          >
+            <Button title="HOW TO READ THE GRAPHIC" bold callback={null} />
+          </div>
           <p>
-            Seasons are emerging as relevant to many aspects of research on
-            flexibility and yet in energy research they tend to be dominated by
-            discourses around averages of volumes (e.g. demand is higher when
-            the weather is cold). Seasonal variations in energy demand have
-            significant implications for system balancing between demand and
-            supply and flexibility. Everyday life and energy demand follow
-            seasonal patterns. What if demand itself could provide
-            inter-seasonal flexibility? The seasonality of electricity and gas
-            consumption offers an indication of how what constitutes demand
-            changes depending on the season. In essence, the rhythms of demand
-            are better understood if all types of temporal variation (from
-            seconds to decades, perhaps even centuries) are taken into account.
+            Everyday life and energy demand follow seasonal patterns.
+            <br />
+            These seasonal variations in energy demand have significant
+            implications for the balancing of demand and supply in our energy
+            systems.
+            <br />
+            Up until recently, the discourse in energy research has revolved
+            around average figures of total volumes of energy demand (e.g. total
+            demand is higher when the weather is hot/cold). However, the
+            importance of seasonal variations is increasingly recognised, and
+            seasons are emerging as relevant factors to many aspects of research
+            into the flexibility potential of demand.
+            <br />
+            When it comes to shifting demand to a different time, this shift
+            could be needed to occur within the same day, but it could also be
+            needed over the course of a month or even a year. Thus, it is
+            necessary to understand the temporal variation of demand at all
+            these different timescales.
           </p>
         </LeftColumn>
       )}
@@ -112,14 +127,20 @@ const Section4 = ({
       >
         <div className="flex w-full flex-col">
           <div>
-            <div className="" style={{ height: "auto" }}>
-              <p className="text-center mt-0">
-                The graphic shows electricity demand (the extrernal white
-                trend), gas demand (the extrernal black trend), activities’
-                frequency and energy price every 30 minutes by season.
-                <br /> The circle’s area represents the activity’s frequency.
-                Select the seasons and the activities to explore the data
+            <div className="flex w-full flex-col items-start mb-4">
+              <p className="text-center mb-1">
+                The graphic shows energy demand and activities’ frequency every
+                30 minutes by season.
               </p>
+              <div className="text-xs font-light uppercase text-left mb-1">
+                Select THE season or the activities to explore the data. MOUSE
+                OVER ON THE GRAPHICS TO READ THEM
+              </div>
+              <CopyToClipboard text="">
+                <div className="text-xs font-bold uppercase text-left">
+                  SHARE THE GRAPHIC
+                </div>
+              </CopyToClipboard>
             </div>
           </div>
 
@@ -185,6 +206,14 @@ const Section4 = ({
           <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
         )}{" "}
       </RightColumn>
+      <HowToRead
+        text={
+          "The graphic shows the half-hourly evolution of key elements over the course of a day by season.<br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+        }
+        image={"/legend04.svg"}
+        readOpen={open}
+        setHowToReadOpen={setHowToReadOpen}
+      />
     </section>
   );
 };

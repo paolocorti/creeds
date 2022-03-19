@@ -94,6 +94,11 @@ export default function Home() {
         <title>
           Energy demand flexibility and the rhythms of everyday life
         </title>
+        <meta
+          name="description"
+          content="Our everyday life – what we do at home, at work, at school, when moving around – and its relation to energy demand is rather complex. As part of our work as energy researchers, we have introduced fresh approaches to thinking about the social-temporal organisation of energy demand."
+        />
+        <link rel="alternate" hreflang="it" href="" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -200,6 +205,12 @@ export default function Home() {
           energyPrice={energyPrice}
           expanded={expanded}
           setExpanded={setExpanded}
+          nextChapter={() => {
+            scroller.scrollTo("intro", {
+              duration: 500,
+              smooth: true,
+            });
+          }}
         />
       </main>
 

@@ -25,7 +25,10 @@ const Section2 = ({
   const vizWidth = getVizWidth("trend", size);
 
   return (
-    <section name="section2" className="w-full flex flex-col md:flex-row">
+    <section
+      name="section2"
+      className="w-full flex flex-col md:flex-row relative"
+    >
       {!fullscreen && (
         <LeftColumn
           sectionTitle={"/3.unpacking-vertical.svg"}
@@ -34,20 +37,21 @@ const Section2 = ({
         >
           <h2 className="subtitle">Unpacking peaks</h2>
           <p>
-            Whilst the volume of energy demand relates to many factors (e.g.
-            weather, type of appliances used, types of building), patterns
-            throughout the day are a direct consequence of what people do.
-            Detailed knowledge of when, and on what occasions several people
-            engage in the same activities at the same time, of how activities’
-            patterns vary, and of how they might be shaped is needed to inform
-            any issue around the flexibility of demand for energy. The impact of
-            &#39;smart&#39; tariffs and controls partly depends on whether there
-            is, in fact, scope for shifting the timing of what people do, and
-            for changing the rhythm of demand during peaks. Questions around
-            these issues revolve around how activities generate patterns of
-            demand at peak time, focusing on questions of why, where and when.
-            Unpacking peaks is inextricably related to providing answers to
-            these questions.
+            We have established by now that the energy demand patterns observed
+            throughout the day are a direct consequence of what people do. But
+            if we are to provide further insights into any of the issues around
+            the flexibility of demand for energy, we need to have a very
+            detailed knowledge of what happens during the most problematic
+            periods. That is, when peaks in demand occur.
+            <br /> The impact of “smart” tariffs and controls largely depends on
+            whether there is, in fact, scope for shifting the timing of what
+            people do, and for changing the rhythm of demand during peaks.
+            <br />
+            Questions about these issues revolve around how activities generate
+            patterns of demand at peak time, focusing on questions of why, where
+            and when.
+            <br /> Unpacking peaks is inextricably related to providing answers
+            to these questions.
           </p>
         </LeftColumn>
       )}

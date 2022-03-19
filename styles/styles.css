@@ -35,6 +35,14 @@ p {
   font-weight: 400;
 }
 
+p b {
+  font-weight: bold;
+  background-color: #8dedae;
+  mix-blend-mode: multiply;
+  font-family: "STIX Two Text", serif;
+  padding: 0 2px;
+}
+
 .dot {
   width: 12px;
   height: 12px;

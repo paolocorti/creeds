@@ -121,10 +121,16 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
         }}
       >
         <div className="relative flex flex-col items-center">
-          <div className="">
-            <p className="text-center mb-8 mt-0">
+          <div className="flex w-full flex-col items-start mb-8">
+            <p className="text-center mb-1">
               The graphic shows the activities’ frequency every 10 minutes.
             </p>
+            <div className="text-xs font-light uppercase text-left mb-1">
+              MOUSE OVER ON THE GRAPHIC TO READ THE DATA
+            </div>
+            <div className="text-xs font-bold uppercase text-left">
+              SHARE THE GRAPHIC
+            </div>
           </div>
           <svg width={width} height={height}>
             {/* <g transform={`translate(${marginLeft}, 10)`}>

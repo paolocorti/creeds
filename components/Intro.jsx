@@ -32,52 +32,75 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
             lineHeight: "75px",
           }}
         >
-          Energy flexibility and the rhythms of everyday life
+          Energy demand flexibility and the rhythms of everyday life
         </h1>
       </LeftColumn>
 
       <RightColumn expanded={expanded} setExpanded={setExpanded}>
         <p className="px-0 md:px-6">
-          One of the greatest challenges for a Net Zero Carbon future is making
-          the most out of our clean energy sources, and most of the time, that
-          means shifting our electricity demand to those times of day when clean
-          power is available – this is what we call flexibility. Flexibility is
-          generally seen as a way of improving the balancing of demand with
-          renewables. And since renewables are cheaper than other forms of
-          producing electricity, this also means reducing the overall cost of
-          electricity generation. So how do we achieve that flexibility? <br />
-          <br />
-          Energy demand and what people do go hand in hand, so if we want to
-          change energy demand, we essentially need to change either what people
-          do or the way they do it. But our everyday life – what we do at home,
-          at work, at school, when moving around – is extremely complex. It is
-          somewhat difficult to find examples of times of day, week, month or
-          year when the timing of the things we do changes. But in reality, we
-          are constantly doing just that, either out of own initiative or in
-          response to external factors such as the weather. We are a group of
-          researchers who are convinced – and trying to convince others – that
-          the idea of flexibility needs to be grounded in a thorough
-          understanding of the contemporary timing of energy demand (domestic,
-          non-domestic and in relation to the mobility of things and people) and
-          how it has come to be the way it is. Interventions with a view to
-          mitigating demand peaks through increasing flexibility in the timing
-          of energy demand encompass a variety of technologies, pricing
-          mechanisms and shifts in institutional timings.
-          <br />
-          <br /> But, as we mentioned before, energy demand is bound up with the
-          temporal rhythm of society and what people do. Therefore, these
-          seemingly isolated aspects of flexibility cannot be studied in
-          isolation. Our search for flexibility necessarily starts by looking at
-          the rhythms of everyday life, and here we share with you our attempts
-          to visualise their complexity. So, how does demand for electricity
-          relate to what people do day to day? As part of this work, we
-          introduce fresh approaches to thinking of the social-temporal
-          organisation of energy demand. We also try to understand what these
-          mean for ‘flexibilities’ of different forms and scales, and across
-          dimensions of everyday life, such as the timing of people’s activities
-          in the home, their travels, demand for electricity and the price of
-          it. But perhaps it is best to start by showing what the typical
-          patterns of activity, demand, etc. look like.
+          One of the greatest challenges for a Net Zero Carbon future is{" "}
+          <b>making the most out of our clean energy sources</b>.
+        </p>
+
+        <p className="px-0 md:px-6">
+          More often than not, this requires us to have the ability to{" "}
+          <b>
+            shift our electricity demands to those times of day when clean power
+            is plentiful
+          </b>{" "}
+          – this is what we call flexibility.
+        </p>
+
+        <p className="px-0 md:px-6">
+          Flexibility is generally seen as a way of improving the balancing of
+          our demand for energy with renewables’ output. The more renewables we
+          use, the less carbon emissions we produce, and the closer we get to
+          achieving our ambitious Net Zero targets.
+        </p>
+
+        <p className="px-0 md:px-6">So how do we achieve that flexibility?</p>
+
+        <p className="px-0 md:px-6">
+          <b>Energy demand goes hand in hand with what people do</b>, so our
+          search for flexibility necessarily starts by looking at the rhythms of
+          everyday life.
+        </p>
+
+        <p className="px-0 md:px-6">
+          Essentially,{" "}
+          <b>
+            if we want to change energy demand, we need to change either what
+            people do
+          </b>{" "}
+          or the way they do it.
+        </p>
+
+        <p className="px-0 md:px-6">
+          But how exactly does demand for electricity relate to what people do
+          on a day-to-day basis?
+        </p>
+
+        <p className="px-0 md:px-6">
+          Our everyday life – what we do at home, at work, at school, when
+          moving around – and its relation to energy demand is rather complex.
+        </p>
+
+        <p className="px-0 md:px-6">
+          As part of our work as energy researchers, we have introduced fresh
+          approaches to thinking about the social-temporal organisation of
+          energy demand. We also try to understand what these mean in terms of
+          the ‘different flexibilities’ across different temporal scales and
+          dimensions of everyday life such as the timing of people’s activities
+          while at home, their travels, the demand for electricity, and the cost
+          of providing said electricity.
+        </p>
+
+        <p className="px-0 md:px-6">
+          Perhaps it is best to just dive right in and start exploring of how
+          these patterns of human activity translate into demand for energy.
+          Here we share with you some tools that hopefully will allow you to
+          visualise more easily these complex relations, and the ways in which
+          we can increase our ability to be flexible.
         </p>
         <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
       </RightColumn>
@@ -118,7 +141,7 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
           <a
             href="https://www.creds.ac.uk/"
             target="_blank"
-            className="text-bold underline"
+            className="text-bold underline text-base"
           >
             Energy Demand Solutions (CREDS)
           </a>
@@ -135,7 +158,7 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
             Reading, UK
           </div>
           <a href="mailto:j.ramirez-mendiola@reading.ac.uk" target="_blank">
-            <div className="border rounded-2xl w-36 flex justify-center mt-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
+            <div className="border rounded-2xl w-36 text-sm flex justify-center mt-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
               CONTACT
             </div>
           </a>{" "}
@@ -146,7 +169,7 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
             Reading and co-director of CREDS
           </div>
           <a href="mailto:j.torriti@reading.ac.uk " target="_blank">
-            <div className="border rounded-2xl w-36 flex justify-center mt-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
+            <div className="border rounded-2xl w-36 text-sm flex justify-center mt-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
               CONTACT
             </div>
           </a>{" "}
@@ -155,7 +178,7 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
           <a
             href="https://twitter.com/fedfragapane"
             target="_blank"
-            className="text-bold underline"
+            className="text-bold underline text-base"
           >
             {" "}
             Federica Fragapane
@@ -164,7 +187,7 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
           <a
             href="https://twitter.com/paolocorti_"
             target="_blank"
-            className="text-bold underline"
+            className="text-bold underline text-base "
           >
             Paolo Corti
           </a>

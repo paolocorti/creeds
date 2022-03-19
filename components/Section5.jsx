@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
-import { useStore } from "../store.js";
+import { useState } from "react";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import RadarYear from "./Radar/RadarYear";
-import RegionMenu from "./RegionMenu.jsx";
 import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Section5 = ({
   data,
@@ -16,6 +15,7 @@ const Section5 = ({
   expanded,
   setExpanded,
   fullscreen = false,
+  nextChapter,
 }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
@@ -29,7 +29,7 @@ const Section5 = ({
   return (
     <section
       name="section5"
-      className="w-full min-h-screen flex flex-col md:flex-row"
+      className="w-full min-h-screen flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
         <LeftColumn
@@ -39,16 +39,22 @@ const Section5 = ({
         >
           <h2 className="subtitle">Urban vs Rural</h2>
           <p>
-            Energy demand varies depending on where people live and work within
-            a country or region and this has implications for the grid. Meeting
-            peaks in electricity demand in a specific area is expensive (because
-            it increases balancing costs) and bad for the environment (as extra
-            supply is needed to meet demand peaks). But people don’t just stay
-            in the same place all the time. For many people, moving around from
-            one location to another is an essential part of their everyday life
-            – we go to work, we go to school, we go places… And when we move
-            around, we consume energy in different spaces. This has
-            repercussions on where and when electricity demand occurs.
+            Whenever we talk about the rhythm of everyday life, it’s inevitable
+            to talk about the differences in the pace at which everyday life
+            seems to unfold in different settings.
+            <br />
+            <br />
+            We tend to think of cities as busy, always-rushing places, and small
+            villages in the countryside as sleepy, easy-going places. And
+            perhaps these widespread perceptions are rooted in some truth, as we
+            can actually see some differences between the patterns of activity
+            of predominantly rural locations and predominantly urban locations.
+            <br />
+            As with all the other factors that play a role when it comes to
+            studying the flexibility of our demand for energy, paying attention
+            to this kind of distinctions is also key to making an accurate
+            assessment of the extent to which we can expect people to be
+            flexible in what they do, and when they do it.
           </p>
         </LeftColumn>
       )}
@@ -59,13 +65,20 @@ const Section5 = ({
       >
         <div className="flex w-full flex-col">
           <div>
-            <div className="" style={{ height: "auto" }}>
-              {/* <p className="text-center mt-0">
-                The graphic shows energy demand, activities’ frequency and
-                energy price every 30 minutes in UK’s region. The circle’s area
-                represents the activity’s frequency. Select the regions, the
-                monts and the activities to explore the data
-              </p> */}
+            <div className="flex w-full flex-col items-start mb-4">
+              <p className="text-center mb-1">
+                The graphic shows energy demand and activities’ frequency every
+                30 minutes for urban and rural regions.
+              </p>
+              <div className="text-xs font-light uppercase text-left mb-1">
+                Select THE season or the activities to explore the data. MOUSE
+                OVER ON THE GRAPHICS TO READ THEM
+              </div>
+              <CopyToClipboard text="">
+                <div className="text-xs font-bold uppercase text-left">
+                  SHARE THE GRAPHIC
+                </div>
+              </CopyToClipboard>
             </div>
           </div>
           <div className="mt-4">
@@ -100,6 +113,7 @@ const Section5 = ({
                   width={vizWidth}
                   showDemand={false}
                   selectedCategory={selectedCategory}
+                  innerLabel={"URBAN"}
                 />
               )}
             </div>
@@ -122,11 +136,15 @@ const Section5 = ({
                   width={vizWidth}
                   showDemand={false}
                   selectedCategory={selectedCategory}
+                  innerLabel={"RURAL"}
                 />
               )}
             </div>
           </div>
         </div>
+        {!fullscreen && (
+          <Button title="BACK TO START ↑" callback={nextChapter} />
+        )}{" "}
       </RightColumn>
     </section>
   );
