@@ -121,6 +121,7 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
+        <ReactTooltip effect="solid" backgroundColor="#111" delayShow={50} />
         <Landing
           nextChapter={() => {
             scroller.scrollTo("intro", {

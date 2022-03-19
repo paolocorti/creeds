@@ -286,7 +286,6 @@ const RadarYear = ({
           </div>
         )}
       </div> */}
-      <ReactTooltip effect="solid" backgroundColor="#111" delayShow={50} />
 
       <div
         style={{
