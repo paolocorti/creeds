@@ -173,6 +173,7 @@ const Section4 = ({
                   width={vizWidth}
                   showDemand={false}
                   innerLabel={seasonLabel[selectedCompareSeason1]}
+                  type={"season"}
                 />
               )}
             </div>
@@ -197,6 +198,7 @@ const Section4 = ({
                   width={vizWidth}
                   showDemand={false}
                   innerLabel={seasonLabel[selectedCompareSeason2]}
+                  type={"season"}
                 />
               )}
             </div>

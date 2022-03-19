@@ -19,6 +19,7 @@ import { useStore } from "../../store.js";
 import OuterRadial from "./OuterRadial.jsx";
 const isMobileWithTablet = false;
 import ReactTooltip from "react-tooltip";
+import UkMap from "../UkMap.jsx";
 
 const months = [
   "January",
@@ -578,17 +579,28 @@ const RadarYear = ({
                 />
               </g>
             ) : (
-              <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-                <circle fill="#ffd6cc" cx={0} cy={0} r={width * 0.1} />
-                <text
-                  x={0}
-                  y={4}
-                  textAnchor="middle"
-                  fontSize={width * 0.02}
-                  style={{ textTransform: "uppercase" }}
-                >
-                  {innerLabel || regionLabels[selectedRegion]}
-                </text>
+              <g>
+                <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                  <circle fill="#ffd6cc" cx={0} cy={0} r={width * 0.1} />
+                </g>
+                {type !== "spatial_variation" && (
+                  <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                    <text
+                      x={0}
+                      y={4}
+                      textAnchor="middle"
+                      fontSize={width * 0.02}
+                      style={{ textTransform: "uppercase" }}
+                    >
+                      {innerLabel || regionLabels[selectedRegion]}
+                    </text>
+                  </g>
+                )}
+                {type === "spatial_variation" && (
+                  <g transform={`translate(${width * 0.55}, 0)`}>
+                    <UkMap selected={selectedRegion} width={width * 0.1} />
+                  </g>
+                )}
               </g>
             )}
             {selectedMonth && (

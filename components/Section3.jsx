@@ -124,6 +124,7 @@ const Section3 = ({
                   width={vizWidth}
                   showDemand={false}
                   selectedCategory={selectedCategory}
+                  type={"spatial_variation"}
                 />
               )}
             </div>
@@ -146,6 +147,7 @@ const Section3 = ({
                   width={vizWidth}
                   showDemand={false}
                   selectedCategory={selectedCategory}
+                  type={"spatial_variation"}
                 />
               )}
             </div>
