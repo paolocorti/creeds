@@ -11,15 +11,15 @@ const slideUp = {
   name: "Slide Up",
   variants: {
     initial: {
-      //opacity: 0,
-      top: "100vh",
+      opacity: 0,
+      top: "0vh",
     },
     animate: {
-      //opacity: 1,
+      opacity: 1,
       top: "0vh",
     },
     exit: {
-      //opacity: 0,
+      opacity: 0,
       top: "-100vh",
     },
   },
