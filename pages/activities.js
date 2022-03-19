@@ -12,12 +12,14 @@ import {
   scrollSpy,
   scroller,
 } from "react-scroll";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [energyDemand, setEnergyDemand] = useState([]);
   const [gasDemand, setGasDemand] = useState([]);
   const [energyPrice, setEnergyPrice] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     csv("/data/activity_frequency_distributions.csv").then((values) => {
@@ -79,13 +81,9 @@ export default function Home() {
           energyDemand={energyDemand}
           energyPrice={energyPrice}
           nextChapter={() => {
-            scroller.scrollTo("section2", {
-              duration: 500,
-              delay: 100,
-              smooth: true,
-            });
+            router.push("/unpacking_peaks");
           }}
-          fullscreen={true}
+          fullscreen={false}
         />
       </main>
     </div>

@@ -1,7 +1,7 @@
 html,
 body,
 #next {
-  background-color: #74c590;
+  background-color: #ffd6cc;
   width: 100%;
 }
 
@@ -33,6 +33,11 @@ p {
   margin: 20px 0;
   font-family: "STIX Two Text", serif;
   font-weight: 400;
+}
+
+.page-wrap {
+  position: absolute;
+  width: 100vw;
 }
 
 .dot {

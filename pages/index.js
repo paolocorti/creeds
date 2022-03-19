@@ -12,6 +12,7 @@ import Landing from "../components/Landing";
 import { animateScroll as scroll, scroller } from "react-scroll";
 import { flatten } from "lodash";
 import { useStore } from "../store.js";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -19,6 +20,7 @@ export default function Home() {
   const [gasDemand, setGasDemand] = useState([]);
   const [energyPrice, setEnergyPrice] = useState([]);
   const [expanded, setExpanded] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     csv("/data/activity_frequency_distributions.csv").then((values) => {
@@ -123,13 +125,14 @@ export default function Home() {
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Landing
           nextChapter={() => {
-            scroller.scrollTo("intro", {
-              duration: 500,
-              smooth: true,
-            });
+            // scroller.scrollTo("intro", {
+            //   duration: 500,
+            //   smooth: true,
+            // });
+            router.push("/activities");
           }}
         />
-        <Intro
+        {/* <Intro
           nextChapter={() => {
             scroller.scrollTo("section1", {
               duration: 500,
@@ -138,8 +141,8 @@ export default function Home() {
           }}
           expanded={expanded}
           setExpanded={setExpanded}
-        />
-        <Section1
+        /> */}
+        {/* <Section1
           data={data}
           energyDemand={energyDemand}
           gasDemand={gasDemand}
@@ -199,7 +202,7 @@ export default function Home() {
           energyPrice={energyPrice}
           expanded={expanded}
           setExpanded={setExpanded}
-        />
+        /> */}
       </main>
 
       <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">
