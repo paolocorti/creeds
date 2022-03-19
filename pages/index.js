@@ -135,7 +135,7 @@ export default function Home() {
             });
           }}
         />
-        {/* <Intro
+        <Intro
           nextChapter={() => {
             scroller.scrollTo("section1", {
               duration: 500,
@@ -169,7 +169,7 @@ export default function Home() {
           }}
           expanded={expanded}
           setExpanded={setExpanded}
-        />{" "}*/}
+        />
         <Section3
           data={data}
           energyDemand={energyDemand}
@@ -184,7 +184,7 @@ export default function Home() {
           expanded={expanded}
           setExpanded={setExpanded}
         />
-        {/* <Section4
+        <Section4
           data={data}
           energyDemand={energyDemand}
           gasDemand={gasDemand}
@@ -211,7 +211,7 @@ export default function Home() {
               smooth: true,
             });
           }}
-        /> */}
+        />
       </main>
 
       <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">
