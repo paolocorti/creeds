@@ -19,6 +19,7 @@ export default function Home() {
   const [gasDemand, setGasDemand] = useState([]);
   const [energyPrice, setEnergyPrice] = useState([]);
   const [expanded, setExpanded] = useState(true);
+  const [scrolling, setScrolling] = useState(true);
 
   useEffect(() => {
     csv("/data/activity_frequency_distributions.csv").then((values) => {
@@ -125,19 +126,21 @@ export default function Home() {
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
         />
       </Head>
-
-      <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
+      <main
+        className="flex flex-col items-center justify-center w-full flex-1 text-center w-full"
+        id="container"
+      >
         <ReactTooltip effect="solid" backgroundColor="#111" delayShow={50} />
         <Landing
           nextChapter={() => {
-            scroller.scrollTo("intro", {
+            scroller.scrollTo("section1", {
               duration: 500,
               smooth: true,
               ignoreCancelEvents: true,
             });
           }}
         />
-        <Intro
+        {/* <Intro
           nextChapter={() => {
             scroller.scrollTo("section1", {
               duration: 500,
@@ -146,8 +149,8 @@ export default function Home() {
             });
           }}
           expanded={expanded}
-          setExpanded={setExpanded}
-        />
+          scrolling={scrolling}
+        /> */}
         <Section1
           data={data}
           energyDemand={energyDemand}
@@ -161,7 +164,7 @@ export default function Home() {
             });
           }}
           expanded={expanded}
-          setExpanded={setExpanded}
+          scrolling={scrolling}
         />
         <Section2
           data={data}
@@ -173,7 +176,6 @@ export default function Home() {
             });
           }}
           expanded={expanded}
-          setExpanded={setExpanded}
         />
         <Section3
           data={data}
@@ -188,7 +190,6 @@ export default function Home() {
             });
           }}
           expanded={expanded}
-          setExpanded={setExpanded}
         />
         <Section4
           data={data}
@@ -203,7 +204,6 @@ export default function Home() {
             });
           }}
           expanded={expanded}
-          setExpanded={setExpanded}
         />
         <Section5
           data={data}
@@ -211,7 +211,6 @@ export default function Home() {
           gasDemand={gasDemand}
           energyPrice={energyPrice}
           expanded={expanded}
-          setExpanded={setExpanded}
           nextChapter={() => {
             scroller.scrollTo("intro", {
               duration: 500,

@@ -1,6 +1,4 @@
 const UkMap = ({ width, selected }) => {
-  console.log({ selected });
-
   return (
     <svg x={0} y={0} viewBox="0 0 453.5 776.2" width={width}>
       <g id="north-west">

@@ -9,6 +9,7 @@ import Button from "./Button";
 import HowToRead from "./HowToRead";
 import { useWindowSize, getVizWidth } from "./utils";
 import { isMobile } from "react-device-detect";
+import { useInView } from "react-intersection-observer";
 
 let interval;
 const intervalTime = 1000;
@@ -22,6 +23,7 @@ const Section1 = ({
   expanded,
   setExpanded,
   fullscreen = false,
+  scrolling,
 }) => {
   const [selectedMonth, setSelectedMonth] = useState(1);
   const [playStarted, setPlayStarted] = useState(false);
@@ -31,7 +33,8 @@ const Section1 = ({
   const size = useWindowSize();
   const vizWidth = getVizWidth("single", size);
   const [open, setHowToReadOpen] = useState(false);
-
+  const { ref, inView, entry } = useInView();
+  const [allowEvents, setAllowEvents] = useState(false);
   const changeMonth = () => {
     if (selectedMonth < 13) {
       setSelectedMonth((month) => month + 1);
@@ -54,10 +57,17 @@ const Section1 = ({
     }
   }, [selectedMonth]);
 
+  useEffect(() => {
+    if (inView) {
+      setAllowEvents(false);
+    }
+  }, [inView]);
+
   return (
     <section
       name="section1"
       className="w-full min-h-screen flex flex-col md:flex-row relative"
+      ref={ref}
     >
       {!fullscreen && (
         <LeftColumn
@@ -116,7 +126,12 @@ const Section1 = ({
               SHARE THE GRAPHIC
             </div>
           </div>
-          <div className="flex w-full justify-center flex-col md:flex-row">
+          <div
+            className="flex w-full justify-center flex-col md:flex-row"
+            style={{
+              pointerEvents: allowEvents ? "all" : "none",
+            }}
+          >
             <div
               className="w-full md:w-1/2 px-8 flex flex-col"
               style={{

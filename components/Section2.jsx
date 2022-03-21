@@ -14,6 +14,7 @@ const Section2 = ({
   expanded,
   setExpanded,
   fullscreen = false,
+  scrolling,
 }) => {
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
@@ -55,12 +56,13 @@ const Section2 = ({
           </p>
         </LeftColumn>
       )}
-      <RightColumn
-        expanded={expanded}
-        setExpanded={setExpanded}
-        fullscreen={fullscreen}
-      >
-        <div className="w-full flex justify-center">
+      <RightColumn expanded={expanded} fullscreen={fullscreen}>
+        <div
+          className="w-full flex justify-center"
+          style={{
+            pointerEvents: scrolling ? "none" : "all",
+          }}
+        >
           <TrendYear
             globalData={data}
             energyDemand={energyDemand}

@@ -4,16 +4,16 @@ import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
 
-const Intro = ({ nextChapter, expanded, setExpanded }) => {
+const Intro = ({ nextChapter, expanded, scrolling }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
-    <section name="intro" className="w-full flex flex-col md:flex-row ">
-      <LeftColumn
-        sectionTitle={"/1.energy-vertical.svg"}
-        expanded={expanded}
-        setExpanded={setExpanded}
-      >
+    <section
+      id="intro"
+      name="intro"
+      className="w-full flex flex-col md:flex-row "
+    >
+      <LeftColumn sectionTitle={"/1.energy-vertical.svg"} expanded={expanded}>
         <div className="cursor-pointer">
           <div
             className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
@@ -36,8 +36,8 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
         </h1>
       </LeftColumn>
 
-      <RightColumn expanded={expanded} setExpanded={setExpanded}>
-        <p className="px-0 md:px-6">
+      <RightColumn expanded={expanded}>
+        {/* <p className="px-0 md:px-6">
           One of the greatest challenges for a Net Zero Carbon future is{" "}
           <b>making the most out of our clean energy sources</b>.
         </p>
@@ -101,11 +101,11 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
           Here we share with you some tools that hopefully will allow you to
           visualise more easily these complex relations, and the ways in which
           we can increase our ability to be flexible.
-        </p>
+        </p> */}
         <Button title="START EXPLORING ↓" callback={nextChapter} />
       </RightColumn>
 
-      <div
+      {/* <div
         className={`w-full md:w-3/4 bg-lightgreen p-8 absolute z-50 h-screen overflow-y-auto	 overflow ${
           aboutOpen ? "left-0" : "-left-full"
         } transition-all duration-500	`}
@@ -192,7 +192,7 @@ const Intro = ({ nextChapter, expanded, setExpanded }) => {
             Paolo Corti
           </a>
         </p>
-      </div>
+      </div> */}
     </section>
   );
 };

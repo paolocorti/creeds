@@ -13,7 +13,7 @@ const LeftColumn = ({ children, sectionTitle, expanded, setExpanded }) => {
     <div
       className={`w-full bg-green px-4 ${
         expanded ? "md:px-8" : "md:px-2"
-      } py-8 border-b border-black relative overflow-hidden `}
+      } py-8 border-b border-black relative `}
       style={{ width: mobile ? "100%" : expanded ? "28%" : "7%" }}
     >
       {expanded && <>{children}</>}
