@@ -7,6 +7,7 @@ import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import React from "react";
 
 const Section5 = ({
   data,
@@ -17,6 +18,8 @@ const Section5 = ({
   fullscreen = false,
   nextChapter,
 }) => {
+  console.log("Section5 render");
+
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion1, setSelectedCompareRegion1] =
@@ -32,11 +35,7 @@ const Section5 = ({
       className="w-full min-h-screen flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
-        <LeftColumn
-          sectionTitle={"/5.seeasons-vertical.svg"}
-          expanded={expanded}
-          setExpanded={setExpanded}
-        >
+        <LeftColumn sectionTitle={"/5.seeasons-vertical.svg"}>
           <h2 className="subtitle">Urban vs Rural</h2>
           <p>
             Whenever we talk about the rhythm of everyday life, it’s inevitable
@@ -58,11 +57,7 @@ const Section5 = ({
           </p>
         </LeftColumn>
       )}
-      <RightColumn
-        expanded={expanded}
-        setExpanded={setExpanded}
-        fullscreen={fullscreen}
-      >
+      <RightColumn fullscreen={fullscreen}>
         <div className="flex w-full flex-col">
           <div>
             <div className="flex w-full flex-col items-start mb-4">
@@ -152,4 +147,4 @@ const Section5 = ({
   );
 };
 
-export default Section5;
+export default React.memo(Section5);

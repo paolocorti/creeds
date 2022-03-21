@@ -10,6 +10,7 @@ import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import HowToRead from "./HowToRead";
+import React from "react";
 
 const Section3 = ({
   data,
@@ -20,6 +21,8 @@ const Section3 = ({
   setExpanded,
   fullscreen = false,
 }) => {
+  console.log("Section3 render");
+
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion1, setSelectedCompareRegion1] =
@@ -37,11 +40,7 @@ const Section3 = ({
       className="w-full min-h-screen flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
-        <LeftColumn
-          sectionTitle={"/4.spatial-vertical.svg"}
-          expanded={expanded}
-          setExpanded={setExpanded}
-        >
+        <LeftColumn sectionTitle={"/4.spatial-vertical.svg"}>
           <h2 className="subtitle">Spatial variation</h2>
           <div
             className="mt-8 flex justify-start"
@@ -69,11 +68,7 @@ const Section3 = ({
           </p>
         </LeftColumn>
       )}
-      <RightColumn
-        expanded={expanded}
-        setExpanded={setExpanded}
-        fullscreen={fullscreen}
-      >
+      <RightColumn fullscreen={fullscreen}>
         <div className="flex w-full flex-col">
           <div>
             <div className="flex w-full flex-col items-start mb-4">
@@ -169,4 +164,4 @@ const Section3 = ({
   );
 };
 
-export default Section3;
+export default React.memo(Section3);

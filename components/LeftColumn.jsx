@@ -2,7 +2,12 @@ import { useStore } from "../store.js";
 import { isMobile } from "react-device-detect";
 import { useState, useEffect } from "react";
 
-const LeftColumn = ({ children, sectionTitle, expanded, setExpanded }) => {
+const LeftColumn = ({
+  children,
+  sectionTitle,
+  expanded = true,
+  setExpanded,
+}) => {
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {

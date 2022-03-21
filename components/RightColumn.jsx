@@ -2,7 +2,7 @@ import { useStore } from "../store.js";
 import { isMobile } from "react-device-detect";
 import { useState, useEffect } from "react";
 
-const RightColumn = ({ children, expanded, fullscreen }) => {
+const RightColumn = ({ children, expanded = true, fullscreen }) => {
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {

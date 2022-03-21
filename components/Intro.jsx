@@ -3,6 +3,7 @@ import RightColumn from "./RightColumn";
 import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
+import React from "react";
 
 const Intro = ({ nextChapter, expanded, scrolling }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -197,4 +198,4 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
   );
 };
 
-export default Intro;
+export default React.memo(Intro);

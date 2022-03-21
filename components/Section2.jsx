@@ -6,13 +6,13 @@ import TrendYear from "./Trend/TrendYear";
 import { ParentSize } from "@visx/responsive";
 import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
+import React from "react";
 
 const Section2 = ({
   data,
   energyDemand,
   nextChapter,
-  expanded,
-  setExpanded,
+
   fullscreen = false,
   scrolling,
 }) => {
@@ -32,7 +32,7 @@ const Section2 = ({
       className="w-full flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
-        <LeftColumn expanded={expanded}>
+        <LeftColumn>
           <h2 className="subtitle">Unpacking peaks</h2>
           <p>
             We have established by now that the energy demand patterns observed
@@ -53,7 +53,7 @@ const Section2 = ({
           </p>
         </LeftColumn>
       )}
-      <RightColumn expanded={expanded} fullscreen={fullscreen}>
+      <RightColumn fullscreen={fullscreen}>
         <div
           className="w-full flex justify-center"
           style={{
@@ -76,4 +76,4 @@ const Section2 = ({
   );
 };
 
-export default Section2;
+export default React.memo(Section2);

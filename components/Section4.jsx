@@ -11,6 +11,7 @@ import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import HowToRead from "./HowToRead";
+import React from "react";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
@@ -23,6 +24,8 @@ const Section4 = ({
   nextChapter,
   fullscreen = false,
 }) => {
+  console.log("Section4 render");
+
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedCompareSeason1, setSelectedCompareSeason1] = useState(0);
   const [selectedCompareSeason2, setSelectedCompareSeason2] = useState(1);
@@ -220,4 +223,4 @@ const Section4 = ({
   );
 };
 
-export default Section4;
+export default React.memo(Section4);

@@ -10,6 +10,7 @@ import HowToRead from "./HowToRead";
 import { useWindowSize, getVizWidth } from "./utils";
 import { isMobile } from "react-device-detect";
 import { useInView } from "react-intersection-observer";
+import React from "react";
 
 let interval;
 const intervalTime = 1000;
@@ -21,7 +22,6 @@ const Section1 = ({
   gasDemand,
   nextChapter,
   expanded,
-  setExpanded,
   fullscreen = false,
 }) => {
   console.log("Section1 render");
@@ -29,13 +29,11 @@ const Section1 = ({
   const [selectedMonth, setSelectedMonth] = useState(1);
   const [playStarted, setPlayStarted] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("all");
-  const hoverCategory = useStore((state) => state.hoverCategory);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const size = useWindowSize();
   const vizWidth = getVizWidth("single", size);
   const [open, setHowToReadOpen] = useState(false);
   const { ref, inView, entry } = useInView();
-  const [allowEvents, setAllowEvents] = useState(false);
   const changeMonth = () => {
     if (selectedMonth < 13) {
       setSelectedMonth((month) => month + 1);
@@ -75,11 +73,7 @@ const Section1 = ({
       ref={ref}
     >
       {!fullscreen && (
-        <LeftColumn
-          sectionTitle={"/2.activities-vertical.svg"}
-          expanded={expanded}
-          setExpanded={setExpanded}
-        >
+        <LeftColumn>
           <h2 className="subtitle">
             Activities, demand and price every 30 minutes
           </h2>
@@ -112,11 +106,7 @@ const Section1 = ({
           </p>
         </LeftColumn>
       )}
-      <RightColumn
-        expanded={expanded}
-        setExpanded={setExpanded}
-        fullscreen={fullscreen}
-      >
+      <RightColumn fullscreen={fullscreen}>
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full flex-col items-start mb-4">
             <p className="text-center mb-1">
@@ -210,4 +200,4 @@ const Section1 = ({
   );
 };
 
-export default Section1;
+export default React.memo(Section1);
