@@ -94,6 +94,11 @@ export default function Home() {
         <title>
           Energy demand flexibility and the rhythms of everyday life
         </title>
+        <meta charset="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,shrink-to-fit=no"
+        />
         <meta
           name="description"
           content="Our everyday life – what we do at home, at work, at school, when moving around – and its relation to energy demand is rather complex. As part of our work as energy researchers, we have introduced fresh approaches to thinking about the social-temporal organisation of energy demand."
@@ -112,11 +117,7 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Nanum+Myeongjo:wght@400;700&family=STIX+Two+Text:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <meta charset="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,shrink-to-fit=no"
-        />
+
         <link
           rel="stylesheet"
           type="text/css"
@@ -132,6 +133,7 @@ export default function Home() {
             scroller.scrollTo("intro", {
               duration: 500,
               smooth: true,
+              ignoreCancelEvents: true,
             });
           }}
         />
@@ -140,6 +142,7 @@ export default function Home() {
             scroller.scrollTo("section1", {
               duration: 500,
               smooth: true,
+              ignoreCancelEvents: true,
             });
           }}
           expanded={expanded}
@@ -154,6 +157,7 @@ export default function Home() {
             scroller.scrollTo("section2", {
               duration: 500,
               smooth: true,
+              ignoreCancelEvents: true,
             });
           }}
           expanded={expanded}
@@ -165,6 +169,7 @@ export default function Home() {
             scroller.scrollTo("section3", {
               duration: 500,
               smooth: true,
+              ignoreCancelEvents: true,
             });
           }}
           expanded={expanded}
@@ -179,6 +184,7 @@ export default function Home() {
             scroller.scrollTo("section4", {
               duration: 500,
               smooth: true,
+              ignoreCancelEvents: true,
             });
           }}
           expanded={expanded}
@@ -193,6 +199,7 @@ export default function Home() {
             scroller.scrollTo("section5", {
               duration: 500,
               smooth: true,
+              ignoreCancelEvents: true,
             });
           }}
           expanded={expanded}
@@ -209,6 +216,7 @@ export default function Home() {
             scroller.scrollTo("intro", {
               duration: 500,
               smooth: true,
+              ignoreCancelEvents: true,
             });
           }}
         />
