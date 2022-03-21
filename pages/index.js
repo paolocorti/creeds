@@ -127,12 +127,12 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
         />
       </Head>
-      {/* <ReactTooltip effect="solid" backgroundColor="#111" delayShow={50} /> */}
 
       <main
         className="flex flex-col items-center justify-center w-full flex-1 text-center w-full"
         id="container"
       >
+        <ReactTooltip effect="solid" backgroundColor="#111" delayShow={50} />
         <Landing
           nextChapter={() => {
             scroller.scrollTo("intro", {

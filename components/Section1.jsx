@@ -23,7 +23,6 @@ const Section1 = ({
   expanded,
   setExpanded,
   fullscreen = false,
-  scrolling,
 }) => {
   console.log("Section1 render");
 
