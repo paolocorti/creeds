@@ -1,8 +1,11 @@
 import LandingCircles from "./LandingCircles";
+import React from "react";
 
 const Landing = ({ nextChapter }) => {
+  console.log("Landing render");
+
   return (
-    <section className="w-full bg-green flex flex-col justify-center items-center h-screen border-b border-black overflow-hidden relative">
+    <section className="w-full bg-green flex flex-col justify-center items-center h-screen border-b border-black relative">
       <h1 className="px-36 text-center">
         Energy demand flexibility
         <br /> and the rhythms <br />
@@ -24,4 +27,4 @@ const Landing = ({ nextChapter }) => {
   );
 };
 
-export default Landing;
+export default React.memo(Landing);

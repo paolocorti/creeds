@@ -25,6 +25,8 @@ const Section1 = ({
   fullscreen = false,
   scrolling,
 }) => {
+  console.log("Section1 render");
+
   const [selectedMonth, setSelectedMonth] = useState(1);
   const [playStarted, setPlayStarted] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("all");
@@ -57,11 +59,15 @@ const Section1 = ({
     }
   }, [selectedMonth]);
 
-  useEffect(() => {
-    if (inView) {
-      setAllowEvents(false);
-    }
-  }, [inView]);
+  // useEffect(() => {
+  //   if (inView) {
+  //     setTimeout(() => {
+  //       setAllowEvents(inView);
+  //     }, 500);
+  //   } else {
+  //     setAllowEvents(false);
+  //   }
+  // }, [inView]);
 
   return (
     <section
@@ -126,12 +132,7 @@ const Section1 = ({
               SHARE THE GRAPHIC
             </div>
           </div>
-          <div
-            className="flex w-full justify-center flex-col md:flex-row"
-            style={{
-              pointerEvents: allowEvents ? "all" : "none",
-            }}
-          >
+          <div className="flex w-full justify-center flex-col md:flex-row">
             <div
               className="w-full md:w-1/2 px-8 flex flex-col"
               style={{
@@ -141,7 +142,6 @@ const Section1 = ({
               <div
                 className="w-full flex justify-center"
                 style={{
-                  pointerEvents: playStarted ? "none" : "all",
                   opacity: playStarted ? 0.4 : 1,
                 }}
               >

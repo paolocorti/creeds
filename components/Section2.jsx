@@ -16,6 +16,7 @@ const Section2 = ({
   fullscreen = false,
   scrolling,
 }) => {
+  console.log("Section2 render");
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion, setSelCompareRegion] = useState([
@@ -31,11 +32,7 @@ const Section2 = ({
       className="w-full flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
-        <LeftColumn
-          sectionTitle={"/3.unpacking-vertical.svg"}
-          expanded={expanded}
-          setExpanded={setExpanded}
-        >
+        <LeftColumn expanded={expanded}>
           <h2 className="subtitle">Unpacking peaks</h2>
           <p>
             We have established by now that the energy demand patterns observed

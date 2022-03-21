@@ -37,7 +37,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
       </LeftColumn>
 
       <RightColumn expanded={expanded}>
-        {/* <p className="px-0 md:px-6">
+        <p className="px-0 md:px-6">
           One of the greatest challenges for a Net Zero Carbon future is{" "}
           <b>making the most out of our clean energy sources</b>.
         </p>
@@ -101,11 +101,11 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           Here we share with you some tools that hopefully will allow you to
           visualise more easily these complex relations, and the ways in which
           we can increase our ability to be flexible.
-        </p> */}
+        </p>
         <Button title="START EXPLORING ↓" callback={nextChapter} />
       </RightColumn>
 
-      {/* <div
+      <div
         className={`w-full md:w-3/4 bg-lightgreen p-8 absolute z-50 h-screen overflow-y-auto	 overflow ${
           aboutOpen ? "left-0" : "-left-full"
         } transition-all duration-500	`}
@@ -149,7 +149,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           through the grant agreement EP/R035288/1.{" "}
         </p>
 
-        <p className="px-0 md:px-6">
+        <div className="px-0 md:px-6">
           The Team Project management:<br></br>
           <br></br>{" "}
           <div className="text-base">Dr. Jose Luis Ramirez-Mendiola</div>
@@ -191,8 +191,8 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           >
             Paolo Corti
           </a>
-        </p>
-      </div> */}
+        </div>
+      </div>
     </section>
   );
 };
