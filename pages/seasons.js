@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
-import Section1 from "../components/Section1";
+import Section4 from "../components/Section4";
 import { server } from "../config";
 import { flatten } from "lodash";
 import { useStore } from "../store.js";
@@ -79,7 +79,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
 
     const timeout = setTimeout(() => {
       setAllowEvents(true);
-    }, 500);
+    }, 750);
 
     return () => {
       clearTimeout(timeout);
@@ -126,12 +126,13 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           pointerEvents: allowEvents ? "all" : "none",
         }}
       >
-        <Section1
+        <Section4
           data={data}
           energyDemand={energyDemand}
+          gasDemand={gasDemand}
           energyPrice={energyPrice}
           nextChapter={() => {
-            router.push("unpacking_peaks");
+            router.push("urban_rural");
           }}
           fullscreen={false}
         />

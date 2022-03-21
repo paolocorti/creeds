@@ -131,7 +131,7 @@ const Section4 = ({
         <div className="flex w-full flex-col">
           <div>
             <div className="flex w-full flex-col items-start mb-4">
-              <p className="text-center mb-1">
+              <p className="mb-1 text-left">
                 The graphic shows energy demand and activities’ frequency every
                 30 minutes by season.
               </p>

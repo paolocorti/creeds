@@ -1,7 +1,7 @@
 html,
 body,
 #next {
-  background-color: #74c590;
+  background-color: #ffd6cc;
   width: 100%;
 }
 
@@ -41,6 +41,11 @@ p b {
   mix-blend-mode: multiply;
   font-family: "STIX Two Text", serif;
   padding: 0 2px;
+}
+
+.page-wrap {
+  position: absolute;
+  width: 100vw;
 }
 
 .dot {

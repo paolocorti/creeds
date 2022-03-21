@@ -12,7 +12,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
     <section
       id="intro"
       name="intro"
-      className="w-full flex flex-col md:flex-row "
+      className="w-full flex flex-col md:flex-row  min-h-screen"
     >
       <LeftColumn sectionTitle={"/1.energy-vertical.svg"} expanded={expanded}>
         <div className="cursor-pointer">
@@ -150,7 +150,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           through the grant agreement EP/R035288/1.{" "}
         </p>
 
-        <div className="px-0 md:px-6">
+        <div className="px-0 md:px-6 text-left">
           The Team Project management:<br></br>
           <br></br>{" "}
           <div className="text-base">Dr. Jose Luis Ramirez-Mendiola</div>

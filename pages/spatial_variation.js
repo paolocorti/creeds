@@ -2,31 +2,75 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
-import Section4 from "../components/Section4";
-import { animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
+import Section3 from "../components/Section3";
+import { server } from "../config";
+import { flatten } from "lodash";
+import { useStore } from "../store.js";
+import { useRouter } from "next/router";
 
-export default function SpatialVariation() {
-  const [data, setData] = useState([]);
-  const [energyDemand, setEnergyDemand] = useState([]);
-  const [gasDemand, setGasDemand] = useState([]);
-  const [energyPrice, setEnergyPrice] = useState([]);
+export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
+  const router = useRouter();
+  const [allowEvents, setAllowEvents] = useState(false);
 
   useEffect(() => {
-    csv("/data/activity_frequency_distributions.csv").then((values) => {
-      setData(values);
+    const copiedValues = JSON.parse(JSON.stringify(energyDemand));
+    delete copiedValues.columns;
+    const allValues = flatten(
+      copiedValues.map((v) => {
+        delete v.month;
+        delete v.region;
+        delete v.season;
+        const val = Object.values(v);
+        const parsed = val.map((n) => parseFloat(n));
+        return parsed;
+      })
+    );
+    const max = Math.max(...allValues);
+    useStore.setState({
+      energyMaximum: max,
     });
 
-    csv("/data/mean_daily_elec_demand_profiles.csv").then((values) => {
-      setEnergyDemand(values);
+    const copiedValues2 = JSON.parse(JSON.stringify(gasDemand));
+    delete copiedValues2.columns;
+    const allValues2 = flatten(
+      copiedValues2.map((v) => {
+        delete v.month;
+        delete v.region;
+        delete v.season;
+        const val = Object.values(v);
+        const parsed = val.map((n) => parseFloat(n));
+        return parsed;
+      })
+    );
+    const max2 = Math.max(...allValues2);
+    useStore.setState({
+      gasMaximum: max2,
     });
 
-    csv("/data/mean_daily_gas_demand_profiles.csv").then((values) => {
-      setGasDemand(values);
+    const copiedValues3 = JSON.parse(JSON.stringify(energyPrice));
+    delete copiedValues3.columns;
+    const allValues3 = flatten(
+      copiedValues3.map((v) => {
+        delete v.month;
+        delete v.region;
+        delete v.season;
+        const val = Object.values(v);
+        const parsed = val.map((n) => parseFloat(n));
+        return parsed;
+      })
+    );
+    const max3 = Math.max(...allValues3);
+    useStore.setState({
+      energyPriceMaximum: max3,
     });
 
-    csv("/data/hourly_average_price_electricity.csv").then((values) => {
-      setEnergyPrice(values);
-    });
+    const timeout = setTimeout(() => {
+      setAllowEvents(true);
+    }, 750);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
@@ -63,22 +107,51 @@ export default function SpatialVariation() {
 
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
-        <Section4
+      <main
+        className="flex flex-col items-center justify-center w-full flex-1 text-center w-full"
+        style={{
+          pointerEvents: allowEvents ? "all" : "none",
+        }}
+      >
+        <Section3
           data={data}
           energyDemand={energyDemand}
           gasDemand={gasDemand}
           energyPrice={energyPrice}
           nextChapter={() => {
-            scroller.scrollTo("section3", {
-              duration: 500,
-              smooth: true,
-            });
+            router.push("seasons");
           }}
-          expanded={false}
-          fullscreen={true}
+          fullscreen={false}
         />
       </main>
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  const data = await csv(`${server}/data/activity_frequency_distributions.csv`);
+  const energyDemand = await csv(
+    `${server}/data/mean_daily_elec_demand_profiles.csv`
+  );
+  const gasDemand = await csv(
+    `${server}/data/mean_daily_gas_demand_profiles.csv`
+  );
+  const energyPrice = await csv(
+    `${server}/data/hourly_average_price_electricity.csv`
+  );
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      data: data,
+      energyDemand: energyDemand,
+      gasDemand: gasDemand,
+      energyPrice: energyPrice,
+    },
+  };
 }

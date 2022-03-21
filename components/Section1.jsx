@@ -4,13 +4,13 @@ import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import RadarVerticalLegend from "./Radar/RadarVeticalLegend";
 import RadarYear from "./Radar/RadarYear";
-import { ParentSize } from "@visx/responsive";
+import { colorByCategory, activitiesArray } from "./utils";
 import Button from "./Button";
 import HowToRead from "./HowToRead";
 import { useWindowSize, getVizWidth } from "./utils";
 import { isMobile } from "react-device-detect";
-import { useInView } from "react-intersection-observer";
 import React from "react";
+import ActivitiesMenu from "./ActivitiesMenu.jsx";
 
 let interval;
 const intervalTime = 1000;
@@ -33,7 +33,6 @@ const Section1 = ({
   const size = useWindowSize();
   const vizWidth = getVizWidth("single", size);
   const [open, setHowToReadOpen] = useState(false);
-  const { ref, inView, entry } = useInView();
   const changeMonth = () => {
     if (selectedMonth < 13) {
       setSelectedMonth((month) => month + 1);
@@ -70,7 +69,6 @@ const Section1 = ({
     <section
       name="section1"
       className="w-full min-h-screen flex flex-col md:flex-row relative"
-      ref={ref}
     >
       {!fullscreen && (
         <LeftColumn>
@@ -109,7 +107,7 @@ const Section1 = ({
       <RightColumn fullscreen={fullscreen}>
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full flex-col items-start mb-4">
-            <p className="text-center mb-1">
+            <p className="mb-1 text-left">
               The graphic shows the half-hourly evolution of three key elements
               over the course of a day.
             </p>
@@ -121,6 +119,15 @@ const Section1 = ({
               SHARE THE GRAPHIC
             </div>
           </div>
+          {isMobile && (
+            <div className="w-full mb-4">
+              <ActivitiesMenu
+                activitiesArray={activitiesArray}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+              />
+            </div>
+          )}
           <div className="flex w-full justify-center flex-col md:flex-row">
             <div
               className="w-full md:w-1/2 px-8 flex flex-col"

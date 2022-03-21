@@ -31,6 +31,7 @@ const TrendCategory = ({
   marginTop,
   tooltipLeft,
   tooltipTop,
+  isMobile,
 }) => {
   const xScale = scaleTime({
     range: [0, width],

@@ -122,7 +122,7 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
       >
         <div className="relative flex flex-col items-center">
           <div className="flex w-full flex-col items-start mb-8">
-            <p className="text-center mb-1">
+            <p className="text-left mb-1">
               The graphic shows the activities’ frequency every 10 minutes.
             </p>
             <div className="text-xs font-light uppercase text-left mb-2">
@@ -193,6 +193,7 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
                             marginTop={value}
                             tooltipLeft={tooltipLeft}
                             tooltipTop={tooltipTop}
+                            isMobile={isMobile}
                           />
                         )}
                       </g>
@@ -209,9 +210,9 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
                             <g key={`group-${j}`}>
                               {j === 0 && i % 2 === 0 && (
                                 <text
-                                  dx={-20}
-                                  dy={60}
-                                  textAnchor={"end"}
+                                  dx={isMobile ? 0 : -20}
+                                  dy={isMobile ? 70 : 60}
+                                  textAnchor={isMobile ? "start" : "end"}
                                   fontSize={internalWidth * 0.02}
                                   className="radial-hour-label"
                                   fontWeight="bold"
