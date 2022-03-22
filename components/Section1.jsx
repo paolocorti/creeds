@@ -165,18 +165,19 @@ const Section1 = ({
                   </div>
                 </div>
               </div>
-
-              {/* <RadarYear
-                globalData={data}
-                energyDemand={energyDemand}
-                gasDemand={gasDemand}
-                energyPrice={energyPrice}
-                selectedRegion={selectedRegion}
-                selectedMonth={String(selectedMonth)}
-                setSelectedMonth={setSelectedMonth}
-                width={vizWidth}
-                selectedCategory={selectedCategory}
-              /> */}
+              {allowEvents && (
+                <RadarYear
+                  globalData={data}
+                  energyDemand={energyDemand}
+                  gasDemand={gasDemand}
+                  energyPrice={energyPrice}
+                  selectedRegion={selectedRegion}
+                  selectedMonth={String(selectedMonth)}
+                  setSelectedMonth={setSelectedMonth}
+                  width={vizWidth}
+                  selectedCategory={selectedCategory}
+                />
+              )}
             </div>
             {!isMobile && (
               <div className="w-full md:w-1/3 px-8 ">
