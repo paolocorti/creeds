@@ -30,6 +30,7 @@ const Section1 = ({
   const [playStarted, setPlayStarted] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [allowEvents, setAllowEvents] = useState(false);
   const size = useWindowSize();
   const vizWidth = getVizWidth("single", size);
   const [open, setHowToReadOpen] = useState(false);
@@ -55,15 +56,11 @@ const Section1 = ({
     }
   }, [selectedMonth]);
 
-  // useEffect(() => {
-  //   if (inView) {
-  //     setTimeout(() => {
-  //       setAllowEvents(inView);
-  //     }, 500);
-  //   } else {
-  //     setAllowEvents(false);
-  //   }
-  // }, [inView]);
+  useEffect(() => {
+    setTimeout(() => {
+      setAllowEvents(true);
+    }, 1000);
+  }, []);
 
   return (
     <section
@@ -104,7 +101,10 @@ const Section1 = ({
           </p>
         </LeftColumn>
       )}
-      <RightColumn fullscreen={fullscreen}>
+      <RightColumn
+        fullscreen={fullscreen}
+        style={{ pointerEvents: allowEvents ? "all" : "none" }}
+      >
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full flex-col items-start mb-4">
             <p className="mb-1 text-left">
