@@ -166,7 +166,7 @@ const Section1 = ({
                 </div>
               </div>
 
-              <RadarYear
+              {/* <RadarYear
                 globalData={data}
                 energyDemand={energyDemand}
                 gasDemand={gasDemand}
@@ -176,7 +176,7 @@ const Section1 = ({
                 setSelectedMonth={setSelectedMonth}
                 width={vizWidth}
                 selectedCategory={selectedCategory}
-              />
+              /> */}
             </div>
             {!isMobile && (
               <div className="w-full md:w-1/3 px-8 ">
