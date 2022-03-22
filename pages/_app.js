@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps, router }) {
   return (
     <div className="app-wrap">
       <LazyMotion features={domAnimation}>
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence>
           <motion.div
             key={router.route.concat(slideUp.name)}
             className="page-wrap"
