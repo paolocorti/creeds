@@ -59,7 +59,7 @@ const Section1 = ({
   useEffect(() => {
     setTimeout(() => {
       setAllowEvents(true);
-    }, 1000);
+    }, 1500);
   }, []);
 
   return (
@@ -105,6 +105,9 @@ const Section1 = ({
         fullscreen={fullscreen}
         style={{ pointerEvents: allowEvents ? "all" : "none" }}
       >
+        {!allowEvents && (
+          <div className="absolute inset-0 bg-green z-10 w-full h-full"></div>
+        )}
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full flex-col items-start mb-4">
             <p className="mb-1 text-left">
