@@ -11,7 +11,7 @@ const RightColumn = ({ children, expanded = true, fullscreen }) => {
 
   return (
     <div
-      className={`w-full px-4 md:px-8 py-8 bg-pink border-b border-black overflow-hidden relative `}
+      className={`w-full px-4 md:px-8 py-8 bg-pink border-b border-black overflow-hidden relative md:min-h-screen`}
       style={{
         width: mobile || fullscreen ? "100%" : expanded ? "72%" : "93%",
       }}

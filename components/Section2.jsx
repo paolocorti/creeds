@@ -63,7 +63,7 @@ const Section2 = ({
       )}
       <RightColumn fullscreen={fullscreen}>
         <div
-          className="w-full flex flex-col items-center"
+          className="w-full flex flex-col items-center "
           style={{
             pointerEvents: scrolling ? "none" : "all",
           }}
@@ -83,7 +83,7 @@ const Section2 = ({
             </div> */}
           </div>
           {!allowEvents && (
-            <div className="w-full h-full flex justify-center items-center relative ">
+            <div className="w-full h-64 flex justify-center items-center relative ">
               <Loader style={{ width: "100px" }} />
               <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
                 LOADING

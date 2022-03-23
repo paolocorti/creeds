@@ -90,22 +90,22 @@ export const activitiesCode = {
 };
 
 export const colorByCategory = {
-  sl: "#B83C3A",
-  et: "#B83C3A",
-  pc: "#B83C3A",
-  hc: "#B83C3A",
-  ha: "#9A1D18",
-  tv: "#fa9bb2",
-  it: "#fa9bb2",
-  tw: "#9ab0ff",
-  wr: "#9ab0ff",
+  sl: "#9e0f0d",
+  et: "#9e0f0d",
+  pc: "#9e0f0d",
+  hc: "#9e0f0d",
+  ha: "#9e0f0d",
+  tv: "#e06373",
+  it: "#e06373",
+  tw: "#807ece",
+  wr: "#807ece",
   ab: "#888DBB",
-  sh: "#fa9bb2",
-  ot: "#9ab0ff",
-  fp: "#4C3988",
-  ln: "#4C3988",
-  dw: "#4C3988",
-  hu: "#4C3988",
+  sh: "#e06373",
+  ot: "#807ece",
+  fp: "#2b1475",
+  ln: "#2b1475",
+  dw: "#2b1475",
+  hu: "#2b1475",
 };
 
 export const sortBy = [

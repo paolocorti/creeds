@@ -28,7 +28,7 @@ const RadarCircleYear = ({
         cy={value}
         r={radius}
         fill={colorByCategory[category]}
-        fillOpacity={1}
+        fillOpacity={0.8}
         data-tip={`<b>${time}</b> <br/> ${activitiesCode[factor].value}: ${
           v ? (parseFloat(v) * 100).toFixed(1) : ""
         }% <br/>`}
