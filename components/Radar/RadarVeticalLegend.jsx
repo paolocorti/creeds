@@ -22,7 +22,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
             backgroundColor: "#9C9E9C",
             width: "1px",
             left: "5px",
-            top: "52px",
+            top: "45px",
             zIndex: 0,
           }}
         ></div>
@@ -61,21 +61,42 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
         </div>
 
         <div className="flex items-center my-1 pl-2">
-          <div
-            className="mr-2"
-            style={{
-              backgroundColor: "white",
-              width: "18px",
-              height: "12px",
-            }}
-          ></div>
-          <div
-            className="text-left "
-            style={{
-              fontSize: "12px",
-            }}
-          >
-            energy demand
+          <div className="flex items-center">
+            <div
+              className="mr-2"
+              style={{
+                backgroundColor: "white",
+                width: "18px",
+                height: "12px",
+              }}
+            ></div>
+            <div
+              className="text-left "
+              style={{
+                fontSize: "12px",
+              }}
+            >
+              energy demand
+            </div>
+
+            <div
+              className="ml-4 mr-2"
+              style={{
+                backgroundColor: "white",
+                width: "10px",
+                height: "10px",
+                borderRadius: "10px",
+                border: "1px solid black",
+              }}
+            ></div>
+            <div
+              className="text-left ml2"
+              style={{
+                fontSize: "12px",
+              }}
+            >
+              peak
+            </div>
           </div>
         </div>
         <div className="flex items-center my-1 pl-2">

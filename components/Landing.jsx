@@ -1,14 +1,16 @@
-import LandingCircles from "./LandingCircles";
 import React from "react";
+import { isMobile } from "react-device-detect";
+import LandingCircles from "./LandingCircles";
+import LandingCirclesMobile from "./LandingCirclesMobile";
 
 const Landing = ({ nextChapter }) => {
-  console.log("Landing render");
+  console.log("Landing render", isMobile);
 
   return (
     <section className="w-full bg-green flex flex-col justify-center items-center h-screen border-b border-black relative">
-      <LandingCircles />
+      {isMobile ? <LandingCirclesMobile /> : <LandingCircles />}
       <div className="absolute top-0 bottom-0 left-0 right-0 z-10 m-auto h-96">
-        <h1 className="px-36 text-center">
+        <h1 className="px-8 md:px-36 text-center">
           Energy demand flexibility
           <br /> and the rhythms <br />
           of everyday life

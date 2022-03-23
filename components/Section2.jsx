@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import TrendYear from "./Trend/TrendYear";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import SectionFooter from "./SectionFooter.jsx";
 import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 import React from "react";
@@ -69,7 +69,7 @@ const Section2 = ({
           }}
         >
           <div className="flex w-full flex-col items-start mb-4">
-            <p className="text-left mb-1">
+            <p className="text-left mb-1 mt-0">
               The graphic shows the activities’ frequency every 10 minutes.
             </p>
             <div className="text-xs font-light uppercase text-left mb-2">
@@ -83,7 +83,7 @@ const Section2 = ({
             </div> */}
           </div>
           {!allowEvents && (
-            <div className="w-full h-64 flex justify-center items-center relative ">
+            <div className="w-full h-96 flex justify-center items-center relative ">
               <Loader style={{ width: "100px" }} />
               <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
                 LOADING
@@ -99,38 +99,13 @@ const Section2 = ({
               width={vizWidth}
             />
           )}
+
           {!fullscreen && (
-            <div className="flex w-full justify-center relative">
-              <div
-                className="absolute left-0 cursor-pointer"
-                data-tip="Copy link to embed"
-              >
-                <CopyToClipboard
-                  text={"https://creds.vercel.app/unpacking_peaks?share=true"}
-                  onCopy={() => setCopied(true)}
-                >
-                  {copied ? (
-                    <img
-                      src={"share-link-active.svg"}
-                      className="cursor-pointer"
-                      width={30}
-                    />
-                  ) : (
-                    <img
-                      src={"share-link.svg"}
-                      className="cursor-pointer"
-                      width={30}
-                    />
-                  )}
-                </CopyToClipboard>
-              </div>
-              <div className="mr-2">
-                <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
-              </div>
-              <div className="ml-2">
-                <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
-              </div>
-            </div>
+            <SectionFooter
+              nextChapter={nextChapter}
+              previousChapter={previousChapter}
+              link={"https://creds.vercel.app/unpacking_peaks?share=true"}
+            />
           )}
         </div>
       </RightColumn>

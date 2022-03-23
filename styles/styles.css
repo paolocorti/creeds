@@ -31,7 +31,7 @@ p {
   font-size: 18px;
   line-height: 25px;
   margin: 20px 0;
-  font-family: "STIX Two Text";
+  font-family: "Nanum Myeongjo";
   font-weight: 300;
 }
 
@@ -40,7 +40,7 @@ p {
 }
 
 p b {
-  text-shadow: 2px 2px 1px #74c590;
+  text-shadow: 2px 2px 2px #74c590;
   font-family: "Nanum Myeongjo";
   font-weight: 700;
 }
@@ -146,6 +146,11 @@ p b {
 
   .radial-hour-label {
     font-size: 10px;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 1.2;
   }
 }
 

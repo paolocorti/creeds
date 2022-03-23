@@ -12,7 +12,7 @@ import { useWindowSize, getVizWidth } from "./utils";
 import { isMobile } from "react-device-detect";
 import React from "react";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import SectionFooter from "./SectionFooter.jsx";
 
 let interval;
 const intervalTime = 1000;
@@ -36,7 +36,6 @@ const Section1 = ({
   const size = useWindowSize();
   const vizWidth = getVizWidth("single", size);
   const [open, setHowToReadOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
   const changeMonth = () => {
     if (selectedMonth < 13) {
       setSelectedMonth((month) => month + 1);
@@ -104,11 +103,11 @@ const Section1 = ({
       >
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full flex-col items-start mb-4">
-            <p className="mb-1 text-left">
+            <p className="mb-1 text-left mt-0">
               The graphic shows the half-hourly evolution of three key elements
               over the course of a day.
             </p>
-            <div className="text-xs font-light uppercase text-left mb-2">
+            <div className="text-xs font-light uppercase text-left mb-2 opacity-60">
               Select the month or the activities in the graphic or in the legend
               to explore the data. MOUSE OVER ON THE GRAPHIC TO READ THEM
             </div>
@@ -200,37 +199,11 @@ const Section1 = ({
         </div>
 
         {!fullscreen && (
-          <div className="flex w-full justify-center relative items-center mt-2">
-            <div
-              className="absolute left-0 cursor-pointer"
-              data-tip="Copy link to embed"
-            >
-              <CopyToClipboard
-                text={"https://creds.vercel.app/activities?share=true"}
-                onCopy={() => setCopied(true)}
-              >
-                {copied ? (
-                  <img
-                    src={"share-link-active.svg"}
-                    className="cursor-pointer"
-                    width={30}
-                  />
-                ) : (
-                  <img
-                    src={"share-link.svg"}
-                    className="cursor-pointer"
-                    width={30}
-                  />
-                )}
-              </CopyToClipboard>
-            </div>
-            <div className="mr-2">
-              <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
-            </div>
-            <div className="ml-2">
-              <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
-            </div>
-          </div>
+          <SectionFooter
+            nextChapter={nextChapter}
+            previousChapter={previousChapter}
+            link={"https://creds.vercel.app/activities?share=true"}
+          />
         )}
       </RightColumn>
       <HowToRead

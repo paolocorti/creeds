@@ -114,6 +114,10 @@ const RadarYear = ({
   innerLabel,
   type = null,
 }) => {
+  if (globalData.length === 0) {
+    return <></>;
+  }
+
   const [hover, setHover] = useState(null);
   const [hoverCategory, setHoverCategory] = useState(null);
   const [hoverTime, setHoverTime] = useState(null);
@@ -348,6 +352,7 @@ const RadarYear = ({
                   height={width * 0.95}
                   svgWidth={width}
                   maximum={energyMaximum}
+                  type="elec"
                 />
               )}
               {showPrice && gasData && (
@@ -358,6 +363,7 @@ const RadarYear = ({
                   height={width * 0.95}
                   svgWidth={width}
                   line={true}
+                  type="gas"
                 />
               )}
             </g>

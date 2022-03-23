@@ -3,7 +3,6 @@ import { Group } from "@visx/group";
 import { LineRadial } from "@visx/shape";
 import { scaleTime, scaleLinear } from "@visx/scale";
 import { curveLinear } from "@visx/curve";
-import { animated } from "react-spring";
 
 // utils
 function extent(data, value) {
@@ -16,7 +15,11 @@ const date = (d) => {
 };
 const close = (d) => parseFloat(d.value);
 
-const OuterRadial = ({ width, height, data, line, maximum }) => {
+const OuterRadial = ({ width, height, data, line, maximum, type }) => {
+  if (data.length === 0) {
+    return <></>;
+  }
+
   const xScale = scaleTime({
     range: [0, 6.28],
     domain: extent(data, date),
@@ -25,9 +28,11 @@ const OuterRadial = ({ width, height, data, line, maximum }) => {
     domain: [0, maximum],
   });
 
+  const max = extent(data, close)[1];
+  const maxData = data.filter((d) => d.value === max)[0];
+
   const angle = (d) => xScale(date(d)) ?? 0;
   const radius = (d) => yScale(close(d)) ?? 0;
-  const padding = 20;
 
   const lineRef = useRef(null);
   const [lineLength, setLineLength] = useState(0);
@@ -49,9 +54,12 @@ const OuterRadial = ({ width, height, data, line, maximum }) => {
       <LineRadial angle={angle} radius={radius} curve={curveLinear}>
         {({ path }) => {
           const d = path(data) || "";
+          const angleV = xScale(maxData.time);
+          const valueV = yScale(maxData.value);
+
           return (
             <>
-              <animated.path
+              <path
                 d={d}
                 ref={lineRef}
                 strokeWidth={1}
@@ -59,6 +67,13 @@ const OuterRadial = ({ width, height, data, line, maximum }) => {
                 strokeLinecap="round"
                 fill={line ? "none" : "#fff"}
                 stroke={line ? "#000" : "none"}
+              />
+              <circle
+                fill={type === "gas" ? "#000" : "#fff"}
+                stroke={type === "gas" ? "none" : "#000"}
+                cx={valueV * Math.cos(angleV - Math.PI / 2)}
+                cy={valueV * Math.sin(angleV - Math.PI / 2)}
+                r={3}
               />
             </>
           );

@@ -13,6 +13,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import HowToRead from "./HowToRead";
 import React from "react";
 import Loader from "./Loader";
+import SectionFooter from "./SectionFooter.jsx";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
@@ -136,11 +137,11 @@ const Section4 = ({
         <div className="flex w-full flex-col">
           <div>
             <div className="flex w-full flex-col items-start mb-4">
-              <p className="mb-1 text-left">
+              <p className="mb-1 text-left mt-0">
                 The graphic shows energy demand and activities’ frequency every
                 30 minutes by season.
               </p>
-              <div className="text-xs font-light uppercase text-left mb-2">
+              <div className="text-xs font-light uppercase text-left mb-2 opacity-60">
                 Select THE season or the activities to explore the data. MOUSE
                 OVER ON THE GRAPHICS TO READ THEM
               </div>
@@ -239,38 +240,13 @@ const Section4 = ({
             </div>
           </div>
         </div>
+
         {!fullscreen && (
-          <div className="flex w-full justify-center relative items-center mt-8">
-            <div
-              className="absolute left-0 cursor-pointer"
-              data-tip="Copy link to embed"
-            >
-              <CopyToClipboard
-                text={"https://creds.vercel.app/seasons?share=true"}
-                onCopy={() => setCopied(true)}
-              >
-                {copied ? (
-                  <img
-                    src={"share-link-active.svg"}
-                    className="cursor-pointer"
-                    width={30}
-                  />
-                ) : (
-                  <img
-                    src={"share-link.svg"}
-                    className="cursor-pointer"
-                    width={30}
-                  />
-                )}
-              </CopyToClipboard>
-            </div>
-            <div className="mr-2">
-              <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
-            </div>
-            <div className="ml-2">
-              <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
-            </div>
-          </div>
+          <SectionFooter
+            nextChapter={nextChapter}
+            previousChapter={previousChapter}
+            link={"https://creds.vercel.app/seasons?share=true"}
+          />
         )}
       </RightColumn>
       <HowToRead

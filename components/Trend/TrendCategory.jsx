@@ -87,9 +87,7 @@ const TrendCategory = ({
         }}
         yScale={yScale}
         fill={colorByCategory[factor]}
-        style={{
-          mixBlendMode: "multiply",
-        }}
+        fillOpacity={0.8}
         stroke={"black"}
         strokeWidth={tooltipData && tooltipData.factor === factor ? 0.5 : 0}
       />
