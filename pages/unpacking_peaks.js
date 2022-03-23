@@ -46,9 +46,6 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
       gasMaximum: max2,
     });
 
-    //   csv("/data/hourly_average_price_electricity.csv").then((values) => {
-    //     setEnergyPrice(values);
-
     const copiedValues3 = JSON.parse(JSON.stringify(energyPrice));
     delete copiedValues3.columns;
     const allValues3 = flatten(
@@ -103,12 +100,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
 
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
-      <main
-        className="flex flex-col items-center justify-center w-full flex-1 text-center w-full"
-        style={{
-          pointerEvents: allowEvents ? "all" : "none",
-        }}
-      >
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Section2
           data={data}
           previousChapter={() => {
