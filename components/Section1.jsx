@@ -6,6 +6,7 @@ import RadarVerticalLegend from "./Radar/RadarVeticalLegend";
 import RadarYear from "./Radar/RadarYear";
 import { colorByCategory, activitiesArray } from "./utils";
 import Button from "./Button";
+import Loader from "./Loader";
 import HowToRead from "./HowToRead";
 import { useWindowSize, getVizWidth } from "./utils";
 import { isMobile } from "react-device-detect";
@@ -72,12 +73,6 @@ const Section1 = ({
           <h2 className="subtitle">
             Activities, demand and price every 30 minutes
           </h2>
-          <div
-            className="mt-8 flex justify-start"
-            onClick={() => setHowToReadOpen((open) => !open)}
-          >
-            <Button title="HOW TO READ THE GRAPHIC" bold callback={null} />
-          </div>
           <p>
             Naturally, different people do different things over the course of a
             day. And even the same people may do things differently from one day
@@ -105,9 +100,6 @@ const Section1 = ({
         fullscreen={fullscreen}
         style={{ pointerEvents: allowEvents ? "all" : "none" }}
       >
-        {!allowEvents && (
-          <div className="absolute inset-0 bg-green z-10 w-full h-full"></div>
-        )}
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full flex-col items-start mb-4">
             <p className="mb-1 text-left">
@@ -118,8 +110,14 @@ const Section1 = ({
               Select the month or the activities in the graphic or in the legend
               to explore the data. MOUSE OVER ON THE GRAPHIC TO READ THEM
             </div>
-            <div className="text-xs font-bold uppercase text-left">
+            {/* <div className="text-xs font-bold uppercase text-left">
               SHARE THE GRAPHIC
+            </div> */}
+            <div
+              className="flex justify-start"
+              onClick={() => setHowToReadOpen((open) => !open)}
+            >
+              <Button title="HOW TO READ THE GRAPHIC" callback={null} />
             </div>
           </div>
           {isMobile && (
@@ -145,26 +143,31 @@ const Section1 = ({
                 }}
               >
                 <div onClick={startPlay} className="text-md">
-                  <div className="relative">
+                  <div className="flex flex-col justify-center">
                     <img
                       src={"/play.svg"}
                       width={28}
                       className="cursor-pointer"
                     />
-                    <span
-                      className="ml-2 uppercase font-light absolute"
+                    <div
+                      className="uppercase font-light "
                       style={{
                         fontSize: "10px",
-                        left: "30px",
-                        top: "8px",
-                        width: "220px",
                       }}
                     >
-                      play to see the changes over months
-                    </span>
+                      PLAY
+                    </div>
                   </div>
                 </div>
               </div>
+              {!allowEvents && (
+                <div className="w-full h-full flex justify-center items-center relative ">
+                  <Loader style={{ width: "100px" }} />
+                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                    LOADING
+                  </div>
+                </div>
+              )}
               {allowEvents && (
                 <RadarYear
                   globalData={data}
@@ -201,7 +204,7 @@ const Section1 = ({
       </RightColumn>
       <HowToRead
         text={
-          "The graphic shows the half-hourly evolution of three key elements over the course of a day.<br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>- The price of electricity, to reflect the impact of energy demand on our power generation systems (inner layer)<br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+          "The graphic shows the half-hourly evolution of three key elements over the course of a day.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>- The price of electricity, to reflect the impact of energy demand on our power generation systems (inner layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
         }
         image={"/legend01.svg"}
         readOpen={open}

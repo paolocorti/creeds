@@ -331,7 +331,7 @@ const RadarYear = ({
               cx={width * 0.6}
               cy={width * 0.6}
               r={width / 2}
-              fill={"#ffd6cc"}
+              fill={"#fae0d6"}
               style={{ pointerEvents: "none" }}
             />
 
@@ -363,7 +363,7 @@ const RadarYear = ({
               cx={width * 0.6}
               cy={width * 0.6}
               r={width * 0.39}
-              fill={"#ffd6cc"}
+              fill={"#fae0d6"}
               style={{ pointerEvents: "none" }}
             />
 
@@ -466,7 +466,7 @@ const RadarYear = ({
                                       r={width * 0.025}
                                       cx={5}
                                       cy={5}
-                                      fill={"#ffd6cc"}
+                                      fill={"#fae0d6"}
                                       fillOpacity={
                                         type === "urban_rural" ? 0 : 1
                                       }
@@ -581,7 +581,7 @@ const RadarYear = ({
             ) : (
               <g>
                 <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-                  <circle fill="#ffd6cc" cx={0} cy={0} r={width * 0.1} />
+                  <circle fill="#fae0d6" cx={0} cy={0} r={width * 0.1} />
                 </g>
                 {type !== "spatial_variation" && (
                   <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
