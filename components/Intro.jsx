@@ -107,7 +107,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
       </RightColumn>
 
       <div
-        className={`w-full md:w-3/4 bg-lightgreen p-8 absolute z-50 h-screen overflow-y-auto	 overflow ${
+        className={`w-full md:w-3/4 bg-lightgreen p-8 absolute z-50 h-full overflow-y-auto	 overflow ${
           aboutOpen ? "left-0" : "-left-full"
         } transition-all duration-500	`}
       >
@@ -138,60 +138,76 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
         <p className="px-0 md:px-6">
           {" "}
           This project was brought to you by the Flexibility of Demand theme at
-          the Centre for research into{" "}
+          the{" "}
           <a
             href="https://www.creds.ac.uk/"
             target="_blank"
             className="text-bold underline text-base"
           >
-            Energy Demand Solutions (CREDS)
+            Centre for research into Energy Demand Solutions (CREDS) &#8599;
           </a>
           . The project was funded through CREDS by UK Research and Innovation
           through the grant agreement EP/R035288/1.{" "}
         </p>
 
         <div className="px-0 md:px-6 text-left">
-          The Team Project management:<br></br>
-          <br></br>{" "}
-          <div className="text-base">Dr. Jose Luis Ramirez-Mendiola</div>
-          <div className="text-sm	">
-            Research Fellow on Flexibility in Energy Demand at the University of
-            Reading, UK
-          </div>
-          <a href="mailto:j.ramirez-mendiola@reading.ac.uk" target="_blank">
-            <div className="border rounded-2xl w-36 text-sm flex justify-center mt-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
-              CONTACT
+          <div className="text-lg font-bold">The Team </div> <br></br>{" "}
+          <div className="font-bold">Project management:</div>
+          <div className="flex items-start w-full justify-between">
+            <div>
+              <div className="text-base">Dr. Jose Luis Ramirez-Mendiola</div>
+              <div className="text-base italic">
+                Research Fellow on Flexibility in Energy Demand at the
+                University of Reading, UK
+              </div>
             </div>
-          </a>{" "}
-          <br></br>
-          <div className="text-base">Professor Jacopo Torriti</div>
-          <div className="text-sm">
-            Professor of Energy Economics and Policy at the University of
-            Reading and co-director of CREDS
+            <a href="mailto:j.ramirez-mendiola@reading.ac.uk" target="_blank">
+              <div className="border rounded-2xl w-36 text-sm flex justify-center ml-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
+                CONTACT
+              </div>
+            </a>{" "}
           </div>
-          <a href="mailto:j.torriti@reading.ac.uk " target="_blank">
-            <div className="border rounded-2xl w-36 text-sm flex justify-center mt-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
-              CONTACT
-            </div>
-          </a>{" "}
           <br></br>
-          <br></br>Visual design:{" "}
+          <div className="flex items-start w-full justify-between">
+            <div>
+              <div className="text-base">Professor Jacopo Torriti</div>
+              <div className="text-base italic">
+                Professor of Energy Economics and Policy at the University of
+                Reading and co-director of CREDS
+              </div>
+            </div>
+            <a href="mailto:j.torriti@reading.ac.uk " target="_blank">
+              <div className="border rounded-2xl w-36 text-sm flex justify-center ml-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
+                CONTACT
+              </div>
+            </a>{" "}
+          </div>
+          <div className="mt-4 font-bold">Visual design:</div>
           <a
             href="https://twitter.com/fedfragapane"
             target="_blank"
             className="text-bold underline text-base"
           >
             {" "}
-            Federica Fragapane
+            Federica Fragapane &#8599;
           </a>{" "}
-          <br></br> Web development:{" "}
+          <div className="mt-4 font-bold">Web development:</div>
           <a
             href="https://twitter.com/paolocorti_"
             target="_blank"
             className="text-bold underline text-base "
           >
-            Paolo Corti
+            Paolo Corti &#8599;
           </a>
+          <div className="text-xs mt-8">
+            © Copyright 2022
+            <br /> The visuals are made available under the Creative Commons
+            License CC BY-ND 3.0, and may be used and displayed without charge
+            by all commercial and non-commercial websites. <br /> Use is,
+            however, only permitted with proper attribution to the project. When
+            publishing one of these graphics, please include a backlink to the
+            original site.
+          </div>
         </div>
       </div>
     </section>

@@ -36,11 +36,8 @@ p {
 }
 
 p b {
-  font-weight: bold;
-  background-color: #8dedae;
-  mix-blend-mode: multiply;
-  font-family: "STIX Two Text", serif;
-  padding: 0 2px;
+  text-shadow: 2px 2px #8dedae;
+  font-family: "Nanum Myeongjo", serif;
 }
 
 .page-wrap {
