@@ -34,7 +34,7 @@ const Section3 = ({
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
   const [allowEvents, setAllowEvents] = useState(false);
-
+  const [copied, setCopied] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setAllowEvents(true);
@@ -99,19 +99,17 @@ const Section3 = ({
           </div>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
             <div
-              className="px-12"
+              className="px-12 flex flex-col justify-start"
               style={{
                 maxWidth: "85vh",
               }}
             >
-              <div>
-                <RegionMenu
-                  setSelected={setSelectedCompareRegion1}
-                  initialSlide={0}
-                />
-              </div>
+              <RegionMenu
+                setSelected={setSelectedCompareRegion1}
+                initialSlide={0}
+              />
               {!allowEvents && (
-                <div className="w-full h-full flex justify-center items-center relative ">
+                <div className="w-full h-64 flex justify-center items-center relative ">
                   <Loader style={{ width: "100px" }} />
                   <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
                     LOADING
@@ -134,15 +132,18 @@ const Section3 = ({
                 />
               )}
             </div>
-            <div className="px-12">
-              <div>
-                <RegionMenu
-                  setSelected={setSelectedCompareRegion2}
-                  initialSlide={1}
-                />
-              </div>
+            <div
+              className="px-12 flex flex-col justify-start"
+              style={{
+                maxWidth: "85vh",
+              }}
+            >
+              <RegionMenu
+                setSelected={setSelectedCompareRegion2}
+                initialSlide={1}
+              />
               {!allowEvents && (
-                <div className="w-full h-full flex justify-center items-center relative ">
+                <div className="w-full flex justify-center items-center relative h-64">
                   <Loader style={{ width: "100px" }} />
                   <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
                     LOADING
@@ -168,11 +169,34 @@ const Section3 = ({
           </div>
         </div>
         {!fullscreen && (
-          <div className="flex w-full justify-center">
-            <div className="mt-8 mr-2">
+          <div className="flex w-full justify-center relative mt-2">
+            <div
+              className="absolute left-0 cursor-pointer"
+              data-tip="Copy link to embed"
+            >
+              <CopyToClipboard
+                text={"https://creds.vercel.app/spatial_variation?share=true"}
+                onCopy={() => setCopied(true)}
+              >
+                {copied ? (
+                  <img
+                    src={"share-link-active.svg"}
+                    className="cursor-pointer"
+                    width={30}
+                  />
+                ) : (
+                  <img
+                    src={"share-link.svg"}
+                    className="cursor-pointer"
+                    width={30}
+                  />
+                )}
+              </CopyToClipboard>
+            </div>
+            <div className="mr-2">
               <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
             </div>
-            <div className="mt-8 ml-2">
+            <div className="ml-2">
               <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
             </div>
           </div>

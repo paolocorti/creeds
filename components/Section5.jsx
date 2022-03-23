@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import RadarYear from "./Radar/RadarYear";
@@ -8,13 +8,13 @@ import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import React from "react";
+import Loader from "./Loader";
+import HowToRead from "./HowToRead";
 
 const Section5 = ({
   data,
   energyDemand,
   gasDemand,
-  expanded,
-  setExpanded,
   fullscreen = false,
   previousChapter,
 }) => {
@@ -28,6 +28,15 @@ const Section5 = ({
   const [selectedCategory, setSelectedCategory] = useState(null);
   const size = useWindowSize();
   const vizWidth = getVizWidth("multiple", size);
+  const [allowEvents, setAllowEvents] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [open, setHowToReadOpen] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAllowEvents(true);
+    }, 1500);
+  }, []);
 
   return (
     <section
@@ -69,11 +78,12 @@ const Section5 = ({
                 Select THE season or the activities to explore the data. MOUSE
                 OVER ON THE GRAPHICS TO READ THEM
               </div>
-              <CopyToClipboard text="">
-                <div className="text-xs font-bold uppercase text-left">
-                  SHARE THE GRAPHIC
-                </div>
-              </CopyToClipboard>
+              <div
+                className="flex justify-start"
+                onClick={() => setHowToReadOpen((open) => !open)}
+              >
+                <Button title="HOW TO READ THE GRAPHIC" callback={null} />
+              </div>
             </div>
           </div>
           <div className="mt-4">
@@ -85,18 +95,20 @@ const Section5 = ({
           </div>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
             <div
-              className="px-12"
+              className="px-12 flex flex-col justify-start"
               style={{
                 maxWidth: "85vh",
               }}
             >
-              {/* <div>
-                <RegionMenu
-                  setSelected={setSelectedCompareRegion1}
-                  initialSlide={0}
-                />
-              </div> */}
-              {selectedCompareRegion1 !== undefined && (
+              {!allowEvents && (
+                <div className="w-full h-64 flex justify-center items-center relative ">
+                  <Loader style={{ width: "100px" }} />
+                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                    LOADING
+                  </div>
+                </div>
+              )}
+              {allowEvents && (
                 <RadarYear
                   globalData={data}
                   energyDemand={energyDemand}
@@ -113,14 +125,27 @@ const Section5 = ({
                 />
               )}
             </div>
-            <div className="px-12">
+            <div
+              className="px-12 flex flex-col justify-start"
+              style={{
+                maxWidth: "85vh",
+              }}
+            >
               {/* <div>
                 <RegionMenu
                   setSelected={setSelectedCompareRegion2}
                   initialSlide={1}
                 />
               </div> */}
-              {selectedCompareRegion2 !== undefined && (
+              {!allowEvents && (
+                <div className="w-full h-64 flex justify-center items-center relative ">
+                  <Loader style={{ width: "100px" }} />
+                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                    LOADING
+                  </div>
+                </div>
+              )}
+              {allowEvents && (
                 <RadarYear
                   globalData={data}
                   energyDemand={energyDemand}
@@ -141,9 +166,27 @@ const Section5 = ({
         </div>
         {!fullscreen && (
           <div className="flex w-full justify-center relative items-center mt-8">
-            <div className="absolute left-0">
-              <CopyToClipboard>
-                <img src={"share-link.svg"} width={30} />
+            <div
+              className="absolute left-0 cursor-pointer"
+              data-tip="Copy link to embed"
+            >
+              <CopyToClipboard
+                text={"https://creds.vercel.app/urban_rural?share=true"}
+                onCopy={() => setCopied(true)}
+              >
+                {copied ? (
+                  <img
+                    src={"share-link-active.svg"}
+                    className="cursor-pointer"
+                    width={30}
+                  />
+                ) : (
+                  <img
+                    src={"share-link.svg"}
+                    className="cursor-pointer"
+                    width={30}
+                  />
+                )}
               </CopyToClipboard>
             </div>
             <div className="mr-2">
@@ -152,6 +195,14 @@ const Section5 = ({
           </div>
         )}
       </RightColumn>
+      <HowToRead
+        text={
+          "The graphic shows the half-hourly evolution of key elements over the course of a day by season.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+        }
+        image={"/legend05.png"}
+        readOpen={open}
+        setHowToReadOpen={setHowToReadOpen}
+      />
     </section>
   );
 };

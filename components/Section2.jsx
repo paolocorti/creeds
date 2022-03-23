@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useStore } from "../store.js";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import TrendYear from "./Trend/TrendYear";
-import { ParentSize } from "@visx/responsive";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 import React from "react";
+import Loader from "./Loader";
 
 const Section2 = ({
   data,
@@ -25,6 +25,14 @@ const Section2 = ({
   ]);
   const size = useWindowSize();
   const vizWidth = getVizWidth("trend", size);
+  const [allowEvents, setAllowEvents] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAllowEvents(true);
+    }, 1500);
+  }, []);
 
   return (
     <section
@@ -74,24 +82,57 @@ const Section2 = ({
               <Button title="HOW TO READ THE GRAPHIC" callback={null} />
             </div> */}
           </div>
-          <TrendYear
-            globalData={data}
-            energyDemand={energyDemand}
-            selectedRegion={selectedRegion}
-            selectedMonth={selectedMonth}
-            width={vizWidth}
-          />
+          {!allowEvents && (
+            <div className="w-full h-full flex justify-center items-center relative ">
+              <Loader style={{ width: "100px" }} />
+              <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                LOADING
+              </div>
+            </div>
+          )}
+          {allowEvents && (
+            <TrendYear
+              globalData={data}
+              energyDemand={energyDemand}
+              selectedRegion={selectedRegion}
+              selectedMonth={selectedMonth}
+              width={vizWidth}
+            />
+          )}
+          {!fullscreen && (
+            <div className="flex w-full justify-center relative">
+              <div
+                className="absolute left-0 cursor-pointer"
+                data-tip="Copy link to embed"
+              >
+                <CopyToClipboard
+                  text={"https://creds.vercel.app/unpacking_peaks?share=true"}
+                  onCopy={() => setCopied(true)}
+                >
+                  {copied ? (
+                    <img
+                      src={"share-link-active.svg"}
+                      className="cursor-pointer"
+                      width={30}
+                    />
+                  ) : (
+                    <img
+                      src={"share-link.svg"}
+                      className="cursor-pointer"
+                      width={30}
+                    />
+                  )}
+                </CopyToClipboard>
+              </div>
+              <div className="mr-2">
+                <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
+              </div>
+              <div className="ml-2">
+                <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+              </div>
+            </div>
+          )}
         </div>
-        {!fullscreen && (
-          <div className="flex w-full justify-center">
-            <div className="mt-8 mr-2">
-              <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
-            </div>
-            <div className="mt-8 ml-2">
-              <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
-            </div>
-          </div>
-        )}
       </RightColumn>
     </section>
   );

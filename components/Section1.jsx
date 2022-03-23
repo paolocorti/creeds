@@ -36,6 +36,7 @@ const Section1 = ({
   const size = useWindowSize();
   const vizWidth = getVizWidth("single", size);
   const [open, setHowToReadOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const changeMonth = () => {
     if (selectedMonth < 13) {
       setSelectedMonth((month) => month + 1);
@@ -199,10 +200,28 @@ const Section1 = ({
         </div>
 
         {!fullscreen && (
-          <div className="flex w-full justify-center relative items-center mt-8">
-            <div className="absolute left-0">
-              <CopyToClipboard>
-                <img src={"share-link.svg"} width={30} />
+          <div className="flex w-full justify-center relative items-center mt-2">
+            <div
+              className="absolute left-0 cursor-pointer"
+              data-tip="Copy link to embed"
+            >
+              <CopyToClipboard
+                text={"https://creds.vercel.app/activities?share=true"}
+                onCopy={() => setCopied(true)}
+              >
+                {copied ? (
+                  <img
+                    src={"share-link-active.svg"}
+                    className="cursor-pointer"
+                    width={30}
+                  />
+                ) : (
+                  <img
+                    src={"share-link.svg"}
+                    className="cursor-pointer"
+                    width={30}
+                  />
+                )}
               </CopyToClipboard>
             </div>
             <div className="mr-2">

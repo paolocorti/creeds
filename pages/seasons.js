@@ -10,16 +10,8 @@ import { useRouter } from "next/router";
 
 export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
   const router = useRouter();
-  const [allowEvents, setAllowEvents] = useState(false);
 
   useEffect(() => {
-    //   csv("/data/activity_frequency_distributions.csv").then((values) => {
-    //     setData(values);
-    //   });
-
-    //   csv("/data/mean_daily_elec_demand_profiles.csv").then((values) => {
-    //     setEnergyDemand(values);
-
     const copiedValues = JSON.parse(JSON.stringify(energyDemand));
     delete copiedValues.columns;
     const allValues = flatten(
@@ -36,10 +28,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
     useStore.setState({
       energyMaximum: max,
     });
-    //   });
 
-    //   csv("/data/mean_daily_gas_demand_profiles.csv").then((values) => {
-    //     setGasDemand(values);
     const copiedValues2 = JSON.parse(JSON.stringify(gasDemand));
     delete copiedValues2.columns;
     const allValues2 = flatten(
@@ -57,9 +46,6 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
       gasMaximum: max2,
     });
 
-    //   csv("/data/hourly_average_price_electricity.csv").then((values) => {
-    //     setEnergyPrice(values);
-
     const copiedValues3 = JSON.parse(JSON.stringify(energyPrice));
     delete copiedValues3.columns;
     const allValues3 = flatten(
@@ -76,15 +62,9 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
     useStore.setState({
       energyPriceMaximum: max3,
     });
-
-    const timeout = setTimeout(() => {
-      setAllowEvents(true);
-    }, 750);
-
-    return () => {
-      clearTimeout(timeout);
-    };
   }, []);
+
+  const fullscreen = router.query && router.query.share ? true : false;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -120,21 +100,19 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
 
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
-      <main
-        className="flex flex-col items-center justify-center w-full flex-1 text-center w-full"
-        style={{
-          pointerEvents: allowEvents ? "all" : "none",
-        }}
-      >
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Section4
           data={data}
           energyDemand={energyDemand}
           gasDemand={gasDemand}
           energyPrice={energyPrice}
+          previousChapter={() => {
+            router.push("spatial_variation");
+          }}
           nextChapter={() => {
             router.push("urban_rural");
           }}
-          fullscreen={false}
+          fullscreen={fullscreen}
         />
       </main>
     </div>

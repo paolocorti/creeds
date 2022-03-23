@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 
 export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
   const router = useRouter();
-  const [allowEvents, setAllowEvents] = useState(false);
 
   useEffect(() => {
     const copiedValues = JSON.parse(JSON.stringify(energyDemand));
@@ -63,15 +62,9 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
     useStore.setState({
       energyPriceMaximum: max3,
     });
-
-    const timeout = setTimeout(() => {
-      setAllowEvents(true);
-    }, 750);
-
-    return () => {
-      clearTimeout(timeout);
-    };
   }, []);
+
+  const fullscreen = router.query && router.query.share ? true : false;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -107,12 +100,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
 
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
-      <main
-        className="flex flex-col items-center justify-center w-full flex-1 text-center w-full"
-        style={{
-          pointerEvents: allowEvents ? "all" : "none",
-        }}
-      >
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Section3
           data={data}
           energyDemand={energyDemand}
@@ -124,7 +112,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           nextChapter={() => {
             router.push("seasons");
           }}
-          fullscreen={false}
+          fullscreen={fullscreen}
         />
       </main>
     </div>

@@ -12,6 +12,7 @@ import { useWindowSize, getVizWidth } from "./utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import HowToRead from "./HowToRead";
 import React from "react";
+import Loader from "./Loader";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
@@ -83,6 +84,14 @@ const Section4 = ({
   const size = useWindowSize();
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
+  const [allowEvents, setAllowEvents] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAllowEvents(true);
+    }, 1500);
+  }, []);
 
   return (
     <section
@@ -152,7 +161,12 @@ const Section4 = ({
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-            <div className="px-8">
+            <div
+              className="px-12 flex flex-col justify-start"
+              style={{
+                maxWidth: "85vh",
+              }}
+            >
               <div>
                 <SeasonMenu
                   setSelected={setSelectedCompareSeason1}
@@ -160,7 +174,15 @@ const Section4 = ({
                   initialSlide={0}
                 />
               </div>
-              {selectedCompareSeason1 !== undefined && (
+              {!allowEvents && (
+                <div className="w-full h-64 flex justify-center items-center relative ">
+                  <Loader style={{ width: "100px" }} />
+                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                    LOADING
+                  </div>
+                </div>
+              )}
+              {allowEvents && (
                 <RadarYear
                   globalData={seasonData1 || []}
                   energyDemand={energyData1 || []}
@@ -177,7 +199,12 @@ const Section4 = ({
                 />
               )}
             </div>
-            <div className="px-8">
+            <div
+              className="px-12 flex flex-col justify-start"
+              style={{
+                maxWidth: "85vh",
+              }}
+            >
               <div>
                 <SeasonMenu
                   setSelected={setSelectedCompareSeason2}
@@ -185,7 +212,15 @@ const Section4 = ({
                   initialSlide={1}
                 />
               </div>
-              {selectedCompareSeason2 !== undefined && (
+              {!allowEvents && (
+                <div className="w-full h-64 flex justify-center items-center relative ">
+                  <Loader style={{ width: "100px" }} />
+                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                    LOADING
+                  </div>
+                </div>
+              )}
+              {allowEvents && (
                 <RadarYear
                   globalData={seasonData2 || []}
                   energyDemand={energyData2 || []}
@@ -206,9 +241,27 @@ const Section4 = ({
         </div>
         {!fullscreen && (
           <div className="flex w-full justify-center relative items-center mt-8">
-            <div className="absolute left-0">
-              <CopyToClipboard>
-                <img src={"share-link.svg"} width={30} />
+            <div
+              className="absolute left-0 cursor-pointer"
+              data-tip="Copy link to embed"
+            >
+              <CopyToClipboard
+                text={"https://creds.vercel.app/seasons?share=true"}
+                onCopy={() => setCopied(true)}
+              >
+                {copied ? (
+                  <img
+                    src={"share-link-active.svg"}
+                    className="cursor-pointer"
+                    width={30}
+                  />
+                ) : (
+                  <img
+                    src={"share-link.svg"}
+                    className="cursor-pointer"
+                    width={30}
+                  />
+                )}
               </CopyToClipboard>
             </div>
             <div className="mr-2">
@@ -222,7 +275,7 @@ const Section4 = ({
       </RightColumn>
       <HowToRead
         text={
-          "The graphic shows the half-hourly evolution of key elements over the course of a day by season.<br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+          "The graphic shows the half-hourly evolution of key elements over the course of a day by season.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
         }
         image={"/legend04.svg"}
         readOpen={open}

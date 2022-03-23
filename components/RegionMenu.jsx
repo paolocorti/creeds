@@ -54,7 +54,7 @@ const RegionMenu = ({ setSelected, initialSlide }) => {
   }
 
   return (
-    <div className="my-0 px-4 w-48 m-auto">
+    <div className="my-0 px-4 w-48 m-auto h-16">
       <Slider {...settings}>
         <div className="mx-2 cursor-pointer regionButton">London</div>
         <div className="mx-2 cursor-pointer regionButton">South East</div>
