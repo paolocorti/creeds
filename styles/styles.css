@@ -28,16 +28,21 @@ h1 {
 
 p {
   text-align: left;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 25px;
   margin: 20px 0;
-  font-family: "STIX Two Text", serif;
-  font-weight: 400;
+  font-family: "STIX Two Text";
+  font-weight: 300;
+}
+
+.nanum {
+  font-family: "Nanum Myeongjo";
 }
 
 p b {
-  text-shadow: 2px 2px #8dedae;
-  font-family: "Nanum Myeongjo", serif;
+  text-shadow: 2px 2px 1px #74c590;
+  font-family: "Nanum Myeongjo";
+  font-weight: 700;
 }
 
 .page-wrap {

@@ -38,12 +38,12 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
       </LeftColumn>
 
       <RightColumn expanded={expanded}>
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           One of the greatest challenges for a Net Zero Carbon future is{" "}
           <b>making the most out of our clean energy sources</b>.
         </p>
 
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           More often than not, this requires us to have the ability to{" "}
           <b>
             shift our electricity demands to those times of day when clean power
@@ -52,22 +52,24 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           – this is what we call flexibility.
         </p>
 
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           Flexibility is generally seen as a way of improving the balancing of
           our demand for energy with renewables’ output. The more renewables we
           use, the less carbon emissions we produce, and the closer we get to
           achieving our ambitious Net Zero targets.
         </p>
 
-        <p className="px-0 md:px-6">So how do we achieve that flexibility?</p>
+        <p className="nanum px-0 md:px-6">
+          So how do we achieve that flexibility?
+        </p>
 
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           <b>Energy demand goes hand in hand with what people do</b>, so our
           search for flexibility necessarily starts by looking at the rhythms of
           everyday life.
         </p>
 
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           Essentially,{" "}
           <b>
             if we want to change energy demand, we need to change either what
@@ -76,17 +78,17 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           or the way they do it.
         </p>
 
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           But how exactly does demand for electricity relate to what people do
           on a day-to-day basis?
         </p>
 
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           Our everyday life – what we do at home, at work, at school, when
           moving around – and its relation to energy demand is rather complex.
         </p>
 
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           As part of our work as energy researchers, we have introduced fresh
           approaches to thinking about the social-temporal organisation of
           energy demand. We also try to understand what these mean in terms of
@@ -96,7 +98,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           of providing said electricity.
         </p>
 
-        <p className="px-0 md:px-6">
+        <p className="nanum px-0 md:px-6">
           Perhaps it is best to just dive right in and start exploring of how
           these patterns of human activity translate into demand for energy.
           Here we share with you some tools that hopefully will allow you to
