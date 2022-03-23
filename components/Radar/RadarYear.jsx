@@ -21,6 +21,8 @@ const isMobileWithTablet = false;
 import ReactTooltip from "react-tooltip";
 import UkMap from "../UkMap.jsx";
 
+const pinkColor = "#fad9cd";
+
 const months = [
   "January",
   "February",
@@ -331,7 +333,7 @@ const RadarYear = ({
               cx={width * 0.6}
               cy={width * 0.6}
               r={width / 2}
-              fill={"#fae0d6"}
+              fill={pinkColor}
               style={{ pointerEvents: "none" }}
             />
 
@@ -363,7 +365,7 @@ const RadarYear = ({
               cx={width * 0.6}
               cy={width * 0.6}
               r={width * 0.39}
-              fill={"#fae0d6"}
+              fill={pinkColor}
               style={{ pointerEvents: "none" }}
             />
 
@@ -373,17 +375,19 @@ const RadarYear = ({
                   <path
                     style={{
                       pointerEvents: "none",
-                      opacity: 0.6,
+                      opacity: 1,
+                      mixBlendMode: "multiply",
                     }}
-                    fill={"#fff"}
+                    fill={"#f0d0c7"}
                     d={describeArcPortion(0, 0, width * 0.5, 90, 135)}
                   />
                   <path
                     style={{
                       pointerEvents: "none",
-                      opacity: 0.6,
+                      opacity: 1,
+                      mixBlendMode: "multiply",
                     }}
-                    fill={"#fff"}
+                    fill={"#f0d0c7"}
                     d={describeArcPortion(0, 0, width * 0.5, 240, 300)}
                   />
                 </g>
@@ -466,7 +470,7 @@ const RadarYear = ({
                                       r={width * 0.025}
                                       cx={5}
                                       cy={5}
-                                      fill={"#fae0d6"}
+                                      fill={pinkColor}
                                       fillOpacity={
                                         type === "urban_rural" ? 0 : 1
                                       }
@@ -581,7 +585,7 @@ const RadarYear = ({
             ) : (
               <g>
                 <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
-                  <circle fill="#fae0d6" cx={0} cy={0} r={width * 0.1} />
+                  <circle fill={pinkColor} cx={0} cy={0} r={width * 0.1} />
                 </g>
                 {type !== "spatial_variation" && (
                   <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
@@ -611,7 +615,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "1" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "1" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "1" ? 2.5 : 0.4}
@@ -630,7 +634,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "2" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "2" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "2" ? 2.5 : 0.4}
@@ -648,7 +652,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "3" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "3" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "3" ? 2.5 : 0.4}
@@ -666,7 +670,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "4" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "4" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "4" ? 2.5 : 0.4}
@@ -684,7 +688,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "5" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "5" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "5" ? 2.5 : 0.4}
@@ -702,7 +706,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "6" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "6" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "6" ? 2.5 : 0.4}
@@ -720,7 +724,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "7" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "7" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "7" ? 2.5 : 0.4}
@@ -738,7 +742,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "8" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "8" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "8" ? 2.5 : 0.4}
@@ -756,7 +760,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "9" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "9" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "9" ? 2.5 : 0.4}
@@ -776,7 +780,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "10" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "10" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "10" ? 2.5 : 0.4}
@@ -796,7 +800,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "11" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "11" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "11" ? 2.5 : 0.4}
@@ -816,7 +820,7 @@ const RadarYear = ({
                   fill="none"
                   style={{
                     pointerEvents: "none",
-                    opacity: selectedMonth ? 1 : 0.4,
+                    opacity: selectedMonth === "12" ? 1 : 0.4,
                   }}
                   stroke={selectedMonth === "12" ? "#000" : "#000"}
                   strokeWidth={selectedMonth === "12" ? 2.5 : 0.4}
@@ -859,7 +863,7 @@ const RadarYear = ({
                         style={{
                           transform: `rotate(${angle}deg)`,
                           cursor: "pointer",
-                          opacity: selectedMonth ? 1 : 0.4,
+                          opacity: selectedMonth === String(v + 1) ? 1 : 0.4,
                         }}
                         onClick={() =>
                           selectedMonth ? setSelectedMonth(String(v + 1)) : null

@@ -16,7 +16,7 @@ const Section5 = ({
   expanded,
   setExpanded,
   fullscreen = false,
-  nextChapter,
+  previousChapter,
 }) => {
   console.log("Section5 render");
 
@@ -140,8 +140,17 @@ const Section5 = ({
           </div>
         </div>
         {!fullscreen && (
-          <Button title="BACK TO START ↑" callback={nextChapter} />
-        )}{" "}
+          <div className="flex w-full justify-center relative items-center mt-8">
+            <div className="absolute left-0">
+              <CopyToClipboard>
+                <img src={"share-link.svg"} width={30} />
+              </CopyToClipboard>
+            </div>
+            <div className="mr-2">
+              <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
+            </div>
+          </div>
+        )}
       </RightColumn>
     </section>
   );

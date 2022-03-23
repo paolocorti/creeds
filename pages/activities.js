@@ -130,6 +130,9 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           data={data}
           energyDemand={energyDemand}
           energyPrice={energyPrice}
+          previousChapter={() => {
+            router.push("introduction");
+          }}
           nextChapter={() => {
             router.push("unpacking_peaks");
           }}

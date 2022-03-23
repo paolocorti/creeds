@@ -11,14 +11,14 @@ import { useWindowSize, getVizWidth } from "./utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import HowToRead from "./HowToRead";
 import React from "react";
+import Loader from "./Loader";
 
 const Section3 = ({
   data,
   energyDemand,
   gasDemand,
   nextChapter,
-  expanded,
-  setExpanded,
+  previousChapter,
   fullscreen = false,
 }) => {
   console.log("Section3 render");
@@ -33,6 +33,13 @@ const Section3 = ({
   const size = useWindowSize();
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
+  const [allowEvents, setAllowEvents] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAllowEvents(true);
+    }, 1500);
+  }, []);
 
   return (
     <section
@@ -42,12 +49,7 @@ const Section3 = ({
       {!fullscreen && (
         <LeftColumn sectionTitle={"/4.spatial-vertical.svg"}>
           <h2 className="subtitle">Spatial variation</h2>
-          <div
-            className="mt-8 flex justify-start"
-            onClick={() => setHowToReadOpen((open) => !open)}
-          >
-            <Button title="HOW TO READ THE GRAPHIC" bold callback={null} />
-          </div>
+
           <p>
             People living in the same country tend to share certain social
             conventions about the timing of certain events – think of lunchtime
@@ -80,11 +82,12 @@ const Section3 = ({
                 Select the month, THE REGIONS or the activities to explore the
                 data. MOUSE OVER ON THE GRAPHICS TO READ THEM
               </div>
-              <CopyToClipboard text="">
-                <div className="text-xs font-bold uppercase text-left">
-                  SHARE THE GRAPHIC
-                </div>
-              </CopyToClipboard>
+              <div
+                className="flex justify-start"
+                onClick={() => setHowToReadOpen((open) => !open)}
+              >
+                <Button title="HOW TO READ THE GRAPHIC" callback={null} />
+              </div>
             </div>
           </div>
           <div className="mt-4">
@@ -107,7 +110,15 @@ const Section3 = ({
                   initialSlide={0}
                 />
               </div>
-              {selectedCompareRegion1 !== undefined && (
+              {!allowEvents && (
+                <div className="w-full h-full flex justify-center items-center relative ">
+                  <Loader style={{ width: "100px" }} />
+                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                    LOADING
+                  </div>
+                </div>
+              )}
+              {allowEvents && (
                 <RadarYear
                   globalData={data}
                   energyDemand={energyDemand}
@@ -130,7 +141,15 @@ const Section3 = ({
                   initialSlide={1}
                 />
               </div>
-              {selectedCompareRegion2 !== undefined && (
+              {!allowEvents && (
+                <div className="w-full h-full flex justify-center items-center relative ">
+                  <Loader style={{ width: "100px" }} />
+                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                    LOADING
+                  </div>
+                </div>
+              )}
+              {allowEvents && (
                 <RadarYear
                   globalData={data}
                   energyDemand={energyDemand}
@@ -149,7 +168,14 @@ const Section3 = ({
           </div>
         </div>
         {!fullscreen && (
-          <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+          <div className="flex w-full justify-center">
+            <div className="mt-8 mr-2">
+              <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
+            </div>
+            <div className="mt-8 ml-2">
+              <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+            </div>
+          </div>
         )}
       </RightColumn>
       <HowToRead

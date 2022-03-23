@@ -13,7 +13,7 @@ import { activitiesArray, colorByCategory } from "../utils";
 const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
   return (
     <div className="flex flex-col">
-      <p>Legend</p>
+      <div className="text-xs uppercase text-left">Legend</div>
       <div className="flex flex-col relative">
         <div
           style={{
@@ -26,7 +26,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
             zIndex: 0,
           }}
         ></div>
-        <div className="flex items-center my-1">
+        <div className="flex items-center">
           <div
             className="text-left"
             style={{

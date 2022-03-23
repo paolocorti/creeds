@@ -12,6 +12,7 @@ import { useWindowSize, getVizWidth } from "./utils";
 import { isMobile } from "react-device-detect";
 import React from "react";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 let interval;
 const intervalTime = 1000;
@@ -21,8 +22,8 @@ const Section1 = ({
   energyDemand,
   energyPrice,
   gasDemand,
+  previousChapter,
   nextChapter,
-  expanded,
   fullscreen = false,
 }) => {
   console.log("Section1 render");
@@ -196,9 +197,20 @@ const Section1 = ({
             )}
           </div>
         </div>
+
         {!fullscreen && (
-          <div className="mt-8">
-            <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+          <div className="flex w-full justify-center relative items-center mt-8">
+            <div className="absolute left-0">
+              <CopyToClipboard>
+                <img src={"share-link.svg"} width={30} />
+              </CopyToClipboard>
+            </div>
+            <div className="mr-2">
+              <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
+            </div>
+            <div className="ml-2">
+              <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+            </div>
           </div>
         )}
       </RightColumn>

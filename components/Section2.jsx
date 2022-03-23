@@ -12,7 +12,7 @@ const Section2 = ({
   data,
   energyDemand,
   nextChapter,
-
+  previousChapter,
   fullscreen = false,
   scrolling,
 }) => {
@@ -55,11 +55,25 @@ const Section2 = ({
       )}
       <RightColumn fullscreen={fullscreen}>
         <div
-          className="w-full flex justify-center"
+          className="w-full flex flex-col items-center"
           style={{
             pointerEvents: scrolling ? "none" : "all",
           }}
         >
+          <div className="flex w-full flex-col items-start mb-4">
+            <p className="text-left mb-1">
+              The graphic shows the activities’ frequency every 10 minutes.
+            </p>
+            <div className="text-xs font-light uppercase text-left mb-2">
+              MOUSE OVER ON THE GRAPHIC TO READ THE DATA
+            </div>
+            {/* <div
+              className="flex justify-start"
+              onClick={() => setHowToReadOpen((open) => !open)}
+            >
+              <Button title="HOW TO READ THE GRAPHIC" callback={null} />
+            </div> */}
+          </div>
           <TrendYear
             globalData={data}
             energyDemand={energyDemand}
@@ -69,7 +83,14 @@ const Section2 = ({
           />
         </div>
         {!fullscreen && (
-          <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+          <div className="flex w-full justify-center">
+            <div className="mt-8 mr-2">
+              <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
+            </div>
+            <div className="mt-8 ml-2">
+              <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+            </div>
+          </div>
         )}
       </RightColumn>
     </section>

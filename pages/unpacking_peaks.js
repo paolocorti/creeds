@@ -128,6 +128,9 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
       >
         <Section2
           data={data}
+          previousChapter={() => {
+            router.push("activities");
+          }}
           nextChapter={() => {
             router.push("spatial_variation");
           }}

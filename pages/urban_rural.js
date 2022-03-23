@@ -118,8 +118,8 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           energyDemand={energyDemand}
           gasDemand={gasDemand}
           energyPrice={energyPrice}
-          nextChapter={() => {
-            router.push("introduction");
+          previousChapter={() => {
+            router.push("seasons");
           }}
           fullscreen={false}
         />

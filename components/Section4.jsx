@@ -22,6 +22,7 @@ const Section4 = ({
   expanded,
   setExpanded,
   nextChapter,
+  previousChapter,
   fullscreen = false,
 }) => {
   console.log("Section4 render");
@@ -95,12 +96,7 @@ const Section4 = ({
           setExpanded={setExpanded}
         >
           <h2 className="subtitle">Seasons of the year</h2>
-          <div
-            className="mt-8 flex justify-start"
-            onClick={() => setHowToReadOpen((open) => !open)}
-          >
-            <Button title="HOW TO READ THE GRAPHIC" bold callback={null} />
-          </div>
+
           <p>
             Everyday life and energy demand follow seasonal patterns.
             <br />
@@ -139,11 +135,12 @@ const Section4 = ({
                 Select THE season or the activities to explore the data. MOUSE
                 OVER ON THE GRAPHICS TO READ THEM
               </div>
-              <CopyToClipboard text="">
-                <div className="text-xs font-bold uppercase text-left">
-                  SHARE THE GRAPHIC
-                </div>
-              </CopyToClipboard>
+              <div
+                className="flex justify-start"
+                onClick={() => setHowToReadOpen((open) => !open)}
+              >
+                <Button title="HOW TO READ THE GRAPHIC" callback={null} />
+              </div>
             </div>
           </div>
 
@@ -208,8 +205,20 @@ const Section4 = ({
           </div>
         </div>
         {!fullscreen && (
-          <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
-        )}{" "}
+          <div className="flex w-full justify-center relative items-center mt-8">
+            <div className="absolute left-0">
+              <CopyToClipboard>
+                <img src={"share-link.svg"} width={30} />
+              </CopyToClipboard>
+            </div>
+            <div className="mr-2">
+              <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
+            </div>
+            <div className="ml-2">
+              <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+            </div>
+          </div>
+        )}
       </RightColumn>
       <HowToRead
         text={
