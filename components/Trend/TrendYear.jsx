@@ -258,8 +258,8 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
             <div>
               <TooltipWithBounds
                 key={Math.random()}
-                top={tooltipTop + 110}
-                left={tooltipLeft + 120}
+                top={tooltipTop + 30}
+                left={tooltipLeft + 10}
                 style={tooltipStyles}
               >
                 {`${getValue(tooltipData).toFixed(2)}`} <br /> <br />
