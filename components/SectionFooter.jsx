@@ -28,9 +28,11 @@ const SectionFooter = ({ link, previousChapter, nextChapter }) => {
           <Button title="PREVIOUS CHAPTER ↑" callback={previousChapter} />
         </div>
       )}
-      <div className="ml-2 mt-4 md:mt-0">
-        <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
-      </div>
+      {nextChapter && (
+        <div className="ml-2 mt-4 md:mt-0">
+          <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
+        </div>
+      )}
     </div>
   );
 };

@@ -167,7 +167,7 @@ const Section5 = ({
         </div>
         {!fullscreen && (
           <SectionFooter
-            nextChapter={nextChapter}
+            previousChapter={previousChapter}
             link={"https://creds.vercel.app/urban_rural?share=true"}
           />
         )}
