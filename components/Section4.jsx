@@ -14,6 +14,7 @@ import HowToRead from "./HowToRead";
 import React from "react";
 import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
+import { siteUrl } from "../config";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
@@ -245,7 +246,7 @@ const Section4 = ({
           <SectionFooter
             nextChapter={nextChapter}
             previousChapter={previousChapter}
-            link={"https://creds.vercel.app/seasons?share=true"}
+            link={`${siteUrl}/seasons?share=true`}
           />
         )}
       </RightColumn>

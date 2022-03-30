@@ -4,6 +4,7 @@ import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
 import React from "react";
+import { LinkedinShareButton, TwitterShareButton } from "react-share";
 
 const Intro = ({ nextChapter, expanded, scrolling }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -151,6 +152,28 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           . The project was funded through CREDS by UK Research and Innovation
           through the grant agreement EP/R035288/1.{" "}
         </p>
+        <div className="flex justify-start px-0 md:px-6 pb-8">
+          <LinkedinShareButton
+            url={"https://creds.vercel.app/"}
+            title={"Energy demand flexibility and the rhythms of everyday life"}
+            summary={
+              "Our everyday life – what we do at home, at work, at school, when moving around – and its relation to energy demand is rather complex. As part of our work as energy researchers, we have introduced fresh approaches to thinking about the social-temporal organisation of energy demand."
+            }
+            source={"https://creds.vercel.app/"}
+          >
+            <img src="/share-linkedin.svg" width={28} className="mr-1" />
+          </LinkedinShareButton>
+          <TwitterShareButton
+            url={"https://creds.vercel.app/"}
+            title={"Energy demand flexibility and the rhythms of everyday life"}
+            summary={
+              "Our everyday life – what we do at home, at work, at school, when moving around – and its relation to energy demand is rather complex. As part of our work as energy researchers, we have introduced fresh approaches to thinking about the social-temporal organisation of energy demand."
+            }
+            source={"https://creds.vercel.app/"}
+          >
+            <img src="/share-tw.svg" width={28} className="ml-1" />
+          </TwitterShareButton>
+        </div>
 
         <div className="px-0 md:px-6 text-left">
           <div className="text-lg font-bold">The Team </div> <br></br>{" "}

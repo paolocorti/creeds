@@ -469,7 +469,7 @@ const RadarYear = ({
                                   />
                                   <g
                                     transform={`translate(-4, ${
-                                      (width / 2) * 0.925
+                                      (width / 2) * 0.93
                                     })`}
                                   >
                                     <circle

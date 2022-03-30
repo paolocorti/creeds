@@ -3,6 +3,8 @@ import { Group } from "@visx/group";
 import { LineRadial } from "@visx/shape";
 import { scaleTime, scaleLinear } from "@visx/scale";
 import { curveLinear } from "@visx/curve";
+import moment from "moment";
+import ReactTooltip from "react-tooltip";
 
 // utils
 function extent(data, value) {
@@ -56,6 +58,7 @@ const OuterRadial = ({ width, height, data, line, maximum, type }) => {
           const d = path(data) || "";
           const angleV = xScale(maxData.time);
           const valueV = yScale(maxData.value);
+          const time = moment(maxData.time).format("h:mm a");
 
           return (
             <>
@@ -74,6 +77,14 @@ const OuterRadial = ({ width, height, data, line, maximum, type }) => {
                 cx={valueV * Math.cos(angleV - Math.PI / 2)}
                 cy={valueV * Math.sin(angleV - Math.PI / 2)}
                 r={3}
+                data-tip={`<b>${time}</b> <br/> ${parseFloat(
+                  maxData.value
+                ).toFixed(1)}`}
+                data-html="true"
+                onMouseEnter={() => {
+                  console.log("here");
+                  ReactTooltip.rebuild();
+                }}
               />
             </>
           );

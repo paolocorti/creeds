@@ -68,36 +68,6 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <Head>
-        <title>
-          Energy demand flexibility and the rhythms of everyday life
-        </title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Nanum+Myeongjo:wght@400;700&family=STIX+Two+Text:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-        <meta charset="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,shrink-to-fit=no"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          charset="UTF-8"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-      </Head>
-
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">

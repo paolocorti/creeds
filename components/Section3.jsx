@@ -12,6 +12,7 @@ import HowToRead from "./HowToRead";
 import React from "react";
 import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
+import { siteUrl } from "../config";
 
 const Section3 = ({
   data,
@@ -173,7 +174,7 @@ const Section3 = ({
           <SectionFooter
             nextChapter={nextChapter}
             previousChapter={previousChapter}
-            link={"https://creds.vercel.app/spatial_variation?share=true"}
+            link={`${siteUrl}/spatial_variation?share=true`}
           />
         )}
       </RightColumn>

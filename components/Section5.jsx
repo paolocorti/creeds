@@ -11,6 +11,7 @@ import React from "react";
 import Loader from "./Loader";
 import HowToRead from "./HowToRead";
 import SectionFooter from "./SectionFooter.jsx";
+import { siteUrl } from "../config";
 
 const Section5 = ({
   data,
@@ -168,7 +169,7 @@ const Section5 = ({
         {!fullscreen && (
           <SectionFooter
             previousChapter={previousChapter}
-            link={"https://creds.vercel.app/urban_rural?share=true"}
+            link={`${siteUrl}/urban_rural?share=true`}
           />
         )}
       </RightColumn>

@@ -7,6 +7,7 @@ import Button from "./Button";
 import { useWindowSize, getVizWidth } from "./utils";
 import React from "react";
 import Loader from "./Loader";
+import { siteUrl } from "../config";
 
 const Section2 = ({
   data,
@@ -104,7 +105,7 @@ const Section2 = ({
             <SectionFooter
               nextChapter={nextChapter}
               previousChapter={previousChapter}
-              link={"https://creds.vercel.app/unpacking_peaks?share=true"}
+              link={`${siteUrl}/unpacking_peaks?share=true`}
             />
           )}
         </div>

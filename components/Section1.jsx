@@ -13,6 +13,7 @@ import { isMobile } from "react-device-detect";
 import React from "react";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import SectionFooter from "./SectionFooter.jsx";
+import { siteUrl } from "../config";
 
 let interval;
 const intervalTime = 1000;
@@ -202,7 +203,7 @@ const Section1 = ({
           <SectionFooter
             nextChapter={nextChapter}
             previousChapter={previousChapter}
-            link={"https://creds.vercel.app/activities?share=true"}
+            link={`${siteUrl}/activities?share=true`}
           />
         )}
       </RightColumn>
