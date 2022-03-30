@@ -199,13 +199,12 @@ const Section1 = ({
           </div>
         </div>
 
-        {/* {!fullscreen && (
+        {!fullscreen && (
           <SectionFooter
             nextChapter={nextChapter}
-            previousChapter={previousChapter}
             link={`${siteUrl}/activities?share=true`}
           />
-        )} */}
+        )}
       </RightColumn>
       <HowToRead
         text={

@@ -12,6 +12,7 @@ import { csv } from "d3-fetch";
 import { server } from "../config";
 import { flatten } from "lodash";
 import { useStore } from "../store.js";
+import { scroller } from "react-scroll";
 
 export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
   const router = useRouter();
@@ -78,28 +79,28 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
         <ReactTooltip effect="solid" backgroundColor="#111" delayShow={50} />
         <Landing
           nextChapter={() => {
-            router.push("introduction");
+            scroller.scrollTo("section1", {
+              smooth: false,
+            });
           }}
         />
         <Section1
           data={data}
           energyDemand={energyDemand}
           energyPrice={energyPrice}
-          previousChapter={() => {
-            router.push("introduction");
-          }}
           nextChapter={() => {
-            router.push("unpacking_peaks");
+            scroller.scrollTo("section2", {
+              smooth: false,
+            });
           }}
           fullscreen={false}
         />
         <Section2
           data={data}
-          previousChapter={() => {
-            router.push("activities");
-          }}
           nextChapter={() => {
-            router.push("spatial_variation");
+            scroller.scrollTo("section3", {
+              smooth: false,
+            });
           }}
           fullscreen={false}
         />
@@ -108,11 +109,10 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
           energyDemand={energyDemand}
           gasDemand={gasDemand}
           energyPrice={energyPrice}
-          previousChapter={() => {
-            router.push("unpacking_peaks");
-          }}
           nextChapter={() => {
-            router.push("seasons");
+            scroller.scrollTo("section4", {
+              smooth: false,
+            });
           }}
           fullscreen={false}
         />
@@ -121,11 +121,10 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
           energyDemand={energyDemand}
           gasDemand={gasDemand}
           energyPrice={energyPrice}
-          previousChapter={() => {
-            router.push("spatial_variation");
-          }}
           nextChapter={() => {
-            router.push("urban_rural");
+            scroller.scrollTo("section5", {
+              smooth: false,
+            });
           }}
           fullscreen={false}
         />
