@@ -101,13 +101,13 @@ const Section2 = ({
             />
           )}
 
-          {!fullscreen && (
+          {/* {!fullscreen && (
             <SectionFooter
               nextChapter={nextChapter}
               previousChapter={previousChapter}
               link={`${siteUrl}/unpacking_peaks?share=true`}
             />
-          )}
+          )} */}
         </div>
       </RightColumn>
     </section>

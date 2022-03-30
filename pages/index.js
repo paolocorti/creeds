@@ -2,10 +2,72 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import Landing from "../components/Landing";
+import Section1 from "../components/Section1";
+import Section2 from "../components/Section2";
+import Section3 from "../components/Section3";
+import Section4 from "../components/Section4";
+import Section5 from "../components/Section5";
 import { useRouter } from "next/router";
+import { csv } from "d3-fetch";
+import { server } from "../config";
+import { flatten } from "lodash";
+import { useStore } from "../store.js";
 
-export default function Home() {
+export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
   const router = useRouter();
+
+  useEffect(() => {
+    const copiedValues = JSON.parse(JSON.stringify(energyDemand));
+    delete copiedValues.columns;
+    const allValues = flatten(
+      copiedValues.map((v) => {
+        delete v.month;
+        delete v.region;
+        delete v.season;
+        const val = Object.values(v);
+        const parsed = val.map((n) => parseFloat(n));
+        return parsed;
+      })
+    );
+    const max = Math.max(...allValues);
+    useStore.setState({
+      energyMaximum: max,
+    });
+
+    const copiedValues2 = JSON.parse(JSON.stringify(gasDemand));
+    delete copiedValues2.columns;
+    const allValues2 = flatten(
+      copiedValues2.map((v) => {
+        delete v.month;
+        delete v.region;
+        delete v.season;
+        const val = Object.values(v);
+        const parsed = val.map((n) => parseFloat(n));
+        return parsed;
+      })
+    );
+    const max2 = Math.max(...allValues2);
+    useStore.setState({
+      gasMaximum: max2,
+    });
+
+    const copiedValues3 = JSON.parse(JSON.stringify(energyPrice));
+    delete copiedValues3.columns;
+    const allValues3 = flatten(
+      copiedValues3.map((v) => {
+        delete v.month;
+        delete v.region;
+        delete v.season;
+        const val = Object.values(v);
+        const parsed = val.map((n) => parseFloat(n));
+        return parsed;
+      })
+    );
+    const max3 = Math.max(...allValues3);
+    useStore.setState({
+      energyPriceMaximum: max3,
+    });
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -19,9 +81,67 @@ export default function Home() {
             router.push("introduction");
           }}
         />
+        <Section1
+          data={data}
+          energyDemand={energyDemand}
+          energyPrice={energyPrice}
+          previousChapter={() => {
+            router.push("introduction");
+          }}
+          nextChapter={() => {
+            router.push("unpacking_peaks");
+          }}
+          fullscreen={false}
+        />
+        <Section2
+          data={data}
+          previousChapter={() => {
+            router.push("activities");
+          }}
+          nextChapter={() => {
+            router.push("spatial_variation");
+          }}
+          fullscreen={false}
+        />
+        <Section3
+          data={data}
+          energyDemand={energyDemand}
+          gasDemand={gasDemand}
+          energyPrice={energyPrice}
+          previousChapter={() => {
+            router.push("unpacking_peaks");
+          }}
+          nextChapter={() => {
+            router.push("seasons");
+          }}
+          fullscreen={false}
+        />
+        <Section4
+          data={data}
+          energyDemand={energyDemand}
+          gasDemand={gasDemand}
+          energyPrice={energyPrice}
+          previousChapter={() => {
+            router.push("spatial_variation");
+          }}
+          nextChapter={() => {
+            router.push("urban_rural");
+          }}
+          fullscreen={false}
+        />
+        <Section5
+          data={data}
+          energyDemand={energyDemand}
+          gasDemand={gasDemand}
+          energyPrice={energyPrice}
+          previousChapter={() => {
+            router.push("seasons");
+          }}
+          fullscreen={false}
+        />
       </main>
 
-      {/* <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">
+      <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">
         <div className="text-xs">
           © Copyright 2022
           <br />
@@ -31,7 +151,35 @@ export default function Home() {
           only permitted with proper attribution to the project. When publishing
           one of these graphics, please include a backlink to the original site.
         </div>
-      </footer> */}
+      </footer>
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  const data = await csv(`${server}/data/activity_frequency_distributions.csv`);
+  const energyDemand = await csv(
+    `${server}/data/mean_daily_elec_demand_profiles.csv`
+  );
+  const gasDemand = await csv(
+    `${server}/data/mean_daily_gas_demand_profiles.csv`
+  );
+  const energyPrice = await csv(
+    `${server}/data/hourly_average_price_electricity.csv`
+  );
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      data: data,
+      energyDemand: energyDemand,
+      gasDemand: gasDemand,
+      energyPrice: energyPrice,
+    },
+  };
 }

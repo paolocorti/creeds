@@ -170,13 +170,13 @@ const Section3 = ({
           </div>
         </div>
 
-        {!fullscreen && (
+        {/* {!fullscreen && (
           <SectionFooter
             nextChapter={nextChapter}
             previousChapter={previousChapter}
             link={`${siteUrl}/spatial_variation?share=true`}
           />
-        )}
+        )} */}
       </RightColumn>
       <HowToRead
         text={

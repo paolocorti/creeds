@@ -242,13 +242,13 @@ const Section4 = ({
           </div>
         </div>
 
-        {!fullscreen && (
+        {/* {!fullscreen && (
           <SectionFooter
             nextChapter={nextChapter}
             previousChapter={previousChapter}
             link={`${siteUrl}/seasons?share=true`}
           />
-        )}
+        )} */}
       </RightColumn>
       <HowToRead
         text={

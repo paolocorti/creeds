@@ -166,12 +166,12 @@ const Section5 = ({
             </div>
           </div>
         </div>
-        {!fullscreen && (
+        {/* {!fullscreen && (
           <SectionFooter
             previousChapter={previousChapter}
             link={`${siteUrl}/urban_rural?share=true`}
           />
-        )}
+        )} */}
       </RightColumn>
       <HowToRead
         text={

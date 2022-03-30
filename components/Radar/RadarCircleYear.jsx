@@ -43,7 +43,6 @@ const RadarCircleYear = ({
           ReactTooltip.rebuild();
         }}
         onMouseLeave={() => {
-          //useStore.setState({ hover: null, hoverCategory: null });
           setHover(null);
           setHoverCategory(null);
         }}
