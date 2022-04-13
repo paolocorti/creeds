@@ -49,22 +49,25 @@ const Section3 = ({
     >
       {!fullscreen && (
         <LeftColumn sectionTitle={"/4.spatial-vertical.svg"}>
-          <h2 className="subtitle">Spatial variation</h2>
+          <h2 className="subtitle">
+            Spatial <br />
+            variation
+          </h2>
 
           <p>
             People living in the same country tend to share certain social
             conventions about the timing of certain events – think of lunchtime
             – and thus tend to share an overall everyday-life daily rhythm.
-            <br />
+            <br /> <br />
             Even within the same country, however, there usually are some
             noticeable differences between what people do, when they do it, and
             for how long, when we compare one region to another.
-            <br />
+            <br /> <br />
             In addition, the amount of energy we demand from the grid also
             depends on other factors such as the weather and the type of
             buildings we inhabit, which are also likely to vary from region to
             region.
-            <br />
+            <br /> <br />
             This has repercussions on the grid as the grid infrastructure tends
             to be unevenly distributed, and the impacts of our demand for energy
             depend on where and when such demand occurs.

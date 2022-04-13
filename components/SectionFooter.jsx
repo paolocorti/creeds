@@ -9,17 +9,35 @@ const SectionFooter = ({ link, previousChapter, nextChapter }) => {
     <div className="flex flex-col md:flex-row w-full justify-center relative items-center mt-2">
       <div
         className="absolute left-0 cursor-pointer"
-        data-tip="Copy link to embed"
+        //data-tip="Copy link to embed"
       >
         <CopyToClipboard text={link} onCopy={() => setCopied(true)}>
           {copied ? (
-            <img
-              src={"share-link-active.svg"}
-              className="cursor-pointer"
-              width={30}
-            />
+            <div className="flex justify-start md:justify-center">
+              <div
+                className="border rounded-2xl z-40 px-4 py-1 cursor-pointer bg-black text-pink"
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "regular",
+                  lineHeight: 1.5,
+                }}
+              >
+                COPIED GRAPHIC
+              </div>
+            </div>
           ) : (
-            <img src={"share-link.svg"} className="cursor-pointer" width={30} />
+            <div className="flex justify-start md:justify-center">
+              <div
+                className="border rounded-2xl z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-pink"
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "regular",
+                  lineHeight: 1.5,
+                }}
+              >
+                SHARE GRAPHIC
+              </div>
+            </div>
           )}
         </CopyToClipboard>
       </div>

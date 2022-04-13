@@ -42,7 +42,10 @@ const Section2 = ({
     >
       {!fullscreen && (
         <LeftColumn>
-          <h2 className="subtitle">Unpacking peaks</h2>
+          <h2 className="subtitle">
+            Unpacking <br />
+            peaks
+          </h2>
           <p>
             We have established by now that the energy demand patterns observed
             throughout the day are a direct consequence of what people do. But
@@ -50,15 +53,15 @@ const Section2 = ({
             the flexibility of demand for energy, we need to have a very
             detailed knowledge of what happens during the most problematic
             periods. That is, when peaks in demand occur.
-            <br /> The impact of “smart” tariffs and controls largely depends on
-            whether there is, in fact, scope for shifting the timing of what
-            people do, and for changing the rhythm of demand during peaks.
-            <br />
+            <br /> <br /> The impact of “smart” tariffs and controls largely
+            depends on whether there is, in fact, scope for shifting the timing
+            of what people do, and for changing the rhythm of demand during
+            peaks.
+            <br /> <br />
             Questions about these issues revolve around how activities generate
             patterns of demand at peak time, focusing on questions of why, where
-            and when.
-            <br /> Unpacking peaks is inextricably related to providing answers
-            to these questions.
+            and when. Unpacking peaks is inextricably related to providing
+            answers to these questions.
           </p>
         </LeftColumn>
       )}

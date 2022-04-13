@@ -47,7 +47,10 @@ const Section5 = ({
     >
       {!fullscreen && (
         <LeftColumn sectionTitle={"/5.seeasons-vertical.svg"}>
-          <h2 className="subtitle">Urban vs Rural</h2>
+          <h2 className="subtitle">
+            Urban vs
+            <br /> Rural
+          </h2>
           <p>
             Whenever we talk about the rhythm of everyday life, it’s inevitable
             to talk about the differences in the pace at which everyday life
@@ -59,6 +62,7 @@ const Section5 = ({
             perhaps these widespread perceptions are rooted in some truth, as we
             can actually see some differences between the patterns of activity
             of predominantly rural locations and predominantly urban locations.
+            <br />
             <br />
             As with all the other factors that play a role when it comes to
             studying the flexibility of our demand for energy, paying attention

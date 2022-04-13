@@ -16,11 +16,12 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
       className="w-full flex flex-col md:flex-row  min-h-screen"
     >
       <LeftColumn sectionTitle={"/1.energy-vertical.svg"} expanded={expanded}>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer flex justify-end">
           <div
-            className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+            className="border-2 rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
             style={{
-              fontSize: "11px",
+              fontSize: "14px",
+              fontWeight: "bold",
             }}
             onClick={() => setAboutOpen((open) => !open)}
           >
@@ -118,7 +119,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           <div
             className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
             style={{
-              fontSize: "11px",
+              fontSize: "14px",
             }}
             onClick={() => setAboutOpen((open) => !open)}
           >

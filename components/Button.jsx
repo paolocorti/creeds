@@ -6,6 +6,7 @@ const Button = ({ title, callback, bold = false }) => {
         style={{
           fontSize: "12px",
           fontWeight: bold ? "bold" : "regular",
+          lineHeight: 1.5,
         }}
         onClick={callback}
       >

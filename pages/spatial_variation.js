@@ -1,7 +1,6 @@
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
-import ReactTooltip from "react-tooltip";
 import Section3 from "../components/Section3";
 import { server } from "../config";
 import { flatten } from "lodash";
@@ -68,8 +67,6 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <ReactTooltip effect="solid" backgroundColor="#111" />
-
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Section3
           data={data}

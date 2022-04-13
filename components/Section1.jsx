@@ -72,9 +72,7 @@ const Section1 = ({
     >
       {!fullscreen && (
         <LeftColumn>
-          <h2 className="subtitle">
-            Activities, demand and price every 30 minutes
-          </h2>
+          <h2 className="subtitle">Activities, demand and price</h2>
           <p>
             Naturally, different people do different things over the course of a
             day. And even the same people may do things differently from one day
@@ -102,110 +100,116 @@ const Section1 = ({
         fullscreen={fullscreen}
         style={{ pointerEvents: allowEvents ? "all" : "none" }}
       >
-        <div className="flex flex-col justify-center items-center">
-          <div className="flex w-full flex-col items-start mb-4">
-            <p className="mb-1 text-left mt-0">
-              The graphic shows the half-hourly evolution of three key elements
-              over the course of a day.
-            </p>
-            <div className="text-xs font-light uppercase text-left mb-2 opacity-60">
-              Select the month or the activities in the graphic or in the legend
-              to explore the data. MOUSE OVER ON THE GRAPHIC TO READ THEM
-            </div>
-            {/* <div className="text-xs font-bold uppercase text-left">
+        <div className="flex flex-col justify-between h-full">
+          <div className="flex flex-col justify-center items-center grow ">
+            <div className="flex w-full flex-col items-start mb-4">
+              <p className="mb-1 text-left mt-0">
+                The graphic shows the half-hourly evolution of three key
+                elements over the course of a day.
+              </p>
+              <div className="text-xs font-light uppercase text-left mb-2 opacity-60">
+                Select the month or the activities in the graphic or in the
+                legend to explore the data. MOUSE OVER ON THE GRAPHIC TO READ
+                THEM
+              </div>
+              {/* <div className="text-xs font-bold uppercase text-left">
               SHARE THE GRAPHIC
             </div> */}
-            <div
-              className="flex justify-start"
-              onClick={() => setHowToReadOpen((open) => !open)}
-            >
-              <Button title="HOW TO READ THE GRAPHIC" callback={null} />
-            </div>
-          </div>
-          {isMobile && (
-            <div className="w-full mb-4">
-              <ActivitiesMenu
-                activitiesArray={activitiesArray}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-              />
-            </div>
-          )}
-          <div className="flex w-full justify-center flex-col md:flex-row">
-            <div
-              className="w-full md:w-1/2 px-8 flex flex-col"
-              style={{
-                maxWidth: "85vh",
-              }}
-            >
               <div
-                className="w-full flex justify-center"
+                className="flex justify-start"
+                onClick={() => setHowToReadOpen((open) => !open)}
+              >
+                <Button title="HOW TO READ THE GRAPHIC" callback={null} />
+              </div>
+            </div>
+            {isMobile && (
+              <div className="w-full mb-4">
+                <ActivitiesMenu
+                  activitiesArray={activitiesArray}
+                  selectedCategory={selectedCategory}
+                  setSelectedCategory={setSelectedCategory}
+                />
+              </div>
+            )}
+            <div className="flex w-full justify-center flex-col md:flex-row">
+              <div
+                className="w-full md:w-1/2 px-8 flex flex-col"
                 style={{
-                  opacity: playStarted ? 0.4 : 1,
+                  maxWidth: "85vh",
                 }}
               >
-                <div onClick={startPlay} className="text-md">
-                  <div className="flex flex-col justify-center">
-                    <img
-                      src={"/play.svg"}
-                      width={28}
-                      className="cursor-pointer"
-                    />
-                    <div
-                      className="uppercase font-light "
-                      style={{
-                        fontSize: "10px",
-                      }}
-                    >
-                      PLAY
+                <div
+                  className="w-full flex justify-center"
+                  style={{
+                    opacity: playStarted ? 0.4 : 1,
+                  }}
+                >
+                  <div onClick={startPlay} className="text-md">
+                    <div className="flex justify-center items-center">
+                      <div
+                        className="uppercase font-light "
+                        style={{
+                          fontSize: "10px",
+                        }}
+                      >
+                        PLAY ANIMATION
+                      </div>
+                      <img
+                        src={"/play.svg"}
+                        width={28}
+                        className="cursor-pointer ml-2"
+                      />
                     </div>
                   </div>
                 </div>
+                {!allowEvents && (
+                  <div className="w-full h-full flex justify-center items-center relative ">
+                    <Loader style={{ width: "100px" }} />
+                    <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                      LOADING
+                    </div>
+                  </div>
+                )}
+                {allowEvents && (
+                  <RadarYear
+                    globalData={data}
+                    energyDemand={energyDemand}
+                    gasDemand={gasDemand}
+                    energyPrice={energyPrice}
+                    selectedRegion={selectedRegion}
+                    selectedMonth={String(selectedMonth)}
+                    setSelectedMonth={setSelectedMonth}
+                    width={vizWidth}
+                    selectedCategory={selectedCategory}
+                  />
+                )}
               </div>
-              {!allowEvents && (
-                <div className="w-full h-full flex justify-center items-center relative ">
-                  <Loader style={{ width: "100px" }} />
-                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
-                    LOADING
+              {!isMobile && (
+                <div className="w-full md:w-1/3 px-8 flex items-center">
+                  <div
+                    className="flex flex-col justify-center"
+                    style={{ width: "280px" }}
+                  >
+                    <div className="mt-4">
+                      <RadarVerticalLegend
+                        setSelectedCategory={setSelectedCategory}
+                        selectedCategory={selectedCategory}
+                      />
+                    </div>
                   </div>
                 </div>
-              )}
-              {allowEvents && (
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={energyPrice}
-                  selectedRegion={selectedRegion}
-                  selectedMonth={String(selectedMonth)}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  selectedCategory={selectedCategory}
-                />
               )}
             </div>
-            {!isMobile && (
-              <div className="w-full md:w-1/3 px-8 ">
-                <div className="flex flex-col" style={{ width: "280px" }}>
-                  <div className="mt-4">
-                    <RadarVerticalLegend
-                      setSelectedCategory={setSelectedCategory}
-                      selectedCategory={selectedCategory}
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
-        </div>
 
-        {!fullscreen && (
-          <SectionFooter
-            nextChapter={nextChapter}
-            previousChapter={previousChapter}
-            link={`${siteUrl}/activities?share=true`}
-          />
-        )}
+          {!fullscreen && (
+            <SectionFooter
+              nextChapter={nextChapter}
+              previousChapter={previousChapter}
+              link={`${siteUrl}/activities?share=true`}
+            />
+          )}
+        </div>
       </RightColumn>
       <HowToRead
         text={

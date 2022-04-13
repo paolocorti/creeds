@@ -20,6 +20,19 @@ import OuterRadial from "./OuterRadial.jsx";
 const isMobileWithTablet = false;
 import ReactTooltip from "react-tooltip";
 import UkMap from "../UkMap.jsx";
+import { Tooltip, defaultStyles, useTooltip } from "@visx/tooltip";
+
+const tooltipStyles = {
+  ...defaultStyles,
+  backgroundColor: "rgba(0,0,0,.9)",
+  border: "0px solid white",
+  color: "white",
+  borderRadius: "6px",
+  padding: "10px",
+  textAlign: "left",
+  zIndex: 999,
+  width: "150px",
+};
 
 const pinkColor = "#fad9cd";
 
@@ -308,6 +321,15 @@ const RadarYear = ({
   },
   {});
 
+  const {
+    tooltipData,
+    tooltipLeft,
+    tooltipTop,
+    tooltipOpen,
+    showTooltip,
+    hideTooltip,
+  } = useTooltip();
+
   return (
     <div className="radial-overview">
       {/* <div className="radial-overview-subtitle viz-explanation"></div>
@@ -449,126 +471,149 @@ const RadarYear = ({
                             : "N/A";
 
                           return (
-                            <g
-                              transform={`translate(0,0) rotate(${
-                                (360 / 48) * j
-                              })`}
-                              key={`g-${j}`}
-                            >
-                              {i === 0 && (
-                                <g>
-                                  <line
-                                    x1={0}
-                                    y1={0}
-                                    x2={0}
-                                    y2={(width / 2) * 0.9}
-                                    stroke="#49494a"
-                                    strokeWidth={0.5}
-                                    strokeOpacity={0.5}
-                                    style={{ pointerEvents: "none" }}
-                                  />
-                                  <g
-                                    transform={`translate(-4, ${
-                                      (width / 2) * 0.93
-                                    })`}
-                                  >
-                                    <circle
-                                      r={width * 0.025}
-                                      cx={5}
-                                      cy={5}
-                                      fill={pinkColor}
-                                      fillOpacity={
-                                        type === "urban_rural" ? 0 : 1
-                                      }
-                                      data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} ${
-                                        showDemand
-                                          ? "<br/> energy price: " + energyPrice
-                                          : ""
-                                      }`}
-                                      data-html="true"
-                                      data-position="top"
-                                      onMouseEnter={() => {
-                                        setHoverTime(j);
-                                        ReactTooltip.rebuild();
-                                      }}
-                                      onMouseLeave={() => {
-                                        setHoverTime(null);
-                                      }}
-                                      style={{
-                                        cursor: "pointer",
-                                      }}
-                                    ></circle>
-                                  </g>
-
-                                  <g
-                                    transform={`translate(-4, ${
-                                      (width / 2) * 0.9
-                                    })`}
-                                  >
-                                    <path
-                                      d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
-                                      fill={hoverTime === j ? "#000" : "none"}
-                                      stroke="#000"
+                            <g>
+                              <g
+                                transform={`translate(0,0) rotate(${
+                                  (360 / 48) * j
+                                })`}
+                                key={`g-${j}`}
+                              >
+                                {i === 0 && (
+                                  <g>
+                                    <line
+                                      x1={0}
+                                      y1={0}
+                                      x2={0}
+                                      y2={(width / 2) * 0.9}
+                                      stroke="#49494a"
                                       strokeWidth={0.5}
+                                      strokeOpacity={0.5}
                                       style={{ pointerEvents: "none" }}
                                     />
-                                  </g>
-
-                                  {j % 2 === 0 && (
-                                    <text
-                                      dx={0}
-                                      dy={(width / 2) * 0.98}
-                                      textAnchor={"middle"}
-                                      className={
-                                        j > 26 || j < 6
-                                          ? "radial-hour-label-rot"
-                                          : "radial-hour-label"
-                                      }
-                                      style={{
-                                        fontSize:
-                                          width * 0.02 < 14 ? width * 0.02 : 14,
-                                        cursor: "pointer",
-                                        pointerEvents: "none",
-                                      }}
+                                    <g
+                                      transform={`translate(-4, ${
+                                        (width / 2) * 0.93
+                                      })`}
                                     >
-                                      {moment(timeScale.invert(j)).format("ha")}
-                                    </text>
+                                      <circle
+                                        r={width * 0.025}
+                                        cx={5}
+                                        cy={5}
+                                        fill={pinkColor}
+                                        fillOpacity={
+                                          type === "urban_rural" ? 0 : 1
+                                        }
+                                        data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} ${
+                                          showDemand
+                                            ? "<br/> energy price: " +
+                                              energyPrice
+                                            : ""
+                                        }`}
+                                        data-html="true"
+                                        data-position="top"
+                                        onMouseEnter={() => {
+                                          setHoverTime(j);
+                                          ReactTooltip.rebuild();
+                                        }}
+                                        onMouseLeave={() => {
+                                          setHoverTime(null);
+                                        }}
+                                        style={{
+                                          cursor: "pointer",
+                                        }}
+                                      ></circle>
+                                    </g>
+
+                                    <g
+                                      transform={`translate(-4, ${
+                                        (width / 2) * 0.9
+                                      })`}
+                                    >
+                                      <path
+                                        d="M3.98936 0.734443L0.165527 4.55835L3.98929 8.38219L7.81313 4.55828L3.98936 0.734443Z"
+                                        fill={hoverTime === j ? "#000" : "none"}
+                                        stroke="#000"
+                                        strokeWidth={0.5}
+                                        style={{ pointerEvents: "none" }}
+                                      />
+                                    </g>
+
+                                    {j % 2 === 0 && (
+                                      <text
+                                        dx={0}
+                                        dy={(width / 2) * 0.98}
+                                        textAnchor={"middle"}
+                                        className={
+                                          j > 26 || j < 6
+                                            ? "radial-hour-label-rot"
+                                            : "radial-hour-label"
+                                        }
+                                        style={{
+                                          fontSize:
+                                            width * 0.02 < 14
+                                              ? width * 0.02
+                                              : 14,
+                                          cursor: "pointer",
+                                          pointerEvents: "none",
+                                        }}
+                                      >
+                                        {moment(timeScale.invert(j)).format(
+                                          "ha"
+                                        )}
+                                      </text>
+                                    )}
+                                  </g>
+                                )}
+                                <g
+                                  style={{
+                                    opacity:
+                                      hoverCategory || selectedCategory
+                                        ? hoverCategory === v.actCategory ||
+                                          selectedCategory === v.actCategory
+                                          ? 1
+                                          : 0.1
+                                        : hoverTime
+                                        ? hoverTime === j
+                                          ? 1
+                                          : 0.1
+                                        : 1,
+                                  }}
+                                >
+                                  {v.actType === "main" && (
+                                    <RadarCircleYear
+                                      angle={angle}
+                                      v={a}
+                                      index={j}
+                                      time={time}
+                                      value={value}
+                                      factor={v.actCategory}
+                                      category={v.actCategory}
+                                      color={v.actType}
+                                      width={width}
+                                      energyPrice={energyPrice}
+                                      energyDemand={energyDemand}
+                                      hover={hover}
+                                      setHover={setHover}
+                                      setHoverCategory={setHoverCategory}
+                                      showTooltip={showTooltip}
+                                      hideTooltip={hideTooltip}
+                                      tooltipLeft={
+                                        width * 0.6 +
+                                        value *
+                                          Math.cos(
+                                            degToRad((360 / 48) * j - 30)
+                                          )
+                                      }
+                                      tooltipTop={
+                                        width * 0.6 +
+                                        value *
+                                          Math.sin(
+                                            degToRad((360 / 48) * j - 30)
+                                          )
+                                      }
+                                    />
                                   )}
                                 </g>
-                              )}
-                              <g
-                                style={{
-                                  opacity:
-                                    hoverCategory || selectedCategory
-                                      ? hoverCategory === v.actCategory ||
-                                        selectedCategory === v.actCategory
-                                        ? 1
-                                        : 0.1
-                                      : hoverTime
-                                      ? hoverTime === j
-                                        ? 1
-                                        : 0.1
-                                      : 1,
-                                }}
-                              >
-                                {v.actType === "main" && (
-                                  <RadarCircleYear
-                                    angle={angle}
-                                    v={a}
-                                    index={j}
-                                    time={time}
-                                    value={value}
-                                    factor={v.actCategory}
-                                    category={v.actCategory}
-                                    color={v.actType}
-                                    width={width}
-                                    energyPrice={energyPrice}
-                                    energyDemand={energyDemand}
-                                    hover={hover}
-                                    setHover={setHover}
-                                    setHoverCategory={setHoverCategory}
-                                  />
-                                )}
                               </g>
                             </g>
                           );
@@ -883,9 +928,22 @@ const RadarYear = ({
               </g>
             )}
           </svg>
+          {tooltipData && (
+            <div>
+              <Tooltip
+                key={Math.random()}
+                top={tooltipTop}
+                left={tooltipLeft}
+                style={tooltipStyles}
+              >
+                <b>{tooltipData.time}</b> <br /> <br /> {tooltipData.v}:
+                {tooltipData.factor}% <br />
+              </Tooltip>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
-export default RadarYear;
+export default React.memo(RadarYear);

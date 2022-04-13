@@ -12,14 +12,15 @@ const Landing = ({ nextChapter }) => {
       <div className="absolute top-0 bottom-0 left-0 right-0 z-10 m-auto h-96">
         <h1 className="px-8 md:px-36 text-center">
           Energy demand flexibility
-          <br /> and the rhythms <br />
-          of everyday life
+          <br /> and the rhythms of
+          <br />
+          everyday life
         </h1>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-16">
           <div
             className="border rounded-2xl z-40 px-4 py-1 cursor-pointer bg-green hover:bg-black hover:text-green"
             style={{
-              fontSize: "11px",
+              fontSize: "14px",
             }}
             onClick={nextChapter}
           >
