@@ -18,8 +18,7 @@ const LeftColumn = ({
     <div
       className={`w-full bg-green px-4 ${
         expanded ? "md:px-8" : "md:px-2"
-      } py-8 border-b border-black relative md:min-h-screen`}
-      style={{ width: mobile ? "100%" : expanded ? "28%" : "7%" }}
+      } py-8 border-b border-black relative md:min-h-screen w-full md:w-28`}
     >
       {expanded && <>{children}</>}
       {/* {expanded && !mobile && (

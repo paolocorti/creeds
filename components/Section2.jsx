@@ -6,7 +6,7 @@ import SectionFooter from "./SectionFooter.jsx";
 import Button from "./Button";
 import { useWindowDimension, getVizWidth } from "./utils";
 import React from "react";
-import Loader from "./Loader";
+import HowToRead from "./HowToRead";
 import { siteUrl } from "../config";
 
 const Section2 = ({
@@ -23,6 +23,7 @@ const Section2 = ({
     return <></>;
   }
 
+  const [open, setHowToReadOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const size = useWindowDimension();
@@ -102,6 +103,12 @@ const Section2 = ({
           )}
         </div>
       </RightColumn>
+      <HowToRead
+        text={""}
+        image={"/legend-2.png"}
+        readOpen={open}
+        setHowToReadOpen={setHowToReadOpen}
+      />
     </section>
   );
 };

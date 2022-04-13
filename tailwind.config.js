@@ -3,7 +3,15 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        md: "900px",
+      },
+      width: {
+        72: "72%",
+        28: "28%",
+      },
+    },
     colors: {
       green: "#60ae7b",
       lightgreen: "#74C590",

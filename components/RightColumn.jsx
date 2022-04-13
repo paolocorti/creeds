@@ -11,21 +11,9 @@ const RightColumn = ({ children, expanded = true, fullscreen }) => {
 
   return (
     <div
-      className={`w-full px-4 md:px-8 py-8 bg-pink border-b border-black overflow-hidden relative md:min-h-screen`}
-      style={{
-        width: mobile || fullscreen ? "100%" : expanded ? "72%" : "93%",
-      }}
+      className={`w-full px-4 md:px-8 py-8 bg-pink border-b border-black overflow-hidden relative md:min-h-screen w-full md:w-28`}
     >
       {children}
-      {/* {!expanded && !mobile && (
-        <div
-          className="absolute top-2/4 cursor-pointer z-2"
-          onClick={() => setExpanded(!expanded)}
-          style={{ left: "-2px", top: "200px" }}
-        >
-          <img src={"/expand.svg"} width={26} />
-        </div>
-      )} */}
     </div>
   );
 };

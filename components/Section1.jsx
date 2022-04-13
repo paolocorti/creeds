@@ -124,15 +124,14 @@ const Section1 = ({
             </div>
           </div>
           <div className="flex flex-col justify-center items-center grow">
-            {isMobile && (
-              <div className="w-full mb-4">
-                <ActivitiesMenu
-                  activitiesArray={activitiesArray}
-                  selectedCategory={selectedCategory}
-                  setSelectedCategory={setSelectedCategory}
-                />
-              </div>
-            )}
+            <div className="w-full mb-4 visible md:hidden">
+              <ActivitiesMenu
+                activitiesArray={activitiesArray}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+              />
+            </div>
+
             <div className="flex w-full justify-center flex-col md:flex-row">
               <div
                 className="w-full md:w-1/2 px-8 flex flex-col"
@@ -200,7 +199,7 @@ const Section1 = ({
               )} */}
               </div>
               {!isMobile && (
-                <div className="w-full md:w-1/3 px-8 flex items-center">
+                <div className="w-full md:w-1/3 px-8 flex items-center hidden  md:visible">
                   <div className="flex flex-col" style={{ width: "280px" }}>
                     <div className="mt-4">
                       <RadarVerticalLegend
