@@ -198,18 +198,16 @@ const Section1 = ({
                 />
               )} */}
               </div>
-              {!isMobile && (
-                <div className="w-full md:w-1/3 px-8 flex items-center hidden  md:visible">
-                  <div className="flex flex-col" style={{ width: "280px" }}>
-                    <div className="mt-4">
-                      <RadarVerticalLegend
-                        setSelectedCategory={setSelectedCategory}
-                        selectedCategory={selectedCategory}
-                      />
-                    </div>
+              <div className="w-full md:w-1/3 px-8 items-center hidden md:flex">
+                <div className="flex flex-col" style={{ width: "280px" }}>
+                  <div className="mt-4">
+                    <RadarVerticalLegend
+                      setSelectedCategory={setSelectedCategory}
+                      selectedCategory={selectedCategory}
+                    />
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
           {!fullscreen && (

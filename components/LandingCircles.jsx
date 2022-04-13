@@ -1,12 +1,17 @@
 import { motion } from "framer-motion";
 
 const LandingCircles = () => {
-  const transition = { duration: 4, repeat: Infinity, ease: "easeInOut" };
-  const transition2 = {
-    duration: 7,
-    delay: 3,
+  const transition = {
+    duration: 5,
     repeat: Infinity,
-    ease: "easeInOut",
+    repeatType: "loop",
+    ease: "easeOut",
+  };
+  const transition2 = {
+    duration: 4,
+    repeat: Infinity,
+    repeatType: "loop",
+    ease: "linear",
   };
 
   return (
@@ -936,8 +941,7 @@ const LandingCircles = () => {
           fill: "none",
           stroke: "#fff",
           strokeWidth: 2,
-          strokeMiterlimit: 10,
-          enableBackground: "new",
+          //strokeDasharray: 1000,
         }}
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
@@ -949,10 +953,11 @@ const LandingCircles = () => {
         style={{
           fill: "none",
           stroke: "#fadbd2",
-          strokeMiterlimit: 10,
+          // strokeMiterlimit: 10,
+          strokeDasharray: 500,
         }}
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
+        initial={{ strokeDashoffset: 0 }}
+        animate={{ strokeDashoffset: 1000 }}
         transition={transition2}
       />
     </svg>
