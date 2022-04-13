@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
 import { activitiesCode, sortBy, customSort } from "../utils.js";
-import ReactTooltip from "react-tooltip";
 import moment from "moment";
-import { useStore } from "../../store.js";
 import TrendCategory from "./TrendCategory.jsx";
 import { TooltipWithBounds, defaultStyles, useTooltip } from "@visx/tooltip";
 import { timeFormat } from "d3-time-format";
@@ -29,7 +27,7 @@ const isMobileWithTablet = false;
 
 const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
   const [mobile, setMobile] = useState(false);
-
+  console.log("TrendYear render");
   useEffect(() => {
     setMobile(isMobile);
   }, [isMobile]);
@@ -37,13 +35,13 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
   const marginLeft = mobile ? 15 : 20;
   const marginRight = mobile ? 15 : 180;
   const internalWidth = width - marginLeft - marginRight;
-  const hover = useStore((state) => state.hover);
-  const selectedDataRegion = globalData.filter(
-    (v) => v.region === selectedRegion
-  );
-  const selectedMonthData = selectedDataRegion.filter(
-    (v) => v.month === selectedMonth
-  );
+  const selectedDataRegion = useMemo(() => {
+    return globalData.filter((v) => v.region === selectedRegion);
+  }, [selectedRegion]);
+
+  const selectedMonthData = useMemo(() => {
+    return selectedDataRegion.filter((v) => v.month === selectedMonth);
+  }, [selectedMonth]);
 
   const selectedData = selectedMonthData;
 
@@ -51,13 +49,15 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
     return <></>;
   }
 
-  const acts = selectedData.map((v) => {
-    return Object.fromEntries(
-      Object.entries(v).filter(([key]) => {
-        return key.includes("t_");
-      })
-    );
-  });
+  const acts = useMemo(() => {
+    return selectedData.map((v) => {
+      return Object.fromEntries(
+        Object.entries(v).filter(([key]) => {
+          return key.includes("t_");
+        })
+      );
+    });
+  }, [selectedData]);
 
   const timeScale = scaleTime()
     .range([0, 144])
@@ -71,35 +71,39 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
     .range([0, internalWidth])
     .domain([new Date(`2021-01-01T15:00:00`), new Date(`2021-01-01T22:00:00`)]);
 
-  const data = acts.map((v) => {
-    const actType = v.act_type;
-    const actCategory = v.act_category;
-    delete v.act_type;
-    delete v.act_category;
+  const data = useMemo(() => {
+    return acts.map((v) => {
+      const actType = v.act_type;
+      const actCategory = v.act_category;
+      delete v.act_type;
+      delete v.act_category;
 
-    const values = Object.entries(v).map((o) => {
+      const values = Object.entries(v).map((o) => {
+        return {
+          time: timeScale.invert(parseInt(o[0].replace("t_", "")) - 1),
+          value: parseFloat(o[1]),
+        };
+      });
+
       return {
-        time: timeScale.invert(parseInt(o[0].replace("t_", "")) - 1),
-        value: parseFloat(o[1]),
+        actType: actType,
+        actCategory: actCategory,
+        actValues: values,
       };
     });
-
-    return {
-      actType: actType,
-      actCategory: actCategory,
-      actValues: values,
-    };
-  });
+  }, [acts]);
 
   const translateFactorStart = 66;
   const translateFactorEnd = 109;
   const height = 800;
 
-  const sorted = customSort({
-    data: data,
-    sortBy,
-    sortField: "actCategory",
-  });
+  const sorted = useMemo(() => {
+    return customSort({
+      data: data,
+      sortBy,
+      sortField: "actCategory",
+    });
+  }, [data]);
 
   const {
     tooltipData,

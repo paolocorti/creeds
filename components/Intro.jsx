@@ -35,71 +35,79 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
       </LeftColumn>
 
       <RightColumn expanded={expanded}>
-        <p className="garamond px-0 md:px-6 !mt-0">
-          One of the greatest challenges for a Net Zero Carbon future is{" "}
-          <b>making the most out of our clean energy sources</b>.<br /> More
-          often than not, this requires us to have the ability to{" "}
-          <b>
-            shift our electricity demands to those times of day when clean power
-            is plentiful
-          </b>{" "}
-          – this is what we call flexibility.
-        </p>
+        <div className="flex flex-col justify-between h-full">
+          <div className="flex flex-col grow">
+            <p className="garamond px-0 md:px-6 !mt-0">
+              One of the greatest challenges for a Net Zero Carbon future is{" "}
+              <b>making the most out of our clean energy sources</b>.<br /> More
+              often than not, this requires us to have the ability to{" "}
+              <b>
+                shift our electricity demands to those times of day when clean
+                power is plentiful
+              </b>{" "}
+              – this is what we call flexibility.
+            </p>
 
-        <p className="garamond px-0 md:px-6 ">
-          Flexibility is generally seen as a way of improving the balancing of
-          our demand for energy with renewables’ output. The more renewables we
-          use, the less carbon emissions we produce, and the closer we get to
-          achieving our ambitious Net Zero targets.
-        </p>
-        <div className="border mx-0 md:mx-6"></div>
-        <p className="garamond px-0 md:px-6 ">
-          So how do we achieve that flexibility?
-        </p>
-        <div className="border mx-0 md:mx-6"></div>
-        <p className="garamond px-0 md:px-6">
-          <b>Energy demand goes hand in hand with what people do</b>, so our
-          search for flexibility necessarily starts by looking at the rhythms of
-          everyday life.
-          <br />
-          Essentially,{" "}
-          <b>
-            if we want to change energy demand, we need to change either what
-            people do
-          </b>{" "}
-          or the way they do it.
-        </p>
-        <div className="border mx-0 md:mx-6"></div>
+            <p className="garamond px-0 md:px-6 ">
+              Flexibility is generally seen as a way of improving the balancing
+              of our demand for energy with renewables’ output. The more
+              renewables we use, the less carbon emissions we produce, and the
+              closer we get to achieving our ambitious Net Zero targets.
+            </p>
+            <div className="border mx-0 md:mx-6"></div>
+            <p className="garamond px-0 md:px-6 ">
+              So how do we achieve that flexibility?
+            </p>
+            <div className="border mx-0 md:mx-6"></div>
+            <p className="garamond px-0 md:px-6">
+              <b>Energy demand goes hand in hand with what people do</b>, so our
+              search for flexibility necessarily starts by looking at the
+              rhythms of everyday life.
+              <br />
+              Essentially,{" "}
+              <b>
+                if we want to change energy demand, we need to change either
+                what people do
+              </b>{" "}
+              or the way they do it.
+            </p>
+            <div className="border mx-0 md:mx-6"></div>
 
-        <p className="garamond px-0 md:px-6">
-          But how exactly does demand for electricity relate to what people do
-          on a day-to-day basis?
-        </p>
-        <div className="border mx-0 md:mx-6"></div>
+            <p className="garamond px-0 md:px-6">
+              But how exactly does demand for electricity relate to what people
+              do on a day-to-day basis?
+            </p>
+            <div className="border mx-0 md:mx-6"></div>
 
-        <p className="garamond px-0 md:px-6">
-          Our everyday life – what we do at home, at work, at school, when
-          moving around – and its relation to energy demand is rather complex.
-        </p>
+            <p className="garamond px-0 md:px-6">
+              Our everyday life – what we do at home, at work, at school, when
+              moving around – and its relation to energy demand is rather
+              complex.
+            </p>
 
-        <p className="garamond px-0 md:px-6">
-          As part of our work as energy researchers, we have introduced fresh
-          approaches to thinking about the social-temporal organisation of
-          energy demand. We also try to understand what these mean in terms of
-          the ‘different flexibilities’ across different temporal scales and
-          dimensions of everyday life such as the timing of people’s activities
-          while at home, their travels, the demand for electricity, and the cost
-          of providing said electricity.
-        </p>
+            <p className="garamond px-0 md:px-6">
+              As part of our work as energy researchers, we have introduced
+              fresh approaches to thinking about the social-temporal
+              organisation of energy demand. We also try to understand what
+              these mean in terms of the ‘different flexibilities’ across
+              different temporal scales and dimensions of everyday life such as
+              the timing of people’s activities while at home, their travels,
+              the demand for electricity, and the cost of providing said
+              electricity.
+            </p>
 
-        <p className="garamond px-0 md:px-6">
-          Perhaps it is best to just dive right in and start exploring of how
-          these patterns of human activity translate into demand for energy.
-          Here we share with you some tools that hopefully will allow you to
-          visualise more easily these complex relations, and the ways in which
-          we can increase our ability to be flexible.
-        </p>
-        <Button title="START EXPLORING ↓" callback={nextChapter} />
+            <p className="garamond px-0 md:px-6">
+              Perhaps it is best to just dive right in and start exploring of
+              how these patterns of human activity translate into demand for
+              energy. Here we share with you some tools that hopefully will
+              allow you to visualise more easily these complex relations, and
+              the ways in which we can increase our ability to be flexible.
+            </p>
+          </div>
+          <div>
+            <Button title="START EXPLORING ↓" callback={nextChapter} />
+          </div>
+        </div>
       </RightColumn>
 
       <div

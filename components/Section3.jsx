@@ -37,7 +37,6 @@ const Section3 = ({
   const size = useWindowDimension();
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   return (
     <section
@@ -70,92 +69,92 @@ const Section3 = ({
         </LeftColumn>
       )}
       <RightColumn fullscreen={fullscreen}>
-        <div className="flex w-full flex-col">
-          <div>
-            <div className="flex w-full flex-col items-start mb-4">
-              {/* <p className="mb-1 text-left mt-0">
+        <div className="flex flex-col justify-between h-full">
+          <div className="flex w-full flex-col items-start mb-4">
+            {/* <p className="mb-1 text-left mt-0">
                 The graphic shows energy demand and activities’ frequency every
                 30 minutes in UK’s region.
               </p> */}
-              <div className="text-xs uppercase text-left mb-2 opacity-60">
-                Select the month, THE REGIONS or the activities to explore the
-                data. MOUSE OVER ON THE GRAPHICS TO READ THEM.
+            <div className="text-xs uppercase text-left mb-2 opacity-60">
+              Select the month, THE REGIONS or the activities to explore the
+              data. MOUSE OVER ON THE GRAPHICS TO READ THEM.
+            </div>
+            <div
+              className="flex justify-start"
+              onClick={() => setHowToReadOpen((open) => !open)}
+            >
+              <Button title="HOW TO READ THE GRAPHIC" callback={null} />
+            </div>
+          </div>
+          <div className="flex flex-col justify-center items-center grow">
+            <div className="mt-4">
+              <ActivitiesMenu
+                activitiesArray={activitiesArray}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+              />
+            </div>
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div
+                className="px-12 flex flex-col justify-start"
+                style={{
+                  maxWidth: "85vh",
+                }}
+              >
+                <RegionMenu
+                  setSelected={setSelectedCompareRegion1}
+                  initialSlide={0}
+                />
+
+                <RadarYear
+                  globalData={data}
+                  energyDemand={energyDemand}
+                  gasDemand={gasDemand}
+                  energyPrice={[]}
+                  selectedRegion={selectedCompareRegion1}
+                  selectedMonth={selectedMonth}
+                  setSelectedMonth={setSelectedMonth}
+                  width={vizWidth}
+                  showDemand={false}
+                  selectedCategory={selectedCategory}
+                  type={"spatial_variation"}
+                />
               </div>
               <div
-                className="flex justify-start"
-                onClick={() => setHowToReadOpen((open) => !open)}
+                className="px-12 flex flex-col justify-start"
+                style={{
+                  maxWidth: "85vh",
+                }}
               >
-                <Button title="HOW TO READ THE GRAPHIC" callback={null} />
+                <RegionMenu
+                  setSelected={setSelectedCompareRegion2}
+                  initialSlide={1}
+                />
+
+                <RadarYear
+                  globalData={data}
+                  energyDemand={energyDemand}
+                  gasDemand={gasDemand}
+                  energyPrice={[]}
+                  selectedRegion={selectedCompareRegion2}
+                  selectedMonth={selectedMonth}
+                  setSelectedMonth={setSelectedMonth}
+                  width={vizWidth}
+                  showDemand={false}
+                  selectedCategory={selectedCategory}
+                  type={"spatial_variation"}
+                />
               </div>
             </div>
           </div>
-          <div className="mt-4">
-            <ActivitiesMenu
-              activitiesArray={activitiesArray}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
+
+          {!fullscreen && (
+            <SectionFooter
+              nextChapter={nextChapter}
+              link={`${siteUrl}/spatial_variation?share=true`}
             />
-          </div>
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div
-              className="px-12 flex flex-col justify-start"
-              style={{
-                maxWidth: "85vh",
-              }}
-            >
-              <RegionMenu
-                setSelected={setSelectedCompareRegion1}
-                initialSlide={0}
-              />
-
-              <RadarYear
-                globalData={data}
-                energyDemand={energyDemand}
-                gasDemand={gasDemand}
-                energyPrice={[]}
-                selectedRegion={selectedCompareRegion1}
-                selectedMonth={selectedMonth}
-                setSelectedMonth={setSelectedMonth}
-                width={vizWidth}
-                showDemand={false}
-                selectedCategory={selectedCategory}
-                type={"spatial_variation"}
-              />
-            </div>
-            <div
-              className="px-12 flex flex-col justify-start"
-              style={{
-                maxWidth: "85vh",
-              }}
-            >
-              <RegionMenu
-                setSelected={setSelectedCompareRegion2}
-                initialSlide={1}
-              />
-
-              <RadarYear
-                globalData={data}
-                energyDemand={energyDemand}
-                gasDemand={gasDemand}
-                energyPrice={[]}
-                selectedRegion={selectedCompareRegion2}
-                selectedMonth={selectedMonth}
-                setSelectedMonth={setSelectedMonth}
-                width={vizWidth}
-                showDemand={false}
-                selectedCategory={selectedCategory}
-                type={"spatial_variation"}
-              />
-            </div>
-          </div>
+          )}
         </div>
-
-        {!fullscreen && (
-          <SectionFooter
-            nextChapter={nextChapter}
-            link={`${siteUrl}/spatial_variation?share=true`}
-          />
-        )}
       </RightColumn>
       <HowToRead
         text={

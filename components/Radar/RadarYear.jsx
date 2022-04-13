@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { scaleOrdinal, scaleLinear, scaleTime } from "d3-scale";
 import {
   degToRad,
@@ -173,26 +173,30 @@ const RadarYear = ({
     return <></>;
   }
 
-  const acts = selectedData.map((v) => {
-    return Object.fromEntries(
-      Object.entries(v).filter(([key]) => {
-        return key.includes("t_");
-      })
-    );
-  });
+  const acts = useMemo(() => {
+    return selectedData.map((v) => {
+      return Object.fromEntries(
+        Object.entries(v).filter(([key]) => {
+          return key.includes("t_");
+        })
+      );
+    });
+  }, [selectedData]);
 
-  const data = acts.map((v) => {
-    const actType = v.act_type;
-    const actCategory = v.act_category;
-    delete v.act_type;
-    delete v.act_category;
+  const data = useMemo(() => {
+    return acts.map((v) => {
+      const actType = v.act_type;
+      const actCategory = v.act_category;
+      delete v.act_type;
+      delete v.act_category;
 
-    return {
-      actType: actType,
-      actCategory: actCategory,
-      actValues: Object.values(v),
-    };
-  });
+      return {
+        actType: actType,
+        actCategory: actCategory,
+        actValues: Object.values(v),
+      };
+    });
+  }, [acts]);
 
   const keys = Object.keys(selectedData);
 
@@ -223,18 +227,20 @@ const RadarYear = ({
     .range([0, 24])
     .domain([new Date(`2021-01-01T00:00:00`), new Date(`2021-01-02T00:00:00`)]);
 
-  const energyData = selectedEnergyMonthData.map((v) => {
-    const filtered = Object.entries(v).filter(([key]) => {
-      return key !== "month" && key !== "region" && key !== "season";
-    });
+  const energyData = useMemo(() => {
+    return selectedEnergyMonthData.map((v) => {
+      const filtered = Object.entries(v).filter(([key]) => {
+        return key !== "month" && key !== "region" && key !== "season";
+      });
 
-    return filtered.map((v) => {
-      return {
-        time: timeScale3.invert(parseInt(v[0] - 1)),
-        value: parseFloat(v[1]),
-      };
+      return filtered.map((v) => {
+        return {
+          time: timeScale3.invert(parseInt(v[0] - 1)),
+          value: parseFloat(v[1]),
+        };
+      });
     });
-  });
+  }, [selectedEnergyMonthData]);
 
   let gasData;
   if (selectedGasMonthData) {
@@ -252,18 +258,20 @@ const RadarYear = ({
     });
   }
 
-  const energyPriceData = selectedEnergyPriceMonthData.map((v) => {
-    const filtered = Object.entries(v).filter(([key]) => {
-      return key !== "month" && key !== "region" && key !== "season";
-    });
+  const energyPriceData = useMemo(() => {
+    return selectedEnergyPriceMonthData.map((v) => {
+      const filtered = Object.entries(v).filter(([key]) => {
+        return key !== "month" && key !== "region" && key !== "season";
+      });
 
-    return filtered.map((v) => {
-      return {
-        time: timeScale4.invert(parseInt(v[0])),
-        value: parseFloat(v[1]),
-      };
+      return filtered.map((v) => {
+        return {
+          time: timeScale4.invert(parseInt(v[0])),
+          value: parseFloat(v[1]),
+        };
+      });
     });
-  });
+  }, [selectedEnergyPriceMonthData]);
 
   const sorted = customSort({
     data: data,
@@ -272,31 +280,36 @@ const RadarYear = ({
   });
 
   const mainActivities = sorted.filter((v) => v.actType === "main");
-  const parsedActivities = flatten(
-    mainActivities.map((v) => {
-      const filtered = v.actValues.filter((v, i) => {
-        return i % 3 === 0;
-      });
-      return filtered.map((d, j) => {
-        return {
-          time: timeScale.invert(parseInt(j)),
-          value: parseFloat(d),
-          category: v.actCategory,
-        };
-      });
-    })
-  );
+  const parsedActivities = useMemo(() => {
+    return flatten(
+      mainActivities.map((v) => {
+        const filtered = v.actValues.filter((v, i) => {
+          return i % 3 === 0;
+        });
+        return filtered.map((d, j) => {
+          return {
+            time: timeScale.invert(parseInt(j)),
+            value: parseFloat(d),
+            category: v.actCategory,
+          };
+        });
+      })
+    );
+  }, [mainActivities]);
+
   const groupedByActivties = Object.values(groupBy(parsedActivities, "time"));
-  const maxParsedActivties = groupedByActivties.map((v) => {
-    const maxObject = v.reduce(function (prev, current) {
-      return prev.value > current.value ? prev : current;
+  const maxParsedActivties = useMemo(() => {
+    return groupedByActivties.map((v) => {
+      const maxObject = v.reduce(function (prev, current) {
+        return prev.value > current.value ? prev : current;
+      });
+      return {
+        time: v[0].time,
+        maxCategory: activitiesCode[maxObject.category].value,
+        maxValue: maxObject.value,
+      };
     });
-    return {
-      time: v[0].time,
-      maxCategory: activitiesCode[maxObject.category].value,
-      maxValue: maxObject.value,
-    };
-  });
+  }, [groupedByActivties]);
 
   const maxParsedActivtiesObject = maxParsedActivties.reduce(function (
     acc,

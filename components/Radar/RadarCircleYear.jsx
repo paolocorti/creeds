@@ -34,10 +34,6 @@ const RadarCircleYear = ({
         }% <br/>`}
         data-html="true"
         onMouseEnter={() => {
-          // useStore.setState({
-          //   hover: ,
-          //   hoverCategory: factor,
-          // });
           setHover(`i${index}:f${factor}`);
           setHoverCategory(factor);
           ReactTooltip.rebuild();
