@@ -106,14 +106,16 @@ const Section4 = ({
           expanded={expanded}
           setExpanded={setExpanded}
         >
-          <h2 className="subtitle">Seasons of the year</h2>
+          <h2 className="subtitle">
+            Seasons <br />
+            of the year
+          </h2>
 
           <p>
-            Everyday life and energy demand follow seasonal patterns.
+            Everyday life and energy demand follow seasonal patterns. These
+            seasonal variations in energy demand have significant implications
+            for the balancing of demand and supply in our energy systems.
             <br />
-            These seasonal variations in energy demand have significant
-            implications for the balancing of demand and supply in our energy
-            systems.
             <br />
             Up until recently, the discourse in energy research has revolved
             around average figures of total volumes of energy demand (e.g. total
@@ -121,6 +123,7 @@ const Section4 = ({
             importance of seasonal variations is increasingly recognised, and
             seasons are emerging as relevant factors to many aspects of research
             into the flexibility potential of demand.
+            <br />
             <br />
             When it comes to shifting demand to a different time, this shift
             could be needed to occur within the same day, but it could also be

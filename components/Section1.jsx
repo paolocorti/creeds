@@ -73,7 +73,8 @@ const Section1 = ({
       {!fullscreen && (
         <LeftColumn>
           <h2 className="subtitle">
-            Activities, demand and price every 30 minutes
+            Activities,
+            <br /> demand and price
           </h2>
           <p>
             Naturally, different people do different things over the course of a

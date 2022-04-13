@@ -21,28 +21,29 @@ h6 {
 }
 
 h1 {
-  font-size: 65px;
-  line-height: 81px;
+  font-size: calc(40px + 1.75vw);
+  line-height: 1.2;
   margin: 20px 0;
 }
 
 p {
   text-align: left;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: calc(10px + 0.56vw);
+  line-height: 1.2;
   margin: 20px 0;
-  font-family: "Nanum Myeongjo";
+  font-family: "EB Garamond";
   font-weight: 300;
 }
 
-.nanum {
-  font-family: "Nanum Myeongjo";
+.garamond {
+  font-family: "EB Garamond";
+  font-size: calc(10px + 0.7vw);
 }
 
 p b {
   text-shadow: 2px 2px 2px #74c590;
-  font-family: "Nanum Myeongjo";
-  font-weight: 700;
+  font-family: "EB Garamond";
+  font-weight: 600;
 }
 
 .page-wrap {
@@ -175,8 +176,8 @@ p b {
 }
 
 .subtitle {
-  font-size: 50px;
-  line-height: 58px;
+  font-size: calc(20px + 1.55vw);
+  line-height: 1.2;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
