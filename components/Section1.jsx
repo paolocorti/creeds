@@ -147,20 +147,20 @@ const Section1 = ({
                   }}
                 >
                   <div onClick={startPlay} className="text-md">
-                    <div className="flex flex-col justify-center">
-                      <img
-                        src={"/play.svg"}
-                        width={28}
-                        className="cursor-pointer"
-                      />
+                    <div className="flex justify-center items-center">
                       <div
                         className="uppercase font-light "
                         style={{
                           fontSize: "10px",
                         }}
                       >
-                        PLAY
+                        PLAY ANIMATION
                       </div>
+                      <img
+                        src={"/play.svg"}
+                        width={28}
+                        className="cursor-pointer ml-2"
+                      />
                     </div>
                   </div>
                 </div>

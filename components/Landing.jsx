@@ -8,7 +8,7 @@ const Landing = ({ nextChapter }) => {
 
   return (
     <section className="w-full bg-green flex flex-col justify-center items-center h-screen border-b border-black relative overflow-hidden">
-      {/* {isMobile ? <LandingCirclesMobile /> : <LandingCircles />} */}
+      <LandingCircles />
       <div className="absolute top-0 bottom-0 left-0 right-0 z-10 m-auto h-96">
         <h1 className="px-8 md:px-36 text-center">
           Energy demand flexibility

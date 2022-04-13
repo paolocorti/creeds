@@ -32,6 +32,7 @@ const TrendCategory = ({
   tooltipLeft,
   tooltipTop,
   isMobile,
+  category,
 }) => {
   const xScale = scaleTime({
     range: [0, width],
@@ -64,6 +65,7 @@ const TrendCategory = ({
       }
 
       d.factor = factor;
+      d.category = category;
 
       showTooltip({
         tooltipData: d,

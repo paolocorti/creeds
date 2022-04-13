@@ -136,8 +136,8 @@ const Section4 = ({
         setExpanded={setExpanded}
         fullscreen={fullscreen}
       >
-        <div className="flex w-full flex-col">
-          <div>
+        <div className="flex flex-col justify-between h-full">
+          <div className="flex w-full flex-col items-start mb-4">
             <div className="flex w-full flex-col items-start mb-4">
               {/* <p className="mb-1 text-left mt-0">
                 The graphic shows energy demand and activities’ frequency every
@@ -155,82 +155,82 @@ const Section4 = ({
               </div>
             </div>
           </div>
+          <div className="flex flex-col justify-center items-center grow">
+            <div className="mt-4">
+              <ActivitiesMenu
+                activitiesArray={activitiesArray}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+              <div
+                className="px-12 flex flex-col justify-start"
+                style={{
+                  maxWidth: "85vh",
+                }}
+              >
+                <div>
+                  <SeasonMenu
+                    setSelected={setSelectedCompareSeason1}
+                    selected={selectedCompareSeason1}
+                    initialSlide={0}
+                  />
+                </div>
 
-          <div className="mt-4">
-            <ActivitiesMenu
-              activitiesArray={activitiesArray}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
+                <RadarYear
+                  globalData={seasonData1 || []}
+                  energyDemand={energyData1 || []}
+                  gasDemand={gasData1 || []}
+                  energyPrice={[]}
+                  selectedRegion={"all"}
+                  selectedMonth={selectedMonth}
+                  setSelectedMonth={setSelectedMonth}
+                  selectedCategory={selectedCategory}
+                  width={vizWidth}
+                  showDemand={false}
+                  innerLabel={seasonLabel[selectedCompareSeason1]}
+                  type={"season"}
+                />
+              </div>
+              <div
+                className="px-12 flex flex-col justify-start"
+                style={{
+                  maxWidth: "85vh",
+                }}
+              >
+                <div>
+                  <SeasonMenu
+                    setSelected={setSelectedCompareSeason2}
+                    selected={selectedCompareSeason2}
+                    initialSlide={1}
+                  />
+                </div>
+
+                <RadarYear
+                  globalData={seasonData2 || []}
+                  energyDemand={energyData2 || []}
+                  gasDemand={gasData2 || []}
+                  energyPrice={[]}
+                  selectedRegion={"all"}
+                  selectedMonth={selectedMonth}
+                  setSelectedMonth={setSelectedMonth}
+                  selectedCategory={selectedCategory}
+                  width={vizWidth}
+                  showDemand={false}
+                  innerLabel={seasonLabel[selectedCompareSeason2]}
+                  type={"season"}
+                />
+              </div>
+            </div>
+          </div>
+          {!fullscreen && (
+            <SectionFooter
+              nextChapter={nextChapter}
+              link={`${siteUrl}/seasons?share=true`}
             />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-            <div
-              className="px-12 flex flex-col justify-start"
-              style={{
-                maxWidth: "85vh",
-              }}
-            >
-              <div>
-                <SeasonMenu
-                  setSelected={setSelectedCompareSeason1}
-                  selected={selectedCompareSeason1}
-                  initialSlide={0}
-                />
-              </div>
-
-              <RadarYear
-                globalData={seasonData1 || []}
-                energyDemand={energyData1 || []}
-                gasDemand={gasData1 || []}
-                energyPrice={[]}
-                selectedRegion={"all"}
-                selectedMonth={selectedMonth}
-                setSelectedMonth={setSelectedMonth}
-                selectedCategory={selectedCategory}
-                width={vizWidth}
-                showDemand={false}
-                innerLabel={seasonLabel[selectedCompareSeason1]}
-                type={"season"}
-              />
-            </div>
-            <div
-              className="px-12 flex flex-col justify-start"
-              style={{
-                maxWidth: "85vh",
-              }}
-            >
-              <div>
-                <SeasonMenu
-                  setSelected={setSelectedCompareSeason2}
-                  selected={selectedCompareSeason2}
-                  initialSlide={1}
-                />
-              </div>
-
-              <RadarYear
-                globalData={seasonData2 || []}
-                energyDemand={energyData2 || []}
-                gasDemand={gasData2 || []}
-                energyPrice={[]}
-                selectedRegion={"all"}
-                selectedMonth={selectedMonth}
-                setSelectedMonth={setSelectedMonth}
-                selectedCategory={selectedCategory}
-                width={vizWidth}
-                showDemand={false}
-                innerLabel={seasonLabel[selectedCompareSeason2]}
-                type={"season"}
-              />
-            </div>
-          </div>
+          )}
         </div>
-
-        {!fullscreen && (
-          <SectionFooter
-            nextChapter={nextChapter}
-            link={`${siteUrl}/seasons?share=true`}
-          />
-        )}
       </RightColumn>
       <HowToRead
         text={

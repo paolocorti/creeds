@@ -7,15 +7,18 @@ import { TooltipWithBounds, defaultStyles, useTooltip } from "@visx/tooltip";
 import { timeFormat } from "d3-time-format";
 import { isMobile } from "react-device-detect";
 
-const formatDate = timeFormat("%X");
+const formatDate = timeFormat("%-I:%M %p");
 
 const tooltipStyles = {
   ...defaultStyles,
   backgroundColor: "rgba(0,0,0,.9)",
   border: "0px solid white",
   color: "white",
-  borderRadius: "6px",
+  borderRadius: "12px",
   padding: "10px",
+  fontSize: "12px",
+  lineHeight: "15px",
+  textAlign: "left",
 };
 
 const getDate = (d) => {
@@ -266,8 +269,12 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
                 left={tooltipLeft + 10}
                 style={tooltipStyles}
               >
-                {`${getValue(tooltipData).toFixed(2)}`} <br /> <br />
-                {formatDate(getDate(tooltipData))}
+                <b>{formatDate(getDate(tooltipData))}</b>
+                <br />
+                <span className="uppercase">{`${
+                  activitiesCode[tooltipData.category].value
+                }: `}</span>
+                {`${getValue(tooltipData).toFixed(2)}`}
               </TooltipWithBounds>
             </div>
           )}
