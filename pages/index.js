@@ -72,7 +72,7 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="">
       <main
         className="flex flex-col items-center justify-center w-full flex-1 text-center w-full"
         id="container"
@@ -92,60 +92,70 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
             });
           }}
         />
-        <Section1
-          data={data}
-          energyDemand={energyDemand}
-          energyPrice={energyPrice}
-          nextChapter={() => {
-            scroller.scrollTo("section2", {
-              smooth: false,
-            });
-          }}
-          fullscreen={false}
-        />
-        <Section2
-          data={data}
-          nextChapter={() => {
-            scroller.scrollTo("section3", {
-              smooth: false,
-            });
-          }}
-          fullscreen={false}
-        />
-        <Section3
-          data={data}
-          energyDemand={energyDemand}
-          gasDemand={gasDemand}
-          energyPrice={energyPrice}
-          nextChapter={() => {
-            scroller.scrollTo("section4", {
-              smooth: false,
-            });
-          }}
-          fullscreen={false}
-        />
-        <Section4
-          data={data}
-          energyDemand={energyDemand}
-          gasDemand={gasDemand}
-          energyPrice={energyPrice}
-          nextChapter={() => {
-            scroller.scrollTo("section5", {
-              smooth: false,
-            });
-          }}
-          fullscreen={false}
-        />
-        <Section5
-          data={data}
-          energyDemand={energyDemand}
-          gasDemand={gasDemand}
-          energyPrice={energyPrice}
-          previousChapter={() => {
-            router.push("seasons");
-          }}
-          fullscreen={false}
-        />
+        {data && (
+          <Section1
+            data={data}
+            energyDemand={energyDemand}
+            energyPrice={energyPrice}
+            nextChapter={() => {
+              scroller.scrollTo("section2", {
+                smooth: false,
+              });
+            }}
+            fullscreen={false}
+          />
+        )}
+        {data && (
+          <Section2
+            data={data}
+            nextChapter={() => {
+              scroller.scrollTo("section3", {
+                smooth: false,
+              });
+            }}
+            fullscreen={false}
+          />
+        )}
+        {data && (
+          <Section3
+            data={data}
+            energyDemand={energyDemand}
+            gasDemand={gasDemand}
+            energyPrice={energyPrice}
+            nextChapter={() => {
+              scroller.scrollTo("section4", {
+                smooth: false,
+              });
+            }}
+            fullscreen={false}
+          />
+        )}
+        {data && (
+          <Section4
+            data={data}
+            energyDemand={energyDemand}
+            gasDemand={gasDemand}
+            energyPrice={energyPrice}
+            nextChapter={() => {
+              scroller.scrollTo("section5", {
+                smooth: false,
+              });
+            }}
+            fullscreen={false}
+          />
+        )}
+        {data && (
+          <Section5
+            data={data}
+            energyDemand={energyDemand}
+            gasDemand={gasDemand}
+            energyPrice={energyPrice}
+            previousChapter={() => {
+              router.push("seasons");
+            }}
+            fullscreen={false}
+          />
+        )}
       </main>
 
       <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">
@@ -157,6 +167,13 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
           all commercial and non-commercial websites. <br /> Use is, however,
           only permitted with proper attribution to the project. When publishing
           one of these graphics, please include a backlink to the original site.
+        </div>
+        <div className="w-full flex mt-4">
+          <img src={"/creds.svg"} width={100} />
+          <div className="flex justify-center items-center ml-4">
+            <img src={"/flex.svg"} width={24} />
+            <div className="text-xs text-white">Flexibility</div>
+          </div>
         </div>
       </footer>
     </div>

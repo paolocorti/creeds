@@ -24,8 +24,11 @@ const Section3 = ({
 }) => {
   console.log("Section3 render");
 
+  if (data.length === 0) {
+    return <></>;
+  }
+
   const [selectedMonth, setSelectedMonth] = useState("1");
-  const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCompareRegion1, setSelectedCompareRegion1] =
     useState("london");
   const [selectedCompareRegion2, setSelectedCompareRegion2] =
@@ -34,13 +37,7 @@ const Section3 = ({
   const size = useWindowSize();
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
-  const [allowEvents, setAllowEvents] = useState(false);
   const [copied, setCopied] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setAllowEvents(true);
-    }, 1500);
-  }, []);
 
   return (
     <section
@@ -110,29 +107,20 @@ const Section3 = ({
                 setSelected={setSelectedCompareRegion1}
                 initialSlide={0}
               />
-              {!allowEvents && (
-                <div className="w-full h-64 flex justify-center items-center relative ">
-                  <Loader style={{ width: "100px" }} />
-                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
-                    LOADING
-                  </div>
-                </div>
-              )}
-              {allowEvents && (
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={[]}
-                  selectedRegion={selectedCompareRegion1}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  showDemand={false}
-                  selectedCategory={selectedCategory}
-                  type={"spatial_variation"}
-                />
-              )}
+
+              <RadarYear
+                globalData={data}
+                energyDemand={energyDemand}
+                gasDemand={gasDemand}
+                energyPrice={[]}
+                selectedRegion={selectedCompareRegion1}
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+                width={vizWidth}
+                showDemand={false}
+                selectedCategory={selectedCategory}
+                type={"spatial_variation"}
+              />
             </div>
             <div
               className="px-12 flex flex-col justify-start"
@@ -144,29 +132,20 @@ const Section3 = ({
                 setSelected={setSelectedCompareRegion2}
                 initialSlide={1}
               />
-              {!allowEvents && (
-                <div className="w-full flex justify-center items-center relative h-64">
-                  <Loader style={{ width: "100px" }} />
-                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
-                    LOADING
-                  </div>
-                </div>
-              )}
-              {allowEvents && (
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={[]}
-                  selectedRegion={selectedCompareRegion2}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  showDemand={false}
-                  selectedCategory={selectedCategory}
-                  type={"spatial_variation"}
-                />
-              )}
+
+              <RadarYear
+                globalData={data}
+                energyDemand={energyDemand}
+                gasDemand={gasDemand}
+                energyPrice={[]}
+                selectedRegion={selectedCompareRegion2}
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+                width={vizWidth}
+                showDemand={false}
+                selectedCategory={selectedCategory}
+                type={"spatial_variation"}
+              />
             </div>
           </div>
         </div>
@@ -182,7 +161,7 @@ const Section3 = ({
         text={
           "The graphic shows the half-hourly evolution of key elements over the course of a day in UK’s regions.<br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
         }
-        image={"/legend03.svg"}
+        image={"/legend-3.png"}
         readOpen={open}
         setHowToReadOpen={setHowToReadOpen}
       />

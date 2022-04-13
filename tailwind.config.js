@@ -9,6 +9,7 @@ module.exports = {
       lightgreen: "#74C590",
       black: "#000",
       pink: "#fad9cd",
+      white: "#fff",
     },
   },
   variants: {

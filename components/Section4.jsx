@@ -30,6 +30,10 @@ const Section4 = ({
 }) => {
   console.log("Section4 render");
 
+  if (data.length === 0) {
+    return <></>;
+  }
+
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedCompareSeason1, setSelectedCompareSeason1] = useState(0);
   const [selectedCompareSeason2, setSelectedCompareSeason2] = useState(1);
@@ -88,12 +92,6 @@ const Section4 = ({
   const [open, setHowToReadOpen] = useState(false);
   const [allowEvents, setAllowEvents] = useState(false);
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setAllowEvents(true);
-    }, 1500);
-  }, []);
 
   return (
     <section
@@ -179,30 +177,21 @@ const Section4 = ({
                   initialSlide={0}
                 />
               </div>
-              {!allowEvents && (
-                <div className="w-full h-64 flex justify-center items-center relative ">
-                  <Loader style={{ width: "100px" }} />
-                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
-                    LOADING
-                  </div>
-                </div>
-              )}
-              {allowEvents && (
-                <RadarYear
-                  globalData={seasonData1 || []}
-                  energyDemand={energyData1 || []}
-                  gasDemand={gasData1 || []}
-                  energyPrice={[]}
-                  selectedRegion={"all"}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  selectedCategory={selectedCategory}
-                  width={vizWidth}
-                  showDemand={false}
-                  innerLabel={seasonLabel[selectedCompareSeason1]}
-                  type={"season"}
-                />
-              )}
+
+              <RadarYear
+                globalData={seasonData1 || []}
+                energyDemand={energyData1 || []}
+                gasDemand={gasData1 || []}
+                energyPrice={[]}
+                selectedRegion={"all"}
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+                selectedCategory={selectedCategory}
+                width={vizWidth}
+                showDemand={false}
+                innerLabel={seasonLabel[selectedCompareSeason1]}
+                type={"season"}
+              />
             </div>
             <div
               className="px-12 flex flex-col justify-start"
@@ -217,30 +206,21 @@ const Section4 = ({
                   initialSlide={1}
                 />
               </div>
-              {!allowEvents && (
-                <div className="w-full h-64 flex justify-center items-center relative ">
-                  <Loader style={{ width: "100px" }} />
-                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
-                    LOADING
-                  </div>
-                </div>
-              )}
-              {allowEvents && (
-                <RadarYear
-                  globalData={seasonData2 || []}
-                  energyDemand={energyData2 || []}
-                  gasDemand={gasData2 || []}
-                  energyPrice={[]}
-                  selectedRegion={"all"}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  selectedCategory={selectedCategory}
-                  width={vizWidth}
-                  showDemand={false}
-                  innerLabel={seasonLabel[selectedCompareSeason2]}
-                  type={"season"}
-                />
-              )}
+
+              <RadarYear
+                globalData={seasonData2 || []}
+                energyDemand={energyData2 || []}
+                gasDemand={gasData2 || []}
+                energyPrice={[]}
+                selectedRegion={"all"}
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+                selectedCategory={selectedCategory}
+                width={vizWidth}
+                showDemand={false}
+                innerLabel={seasonLabel[selectedCompareSeason2]}
+                type={"season"}
+              />
             </div>
           </div>
         </div>
@@ -256,7 +236,7 @@ const Section4 = ({
         text={
           "The graphic shows the half-hourly evolution of key elements over the course of a day by season.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
         }
-        image={"/legend04.svg"}
+        image={"/legend-4.png"}
         readOpen={open}
         setHowToReadOpen={setHowToReadOpen}
       />

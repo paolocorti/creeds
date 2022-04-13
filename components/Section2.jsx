@@ -18,22 +18,15 @@ const Section2 = ({
   scrolling,
 }) => {
   console.log("Section2 render");
+
+  if (data.length === 0) {
+    return <></>;
+  }
+
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
-  const [selectedCompareRegion, setSelCompareRegion] = useState([
-    "london",
-    "south_east",
-  ]);
   const size = useWindowSize();
   const vizWidth = getVizWidth("trend", size);
-  const [allowEvents, setAllowEvents] = useState(false);
-  const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setAllowEvents(true);
-    }, 1500);
-  }, []);
 
   return (
     <section
@@ -85,23 +78,21 @@ const Section2 = ({
               <Button title="HOW TO READ THE GRAPHIC" callback={null} />
             </div>
           </div>
-          {!allowEvents && (
+          {/* {!allowEvents && (
             <div className="w-full h-96 flex justify-center items-center relative ">
               <Loader style={{ width: "100px" }} />
               <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
                 LOADING
               </div>
             </div>
-          )}
-          {allowEvents && (
-            <TrendYear
-              globalData={data}
-              energyDemand={energyDemand}
-              selectedRegion={selectedRegion}
-              selectedMonth={selectedMonth}
-              width={vizWidth}
-            />
-          )}
+          )} */}
+          <TrendYear
+            globalData={data}
+            energyDemand={energyDemand}
+            selectedRegion={selectedRegion}
+            selectedMonth={selectedMonth}
+            width={vizWidth}
+          />
 
           {!fullscreen && (
             <SectionFooter

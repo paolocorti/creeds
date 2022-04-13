@@ -34,12 +34,6 @@ const Section5 = ({
   const [copied, setCopied] = useState(false);
   const [open, setHowToReadOpen] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setAllowEvents(true);
-    }, 1500);
-  }, []);
-
   return (
     <section
       name="section5"
@@ -106,30 +100,20 @@ const Section5 = ({
                 maxWidth: "85vh",
               }}
             >
-              {!allowEvents && (
-                <div className="w-full h-64 flex justify-center items-center relative ">
-                  <Loader style={{ width: "100px" }} />
-                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
-                    LOADING
-                  </div>
-                </div>
-              )}
-              {allowEvents && (
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={[]}
-                  selectedRegion={selectedCompareRegion1}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  showDemand={false}
-                  selectedCategory={selectedCategory}
-                  innerLabel={"URBAN"}
-                  type={"urban_rural"}
-                />
-              )}
+              <RadarYear
+                globalData={data}
+                energyDemand={energyDemand}
+                gasDemand={gasDemand}
+                energyPrice={[]}
+                selectedRegion={selectedCompareRegion1}
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+                width={vizWidth}
+                showDemand={false}
+                selectedCategory={selectedCategory}
+                innerLabel={"URBAN"}
+                type={"urban_rural"}
+              />
             </div>
             <div
               className="px-12 flex flex-col justify-start"
@@ -143,30 +127,21 @@ const Section5 = ({
                   initialSlide={1}
                 />
               </div> */}
-              {!allowEvents && (
-                <div className="w-full h-64 flex justify-center items-center relative ">
-                  <Loader style={{ width: "100px" }} />
-                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
-                    LOADING
-                  </div>
-                </div>
-              )}
-              {allowEvents && (
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={[]}
-                  selectedRegion={selectedCompareRegion2}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  showDemand={false}
-                  selectedCategory={selectedCategory}
-                  innerLabel={"RURAL"}
-                  type={"urban_rural"}
-                />
-              )}
+
+              <RadarYear
+                globalData={data}
+                energyDemand={energyDemand}
+                gasDemand={gasDemand}
+                energyPrice={[]}
+                selectedRegion={selectedCompareRegion2}
+                selectedMonth={selectedMonth}
+                setSelectedMonth={setSelectedMonth}
+                width={vizWidth}
+                showDemand={false}
+                selectedCategory={selectedCategory}
+                innerLabel={"RURAL"}
+                type={"urban_rural"}
+              />
             </div>
           </div>
         </div>
@@ -181,7 +156,7 @@ const Section5 = ({
         text={
           "The graphic shows the half-hourly evolution of key elements over the course of a day by for urban and rural regions.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
         }
-        image={"/legend05.png"}
+        image={"/legend-5.png"}
         readOpen={open}
         setHowToReadOpen={setHowToReadOpen}
       />
