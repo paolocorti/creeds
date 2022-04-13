@@ -107,7 +107,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
       <div
         className={`w-full md:w-3/4 bg-lightgreen p-8 absolute z-50 h-full overflow-y-auto	 overflow ${
           aboutOpen ? "left-0" : "-left-full"
-        } transition-all duration-500	`}
+        } transition-all duration-500	box-shadow`}
       >
         <div className="flex w-full justify-end">
           <div

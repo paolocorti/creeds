@@ -40,8 +40,12 @@ p {
   font-size: calc(10px + 0.7vw);
 }
 
+.box-shadow {
+  box-shadow: 2px 2px 2px 0 rgb(0 0 0 / 0.05);
+}
+
 p b {
-  text-shadow: 2px 2px 1px #74c590;
+  text-shadow: 2px 2px 2px #74c590;
   font-family: "EB Garamond";
   font-weight: 600;
 }

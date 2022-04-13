@@ -3,7 +3,7 @@ const HowToRead = ({ setHowToReadOpen, readOpen, text, image }) => {
     <div
       className={`w-full md:w-4/5 bg-lightgreen p-8 absolute z-50 h-full overflow-y-auto overflow ${
         readOpen ? "left-0" : "-left-full"
-      } transition-all duration-500	`}
+      } transition-all duration-500	box-shadow shadow-gray-300`}
     >
       <div className="flex w-full justify-between">
         <h2 className="subtitle">How to read the graphic</h2>
