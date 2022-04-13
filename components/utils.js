@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 
 export const mobileZoom = 2.5;
 export const desktopZoom = 3.75;
@@ -186,6 +186,40 @@ export const getTopActivity = (data, index) => {
   return value;
 };
 
+export function useWindowDimension() {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useLayoutEffect(() => {
+    const debouncedResizeHandler = debounce(() => {
+      console.log("***** debounced resize"); // See the cool difference in console
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }, 100); // 100ms
+
+    debouncedResizeHandler();
+
+    window.addEventListener("resize", debouncedResizeHandler);
+    return () => window.removeEventListener("resize", debouncedResizeHandler);
+  }, []); // Note this empty array. this effect should run only on mount and unmount
+  return windowSize;
+}
+
+function debounce(fn, ms) {
+  let timer;
+  return (_) => {
+    clearTimeout(timer);
+    timer = setTimeout((_) => {
+      timer = null;
+      fn.apply(this, arguments);
+    }, ms);
+  };
+}
+
 export function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
@@ -194,7 +228,7 @@ export function useWindowSize() {
     height: undefined,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // only execute all the code below in client side
     if (typeof window !== "undefined") {
       // Handler to call on window resize

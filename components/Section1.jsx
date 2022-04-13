@@ -8,7 +8,7 @@ import { colorByCategory, activitiesArray } from "./utils";
 import Button from "./Button";
 import Loader from "./Loader";
 import HowToRead from "./HowToRead";
-import { useWindowSize, getVizWidth } from "./utils";
+import { useWindowDimension, getVizWidth } from "./utils";
 import { isMobile } from "react-device-detect";
 import React from "react";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
@@ -37,7 +37,7 @@ const Section1 = ({
   const [playStarted, setPlayStarted] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = useWindowSize();
+  const size = useWindowDimension();
   const vizWidth = getVizWidth("single", size);
   const [open, setHowToReadOpen] = useState(false);
   const changeMonth = () => {
@@ -103,7 +103,7 @@ const Section1 = ({
         </LeftColumn>
       )}
       <RightColumn fullscreen={fullscreen}>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-between h-full">
           <div className="flex w-full flex-col items-start mb-4">
             {/* <p className="mb-1 text-left mt-0">
               The graphic shows the half-hourly evolution of three key elements
@@ -123,60 +123,61 @@ const Section1 = ({
               <Button title="HOW TO READ THE GRAPHIC" callback={null} />
             </div>
           </div>
-          {isMobile && (
-            <div className="w-full mb-4">
-              <ActivitiesMenu
-                activitiesArray={activitiesArray}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-              />
-            </div>
-          )}
-          <div className="flex w-full justify-center flex-col md:flex-row">
-            <div
-              className="w-full md:w-1/2 px-8 flex flex-col"
-              style={{
-                maxWidth: "85vh",
-              }}
-            >
+          <div className="flex flex-col justify-center items-center grow">
+            {isMobile && (
+              <div className="w-full mb-4">
+                <ActivitiesMenu
+                  activitiesArray={activitiesArray}
+                  selectedCategory={selectedCategory}
+                  setSelectedCategory={setSelectedCategory}
+                />
+              </div>
+            )}
+            <div className="flex w-full justify-center flex-col md:flex-row">
               <div
-                className="w-full flex justify-center"
+                className="w-full md:w-1/2 px-8 flex flex-col"
                 style={{
-                  opacity: playStarted ? 0.4 : 1,
+                  maxWidth: "85vh",
                 }}
               >
-                <div onClick={startPlay} className="text-md">
-                  <div className="flex flex-col justify-center">
-                    <img
-                      src={"/play.svg"}
-                      width={28}
-                      className="cursor-pointer"
-                    />
-                    <div
-                      className="uppercase font-light "
-                      style={{
-                        fontSize: "10px",
-                      }}
-                    >
-                      PLAY
+                <div
+                  className="w-full flex justify-center"
+                  style={{
+                    opacity: playStarted ? 0.4 : 1,
+                  }}
+                >
+                  <div onClick={startPlay} className="text-md">
+                    <div className="flex flex-col justify-center">
+                      <img
+                        src={"/play.svg"}
+                        width={28}
+                        className="cursor-pointer"
+                      />
+                      <div
+                        className="uppercase font-light "
+                        style={{
+                          fontSize: "10px",
+                        }}
+                      >
+                        PLAY
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <RadarYear
-                globalData={data}
-                energyDemand={energyDemand}
-                gasDemand={gasDemand}
-                energyPrice={energyPrice}
-                selectedRegion={selectedRegion}
-                selectedMonth={String(selectedMonth)}
-                setSelectedMonth={setSelectedMonth}
-                width={vizWidth}
-                selectedCategory={selectedCategory}
-              />
+                <RadarYear
+                  globalData={data}
+                  energyDemand={energyDemand}
+                  gasDemand={gasDemand}
+                  energyPrice={energyPrice}
+                  selectedRegion={selectedRegion}
+                  selectedMonth={String(selectedMonth)}
+                  setSelectedMonth={setSelectedMonth}
+                  width={vizWidth}
+                  selectedCategory={selectedCategory}
+                />
 
-              {/* {!allowEvents && (
+                {/* {!allowEvents && (
                 <div className="w-full h-full flex justify-center items-center relative ">
                   <Loader style={{ width: "100px" }} />
                   <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
@@ -197,28 +198,28 @@ const Section1 = ({
                   selectedCategory={selectedCategory}
                 />
               )} */}
-            </div>
-            {!isMobile && (
-              <div className="w-full md:w-1/3 px-8 ">
-                <div className="flex flex-col" style={{ width: "280px" }}>
-                  <div className="mt-4">
-                    <RadarVerticalLegend
-                      setSelectedCategory={setSelectedCategory}
-                      selectedCategory={selectedCategory}
-                    />
+              </div>
+              {!isMobile && (
+                <div className="w-full md:w-1/3 px-8 flex items-center">
+                  <div className="flex flex-col" style={{ width: "280px" }}>
+                    <div className="mt-4">
+                      <RadarVerticalLegend
+                        setSelectedCategory={setSelectedCategory}
+                        selectedCategory={selectedCategory}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
+          {!fullscreen && (
+            <SectionFooter
+              nextChapter={nextChapter}
+              link={`${siteUrl}/activities?share=true`}
+            />
+          )}
         </div>
-
-        {!fullscreen && (
-          <SectionFooter
-            nextChapter={nextChapter}
-            link={`${siteUrl}/activities?share=true`}
-          />
-        )}
       </RightColumn>
       <HowToRead
         text={

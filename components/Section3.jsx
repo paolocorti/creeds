@@ -7,7 +7,7 @@ import RegionMenu from "./RegionMenu.jsx";
 import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import Button from "./Button";
-import { useWindowSize, getVizWidth } from "./utils";
+import { useWindowDimension, getVizWidth } from "./utils";
 import HowToRead from "./HowToRead";
 import React from "react";
 import Loader from "./Loader";
@@ -34,7 +34,7 @@ const Section3 = ({
   const [selectedCompareRegion2, setSelectedCompareRegion2] =
     useState("south_east");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = useWindowSize();
+  const size = useWindowDimension();
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
   const [copied, setCopied] = useState(false);

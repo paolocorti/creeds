@@ -29,7 +29,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
             ABOUT
           </div>
         </div>
-        <h1 className="text-left leading-snug">
+        <h1 className="text-left">
           Energy demand flexibility and the rhythms of everyday life
         </h1>
       </LeftColumn>

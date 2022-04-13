@@ -5,7 +5,7 @@ import RadarYear from "./Radar/RadarYear";
 import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import Button from "./Button";
-import { useWindowSize, getVizWidth } from "./utils";
+import { useWindowDimension, getVizWidth } from "./utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import React from "react";
 import Loader from "./Loader";
@@ -28,7 +28,7 @@ const Section5 = ({
     useState("london");
   const [selectedCompareRegion2, setSelectedCompareRegion2] = useState("wales");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = useWindowSize();
+  const size = useWindowDimension();
   const vizWidth = getVizWidth("multiple", size);
   const [allowEvents, setAllowEvents] = useState(false);
   const [copied, setCopied] = useState(false);

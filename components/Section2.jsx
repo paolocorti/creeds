@@ -4,7 +4,7 @@ import RightColumn from "./RightColumn";
 import TrendYear from "./Trend/TrendYear";
 import SectionFooter from "./SectionFooter.jsx";
 import Button from "./Button";
-import { useWindowSize, getVizWidth } from "./utils";
+import { useWindowDimension, getVizWidth } from "./utils";
 import React from "react";
 import Loader from "./Loader";
 import { siteUrl } from "../config";
@@ -25,7 +25,7 @@ const Section2 = ({
 
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
-  const size = useWindowSize();
+  const size = useWindowDimension();
   const vizWidth = getVizWidth("trend", size);
 
   return (
@@ -64,7 +64,7 @@ const Section2 = ({
             pointerEvents: scrolling ? "none" : "all",
           }}
         >
-          <div className="flex w-full flex-col items-start mb-4">
+          <div className="flex w-full flex-col items-start mb-8">
             {/* <p className="text-left mb-1 mt-0">
               The graphic shows the activities’ frequency every 10 minutes.
             </p> */}

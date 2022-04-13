@@ -8,7 +8,7 @@ import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import { groupBy, flatten } from "lodash";
 import SeasonMenu from "./SeasonMenu.jsx";
 import Button from "./Button";
-import { useWindowSize, getVizWidth } from "./utils";
+import { useWindowDimension, getVizWidth } from "./utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import HowToRead from "./HowToRead";
 import React from "react";
@@ -87,7 +87,7 @@ const Section4 = ({
       ? flatten(groupedGas2[selectedCompareSeason2])
       : [];
 
-  const size = useWindowSize();
+  const size = useWindowDimension();
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
   const [allowEvents, setAllowEvents] = useState(false);
