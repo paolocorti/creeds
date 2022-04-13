@@ -33,7 +33,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
               fontSize: "12px",
             }}
           >
-            time
+            Time
           </div>
         </div>
         <div
@@ -76,7 +76,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
                 fontSize: "12px",
               }}
             >
-              energy demand
+              Electricity demand
             </div>
 
             <div
@@ -95,7 +95,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
                 fontSize: "12px",
               }}
             >
-              peak
+              Demand peak
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
               fontSize: "12px",
             }}
           >
-            activities (click to select them)
+            Activities (click to select them)
           </div>
         </div>
         <div className="relative">
@@ -123,7 +123,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
                 }}
               >
                 <div
-                  className="mr-2"
+                  className="mr-2 opacity-80"
                   style={{
                     backgroundColor: colorByCategory[v.key],
                     width: "12px",
@@ -155,18 +155,22 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
               <path
                 d="M9.5 24C12.5376 24 15 21.5376 15 18.5C15 15.4624 12.5376 13 9.5 13C6.46243 13 4 15.4624 4 18.5C4 21.5376 6.46243 24 9.5 24Z"
                 fill="#9e0f0d"
+                fillOpacity={0.8}
               />
               <path
                 d="M9.5 95C12.5376 95 15 92.5376 15 89.5C15 86.4624 12.5376 84 9.5 84C6.46243 84 4 86.4624 4 89.5C4 92.5376 6.46243 95 9.5 95Z"
                 fill="#e06373"
+                fillOpacity={0.8}
               />
               <path
                 d="M9.5 158C12.5376 158 15 155.538 15 152.5C15 149.462 12.5376 147 9.5 147C6.46243 147 4 149.462 4 152.5C4 155.538 6.46243 158 9.5 158Z"
                 fill="#807ece"
+                fillOpacity={0.8}
               />
               <path
                 d="M9.5 211C12.5376 211 15 208.538 15 205.5C15 202.462 12.5376 200 9.5 200C6.46243 200 4 202.462 4 205.5C4 208.538 6.46243 211 9.5 211Z"
                 fill="#2b1475"
+                fillOpacity={0.8}
               />
               <path
                 opacity="0.5"
@@ -242,7 +246,7 @@ const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
               fontSize: "12px",
             }}
           >
-            energy price
+            Price of electricity
           </div>
         </div>
       </div>

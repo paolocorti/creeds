@@ -13,12 +13,12 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
     <section
       id="intro"
       name="intro"
-      className="w-full flex flex-col md:flex-row  min-h-screen"
+      className="w-full flex flex-col md:flex-row "
     >
       <LeftColumn sectionTitle={"/1.energy-vertical.svg"} expanded={expanded}>
         <div className="cursor-pointer">
           <div
-            className="border border-2 rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+            className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
             style={{
               fontSize: "12px",
               fontWeight: "bold",
@@ -46,19 +46,17 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
                 power is plentiful
               </b>{" "}
               – this is what we call flexibility.
-            </p>
-
-            <p className="garamond px-0 md:px-6 ">
+              <br />
               Flexibility is generally seen as a way of improving the balancing
               of our demand for energy with renewables’ output. The more
               renewables we use, the less carbon emissions we produce, and the
               closer we get to achieving our ambitious Net Zero targets.
             </p>
-            <div className="border mx-0 md:mx-6"></div>
+            <div className="border-t mx-0 md:mx-6"></div>
             <p className="garamond px-0 md:px-6 ">
               So how do we achieve that flexibility?
             </p>
-            <div className="border mx-0 md:mx-6"></div>
+            <div className="border-t mx-0 md:mx-6"></div>
             <p className="garamond px-0 md:px-6">
               <b>Energy demand goes hand in hand with what people do</b>, so our
               search for flexibility necessarily starts by looking at the
@@ -71,21 +69,19 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
               </b>{" "}
               or the way they do it.
             </p>
-            <div className="border mx-0 md:mx-6"></div>
+            <div className="border-t mx-0 md:mx-6"></div>
 
             <p className="garamond px-0 md:px-6">
               But how exactly does demand for electricity relate to what people
               do on a day-to-day basis?
             </p>
-            <div className="border mx-0 md:mx-6"></div>
+            <div className="border-t mx-0 md:mx-6"></div>
 
             <p className="garamond px-0 md:px-6">
               Our everyday life – what we do at home, at work, at school, when
               moving around – and its relation to energy demand is rather
               complex.
-            </p>
-
-            <p className="garamond px-0 md:px-6">
+              <br />
               As part of our work as energy researchers, we have introduced
               fresh approaches to thinking about the social-temporal
               organisation of energy demand. We also try to understand what
@@ -94,9 +90,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
               the timing of people’s activities while at home, their travels,
               the demand for electricity, and the cost of providing said
               electricity.
-            </p>
-
-            <p className="garamond px-0 md:px-6">
+              <br />
               Perhaps it is best to just dive right in and start exploring of
               how these patterns of human activity translate into demand for
               energy. Here we share with you some tools that hopefully will

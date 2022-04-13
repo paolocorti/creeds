@@ -2,7 +2,7 @@ const Button = ({ title, callback, bold = false }) => {
   return (
     <div className="flex justify-start md:justify-center">
       <div
-        className="border border-2 rounded-2xl z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-pink"
+        className="border rounded-2xl z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-pink"
         style={{
           fontSize: "12px",
           fontWeight: "bold",

@@ -9,7 +9,7 @@ const HowToRead = ({ setHowToReadOpen, readOpen, text, image }) => {
         <h2 className="subtitle">How to read the graphic</h2>
         <div>
           <div
-            className="border-2 rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+            className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
             style={{
               fontSize: "12px",
               fontWeight: "bold",
@@ -22,7 +22,7 @@ const HowToRead = ({ setHowToReadOpen, readOpen, text, image }) => {
         </div>
       </div>
       <p className="px-0" dangerouslySetInnerHTML={{ __html: text }}></p>
-      <img src={image} className="w-full md:w-2/3 mt-8" />
+      <img src={image} className="w-full md:w-2/3 mt-8" width={600} />
     </div>
   );
 };

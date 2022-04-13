@@ -24,7 +24,7 @@ const ActivitiesMenu = ({
               }}
             >
               <span
-                className="mr-1 colorDot"
+                className="mr-1 colorDot opacity-80"
                 style={{
                   backgroundColor: colorByCategory[el.key],
                 }}

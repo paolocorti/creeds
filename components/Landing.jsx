@@ -17,7 +17,7 @@ const Landing = ({ nextChapter }) => {
         </h1>
         <div className="flex justify-center mt-16">
           <div
-            className="border border-2 rounded-2xl z-40 px-4 py-1 cursor-pointer bg-green hover:bg-black hover:text-green"
+            className="border rounded-2xl z-40 px-4 py-1 cursor-pointer bg-green hover:bg-black hover:text-green"
             style={{
               fontSize: "12px",
               fontWeight: "bold",
