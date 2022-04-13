@@ -72,18 +72,18 @@ const Section2 = ({
           }}
         >
           <div className="flex w-full flex-col items-start mb-4">
-            <p className="text-left mb-1 mt-0">
+            {/* <p className="text-left mb-1 mt-0">
               The graphic shows the activities’ frequency every 10 minutes.
-            </p>
-            <div className="text-xs font-light uppercase text-left mb-2">
-              MOUSE OVER ON THE GRAPHIC TO READ THE DATA
+            </p> */}
+            <div className="text-xs uppercase text-left mb-2">
+              MOUSE OVER ON THE GRAPHIC TO READ THE DATA.
             </div>
-            {/* <div
+            <div
               className="flex justify-start"
               onClick={() => setHowToReadOpen((open) => !open)}
             >
               <Button title="HOW TO READ THE GRAPHIC" callback={null} />
-            </div> */}
+            </div>
           </div>
           {!allowEvents && (
             <div className="w-full h-96 flex justify-center items-center relative ">

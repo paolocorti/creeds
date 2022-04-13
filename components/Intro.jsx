@@ -18,9 +18,11 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
       <LeftColumn sectionTitle={"/1.energy-vertical.svg"} expanded={expanded}>
         <div className="cursor-pointer">
           <div
-            className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+            className="border border-2 rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
             style={{
-              fontSize: "11px",
+              fontSize: "12px",
+              fontWeight: "bold",
+              lineHeight: 1.5,
             }}
             onClick={() => setAboutOpen((open) => !open)}
           >
@@ -44,17 +46,17 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           – this is what we call flexibility.
         </p>
 
-        <p className="garamond px-0 md:px-6">
+        <p className="garamond px-0 md:px-6 ">
           Flexibility is generally seen as a way of improving the balancing of
           our demand for energy with renewables’ output. The more renewables we
           use, the less carbon emissions we produce, and the closer we get to
           achieving our ambitious Net Zero targets.
         </p>
-
-        <p className="garamond px-0 md:px-6">
+        <div className="border mx-0 md:mx-6"></div>
+        <p className="garamond px-0 md:px-6 ">
           So how do we achieve that flexibility?
         </p>
-
+        <div className="border mx-0 md:mx-6"></div>
         <p className="garamond px-0 md:px-6">
           <b>Energy demand goes hand in hand with what people do</b>, so our
           search for flexibility necessarily starts by looking at the rhythms of
@@ -67,11 +69,13 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           </b>{" "}
           or the way they do it.
         </p>
+        <div className="border mx-0 md:mx-6"></div>
 
         <p className="garamond px-0 md:px-6">
           But how exactly does demand for electricity relate to what people do
           on a day-to-day basis?
         </p>
+        <div className="border mx-0 md:mx-6"></div>
 
         <p className="garamond px-0 md:px-6">
           Our everyday life – what we do at home, at work, at school, when

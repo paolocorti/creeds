@@ -76,11 +76,11 @@ const Section5 = ({
         <div className="flex w-full flex-col">
           <div>
             <div className="flex w-full flex-col items-start mb-4">
-              <p className="mb-1 text-left mt-0">
+              {/* <p className="mb-1 text-left mt-0">
                 The graphic shows energy demand and activities’ frequency every
                 30 minutes for urban and rural regions.
-              </p>
-              <div className="text-xs font-light uppercase text-left mb-2 opacity-60">
+              </p> */}
+              <div className="text-xs uppercase text-left mb-2 opacity-60">
                 Select THE season or the activities to explore the data. MOUSE
                 OVER ON THE GRAPHICS TO READ THEM
               </div>
@@ -179,7 +179,7 @@ const Section5 = ({
       </RightColumn>
       <HowToRead
         text={
-          "The graphic shows the half-hourly evolution of key elements over the course of a day by season.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+          "The graphic shows the half-hourly evolution of key elements over the course of a day by for urban and rural regions.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
         }
         image={"/legend05.png"}
         readOpen={open}

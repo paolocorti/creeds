@@ -105,13 +105,13 @@ const Section1 = ({
       >
         <div className="flex flex-col justify-center items-center">
           <div className="flex w-full flex-col items-start mb-4">
-            <p className="mb-1 text-left mt-0">
+            {/* <p className="mb-1 text-left mt-0">
               The graphic shows the half-hourly evolution of three key elements
               over the course of a day.
-            </p>
-            <div className="text-xs font-light uppercase text-left mb-2 opacity-60">
+            </p> */}
+            <div className="text-xs uppercase text-left mb-2 opacity-60">
               Select the month or the activities in the graphic or in the legend
-              to explore the data. MOUSE OVER ON THE GRAPHIC TO READ THEM
+              to explore the data. MOUSE OVER ON THE GRAPHIC TO READ THEM.
             </div>
             {/* <div className="text-xs font-bold uppercase text-left">
               SHARE THE GRAPHIC

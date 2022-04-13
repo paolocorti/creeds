@@ -4,7 +4,7 @@ const UkMap = ({ width, selected }) => {
       <g id="north-west">
         <path
           id="path699_00000083053970700632997130000017043257897911895479_"
-          style={{ fill: selected === "north_west" ? "#e1b3a1" : "#ffffff" }}
+          style={{ fill: selected === "north_west" ? "#78706d" : "#ffffff" }}
           d="M243.1,406l0.3,0l0.4,0.2l0.1,0.5l-0.1,0.1
 		l-0.3-0.4h-0.3c-0.3,0.1-0.7,1.1-0.8,1.3l-0.5,0.1c-0.2,0.2-0.3,0.6-0.2,0.8l0.2,0.2l0.2,0l0.4-0.4c0.3,0.1,0.8,0,1-0.1l0.3,0.5
 		l-0.2,0.1c-0.2-0.1-0.5-0.1-0.7,0l-0.3,0.5l-1.7,0.8c-0.3-0.1-0.9-0.2-1.2,0c-0.3-0.1-0.8-0.5-0.9-0.8l-0.8-0.3l-0.2-0.5
@@ -90,7 +90,7 @@ const UkMap = ({ width, selected }) => {
           <path
             id="west-midlands_00000176033143727224920720000015446667562337053849_"
             style={{
-              fill: selected === "west_midlands" ? "#e1b3a1" : "#ffffff",
+              fill: selected === "west_midlands" ? "#78706d" : "#ffffff",
             }}
             d="M315.2,617.1l-1.7-1.7l-1.2,0.4
 			l0.3,1.1l-1.3-0.3l-1,2.2l0.2,0.9l-1.1,4.5l-0.2,0.4l-0.6-0.3l-0.7,0.4l0.3,0.8l-1.3,0.6l-0.9-0.3l0.4,0.5l-0.9,1.1l-2.3-2.3
@@ -140,7 +140,7 @@ const UkMap = ({ width, selected }) => {
         <g>
           <path
             id="path531"
-            style={{ fill: selected === "wales" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "wales" ? "#78706d" : "#ffffff" }}
             d="M178.4,531.3l0.1,0.3l-0.3,0.1l-0.1,0.1l0.3,0.1l0.2,0.4l-0.2,0.1l0.2,0.2l0.3,0l-0.1,0.2
 			l-0.3-0.1l-0.1,0.2l-0.5,0.1l-0.2,0.2l-0.2-0.1l-0.1-0.3l-0.2,0.1l0,0.2l-0.1,0.1l-0.7-0.4l0-0.2l0.2-0.2l0-0.3l-0.1-0.1l-0.1-0.4
 			l-0.2,0l0-0.3l-0.3-0.1c0.1-0.1,0.4-0.4,0.4-0.6l-0.1-0.2l-0.2,0l-0.1-0.1l-0.4-0.1l-0.2-0.2l-0.4-0.1l0-0.2l-0.1,0l-0.6,0.4
@@ -150,7 +150,7 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path543"
-            style={{ fill: selected === "wales" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "wales" ? "#78706d" : "#ffffff" }}
             d="M178.3,531.1l0.1-0.2c-0.3-0.1-0.8-0.4-1-0.7l0.5-0.4c0.1-0.5,0.2-0.3,0.6-0.7l0-0.2l0.6-0.1
 			l0.1-0.4c-0.2,0-0.6,0.2-0.7,0.4l0-1.1l-0.1-0.2c-0.1,0-0.2-0.1-0.3-0.1l0-0.3l-0.5-0.1l0.1-0.3l-0.1-0.1l0.2-0.2l0.1,0.1l0.2-0.1
 			l0.2-0.8l-0.1-0.1l0.1-0.8c0.3-0.1,0.4-1.1,0.4-1.3l-0.2-0.2l-0.2-0.5l0.1-0.4l-0.4-0.2l0.2-0.2c0-0.1-0.2-0.4-0.2-0.5
@@ -174,7 +174,7 @@ const UkMap = ({ width, selected }) => {
           <g>
             <path
               id="path699_00000009575441312205564480000013827823666647681422_"
-              style={{ fill: selected === "wales" ? "#e1b3a1" : "#ffffff" }}
+              style={{ fill: selected === "wales" ? "#78706d" : "#ffffff" }}
               d="M260.4,652.1l-0.1-0.5
 				c-0.2,0.1-0.3,0.5-0.5,0.6c-0.3,0.4-0.8,0.3-1.1,0.8l-0.7,1.2c-0.8,0.2-1.7,0.2-2.5,0.6c-0.2,0.1-0.5,0.4-0.7,0.5
 				c-0.1,0-0.4,0-0.4,0c-0.2,0.1-2,1.5-2.1,1.5c-0.9,0.2-1.7,0.5-2.5,0.9l-0.2,0l-0.3-0.4l-0.2,0l-0.1,0.1l-1.4,0
@@ -312,7 +312,7 @@ const UkMap = ({ width, selected }) => {
       <g id="south-west">
         <path
           id="path699_00000006665853297253724220000011851463636639022729_"
-          style={{ fill: selected === "south_west" ? "#e1b3a1" : "#ffffff" }}
+          style={{ fill: selected === "south_west" ? "#78706d" : "#ffffff" }}
           d="M302,715.9c-0.5,0-1.1,0.1-1.7,0.2
 		l-0.5,0.6l-0.1,0l0-0.2l-0.3,0.2l-0.2-0.1l-0.2,0.3l-0.2-0.1l0-0.3l-0.2-0.1l0.1,0.5l0.3,0.3l0.3,0l0.2,0.2l0.1,0l0.2-0.3l0.1,0
 		c0,0.2-0.2,0.5-0.3,0.6l-0.2,0c-0.6-0.5-3.5-0.6-4.1-0.5c-0.8,0.1-1.7,0.4-2.5,0.8c-0.3,0.2-0.6,0.4-0.9,0.7c-0.3,0.3-0.6,0.9-1,1
@@ -448,7 +448,7 @@ const UkMap = ({ width, selected }) => {
         <g>
           <path
             id="path635"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             d="M334.1,712.8l-0.1,0.1l-0.4,0.1c-0.9-0.4-2.1-0.6-3.1-0.7c-0.2-0.2-0.2-0.2-0.2-0.5l0.1-0.1
 			l0.2,0.2l0.1-0.2l0.3,0.1c0.3,0,0.7-0.3,0.8-0.5c0.2-0.5,0.4-1.4,0.2-1.9c0.1-0.1,0.7-0.5,0.8-0.5l0,0.2l0.4,0l0.3,0.2l0.1,0.4
 			c-0.2,0.2-0.3,0.7-0.2,1l-0.1,0l-0.3-0.2l-0.1,0.1l0.3,0.1l-0.1,0.1l-0.4,0l0.1,0.2h0.5l0.1,0.1l0.1,0.2l-0.1,0.5L333,712l0.1,0.1
@@ -456,7 +456,7 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path639"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             d="M326.8,719l0.3,0.3l0.5-0.3c0.3,0.1,0.6,0.3,0.8,0.5l0,0.3l-1.1,0.9l-0.1,0.4
 			c-1-0.1-2.2,0.5-2.8,1.3c-0.4,0.6-0.5,1.6-0.4,2.4c-0.2,0.1-0.2,0.7-0.1,0.9c0,0-0.2,0.3-0.2,0.3c-0.8,0.5-0.7,0.3-1.4,0.5
 			c-0.4,0.2-0.9,0.5-1.3,0.7c-0.4,0.1-0.9,0.1-1.3,0.2c-0.5,0.1-0.9,0.5-1.4,0.1c-0.1-0.7-1.2-1.7-1.7-2.1c-0.2-0.1-0.4-0.2-0.5-0.3
@@ -472,36 +472,36 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path683"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             d="M402,666.5L402,666.5c-0.2,0-0.4-0.3-0.4-0.5l0.2-0.1l0.2,0.1L402,666.5z"
           />
           <path
             id="path685"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             d="M402.9,666.2l0.1-0.1c0.3-0.1,0.8-0.2,1.1,0l0,0.3l-0.1,0.2l-0.1-0.2l-0.2,0l-0.2,0.3l-0.1,0
 			l-0.1-0.2L402.9,666.2z"
           />
           <polygon
             id="polygon687"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             points="398.9,667.1 399.3,667.2 399.6,667.2 399.7,667.4 399.6,667.5 398.8,667.4 
 			398.8,667.1 		"
           />
           <path
             id="path689"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             d="M403.7,667.2l0-0.2l0.2-0.2l0.2,0c0.1,0.3,0.2,0.7,0.2,1l-0.1,0.1l-0.4-0.2
 			c-0.3,0-0.3,0.1-0.6-0.1l0.1-0.2l0-0.2l-0.2-0.2l0.2-0.2L403.7,667.2z"
           />
           <path
             id="path691"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             d="M401,667.6l0.2,0.3L401,668l-0.1-0.2l-0.1,0l-0.2,0.3l-0.3-0.3l0.1-0.2
 			C400.4,667.5,400.8,667.5,401,667.6z"
           />
           <path
             id="path693"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             d="M406.6,664.2c1.2,0.8,0.7,0.6,1.9,0.7c0.5,0.4,0.8,0.7,1.4,0.8c0.7,0.1,1.4,0.3,2,0.4
 			c0.6,0.1,0.9-0.1,1.4,0.4c-0.1,0.7,1.8,1.8,1.9,3.2L415,670l-0.3-0.1l-0.6,0.4l0,0.2c-0.4,0.5-1.2,0.6-1.8,0.4l-0.5-0.5l-0.3,0
 			l-0.1,0.2l-0.4-0.4l-0.2,0l0,0.2c0,0-0.2,0-0.2,0l-1.4-0.4c0,0-0.4,0.1-0.8,0l-0.2-0.2l-0.4,0.3l-0.6-0.1l-0.1-0.4l0.2-0.3
@@ -510,7 +510,7 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="thames_00000142177204292104850340000012100447145066276260_"
-            style={{ fill: selected === "south_east" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "south_east" ? "#78706d" : "#ffffff" }}
             d="M389.6,664.3l-0.1,0L389.6,664.3l-0.8-0.1
 			l-0.6-1.2l-1.1,0.2l-0.7,0.6l-3.1-2.1l0.1,0l0.3,0.7l-0.6,1.9l-1.3,0.8l-0.3,1.1l-0.4-0.2l-0.2,1.6l0.6,1.2l-0.6,0l0.3,1.6
 			l-0.6,1.9l-0.8,0l0,1.1l-1.4,1l0.1,1.7l-1.9,0.1l-0.4-1.1l-0.7,1.2l-0.6-2.7l-0.6-0.3l-0.2,0.3l-0.3-0.6l-0.6,0l-0.5,0.5l0,0.7
@@ -591,7 +591,7 @@ const UkMap = ({ width, selected }) => {
       <g id="london">
         <path
           id="london_00000032624900962302277980000012242464614264148398_"
-          style={{ fill: selected === "london" ? "#e1b3a1" : "#ffffff" }}
+          style={{ fill: selected === "london" ? "#78706d" : "#ffffff" }}
           d="M369.7,647.3l-0.5,0.2l-1.9,0.2l0.6,0.4v0
 		l-0.6-0.5l-0.4,1.1l-0.4,0.3l-0.4,0.3l-0.5-0.4l-0.3,0.7l-1.6,0.4l-0.2,1l-0.3-0.2l-1.4,0.7l-0.4-0.1l-0.5-0.2l-1.9,1.3l-0.2,0.2
 		l-0.4,0.2l-1.1,0.4l-1.5-0.5l-0.7,0.6l-1.8-1.3v2.3l0.5,1.6l0.6,1.4l-0.8,1.5l0.2,1.6l0.4,0.7l-0.3,0.9l-0.6,1l-0.2,0.8l2.2,0.9
@@ -606,7 +606,7 @@ const UkMap = ({ width, selected }) => {
       <g id="east-england">
         <path
           id="east-england_00000167395327064259088060000005771156386967552676_"
-          style={{ fill: selected === "east_england" ? "#e1b3a1" : "#ffffff" }}
+          style={{ fill: selected === "east_england" ? "#78706d" : "#ffffff" }}
           d="M383.4,661.7l0.1-0.4l0.7-0.3
 		l-0.2-0.5l0.6-0.1l-0.2-0.8l0.3,0l0.2-0.7l0.2,0.8l0.4,0l0-1.1l2.4-0.7h0.5l-1-1.8l-0.9,0.1l-0.9-2.5l-0.7-0.1l0.4-0.5l-0.5-0.7
 		l-1.2-1l-1,0.5l-0.2,0l-2.4,0.2l-0.4,0.2l-1.5,0.6l-0.1,0.6l-0.7,0l-1.4-0.8l-0.8-0.9l0.1-0.6l-1.6-0.6l0-2.5l-4-0.7l0,0l-0.5,0.2
@@ -672,7 +672,7 @@ const UkMap = ({ width, selected }) => {
       <g id="east-midlands">
         <path
           id="path699_00000148658734562756423840000011377333275658477492_"
-          style={{ fill: selected === "east_midlands" ? "#e1b3a1" : "#ffffff" }}
+          style={{ fill: selected === "east_midlands" ? "#78706d" : "#ffffff" }}
           d="M375.4,512.8l0.5,0.2l0.3-0.3l0.1,0.4
 		c1.1,0,1.3,0.3,1.7,1.4l0.4,0.3l0.3-0.3l0.2,0.4l0.3,0.2l0.3,0l0.2-0.2l-0.4-0.7l0.1,0l0.4,0.3l0.3,0c0.1,0,0.4,0.2,0.4,0.4
 		l-0.3,0.3l-0.1,0.4l0.5,0.2l0.3,0l0.1-0.2l-0.2-0.4l0.1-0.1l0.1,0.1l0.7,0.9l-0.1,0.1l-0.2-0.2l-0.1,0l0.2,0.4l0.5,0.3l0.5,0.9
@@ -716,7 +716,7 @@ const UkMap = ({ width, selected }) => {
         <path
           id="path699_00000173878844591965729370000003211172957883049093_"
           style={{
-            fill: selected === "yorkshire_humber" ? "#e1b3a1" : "#ffffff",
+            fill: selected === "yorkshire_humber" ? "#78706d" : "#ffffff",
           }}
           d="M375.4,512.8c-0.1-1.3-1.8-2.1-2.2-3.3
 		c-0.6-0.3-0.9-1-1.4-1.3l-0.3,0l-0.3,0.4l-0.2-0.1c-1.3-0.7-2-1.6-3-2.6c0,0-0.1-0.1-0.1-0.1c-1.1-0.7-2.1-1.5-2.9-2.5
@@ -762,7 +762,7 @@ const UkMap = ({ width, selected }) => {
       <g id="north-east">
         <path
           id="path699_00000078767027304466066750000014021240594760370579_"
-          style={{ fill: selected === "north_east" ? "#e1b3a1" : "#ffffff" }}
+          style={{ fill: selected === "north_east" ? "#78706d" : "#ffffff" }}
           d="M258.3,392.3l0.6-1l0.5-1.3l0.7-1.1
 		l0.4,0.1l0.9-0.6l0.2-1.1l0-0.1l0,0l0.8,0l0-0.3l-0.7-0.3l-0.7-0.5l0.1-0.1l0.5-0.1l0.7-1.5l1.2-0.7l1-1.3l0.2-0.5l0.8-0.2l0.2-0.2
 		l0.6-0.2l0.7-0.9l0.4-0.9l0.2-0.2l0.8-0.1l0.1,0l0.5-0.1l0.6-0.4l1.1,0l0.9,0.8l0.7,0l0.4-0.5l1.4-0.9l0-0.2l-0.2-0.3l0.3-0.3
@@ -811,7 +811,7 @@ const UkMap = ({ width, selected }) => {
       <g id="northern-ireland">
         <path
           style={{
-            fill: selected === "northern_ireland" ? "#e1b3a1" : "#ffffff",
+            fill: selected === "northern_ireland" ? "#78706d" : "#ffffff",
           }}
           d="M141.5,442.3l-0.1-0.2c0-0.1-0.1-0.1-0.2-0.1c-0.3,0-0.5-0.1-0.8-0.3c0,0-0.1-0.1-0.1-0.1
 		c-0.2-0.3-0.3-0.9-0.3-1.2c0,0,0-0.1,0-0.1l-0.1-0.1l0-0.8c0-0.1,0-0.1-0.1-0.1l-0.4-0.2c-0.1-0.2-0.1-0.5-0.1-0.7c0,0,0-0.1,0-0.1
@@ -987,7 +987,7 @@ const UkMap = ({ width, selected }) => {
         <g>
           <path
             id="path11"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M316.6,4.5l-0.4,0.3l0,0.5l0.6,0l0.2,0l-0.2,0.3c-0.5-0.2-1.4,0-1.7,0.4l0.2,0.2l0.3,0l0.1,0.4
 			l0.4,0.2c-0.2,0.3-0.2,0.9-0.1,1.2l-0.3,0l0-0.3L315.3,8l-0.1-0.1c-0.3,0.1-0.8-0.1-1-0.3l-0.4,0.2l0,0.2l0.5,0.3l-0.1,0.4
 			c0.1,0.3,0.4,0.6,0.7,0.7l0,0.4l0.1,0.1l-2.8-0.2l0.1,0.3c0.7-0.1,1.2,0.2,1.8,0.1l0.3,0.2l-0.1,0.8l-0.9,0.7l-0.2,0.5l-0.7,0
@@ -1001,13 +1001,13 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon13"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="315.6,10.2 315.7,10.7 315.6,11 315.3,11.1 315,10.8 315.5,10.7 315.4,10.5 
 			315.5,10.3 		"
           />
           <path
             id="path15"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M298.9,27.1l-0.3,0.1l-0.1-0.2l0.4-0.2c-0.1-0.5-0.2-1.2-0.7-1.5l0.6-0.5c-0.1-0.4-0.2-1-0.1-1.4
 			l-0.4-0.1l0.1,0.6l-0.2,0.2l-0.2-0.2l-0.2-0.5l0.2-0.6l0.5-0.3l-0.7-1l0.2-0.3l-0.3-0.5l0.7-1.1c-0.1-0.3-0.1-0.7,0-1
 			c0.5-0.4,1-0.9,1.3-1.4l0.1,0l0,2.2l0.2,0.2l0.6,0.1l0.7,1.1l0.3-0.1l-0.1-0.1l-0.2,0c0.1-0.5-0.2-0.8-0.5-1.2l-0.6-0.1l-0.1-0.1
@@ -1025,18 +1025,18 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path17"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M311.4,16.9l-0.3-0.2l-0.4,0.2l0.1-0.3l-0.8-0.7c0.1-0.1,0.3-0.4,0.4-0.4c0.3,0.1,0.7,0.3,1,0.5
 			l0,0.2l0.4,0l-0.3,0.3l0,0.2L311.4,16.9z"
           />
           <polygon
             id="polygon19"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="307.8,16.8 307.6,16.8 306.9,16 307.2,15.9 		"
           />
           <path
             id="path21"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M291.4,25.8l-0.1,0.6l-0.4,0.1l0,0.3c0.4-0.2,0.9-0.3,1.3-0.3l0.2,0.3l0.3,0
 			c-0.3,0.1-0.8,0.1-1.1,0l-0.4,0.3l-0.1,0.4l0.7-0.4l0.6,0.3l0.2,0.5l-0.1,0.2l-0.3,0l-0.1,0.4l0.3,0l-0.1,0.8l-0.7,0.7
 			c0.2,0.1,0.9,0,1.1,0l-0.1,0.8c-0.2,0.1-0.3,0.4-0.3,0.6l0.4,0.3l0.1,0.4l-0.5,0.3l-0.3-0.5l-0.3-0.1l0.3,0.7l-0.2,0.3l-0.4,0.1
@@ -1058,7 +1058,7 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path23"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M314.9,23.6l-0.1-0.4c-0.3,0-0.7-0.2-1-0.4l0-0.5c-0.2,0-0.4,0-0.6,0l-0.2,0.2l-0.4-0.3l-0.1-0.4
 			l-0.4,0l-0.1,0.3c-0.2-0.1-0.9-0.3-1.1-0.1l0,0.3l0.2,0.3l0.7,0.2l0.2,0.4l0.3,0.1l0,0.4l0.3,0l-0.1,0.2c-0.2-0.1-1.2,0.2-1.4,0.3
 			l-0.2-0.6l-0.4-0.1l-0.2-0.2l0-0.9c-0.4-0.4-0.5-0.5-0.8-1.1l-0.3,0l-0.1-0.7l0,0.1l-0.1-0.1l0-0.6l0.4-0.2l0-0.5
@@ -1067,53 +1067,53 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path25"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M306.5,21.5l-0.5-0.2l0-0.2c0.3-0.1,0.7-0.4,0.8-0.7l-0.3-0.5l0.5,0l0.1,0.2l0.4-0.1l0.3,0.3
 			l0,0.4h-0.2l-0.1,0.3l-0.3,0.2L307,21l-0.5,0l0,0.2l0.1,0.1L306.5,21.5z"
           />
           <polygon
             id="polygon27"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="293.2,28.8 293.1,29 293.1,29.3 293.4,29.6 292.5,29.9 292.3,29.4 292.7,28.6 
 			293.1,28.5 		"
           />
           <path
             id="path29"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M297.8,28.5l0.4,0.1l0.6,0.8l0,0.2l-0.3,0C297.8,29.2,298,29.4,297.8,28.5z"
           />
           <polygon
             id="polygon31"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="300.4,31.4 300.1,31.4 300.1,31.2 299.6,31.2 299.5,31 299.8,30.9 299.8,30.6 
 			300,30.5 		"
           />
           <path
             id="path33"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M299,34.2l-0.5,0l0-0.2l0.5-0.5C298.8,33.6,298.9,34,299,34.2z"
           />
           <path
             id="path35"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M315,35c0.3-0.4,0.9-0.7,1.4-0.9l-0.6,0c0.2-0.2,0.5-0.4,0.8-0.5l0.3,0.1l-0.1,0.4l0.3,0.3
 			l-0.2,0.1C316.2,34.4,315.4,34.7,315,35z"
           />
           <path
             id="path37"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M307.3,41l-0.2-0.1l-1,0.3l-0.6-0.2l-0.1-0.2l-0.4,0l-0.3-0.3l0.1-0.4l0.3,0l0.4-0.3l-0.1-0.4
 			l0.2-0.6l0.6-0.3l0-0.4l0.2,0.2l0-0.1l0.2,0l0.1,0.2l0.7-0.1l0.2-0.3l0-0.5l0.4-0.2l0.5,0.4c0.6,0,1.1-0.1,1.6-0.3l0.3,0.1
 			c-0.6,0.3-1.2,0.7-1.5,1.3l0,0.4l-0.3,0.1l-0.2,0.5l-0.3,0.1l-0.4,0.6l-0.4,0L307.3,41z"
           />
           <polygon
             id="polygon39"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="304.5,39.5 304.5,38.5 304.6,38.5 305,38.1 305.2,38.1 304.9,39.4 		"
           />
           <polygon
             id="polygon41"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="276.5,42.1 276.2,41.6 276.5,41.6 276.4,41.2 276.1,41.2 275.8,41.8 275.2,40.9 
 			275,40.9 274.8,40.2 275.1,40.1 275,39.8 275.2,39.8 275.4,39.9 275.7,39.9 275.8,40.3 276.4,40 276.3,40.4 276.6,40.5 
 			276.8,40.1 276.8,40.8 277,40.9 277.1,40.5 277.4,40.5 277.5,40.4 277.1,40.3 277.2,40 277.9,40.1 277.9,40.8 277.6,40.9 
@@ -1121,123 +1121,123 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path43"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M289.1,41.3l0.6-0.4c0.1-0.2,0-0.5-0.2-0.6l0.3-0.1l0.2,0.1l0.3,0.5l-0.2,0.1l-0.1,0.5l-0.3,0.3
 			L289.1,41.3z"
           />
           <path
             id="path45"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M286.1,40.2l-0.2,0.3l0.1,0.5l0.1-0.3l0.3-0.1l0.6,0.6l0.3-0.3l0.1,0.3l-0.2,0l-0.5,0.6l-0.3-0.1
 			l0,0.4l-0.4,0l0.1-0.1l-0.3-0.2l0.1-0.1l0.2,0.1l-0.1-0.1l0.3-0.2c-0.2-0.2-0.6-0.2-0.8-0.2c0-0.3,0.2-0.8,0.3-1L286.1,40.2z"
           />
           <polygon
             id="polygon47"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="280.3,50.6 280.6,50.3 280.6,50.1 281,50.1 281.3,49.8 282.1,50.2 282,50.9 
 			281.2,50.9 281.2,51.1 		"
           />
           <path
             id="path49"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M302.7,52.2l-0.1-0.7l0.3-0.3l0.4,0.8C303.1,52.1,302.8,52.2,302.7,52.2z"
           />
           <path
             id="path51"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M300.1,51.8l0.2-0.1l0.3,0.2l0.3-0.1l0.4,0.3l0.2-0.3l0.4,0.5l0.3-0.1l0.4,0.4l0.3-0.2l0.4,0.2
 			l-0.3,0.7l0.1,0.3c0.1,0.1,0.3,0.1,0.4,0.1c0.2-0.2,0.5-0.6,0.6-0.8l0.1,0.2c-0.4,0.6,0,1.5-0.3,2.1c-0.8,0.4-0.8,1.2-0.7,2
 			l-0.8,0.3c-0.4-0.1-1.3-0.6-1.5-1l0.5-2.2c-0.5-1-0.2-0.8-1.2-1.5l-0.2,0L300.1,51.8z"
           />
           <path
             id="path53"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M261.1,56.8l-0.3,0.1l-0.1-0.4l-0.7,0l-0.5-0.8l-1-0.3c0.1-0.1,0.6-1,0.6-1
 			c0.2-0.2,1.1-0.7,1.4-0.7l0.6,0.3l0.1-0.2l0.2,0l-0.1,0.3l0.6,1l-0.4,0.5l0.1,0.2L261.1,56.8z"
           />
           <path
             id="path55"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M304.2,54.1l0.2,0l0.2-0.3l0.2,0.3l1-0.1l0.1,0.3l0.2,0.1c0.1,0.3-0.1,0.9-0.3,1.1l-0.6,0
 			c-0.2-0.2-0.4-0.7-0.4-1l-0.4,0L304.2,54.1z"
           />
           <polygon
             id="polygon57"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="291,54.1 291.2,54.3 291.1,54.8 291.4,55.1 291.3,55.1 290.8,55.1 290.6,54.8 		"
           />
           <path
             id="path59"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M294.4,55.6l0.2,0.2l-0.4,0.8l0.1,0.7c-0.2,0.2-0.7,0.5-1,0.5l-0.1-0.1l0.5-0.9l-0.2-0.2l0.1-0.5
 			L294.4,55.6z"
           />
           <polygon
             id="polygon61"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="292,56.3 292,56.5 291.1,56.4 290.9,56 		"
           />
           <polygon
             id="polygon63"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="290.2,57 290.3,56.5 290,56.3 290.4,56.3 290.8,56.6 		"
           />
           <path
             id="path65"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M292.1,59.3l-0.2,0.9l0.1,0.2l-0.3,0.1l0.1,0.4l-0.3,0.2c0-0.3-0.3-0.9-0.5-1.1l0.2-0.3l-0.3-0.2
 			l0.2-0.3l0.3,0.2l0.3-0.2l-0.1-0.3l0.7-0.7l-0.1-0.3l-0.4,0.1l-0.3-0.6l0.3,0.2l0.1-0.3l0.6,0.2l0.3-0.8l0.4,0.1l-0.3,0.3l0.1,0.4
 			l-0.3,0.5l0.1,0.2l-0.5,0.8l0.1,0.1l0.9-0.9l0.3,0.2c-0.2,0.5-0.8,2-1.3,2.4L292.1,59.3z"
           />
           <polygon
             id="polygon67"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="292,61.9 291.8,61.6 292,61.2 292.2,61.3 292.5,60.7 292.7,60.9 		"
           />
           <path
             id="path69"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M290.3,62.1c0.3-0.3,0.7-0.8,0.8-1.2l0.2,0.1l0,0.6L290.3,62.1z"
           />
           <path
             id="path71"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M291.6,63.2l-0.4,0.4l-0.2-0.1l0-0.2l-0.2,0l-0.1-0.4C290.9,63.1,291.3,63.3,291.6,63.2z"
           />
           <path
             id="path73"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M298.1,64.9l0.2-0.2l0.2,0l0.3,0.3C298.6,65.1,298.3,65,298.1,64.9z"
           />
           <path
             id="path75"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M298.8,65.1L298.8,65.1l0.5,0.1l-0.1,0.2l0.3,0.1c-0.1,0.2-0.9,0.3-1.1,0.2
 			c-0.1-0.2,0-0.4,0.1-0.6L298.8,65.1L298.8,65.1z"
           />
           <polygon
             id="polygon77"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="278.1,100.9 277.9,100.1 278.5,99.6 278.3,99.3 278.7,98.9 278.6,98.5 278.9,98.1 
 			279,97.7 280.1,97.9 279.8,98.6 280.4,98.8 280.3,99.1 280,99.1 279.9,99.3 280.1,99.4 279.8,99.9 279.3,99.7 279,100.4 		"
           />
           <path
             id="path79"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M250.5,84.9l0.3-0.2l0.5,0.3c0.1,0.3,0.1,0.9-0.1,1.2l-0.5,0.2l0.1,0.4l-0.3,0.2
 			c0.4,0.5,0.6,1.5,0.2,2.1l-0.3,0l-0.1-0.2l-0.2,0l-0.4,0.5l-0.2-0.4l0.1-0.8l-0.2-0.4c-0.1-0.3,0.4-1,0.6-1.2l-0.1-0.2
 			C250.3,85.9,250.5,85.4,250.5,84.9z"
           />
           <path
             id="path81"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M271.4,86.9l0,0.5L271,87l-0.6,0.5l-0.2-0.1l-0.1-0.4l-0.4-0.3l-0.4,0.2l-0.2-0.1l0-0.2
 			c0.2-0.5,0.5-1.1,0.8-1.5l-0.2-0.2l0.1-0.3l0.3,0.1l0.6-0.4l0,0.3l0.3,0.1l0.9-0.5l0.2,0l0.4,0.6l-0.1,0.1l-0.3-0.2l-1,0.2
 			l-0.3,0.9C270.8,86.3,271.1,86.7,271.4,86.9z"
           />
           <path
             id="path83"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M244.8,92.6l-0.1-0.2l0.2-0.4l-0.2-0.6c0.1-0.2,0.1-0.5,0.1-0.6l-0.5-0.4l0-0.2
 			c-0.1-0.1-0.4-0.1-0.6-0.1l-0.2-0.3l-0.5-0.1c-0.1-0.2-0.4-0.7-0.4-1l0.2,0c0.3,0.3,0.9,0.5,1.3,0.6c0.2,0,0.6-0.2,0.7-0.4
 			l0.6,0.1l0.5-0.4l0.4,0l0.2-0.2c-0.1-0.4,0-1,0.2-1.3c0.3,0,0.6-0.2,0.8-0.4l0.2,0l0.1,0.4l0.3,0.2l-0.2,0.2l-0.3,0l-0.2,0.3
@@ -1250,24 +1250,24 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path85"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M256.9,94.8c0.1,0.3,0.5,0.9,0.8,1.1l0,0.2l-0.3,0.1c-0.2,0-0.8-0.2-0.9-0.4
 			C256.4,95.4,256.5,95,256.9,94.8z"
           />
           <polygon
             id="polygon87"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="264.1,95.7 264.1,96.7 263.9,96.9 263.5,96.4 263.6,95.7 263.8,95.6 		"
           />
           <polygon
             id="polygon89"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="253.2,98 252.7,97.3 252.9,97.2 252.9,96.4 253,96.3 253.2,96.5 253.6,97.5 253.3,98 
 					"
           />
           <path
             id="path91"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M264.4,95.6l-0.5-0.5l-0.3,0.3l-0.4,0l-0.6,0.9l-0.2-0.2l0.2-0.2l0-0.2l-0.6-0.2l-0.6,0.1
 			c-0.3,0.2-0.5,1-0.6,1.3l-0.3,0.1l-0.2,0.3l0,0.2l-0.5,0.1c-0.3,0.3-0.3,1-0.3,1.4l-0.2-0.2l-0.1-0.7l-0.3,0
 			c-0.1,0.3-0.1,0.9,0.1,1.2l-0.2,0.1l-0.2-0.1l0-0.5l-0.2-0.2c0-0.3,0-1.8,0.3-2l0.5,0.3l0.1-0.1l0-0.4l0.2,0.1l0.4-0.4l0.2-0.8
@@ -1282,13 +1282,13 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon93"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="263.5,101.6 263.7,102.2 263.3,102.3 263,102 262.8,102.2 262.6,102 263.1,101.8 
 			263.2,101.6 263.3,101.5 		"
           />
           <path
             id="path95"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M256.8,102.3l-0.4,0.2l-0.2-0.2l-0.5,0.2l-0.2-0.2l-0.8,0.5l-0.1-0.1l0.1-0.4
 			c-0.5-0.5-0.1-1.2-0.3-1.5c-0.3,0-0.7-0.4-0.8-0.6l-0.2,0.1c-0.3-0.5-0.3-1.3,0.1-1.7l0.1,0.5l0.8,0.4c0.2-0.1,0.8-0.3,0.9-0.6
 			l-0.1-0.3l0.2-0.3l-0.1-0.5c-0.2,0-0.4-0.4-0.5-0.5l0.3-0.7l-0.3-0.7c0-0.4,0.7-0.8,1-0.8l0.3-0.3l0.2,0l0.1,0.2
@@ -1297,13 +1297,13 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon97"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="260.1,103.1 260,103.4 260,103.6 259.5,103.5 259.3,103.2 259.4,103.1 259.7,103.2 		
 			"
           />
           <path
             id="path99"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M246.7,101.1c0.2,0.4,0.7,1.4,0.5,1.9c-0.1,0.1-1.2,0.6-1.2,0.6c-0.4,0-1.3,0.1-1.7,0l-0.3,0.2
 			c-0.8-0.3-2.4-1.3-2.6-2.2l-0.4-0.1l-0.2-0.3l0.1-0.1c0-0.2-0.1-0.5-0.3-0.6l0.1-0.2l0.4-0.2c0.2-0.7,0.8-1.2,1.4-1.7
 			c0.1,0.2,0.5,0.5,0.8,0.5l0.2-0.3l0.1,0.1l0.2,1.1c0.6,0.5,1.5,0.4,2.3,0.2l0.5-0.6l0.8,0l0,0.3l0.5,0.2l0.1,0.1l-0.3,0.4
@@ -1311,41 +1311,41 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path101"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M249.3,103.7l-0.2,0l-0.7-1.1l0.1-0.1l-0.2-0.1c-0.1-0.3-0.2-1.3-0.1-1.6l0.2-0.1l0.1-0.2l0.2,0
 			l0.8,0.5C249.8,101.5,249.1,102.9,249.3,103.7z"
           />
           <polygon
             id="polygon103"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="124.3,104.5 124.3,104.2 124.5,104.2 124.5,104 124.9,103.9 124.7,103.5 125,103.5 
 			125.1,103.7 125.1,103.9 125.4,104.3 		"
           />
           <path
             id="path105"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M247.7,103.7l0.3,0.5c-0.1,0.1-0.4,0.4-0.6,0.4l-0.1,0.2c-0.4-0.2-0.9,0-1.3-0.2l-0.5,0.2
 			l-0.4-0.1l0.1-0.1l0.2,0l1.9-1L247.7,103.7z"
           />
           <polygon
             id="polygon107"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="110.9,106 110.5,106.3 110.3,106.2 110.4,105.9 110.6,105.7 		"
           />
           <polygon
             id="polygon109"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="185.5,107 185.3,107.3 184.9,107.3 184.9,107 185,106.9 185.4,106.9 		"
           />
           <polygon
             id="polygon111"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="247.5,106.7 247.6,107 248,107.2 248.1,107.3 247.9,107.6 247.4,107.2 247.4,107.5 
 			247,107.7 246.7,107.2 246.2,107.1 246.1,106.7 246.2,106.5 247.3,106.4 		"
           />
           <path
             id="path113"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M263.3,107.2l-0.3,0.2l-0.1-0.1L263.3,107.2l-0.5-0.2l-0.1,0.4l0.2,0.1l-0.3,0.3l-0.1-0.1
 			l-0.1-0.3l0.2-0.2l0-1.2l-0.2-0.3l-0.6-0.1c-0.1-0.2-0.3-0.5-0.5-0.6c-0.3,0-0.7,0.3-0.9,0.5l0,0.3l0.4,0.3l0.1,0.5l-0.3,0.4
 			l0.1,0.5l-0.9-0.2l-0.5,0.2l-0.3-0.3l0-0.4l0.4-0.3l0-0.3l0.4-0.3l0-0.6c0.1-0.2,0.3-0.3,0.5-0.4l0.2,0.1l0.2-0.1l0.7,0.1l0.3-0.1
@@ -1357,13 +1357,13 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path115"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M264,110.4l0.4,0.1l0,0.2c-0.2,0.1-0.4,0.3-0.5,0.5l-0.1-0.1l0.1-0.2l-0.1-0.5l0.1-0.2
 			C263.9,110.2,264,110.3,264,110.4z"
           />
           <path
             id="path117"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M254.3,107.9c-0.3,0.1-0.6,0.5-0.8,0.7l0.1,0.3l-0.4,0.6l0.4,0.1c0.2,0.3,0.4,0.8,0.4,1.2
 			c-0.1,0.2-0.6,0.4-0.8,0.5l-0.2,0.2l-0.2-0.1l0-0.4l-0.5,0c-0.6-0.6-1.2-0.7-2-0.4l-0.3-0.4l-0.2,0.1l-0.1,0.3l-0.2,0.1l-0.3-0.1
 			l-0.2,0.1l-0.2,0l-0.1-0.3c0.2-0.2,0.6-1,0.5-1.4l0.4-0.3l-0.1-0.5c0.3-0.1,0.6-0.5,0.7-0.8c0.2,0.8,0.5,0.9,1.3,1.1l0,0.2
@@ -1372,7 +1372,7 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path119"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M237.4,101.7l0.6,0.7c1.4,0.2,2.5,1.5,3.9,1.9l0.2-0.1l0-0.3l0.2,0l0.5,0.2l0,0.6l0.5,0.3l0.2,0
 			l0.3,0.3l0,0.3l-0.1,0.2l-0.7,0.1l0.1,0.3l0.3-0.2c0.4,0.5,0.8,0.8,1.3,1.2l0.4,0c0.3,0.3,0.5,0.9,0.5,1.3l-0.2,0.3l0.2,0.2
 			l-0.5,0.4l-0.1,0.5l0.2,0.2l-0.1,0.1l-0.5-0.1l-0.5-0.6c-0.4-0.3-0.9,0.1-1.2-0.1l0,0.2l0.5,0.7l-0.4,0.5l-0.1,0.6l-0.2,0
@@ -1399,54 +1399,54 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path121"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M233.4,117.6l0.1,0.3l0.3,0l0-0.2l0.1-0.1l0.1,0.1l0.2,0.3l0,0.5l-0.6,0.3
 			c-0.3,0-1.1-0.2-1.2-0.5c0-0.2,0-0.7-0.2-0.8l0.3-0.1C232.9,117.4,233.2,117.5,233.4,117.6z"
           />
           <path
             id="path123"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M259.3,120.8l0-0.2l-0.2-0.2l0.2-0.2l0.6,0c-0.1,0.2-0.4,0.5-0.6,0.6L259.3,120.8z"
           />
           <path
             id="path125"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M250.8,121c-0.1,0.2-0.4,0.5-0.6,0.5l-0.2,0l0.2-0.4L250.8,121z"
           />
           <polygon
             id="polygon127"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="238.4,121.4 239,121.8 239.1,122.1 238.6,122.3 238.5,122.2 238.3,121.7 		"
           />
           <path
             id="path129"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M247.4,123.2L247.4,123.2l-0.3,0.4l0,0.2l-0.2,0l-0.3,0.2l-0.3-0.4
 			C246.6,123.5,247.1,123.2,247.4,123.2z"
           />
           <path
             id="path131"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M250.2,124.5l-0.5-0.2c-0.6,0.3-1.9,0.2-2.4-0.4l0.1-0.2l1.1-0.6c0.2,0,0.6,0.4,0.7,0.5l0.2-0.1
 			l0-0.9c0.4-0.3,0.7-0.5,1.2-0.6l0.2,0.1l-0.3,0.3l0.1,0.3l-0.1,0.3l0.1,0.5l0.3,0.2l0.5-0.2l0.3,0.1l-0.6,0.6
 			C250.8,124.4,250.5,124.4,250.2,124.5z"
           />
           <path
             id="path133"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M239.4,124.3c0.1,0.2-0.1,0.6-0.2,0.7l-0.4,0.1l-0.4-0.1c0-0.3-0.2-0.8-0.4-1l0.2-0.2l0-0.2
 			l0.3-0.2l0.2,0.2l-0.1,0.3C238.9,124.1,239.2,124.3,239.4,124.3z"
           />
           <path
             id="path135"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M240.4,124.5c0.5-0.1,1.1-0.1,1.6-0.3c0.2-0.1,0.5-0.4,0.8-0.3l0.2,0.2l-0.1,0.1
 			c-0.4,0-0.9,0.1-1.2,0.4l-0.1,0.2l-0.2,0l-0.2-0.2l-0.2,0.1l0,0.3l0.4,0.2c0.2,0,0.7-0.1,0.9-0.3l0.1,0.4l-0.2,0.2l0,0.2l0.2,0.4
 			l0,0.2l-0.2,0.1l-0.5-0.4l-0.3,0l0,0.3l-0.9,0.1l-0.6-0.3l-0.3-0.7l0.1-0.3l0.7-0.3L240.4,124.5z"
           />
           <path
             id="path137"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M235.9,128.7l0,0.2l0.4,0.2l0,0.2l-0.4,0.2l-0.3-0.1c-0.1-0.2-0.4-0.6-0.7-0.6
 			c-0.1,0.1-0.5,0.2-0.7,0.1l-0.2,0.1l-0.3-0.1l-0.5,0.3c-0.1-0.6-1.1-1.3-1.6-1.7l0.2-0.1c0-0.2,0-0.6,0-0.8l-0.3-0.1v-0.2l0.2-0.2
 			c-0.5-0.4-1.9-1.6-2-2.2c-0.1-0.4,0.1-0.7-0.1-1.1l0.2-0.3l-0.5-0.3c-0.5,0.2-1.5,0-2-0.2l0.2-1l0.4-0.3c-0.3-0.6,0.5-2,1-2.4
@@ -1458,20 +1458,20 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path139"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M235.9,128.7c0.3-0.3,0.5-0.4,0.6-0.5c0.1-0.1,0.2-0.3,0.3-0.6l0.2-0.1l0.4,0.2l0.9-0.3l0.4,0.2
 			l0.2-0.2l0.1-0.2c0.2-0.1,0.5-0.1,0.7,0l0.2,0.4c0,0.3-0.4,0.7-0.6,0.9l0.2,0.1l0.4-0.3l0.3,0.1c-0.3,0.3-1.4,0.7-1.7,0.5
 			c-0.5,0.5-1.3,0.3-1.7-0.1L235.9,128.7z"
           />
           <path
             id="path141"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M243.6,131.1L243.6,131.1c0.1,0.3,0,0.7-0.1,0.9l-0.3,0.2l-0.4,0l-0.1-0.1l0.3-0.1l0.1-0.4
 			l0.2-0.1l0-0.2L243.6,131.1z"
           />
           <path
             id="path143"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M250.5,126.4l-0.1-0.2c-0.2,0.1-0.6,0.4-0.7,0.6l0,0.3l-0.2,0.3c-0.2,0-0.5,0.4-0.6,0.5l0,0.2
 			l0.4,0.4l-0.3,0.9l-0.5,0.3l-0.1,0.2c0.2,0.4,0.8,0.8,1.2,0.9l0.1,0.2l-0.1,0.1l-0.1,0.6l-0.3,0.2l0.2,0.2l-0.2,0.1l0,0.2
 			c-0.9,0-0.8,0-1.6,0.2l-0.2-0.2l0.1-0.4l-0.2-0.2l-0.3,0l-0.1-0.4l-0.2-0.1l-0.4-0.5l0-0.3l0.1-0.1l0.4,0l0-0.5l0.1-0.2
@@ -1482,259 +1482,259 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path145"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M240.9,135.3l0,0.3l0.5,0.6c-0.2,0.1-0.3,0.7-0.3,0.8l-0.4,0.1l-0.3-0.1l-0.4,0.3h-0.3l0-0.2
 			l0.3-0.1l0.2-0.4l-0.2-0.2l0.4-0.1l-0.1-0.2l0.1-0.2l0.2-0.2l0-0.4l0.2-0.1L240.9,135.3z"
           />
           <path
             id="path147"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M187.7,145.5l0.1-0.6l0.4,0.1l0.2-0.1l0.1,0.3l0.2,0.1l-0.1,0.1l-0.3,0l0,0.3
 			c-0.2,0.1-0.7,0.1-0.8-0.1L187.7,145.5z"
           />
           <path
             id="path149"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M152.8,157.8l0.1,0.2l-0.1,0.4c-0.3,0-0.7,0.1-1,0.2c-0.2,0-0.5-0.2-0.6-0.4l0-0.3l0.5-0.4
 			l0.2,0.1l0.4-0.2C152.4,157.5,152.7,157.7,152.8,157.8z"
           />
           <polygon
             id="polygon151"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="49.5,165.2 49.4,165.3 49,165.3 48.7,165 48.7,164.8 49.1,164.8 49.2,165 		"
           />
           <path
             id="path153"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M80,166.6l0.1,0.1l-0.1,0.2l-0.8,0l-0.3-0.5l0.1-0.1C79.4,166.3,79.6,166.6,80,166.6z"
           />
           <path
             id="path155"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M149.4,167.5l-0.2-0.1l-0.2,0.2c-0.2,0-0.6-0.1-0.8-0.2l0.1-0.1l-0.1-0.2l-0.3,0l0-0.2
 			c0.2,0,0.6-0.3,0.7-0.5l0.2,0.1l0,0.3l0.5,0.2l0.1-0.1l0.1,0l-0.1,0.3l0.1,0.2L149.4,167.5z"
           />
           <polygon
             id="polygon157"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="76.9,168.7 77,169.2 76.9,169.4 76.8,169.3 76.3,168.8 76.3,168.6 76.6,168.6 
 			76.7,168.5 		"
           />
           <polygon
             id="polygon159"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="77.9,169.2 77.9,169.7 77.7,169.5 77.5,169.6 77.4,169.3 		"
           />
           <path
             id="path161"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M78.9,170.5l0.4,0.2l-0.1,0.3l-0.4,0.1l-0.2-0.8l0.1-0.2C78.7,170.2,78.8,170.4,78.9,170.5z"
           />
           <path
             id="path163"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M69.1,179.9l0.1,0.7l-0.3,0.1l-0.4-0.1l0-0.2l0.2-0.1l0-0.2l-0.4-0.2l0.1-0.2l0.2-0.1
 			C68.7,179.7,68.9,179.8,69.1,179.9z"
           />
           <path
             id="path165"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M141.3,182.4l0.5,0.1l-0.3,0.7l-0.7-0.1l-0.2-0.3c0-0.2,0.3-0.5,0.4-0.6
 			C141.2,182.3,141.3,182.4,141.3,182.4z"
           />
           <polygon
             id="polygon167"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="141.8,185.3 141.4,185.2 141.3,185.5 140.8,185.7 140.7,185.6 140.7,185.3 
 			140.4,185 140.8,184.8 141.1,185.2 141.2,185.2 141.5,184.7 141.6,184.7 141.6,184.9 		"
           />
           <path
             id="path169"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M67.9,185.2l-0.1,0.1l-0.2-0.1l-0.1-0.5l-0.2-0.1l-0.2-0.8l0.9-0.5l0.1,0.1l0.4-0.2l0.2,0
 			l0.1,0.3c0.2,0,0.6,0.1,0.8,0.3l0.4,1.3l-0.1,0.3l-0.3,0.2l-0.4-0.1C68.8,185.2,68.5,185.2,67.9,185.2z"
           />
           <polygon
             id="polygon171"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="142.5,184.1 143,184.6 142.9,184.8 142.8,185.2 143,185.4 143.6,185.3 143.7,185.6 
 			143,185.9 142.4,185.9 142.2,185.6 142,185.5 142,184.8 142.2,184.7 142.3,184.6 142.3,184.3 		"
           />
           <polygon
             id="polygon173"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="98.9,185.6 99.2,186.2 99,186.3 98.6,186.1 98.5,186.2 97.9,186.2 97.7,185.9 
 			98,185.6 98.4,185.7 98.7,185.5 		"
           />
           <polygon
             id="polygon175"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="86,185.5 86.4,186.5 86,187 85.8,187 85.2,185.9 85.3,185.5 85.7,185.4 		"
           />
           <polygon
             id="polygon177"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="145.4,186.7 145.4,187.2 145.2,187.5 144.9,187.4 145.1,186.9 145,186.2 
 			145.2,186.2 145.2,186.6 		"
           />
           <path
             id="path179"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M141.4,188.4l-0.2,0.5l-0.2,0l-0.2-0.2l-0.3,0.1l-0.1,0.2l-0.2,0.1l-0.1,0l0.5-0.5
 			C140.9,188.5,141.3,188.5,141.4,188.4z"
           />
           <polygon
             id="polygon181"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="138.3,188.4 138.3,188.8 138.8,188.9 138.7,189.2 137.9,189.4 137.9,189.2 
 			137.6,188.9 138,188.8 		"
           />
           <path
             id="path183"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M151.1,189.8l0.1,0.2l-0.3,0.4l0.2,0.2l-0.5,0.1c-0.2-0.2-0.6-0.6-0.6-0.9L151.1,189.8z"
           />
           <path
             id="path185"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M102.5,192.8c0,0.2,0.3,0.5,0.5,0.6l-0.1,0.1l-0.6-0.3l0.1-0.4L102.5,192.8z"
           />
           <path
             id="path187"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M100.5,193.1L100.5,193.1c0.3-0.1,1-0.2,1.2-0.1l-0.3,0.1l0,0.2l0.4,0.3l0.1,0.4l-0.2,0.3
 			l-0.1,0l-0.4-0.9C101,193.4,100.8,193.3,100.5,193.1z"
           />
           <path
             id="path189"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M140.1,193.7c0.1,0.2,0.3,0.9,0.2,1.1l-0.4,0.1c-0.2-0.3-0.4-0.9-0.4-1.3l0.4-0.2L140.1,193.7z"
           />
           <polygon
             id="polygon191"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="10.1,195.1 10.3,195.8 10.1,196 9.7,195.7 9.9,195.2 10,195.1 		"
           />
           <path
             id="path193"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M88.1,196.8l0.1-0.3l-0.1-0.3l-0.3,0l0,0.3l-0.2,0.1l-0.4-0.2l0-0.1l0.3-0.1l0.1-0.2l-0.5-0.7
 			l0.1-0.2l-0.2-0.2l0.1-0.1c0.5,0.2,1.7,0.3,1.9,0.6l0,0.2l0.3,0.3l0.1,0.4l-0.7,0.5L88.1,196.8z"
           />
           <path
             id="path195"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M4.1,198.1l0.1,0.5l-0.1,0.2l-0.6,0.2l-0.1-0.1l0.1-0.2l-0.2-0.2l0-0.1
 			C3.6,198.4,4,198.3,4.1,198.1z"
           />
           <path
             id="path197"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M132.5,197l0.3,0.3l0,0.3c0.3,0,1.5,0.8,1.5,1.1l-0.3,0.4l-0.1-0.1l-0.5-0.1l-0.8-0.7l0-0.3
 			l-0.2-0.1L132.5,197z"
           />
           <path
             id="path199"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M6.4,200.8c-0.5-0.5-1.1-0.4-1.6-0.9c-0.1-0.2-0.2-0.6-0.1-0.8l-0.2-0.2l0-0.2l0.2-0.1l0.7,0.6
 			l0-0.4l0.2-0.1l0.5,0.2l0.5-0.1l0.2,0.1l0,0.4l0.5,0.4l0.1,0.2l-0.1,0.2L7,200l-0.4-0.1l-0.1,0.1l-0.1,0.7L6.4,200.8z"
           />
           <path
             id="path201"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M63.5,201.8l0.4,0.1l0.2-0.3c0.3,0,0.6,0,0.9,0.1c0.1,0.2,0.3,0.5,0.6,0.6l0.1,0.3l-0.3,0.2
 			l-0.1,0.3c-0.2,0-0.7,0.4-1.2,0.5l-1.2-0.8l-0.1-0.3l0.1-0.2l0.2,0l0-0.3L63.5,201.8z"
           />
           <path
             id="path203"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M70.4,204.2c0.2,0.6,0.9,0.7,1,1.1l-0.3,0.1l-0.2-0.2l-0.2,0.1c-0.2-0.1-0.5-0.3-0.6-0.4l0-0.5
 			L70.4,204.2z"
           />
           <polygon
             id="polygon205"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="126,205.3 125.9,205.5 125.6,205.9 125.2,205.9 125,205.6 124.7,205.7 124.6,205.4 
 			124.8,205.3 125,205.5 125.1,205.4 125.9,205.2 		"
           />
           <path
             id="path207"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M68,205.7l-0.4,0.4l0,0.4l-0.2,0.1l-0.3-0.3l-0.2,0.1l-0.1,0.3l0.2,0.2l-0.1,0.1l-0.4,0l0,0.5
 			l-0.1,0.1l-0.3-0.1c-0.3,0.1-1.5,0.2-1.7-0.1l0.4-0.3l0.8-1.7c0.4-0.3,1-0.4,1.4-0.5C67.3,204.9,68,205.5,68,205.7z"
           />
           <path
             id="path209"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M62.1,207.2l0.3,0.5l-0.2,0.1l-0.8-0.2l0.1-0.5l-0.3-0.4l0.5-0.3c0.2,0.1,0.5,0.2,0.6,0.3l0,0.2
 			L62.1,207.2z"
           />
           <path
             id="path211"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M61.9,210.2c0.1,0.1,0.3,0.5,0.3,0.6l-0.1,0.2l-0.2-0.3l-1-0.1l0.2-0.2l0.4,0L61.9,210.2z"
           />
           <polygon
             id="polygon213"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="58,210.1 58,210.3 57.6,210.5 57.3,211.1 57.1,210.7 56.8,210.7 56.6,211 
 			55.9,210.9 55.7,211.1 55.4,210.6 56.1,210.7 56.5,210.5 56.4,210.3 57,210.3 57.4,209.9 57.6,210.1 		"
           />
           <polygon
             id="polygon215"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="72.2,210.7 72.2,211.3 72,211.4 71.7,211.2 71.6,210.8 71.8,210.7 71.8,210.5 
 			72,210.5 		"
           />
           <polygon
             id="polygon217"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="66.8,213 66.5,212.9 66.5,212.7 66.4,212.6 66.2,212.4 66.4,212.3 66.7,212.5 
 			66.8,212.8 		"
           />
           <polygon
             id="polygon219"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="68.8,213.7 69,213.8 69,214.5 68.6,214.3 68.7,214.1 68.7,213.8 		"
           />
           <polygon
             id="polygon221"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="94.2,215.5 93.9,215.5 93.7,215.3 93.4,215.3 93.4,215.1 94,215.3 		"
           />
           <path
             id="path223"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M55.8,217.4l0.3,0.7c0.2,0,0.6,0.4,0.8,0.5l-0.3,0.2l-0.3,0c-0.5-0.3-0.9-0.7-0.9-1.3l0.2-0.2
 			L55.8,217.4z"
           />
           <polygon
             id="polygon225"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="45.3,221.1 45.1,221 45,220.7 45.1,220.5 45.4,220.6 46,220.3 46,220 46.4,219.9 
 			46.5,220.3 47,220.5 47.1,220.8 47,220.9 46.9,220.9 46.8,220.7 46.4,220.5 45.5,220.8 		"
           />
           <path
             id="path227"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M117.9,221.3c-0.2,0-0.5-0.2-0.6-0.3l0.3-0.2l-0.4-0.2l0-0.3l0.5-0.4l0.1-0.3l-0.3,0l0,0.3
 			l-0.3-0.1l0.1-0.5l0.1-0.1l0.1,0.2l0.3-0.2l0.1,0l0.2-0.4l-0.3-0.1l-0.2-0.7l0.2-0.1l-0.2-0.5l0.3-0.3l0.2-0.1l0.4,0.3l0.1-0.4
 			l-0.3-0.2l0-0.1l0.6,0.3c0.3,0.5-0.1,1.8-0.3,2.2l0.1,0.2c-0.2,0.2-0.3,0.5-0.2,0.7l-0.2,0.2l0.1,0.4l-0.2,0.6L117.9,221.3z"
           />
           <path
             id="path229"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M89.1,220.6l0.1,0.5l0.3,0.2l0,0.2l-0.4,0c-0.1-0.2-0.1-0.3-0.2-0.5L89.1,220.6z"
           />
           <path
             id="path231"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M48.3,219.8c0.1,0.2,0.2,0.7,0.1,0.9l-0.4,0.2l-0.1,0.1l0.2,0.1l-0.4,0.4l-0.2-0.1l-0.1-0.4
 			l0.2-0.2l0-0.3l0.5-0.1L48.3,219.8z"
           />
           <path
             id="path233"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M60.3,221.5l-0.1-0.3l0.1-0.2l0.3-0.2l0-0.2l-0.3-0.2l0-0.4l-0.4,0l-0.9-1l0.4-0.2l0.3,0.2
 			l0.2-0.2l0.6,0.1l0.2-0.1l-0.1-0.2c-0.8,0.3-1,0.2-1.8,0.2l-0.9-0.6l-0.3,0l-0.1-0.2c-0.3,0-0.9-0.5-0.9-0.8l0.2-0.4l-0.1-0.1
 			l-0.2,0.3l-0.8-0.5l-0.2,0l0,0.2l0.4,0.2l0,0.2l-0.6,0.5l-0.4,0.1l-0.4,0.3c-0.2-0.2-0.6-0.3-0.9-0.3l-0.2-0.5l-0.3-0.2l-0.1-0.2
@@ -1765,54 +1765,54 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path235"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M117.2,221.6l-0.1,0.2l-0.2,0c-0.2-0.1-0.4-0.3-0.5-0.5l-0.2,0l0.4-0.1l0.4,0.2L117.2,221.6z"
           />
           <path
             id="path237"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M57.6,219.6l0.2-0.6l0.4-0.2l0.2,0l0.1,0.3l-0.2,0.2l0.1,0.1l0.2,0l0.2,0.1l0.2-0.1
 			c0.2,0.2,0.4,0.5,0.4,0.8l-0.2,0l-0.4,0.4l0.5,0.6l0,0.3c-0.1,0.1-0.4,0.4-0.3,0.6l0.2,0.3l-0.2,0.2l-0.5-0.4
 			c-0.1-1.5-0.7-2-1.6-3.2l0-0.3l0.2,0l0.1,0.5C57.3,219.4,57.4,219.5,57.6,219.6z"
           />
           <path
             id="path239"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M67.3,222.6l-0.1-0.2l0.3-0.2l0.5,0l0.1,0.1l-0.4,0.3C67.6,222.7,67.4,222.6,67.3,222.6z"
           />
           <path
             id="path241"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M116,222.7l0.1,0.4l-0.3,0.9c-0.3-0.2-0.4-0.7-0.3-1.1l0.2-0.1l0.1-0.2L116,222.7z"
           />
           <path
             id="path243"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M63.8,222.5l0.4-0.1l0.5,0.1c0-0.2,0.1-0.4,0.2-0.5l0.2,0.1c-0.1,0.4-0.2,0.8-0.1,1.2l0.5,0.2
 			l0.1,0.2l-0.1,0.2l0.2,0.2l-0.1,0.1l-0.1-0.1l-0.2,0.1l-0.7-0.4l-0.1-0.3l-0.3-0.1l-0.1,0.3l-0.3,0.1c-0.3-0.1-0.6-0.5-0.7-0.8
 			l-0.3-0.1l-0.4-0.5l0.1-0.1l0.5-0.1L63.8,222.5z"
           />
           <polygon
             id="polygon245"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="62.4,223.8 62.5,223.7 62.9,223.9 63.2,223.8 63.2,224.3 62.9,224.5 62.7,224.4 
 			62.7,224 		"
           />
           <path
             id="path247"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M67.3,222.7l-0.4,0.6l0.5,0.1l0,0.2l-0.3,0.1l-0.2,0l0.1,0.5l-0.2,0.1l-0.1,0.2l-0.2,0L66,224
 			l0.2-0.1l-0.1-0.3l-0.3-0.3l-0.3,0l0-0.2l-0.1-0.1l0.1-0.3l-0.1-0.1l0.2-0.1l0.8,0.4l0.1-0.1l-0.7-0.4l0-0.1
 			c0.3-0.1,0.9-0.2,1.2-0.1l-0.1,0.3L67.3,222.7z"
           />
           <polygon
             id="polygon249"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="64.3,225.5 64.4,225.4 64.7,225.5 64.8,225.7 64.6,225.7 64.3,225.5 		"
           />
           <path
             id="path251"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M59.3,222.9l0.1,0.6l0.4-0.1l0.2,0.1l-0.1,0.2l0.3,0.1l0.2-0.1l0.4,0.2l0.3-0.3l0.4-0.1l0.2,0.1
 			l-0.3,0.3l0,0.1l0.2-0.1l0.7,0.1l0.1,0.3l-0.2,0.1l0,0.2l0.3,0.1l0.2,0.3l0.2-0.2l0.2,0.1l0.3,0.4l0.2-0.1l-0.3-0.6l0.2-0.2
 			l-0.1-0.3l0.2-0.1l0.4,0.2l-0.4,0.4l0,0.1l0.4,0.2l0.2-0.1l0-0.4l0.2,0c0.3,0.1,0.9,0.6,1,0.9c-0.6,0.1-0.9,0.1-1.4-0.1l-0.1,0.2
@@ -1826,30 +1826,30 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path253"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M58.1,229.8c0.1-0.3,0.2-1.1,0.4-1.3l0.1,0l-0.4,1.2L58.1,229.8z"
           />
           <path
             id="path255"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M66,228.8l0.2,0.1l0,0.1l-0.2,0.4l0.2,0.1l0-0.1l0.1,0l-0.1,0.3l-0.7,0.6l-0.5-0.1l-0.1,0.1
 			l0.2,0.1l0.3,0l-0.1,0.1l-0.7-0.1l-0.3-0.4c0.2-0.3,0.4-0.6,0.6-0.9h0.2l0.2-0.2l0.4,0L66,228.8z"
           />
           <path
             id="path257"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M123.9,233.1l0.2,0.1c0,0.2,0.4,0.6,0.6,0.7l0,0.3l-0.5,0.4l-0.7-0.5l-0.1-0.7
 			C123.6,233.3,123.8,233.2,123.9,233.1z"
           />
           <path
             id="path259"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M95.9,233.8L96,234c0,0.2-0.1,0.6-0.3,0.8l-0.2,0l-0.2-0.3l-0.4,0.2l-0.1-0.2l0.1-0.2l0.4-0.2
 			l0-0.1c0.1-0.1,0.4-0.3,0.5-0.3L95.9,233.8z"
           />
           <path
             id="path261"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M117.1,221.9l0.2,0l0.4,0.4l0,0.2l0.2,0.3c0,0.7-0.7,2.8-1.2,3.3c-0.4,0.4-1.2,0.5-1.1,1.4
 			c1,1.2,0.1,3,1.3,4.2l0.4,0.1c0.1,0.4,0.1,1.1-0.2,1.4c-0.4,0.1-0.9,0.9-1.1,1.2l-1.5,0.4l-0.5-0.3c0-0.2-0.1-0.5-0.2-0.6l0.1-0.4
 			c-0.2-0.1-0.5-0.3-0.7-0.4c0.1-0.3,0.2-0.9,0-1.1c0.2-0.1,0.4-0.5,0.5-0.8l-0.4-1.7c0.3-0.4-0.1-1.1-0.1-1.6c0,0,0.4-1.5,0.4-1.5
@@ -1858,50 +1858,50 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon263"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="63.8,234.8 64,235.1 63.7,235.2 63.5,235.1 63.5,234.9 		"
           />
           <path
             id="path265"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M120.6,237.2l-0.5,0.5l0.2,0.4l-0.2,0.2l-0.2,0c-0.4,0.6-1.9,0.8-2.3,0.3
 			c-0.1-0.1-0.2-0.4-0.3-0.5c-0.1-0.1-0.3-0.2-0.4-0.3c-0.7-0.7-1-1.2-0.6-2.2l0.2-0.2l0.3,0l0-0.2l0.2-0.1l0.4,0.1l0.3-0.1l0.6,0.4
 			l0.3-0.1l0.5,0.2l0.2,0C120.1,236.1,120.1,236.5,120.6,237.2z"
           />
           <path
             id="path267"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M122.6,238.6l0.6-0.3l0,0.2l0.4,0.4l-0.7,0.3l-0.2-0.1C122.6,239.1,122.5,238.7,122.6,238.6z"
           />
           <path
             id="path269"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M60.3,247.7l-0.4,0l0.1-0.3l0.1-0.1C60.2,247.4,60.3,247.7,60.3,247.7z"
           />
           <path
             id="path271"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M126.3,248.3l-0.2-0.1l-0.2,0.1l-0.2-0.2l0.2-0.3l0.4-0.1C126.4,248,126.4,248.2,126.3,248.3z"
           />
           <polygon
             id="polygon273"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="61.3,248.3 60.9,248.4 60.8,248.2 61,248.1 		"
           />
           <polygon
             id="polygon275"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="63.4,248.5 63,248.5 62.9,248.4 63.3,248.3 		"
           />
           <path
             id="path277"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M107.6,247.2l0.1-0.4c0.4,0,1.1,0,1.4,0.3c0.1,0.2,0,0.5-0.1,0.7c-0.1,0.2-0.5,0.3-0.7,0.3
 			l-0.4-0.2l0,0.5l0.3,0.4l-0.6,0.6l-0.7,0c-0.3-0.2-0.8-0.7-0.9-1.1l0-0.3c0.5-0.3,0.8-0.6,1.4-0.6l0.2,0.2l0.2,0L107.6,247.2z"
           />
           <path
             id="path279"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M56,230.3l0.3,0.2l0.3,0c0.2-0.2,0.6-0.6,0.6-0.9l0.2,0.1l0.3-0.1l0.4,0.2l-0.3,0.2l0.2,0.1
 			l0.5-0.2l-0.1-0.2l0.7-0.3c0.2,0.1,0.6,0,0.8,0l0.4,0.3l0.1,0.2l-0.1,0.2l0.1,0.1l0.2-0.1l0.2,0.2l-0.2,0.2l0.1,0.3l0.1,0l0.2-0.2
 			l0.3-0.1l0.3,0.1l0.3,0.4l0.2-0.3c0.4,0.1,0.9,0.3,1,0.8l-0.1,0.2l-0.5-0.1l-0.1-0.2l-0.2-0.1l-0.4,0.3c-0.2,0-0.5-0.1-0.6,0.1
@@ -1928,33 +1928,33 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path281"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M62.2,254.4l-0.3,0.5l-0.4,0.1l-0.5-0.5c0-0.3,0.1-0.8,0.2-1l-0.3-0.3l-0.1-0.8l0.4,0.1l0.3-0.2
 			l0.2,0.1c0.1-0.1,0.4-0.2,0.6-0.1l0.2,0.1l0.1,0.3l-0.2,0.1l0,0.4l-0.3,0.3l0,0.4c-0.2,0.1-0.6,0.1-0.8,0l0,0.2
 			C61.7,254.2,62,254.2,62.2,254.4z"
           />
           <path
             id="path283"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M95.1,255l0.2,0.2l0.4-0.3l0.3,0.3l0.8,0.2l0,0.4l-0.7-0.1l-0.1-0.3c-0.2,0.2-0.8,0.2-1,0.2
 			l-0.2-0.2L95.1,255z"
           />
           <path
             id="path285"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M93.4,254.7l-0.2,0.2l-0.1,0.4l-0.6,0.4l-0.2-0.1l-0.6,0.3l-0.7-0.4l-0.1-0.2
 			c0.4-0.6,1.5-1,2.2-0.9l0.1-0.3l0.8-0.1l0.3,0.2l0.8-0.2c0.2,0,0.7,0.2,0.8,0.3l0.1,0.3l-0.1,0.3c-0.4,0.1-1.3,0.3-1.7,0.2
 			l-0.3,0.1L93.4,254.7z"
           />
           <path
             id="path287"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M57.6,254.5c0.2,0,0.5,0.2,0.6,0.3l0.1,0.3l-0.2,0.1l-0.1,0.3l-0.4,0.3c-0.1,0-0.4-0.1-0.5-0.1
 			l-0.1-0.2l0.4-0.5l-0.2-0.2L57.6,254.5L57.6,254.5z"
           />
           <path
             id="path289"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M85.3,230.5l0.3-0.2l0.1-0.3c-0.3-0.7-0.4-1-0.6-1.7c-0.1-0.2-0.6-0.4-0.8-0.4l-0.2-0.3
 			c-0.2-0.1-0.5,0-0.6,0.1l-0.2,0.4l-0.1,0.1l-0.1-0.2l0.3-0.3c-0.1-0.2-0.2-0.7-0.1-0.9l0.3-0.2l0-0.4l-0.2-0.2l0-0.4l0.3-0.2
 			c0.3-0.1,1.2,0.1,1.4,0.4l0,0.2l0.4-0.1l0.5,0.2l0.2-0.2l-1-1c-0.2-0.8-0.2-1.7-0.2-2.5c0.2-0.4,0.8-0.8,1.2-1l0.5,0.2l0.2,0.6
@@ -2011,23 +2011,23 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon291"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="60.4,257 60.3,257.2 60.5,257.8 60.4,257.9 59.6,257.3 60.2,257 		"
           />
           <path
             id="path293"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M59.1,258.2l-0.5-0.3l0.7-0.4c0.1,0,0.5,0.2,0.5,0.4l0,0.3l0.3,0.1l0.1,0.2l-0.1,0.1l-0.5-0.3
 			L59.1,258.2z"
           />
           <path
             id="path295"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M58.7,259l0,0.2l0.1,0.2l-0.2,0.1l-0.3-0.1l-0.3-0.5C58.1,258.7,58.5,258.8,58.7,259z"
           />
           <path
             id="path297"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M54.7,254.7l0.5,0l0,0.5l0.1,0.1l0.6,0l0.2,0.3c0,0.3-0.3,0.6-0.1,1l-0.5,0l-0.4,0.3l-0.1,0.3
 			l1.3,0.8l0.1-0.2l0.2,0.2l0.4,0.1l0.3,0.4l-0.1,0.1c-0.3-0.3-0.8-0.5-1.2-0.6c0.2,0.3,0.2,0.3,0.5,0.4l-0.6,0.1l0,0.1l0.7,0.4
 			l0.3-0.3l0.2,0l0.3,0.4l0.6,0.2l0,0.2l0.2,0.1l-0.1,0.5l-0.9-0.1l-0.4-0.7l-0.5,0l0,0.1l0.4,0c0.1,0.2,0.2,0.9,0.1,1.2l-0.3-0.1
@@ -2039,7 +2039,7 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path299"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M103,254.9l0.1-0.1l0.5,0.2c0,0.1,0.2,0.4,0.4,0.4l0.2-0.1l0.6,0.6l0.6,0
 			c0.4,0.3,0.7,0.6,0.9,1.1l0,0.4l-0.4,0.2c-0.2-0.1-0.6-0.1-0.8,0l-0.2,0.2l0.1,0.1c0.4,0,1.6,0.1,1.8,0.5l-0.2,0.6l-0.3,0.2
 			c0,0.3-0.1,1.4,0.1,1.6l-0.4,0.4l-0.1,0.4c-0.2,0.3-0.8,0.6-1.2,0.7l-0.1,0.4c-0.1,0.3-0.6,0.6-0.9,0.7l-0.9-0.1l-0.1-0.3
@@ -2049,91 +2049,91 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon301"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="55.5,264.6 55.5,264.8 55.1,265.3 54.9,265.3 54.8,264.7 55.3,264.5 		"
           />
           <path
             id="path303"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M49.7,262.6l0.4,0l0.5,0.3l0.6-0.1l0.3,0.3l-0.5,0.2l1.9,0.3l0.2,0.1l-0.4,0.2l-0.5-0.2
 			l-0.8,0.5l0.1,0.3l1.2-0.1l0.2,0.1l-0.1,0.3l-0.7,0.4l-0.4-0.2l-0.2,0.4l-0.3-0.1l-0.3,0.1l-0.3-0.1c0-0.2,0-0.4-0.1-0.6l-0.2-0.1
 			l0-0.1l0.2,0l0.3,0.1l0.3-0.2l0-0.2c-0.1-0.2-0.8-0.3-1.1-0.3l-0.2-0.4l0.1-0.3l0.4-0.3L49.7,262.6L49.7,262.6z"
           />
           <path
             id="path305"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M52.2,266l0.2,0.3l0.2-0.1l0.3,0.2l-0.2,0.1l0.3,0.6l-0.4-0.1l0.1,0.5l-0.2,0.1l-0.4-0.3
 			l-0.1,0.2l-0.4-0.4l-0.5-0.2l0.1-0.2l-0.1-0.4l0.2-0.1l0-0.2l0.2-0.1C51.8,266,52,266,52.2,266z"
           />
           <path
             id="path307"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M111.4,267.9l-0.3,0.1l-0.1,0.2l-0.3-0.1c-1.1,0.5-1.2-0.5-1.9-0.5c0-0.2-0.5-0.5-0.7-0.6
 			c0-0.3,0.1-1.1,0-1.3c0.2-0.2,1-0.6,1.3-0.7l0.5,0.2l0.5-0.3c0-0.2-0.2-0.4-0.3-0.5l0.3-0.4l-0.3-0.1l0-0.2l1-0.5l0.2,0.1
 			c0.1,0.2,0.4,0.5,0.6,0.6c0.4,0.5,0.1,2.4,0,3l0.2,0.3l-0.3,0.3l-0.2-0.3l-0.1,0.1l0.1,0.3l-0.3,0.2L111.4,267.9z"
           />
           <path
             id="path309"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M50.2,269.3l0,0.2l-0.3-0.1c-0.1,0.1-0.2,0.4-0.2,0.6c-0.4-0.1-0.8-0.2-1.2-0.1l-0.1-0.2
 			l0.4-0.2l-0.1-0.4l0.1-0.1l0.3,0.1l0.3-0.2C49.7,269,50,269.2,50.2,269.3z"
           />
           <path
             id="path311"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M105.4,271.4l-0.4-0.5l0.5-0.4l0.2,0l-0.1-0.2l0.1-0.1l0.4,0.4l0.3-0.3l0.2,0.1
 			c0.2-0.1,0.6-0.3,0.8-0.2l0.3,0.5l-0.1,0.4l-0.1,0.1l-0.3-0.2l-0.1,0.1l0.1,0.4l-0.3,0.3l-0.3-0.2l-0.1-0.3l-0.3-0.2l-0.3,0.3
 			L105.4,271.4z"
           />
           <polygon
             id="polygon313"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="46.1,273.8 46.2,273.5 46,273.3 45.7,273.5 45.6,273.5 45.9,273.1 45.8,272.8 
 			46.2,272.5 46.1,272.4 46.2,272.1 45.9,272 46.1,271.7 46.4,271.9 46.7,271.7 46.9,271.8 47,271.7 47.1,271.3 47.3,271.2 
 			47.5,271.3 47.5,271.5 47.4,271.7 47.7,272.1 47.2,272.6 47.3,272.8 47.5,272.9 47.6,273.1 47.3,273.4 46.3,273.8 		"
           />
           <path
             id="path315"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M124.9,274l-0.5,0.1l-0.3-0.2l-0.3,0.4c-0.6,0.3-1.5-0.3-2.1-0.2c-0.1-0.2,0.4-1,0.5-1.2
 			l0.2-0.1c0.5,0,1.4,0.3,1.6,0.8l0.3-0.3l0.8,0.5L124.9,274z"
           />
           <path
             id="path317"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M46,274.3c0.3-0.1,1.4-0.2,1.7,0.1l0.1,0.2l-0.4,0.1l-0.1,0.2l-0.2,0L47,275l-0.2,0
 			c-0.1-0.3-0.6-0.5-0.9-0.6L46,274.3z"
           />
           <polygon
             id="polygon319"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="119.3,282.2 119.5,281.7 119.6,282.2 		"
           />
           <path
             id="path321"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M119.5,283.8l-0.4-0.1l0.3-0.6l0.1,0.3l-0.2,0.2L119.5,283.8l0.2-0.5l-0.1-0.2l0.4-0.2l0.1,0.1
 			l0.1,0.4l0.2,0l0.4,0.3C120.4,283.9,120,283.6,119.5,283.8z"
           />
           <polygon
             id="polygon323"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="121.5,284.1 121.4,283.5 122,282.8 122.4,283.1 122.4,283.5 122.1,283.8 122,284.1 
 			121.8,284.1 121.7,284.2 		"
           />
           <polygon
             id="polygon325"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="115.1,286.2 115.6,286.6 115.7,287.1 115,286.7 114.9,286.2 		"
           />
           <path
             id="path327"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M143.5,288.3c0,0.4-0.2,0.9-0.5,1.2l-0.2,0l-0.2-0.6l0.1-0.4l0.7-0.3L143.5,288.3z"
           />
           <path
             id="path329"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M95,282.2l0.3-0.5l0.3,0.2l0.1-0.1l0-0.4l0.1-0.1l0.2,0.3l0.4-0.1l0.2-0.2l0.7,0.4l0,0.3
 			l-0.2,0.1l0.1,0.3l-0.2,0.1l0.1,0.2c-0.2,0.3-0.5,1-0.5,1.3c-0.3,0.2-0.6,0.6-0.6,1l-0.3,0.1l0.1,0.2l-0.3,0.6l-0.2,0.1l0,0.2
 			l-0.3,0.4l-0.2,0c-0.3-0.2-0.5-0.6-0.7-1l-0.2,0l0.2,1.4l-0.3,0.2l0,0.4l-0.2,0l-0.3,0.2l-0.1,0.5l-0.4,0.2l-0.2-0.2l-0.3,0.3
@@ -2145,24 +2145,24 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon331"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="86.6,290.3 86.6,290.4 85.7,290.9 85.5,290.8 85.5,290.6 86.3,290.3 		"
           />
           <path
             id="path333"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M141.9,293.1l-0.3,0.3l-0.1-0.1c0.2-0.3,0.6-0.7,1-0.8l0.2,0.1l0,0.1l-0.2,0.2l0,0.2l-0.3,0.1
 			L141.9,293.1z"
           />
           <polygon
             id="polygon335"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="99,295.7 99,295.9 98.7,296.3 98.8,296.6 98.4,296.8 98.3,296.6 98.8,295.9 
 			98.8,295.7 		"
           />
           <path
             id="path337"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M105.8,293.3l-0.4,0.3l-0.6-0.1l-0.2,0.1l-0.2-0.1l0-0.3l-0.3-0.1l-0.3,0.1
 			c-0.3-0.3-1-0.5-1.4-0.5l-0.2-0.2l0.1-0.8l-0.1-0.2l0.3-0.3c0.2,0,0.9-0.1,1.1-0.3l0.1-0.3l0.4-0.2l0-0.3l0.2-0.1l0.1-0.2l0.4-0.1
 			l-0.3-0.3l-0.9,0.4l-0.2-0.1c0-0.3-0.1-0.7-0.1-1l-0.3-0.2c0.1-0.2,0-0.7-0.1-0.9l0.2,0l0.2,0.3l0.2,0l0.2-0.2l0.2,0.1l0.3-0.3
@@ -2205,19 +2205,19 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path339"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M105.3,296.9l-0.3,0.3l-0.2-0.2l0-0.3l-0.3,0l-0.1,0.1l-0.7-0.1c-0.1-0.2,0-0.6,0.1-0.8l0.2,0.1
 			l0.1-0.1l-0.1-0.2l-0.3,0l-0.2-0.1l0-0.1l1.4,0.1l0.2,0.4l0.1-0.2l0.4,0l0.1-0.1l0.1,0.1c0,0.2-0.5,0.8-0.7,0.9L105.3,296.9z"
           />
           <polygon
             id="polygon341"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="113.5,297.6 113.6,297.8 113.3,298.1 112.7,298.1 112.6,297.9 112.7,297.7 
 			113.1,297.5 		"
           />
           <path
             id="path343"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M134.2,298l1-1.1c-0.1-0.3-0.1-0.9,0.1-1.2l-0.1-0.2l0.2-0.2l0.2,0.1l1.5-0.8l0.2-0.4
 			c0.8-0.1,1.4-1.9,2-2.1l0.1-0.3l0.3,0l0.2-0.2l0-0.2l-0.2-0.1l0-0.3l0.2-0.1l0.2,0.1l0,0.4l0.5,0.1c0.2-0.2,0.6-0.7,0.9-0.8
 			l0.2,0.1c0,0.1-0.3,0.8-0.3,0.8c-0.4,0.4-0.9,0.8-1.3,1.2c-0.4,0.5-0.8,1-1.2,1.5c0,0,0,0.3-0.1,0.4c-0.1,0.2-0.3,0.4-0.5,0.6
@@ -2225,13 +2225,13 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon345"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="105.7,298.7 105.8,298.6 106.1,298.8 106.1,299.2 105.7,299.2 105.5,298.9 
 			105.5,298.6 		"
           />
           <path
             id="path347"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M82,294.2l0.3,0.1l0.1,0.2l0.4,0.1l0.1,0.2l-0.5,0.7l0.1,0.3l-0.2,0.2l0.1,0.2
 			c-0.2-0.1-0.7-0.2-0.9,0l0,0.2l-0.2-0.1l0,0.2l-0.3,0.1l-0.1-0.3l0.2-0.1l-0.4-0.2l-1,0.3l-0.2,0.7l-0.1-0.1l-0.5,0.4l0,0.2
 			l0.3,0.9l-0.2,0.5l0,0.2l0.3,0.1l0,0.2c-0.3,0-0.7,0.2-0.9,0.3l-1-0.2l0.1-0.2l-0.2-0.1l-0.3-0.7c-0.2-0.1-0.4-0.2-0.6-0.2
@@ -2244,13 +2244,13 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path349"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M110.5,299.4l-0.6,0.4l0.1,0.3l-0.1,0.1l-0.1-0.2l0.1-0.3l-0.1-0.3c0.1-0.1,0.4-0.2,0.6-0.2
 			L110.5,299.4z"
           />
           <path
             id="path351"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M138.9,301l-0.3,0.1l0.1,0.4L138,302l-0.2,0.5l-0.3,0.2l-0.2,0.5l-0.3,0.2l0.1,0.2l-0.3,0.3
 			l0,0.2c-0.2,0.2-0.4,0.4-0.6,0.6l-0.2,0l0-0.2l0.2-0.1l0-0.1l-0.4,0l-0.1-0.2l-0.9,0.1l0-0.1l0.2-0.6l0.4-0.1l-0.1-0.2l0.1-0.2
 			l0.2,0.1l-0.1-0.3l0.2-0.4l0.4-0.2l0.6,0.1l0.5-0.4l0.1,0.2l0.1,0l0.5-0.2l0.1-0.2l0.5-0.3l0-0.2l0.1-0.1
@@ -2258,86 +2258,86 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path353"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M100.6,306.3l-0.1,0.3l0.1,0.6l-0.5,1l-0.2,0.1c0,0.4-0.5,0.9-0.8,1l-0.9-0.4l0-0.2l0.1-0.1
 			l0.2,0l0.2-0.3l0.3-0.1l-0.1-0.2l0.2-0.1l0-0.1l-0.5-0.5c0.3-0.1,0.7-0.4,0.9-0.7l0.7-0.1l0.4-0.3L100.6,306.3z"
           />
           <path
             id="path355"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M101.7,310.1c0,0.3-0.1,0.7-0.3,0.9l-0.4-0.2l0-0.2l-0.2,0l-0.1,0.4l-0.2-0.2l0.4-0.4l0-0.4
 			l0.3-0.1L101.7,310.1z"
           />
           <path
             id="path357"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M133.1,313.4c0.1-0.2,0.2-0.7,0.4-0.9l0.3,0l0.1,0.5c-0.1,0.2-0.2,0.5-0.4,0.6L133.1,313.4z"
           />
           <path
             id="path359"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M126.8,314.5l-0.2,0l-0.1-0.2l0.2-0.4l0.8-0.4l0.2,0.1l0,0.3l-0.2,0.3
 			C127.2,314.1,126.9,314.3,126.8,314.5z"
           />
           <path
             id="path361"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M129,315.3l-0.2,0l-0.1-0.2l0.2-0.3l0.5-0.1l0,0.2C129.3,314.9,129,315.1,129,315.3z"
           />
           <polygon
             id="polygon363"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="130.2,315.5 129.9,315.2 130.2,314.6 130.3,314.5 		"
           />
           <path
             id="path365"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M125.5,315.1l0.1,0l-0.1,0.5c-0.2,0-0.5,0.3-0.6,0.5l-0.2,0L125.5,315.1z"
           />
           <path
             id="path367"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M130.5,316.9l-0.1,0.2l-0.6,0l-0.1-0.7l-0.2,0l-0.1,0.4l-0.2,0l-0.2,0.3l-0.2,0l0.1-0.2l0.2,0
 			l0.2-0.6l0.8-0.3c0.1,0.2,0.1,0.6,0,0.9L130.5,316.9z"
           />
           <path
             id="path369"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M134,315l0.1,0.2l0.4,0.3c0,0.3,0,1,0.2,1.3l-0.1,0.2l-0.9,0.6c-0.1-0.1-0.1-0.5,0-0.7l-0.3-0.2
 			c-0.1-0.2,0.1-0.9,0.1-1l0.2-0.2l-0.1-0.3L134,315z"
           />
           <path
             id="path371"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M132,317.3l0.1-0.7l-0.4-0.3l0.1-0.3l-0.4-0.1l0-0.3c0.2-0.1,0.2-0.9,0.2-1.1l0.2-0.1l0.2-0.6
 			l-0.2-0.7l0.3-0.7l0.2-0.1l0-0.2l0.2-0.1c0.3,0.4,0.4,0.7,0.2,1.1l0.3,0.2l0.1,0.2l0.2,0.1c0.1,0.7-0.5,1.3-0.3,1.8l-0.2,0.2
 			l0,0.2l0.2,0.3l-0.1,0.3l0,0.3l-0.2,0.3l0.2,0.2l0.1,0.4l-0.2,0.3l0.1,0.1l-0.2,0.3l-0.2,0C132.5,318,132.1,317.4,132,317.3z"
           />
           <path
             id="path373"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M264.5,317.9l0.6,0.7l-0.3,0c-0.2-0.1-0.5-0.5-0.6-0.8L264.5,317.9z"
           />
           <path
             id="path375"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M130.5,317.3l0.2,0.4l0.3,0.2l-0.2,0.2c-0.1,0.3,0.2,1,0.3,1.4l-0.1,0.2l-0.2,0l-0.2-0.1
 			l-0.7,0.6c-0.3,0-1.8,0.1-2-0.2l-0.3-0.5l0.2-0.6l0.2-0.2l0.1,0.1l0.3-0.3l0-0.4l0.5-0.3l0.2,0c0.2-0.2,0.7-0.3,0.9-0.4l0.2-0.2
 			L130.5,317.3z"
           />
           <path
             id="path377"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M137.2,319.5l0.1,0c-0.2,0.5-0.7,1-1,1.5l-0.2,0l0-0.1c0.3-0.2,0.5-0.8,0.6-1.1L137.2,319.5z"
           />
           <polygon
             id="polygon379"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="136,321.5 136,321.8 135.4,322.4 135.3,322.4 135.7,321.5 135.9,321.4 		"
           />
           <path
             id="path381"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M110.6,322.3l0.3,0.1l0.1,0.3l-0.1,0.3l0.4,0.1l-0.4,0.4c0,0.2-0.2,0.7-0.4,0.8l-0.1,0.3
 			l-0.6,0.7l-0.1,1l-0.8,0.7l0.1,0.2l-0.6,0.4l0.2,0.1l0.1,0.3l0.4,0.2l-0.2,0.4l0.2,0.2c-0.1,0.2-0.4,0.5-0.7,0.6l-0.2,0.3l-0.3,0
 			l-0.2,0.2l-0.2-0.2l0.1-0.4l-0.2-0.2l-0.2,0.1l0,0.3l-0.5,0.2l-0.2-0.2l-0.5-0.1l0.5-0.3l0-0.3l-0.1-0.1l-0.5,0.2l-0.2,0.3
@@ -2348,14 +2348,14 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path383"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M106,330.9c-0.1-0.2-0.5-0.5-0.8-0.5l0.2-0.2c0.3-0.1,0.7-0.2,1.1-0.3l0.4,0.2
 			c0.2-0.1,0.7-0.3,1-0.2l0.3,0.5l-0.2,0.1l-0.2-0.2l-0.5,0.2l-0.2-0.1c-0.2,0.2-0.4,0.8-0.4,1.1l-0.7,0.4l-0.1-0.4l0.1-0.3
 			C106,331.2,105.9,331,106,330.9z"
           />
           <path
             id="path385"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M126.1,330.7l-0.3,0.2l-0.1,0.5l-0.3,0.4l-0.2,0.7l0,0.2c-0.1,0.4-0.5,1.2-0.9,1.4l-0.2,0
 			c0,0.6-0.4,1.5-0.7,2l0.2,0.3c-0.3,0.9-0.2,0.7-0.9,1.5c0.1,0.3-0.2,0.8-0.3,1l0.2,0.5l-0.3,0.1l0.2,0.3l-0.5,0.6l-0.1,0l0-0.1
 			l0.3-0.4l0-0.2l-0.3-0.1l-0.4,0.3l-0.1,0.5l0.2,0.4l-0.2,0.2l0.2,0.1l-0.3,0.3c-0.4-0.5-0.9-0.5-1.4-0.1c-0.1,0.4-0.4,2-0.7,2.3
@@ -2374,19 +2374,19 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path387"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M153.2,346.2l0.6,1.6l-0.3,0.5l-0.2,0c-0.4-0.4-0.5-1.3-0.4-1.9l0.1-0.2L153.2,346.2z"
           />
           <path
             id="path389"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M164.3,347.1l0.1,0.1c0,0.4-0.1,0.9-0.1,1.3l0.2,0.4c0,0.5-0.4,1.2-0.8,1.5l-0.1-0.1l0-0.5
 			c-0.5,0-0.9,0.3-1.1,0.8l-0.3-0.2l-0.2-0.4c0.2-0.6,0.2-0.9,0.6-1.4l0-0.3l0.2-0.2c0.1-0.4,0.1-0.5,0.3-0.8
 			C163.8,347,163.5,347.1,164.3,347.1z"
           />
           <path
             id="path391"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M156,340.1l0.3,0.4l0.5,0.2l0.1,0.4l-0.7,0.7l0,0.1c0.3,0,1,0.1,1.3,0.3l0,1.1l0.2,0.3
 			c0.4-0.3,0.6-0.4,1-0.5l0.3,0.2l0,1.2l0.1,0.2l-0.1,1.2l0.1,0.1c0.3,0.5,0.2,2.1,0.7,2.3l0,0.4l-0.1,0.2l-0.3,0.2l-0.2,0
 			c-0.2,0-0.5,0.3-0.6,0.5l0,0.2c0.3,0.1,0.8,0.7,1,0.9l0.1,0.5l0.2,0.2l-0.3,0.1l0.1,0.2c-0.2,0-0.7,0.3-0.8,0.4l-0.2,0
@@ -2397,13 +2397,13 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path393"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M162.7,351.4c0,0.4-0.2,1.4-0.5,1.6l-0.2,0l-0.5-0.5l0-0.3c0.2-0.3,0.8-0.7,1.1-0.9L162.7,351.4
 			z"
           />
           <path
             id="path397"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M128.8,355l0,0.2l-0.3,0c-0.2,0.1-0.3,0.5-0.3,0.7l0.1,0.1l0.2,0l0.1,0.1c0,0.2-0.1,0.4-0.2,0.5
 			c-0.6,0-0.8,0.9-1.3,1.1l0-0.6l-0.2,0l0-0.3c0.2-0.1,0.3-0.5,0.4-0.8l-0.4-0.1l-0.2-0.3c-0.1-0.5,0.9-1.7,1.2-2l-0.1-0.4l0.2-0.2
 			l0.2,0.1l0.1-0.1l0.1-0.8l-0.3-0.1l0.2-0.3l0.2,0.1l0.4-0.4l0.2,0.1L129,352l0.4,0.1c0,0.5-0.9,0.8-0.9,1.2l0.2,0.2l0,0.3l0.2,0.1
@@ -2411,17 +2411,17 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path399"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M127.9,358.2c-0.1,0.2-0.2,0.6-0.1,0.8l-0.2,0.2l-0.3-0.2l0.2-0.6l0.2-0.1L127.9,358.2z"
           />
           <polygon
             id="polygon401"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="111.3,359.4 110.9,359.6 110.8,359.8 110.4,359.9 110.3,359.8 111.1,359.4 		"
           />
           <path
             id="path403"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M103.5,352.4l-0.7,0.2l-0.4-0.2l0.2-0.6l-0.1-0.3l0.3-0.4l-0.1-0.4l0.1-0.2l0.5-0.1l0.1-0.3
 			l0.5-0.1c0.1-0.3,0.4-0.8,0.7-0.9c0.3,0,0.8-0.1,1-0.3l0.1-0.3l0.3-0.2l-0.3-0.6l0-0.2l-1,0.2l-0.5-0.2l-0.5,0.2l-0.5-0.3
 			c-0.3-0.1-0.9,0.1-1.2,0.2c-0.4,0.2-0.3,0.8-0.4,1.1c-0.1,0.3-0.3,0.5-0.4,0.7c-0.2,0.5-0.3,1-0.4,1.5c0,0-0.1,0.1-0.1,0.1
@@ -2445,13 +2445,13 @@ const UkMap = ({ width, selected }) => {
           />
           <polygon
             id="polygon405"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             points="156.7,365.6 157.5,366.9 157.5,367.1 157.2,367.3 157.1,367.2 156.8,366.7 
 			156.4,366.3 156.2,365.7 156.5,365.6 		"
           />
           <path
             id="path407"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M153.2,362.2l0.3,0.2l0.1,0.2c0.4,0,1.4,0.2,1.7,0.5c0.1,0.7,1,0.9,1.1,1.6l-0.4,0.1
 			c-0.2,0.5-1.1,0.5-1.5,1.3l0,0.3c0.2,0.4,1.6,1.2,2,1.2l-0.1,0.3l-0.4,0.3c-0.1,0.4-0.1,0.9,0,1.3l0.2,0.3
 			c-0.1,0.8,0.8,1.5-0.3,2.2l-0.1,0.3l-0.3,0.3c-0.7-0.1-1.7-0.2-2.4,0c-0.1,0.2-0.5,0.6-0.8,0.5c-0.9,0-2.2,0-3.1-0.3
@@ -2463,7 +2463,7 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path415"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M108.4,382.5l1.2,0.4l0.1,0.3l-0.3,0.7l0.1,0.4l-0.2,0.3c0,0.4-0.1,1.2-0.3,1.5
 			c-0.6-0.3-0.6-1.1-0.3-1.7l0.3-0.2l-0.2-0.2l0-0.3c-0.1,0-1.3-0.3-1.3-0.3c-0.1,0-1.4,0.4-1.5,0.5l-0.3-0.2
 			c-0.2,0.1-0.6,0.1-0.8,0l-0.1-0.1l0.2-0.2l0-0.3c0.2-0.2,0.7-0.4,0.9-0.4l0.1-0.3l0.3,0.2l0.3-0.3
@@ -2471,7 +2471,7 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path661"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M100.4,171.8l0,0.3l0.3,0l0.2,0.1c-0.1,0.1-0.3,0.4-0.3,0.6l-0.3,0.1l0.2,0.1
 			c0,0.4,0.2,1.1,0.5,1.4l0,0.7l-0.1,0.2l-2,0.5l-0.1,0.3L99,176c0.4-0.3,1.2-0.6,1.6-0.6l0.5,0.2l0.1,0.3l-0.2,0.4l-0.5,0.2
 			l-0.3-0.1l-0.1-0.2l-0.3-0.1l-0.3,0.2l-0.3-0.2l-0.2,0.2l-0.3,0c-0.2-0.3-1.1-0.4-1.4-0.4l-0.2-0.3l-1.4-0.2l0.4,0.3l0.7,0.1
@@ -2559,19 +2559,19 @@ const UkMap = ({ width, selected }) => {
           />
           <path
             id="path663"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M72.4,192.3l0.3-0.1l0-0.2c0.2,0,0.6,0,0.8-0.1l0.1-0.3l0.3,0.1l0.1-0.1c0.4,0.2,0.5,1,0.5,1.5
 			l-0.2,0.4l0.2,0.1l0,0.1l-0.3,0l0,0.3l-0.7,0.6c-0.3-0.6-1-0.5-1.2-1l-0.2,0l-0.1,0.1l0,0.8l-0.3-0.1l-0.3,0.3l-0.3,0l-0.3-0.3
 			l0.2-0.3l-0.1-0.2l-0.3,0l0.1-0.3c0.3,0.1,1-0.2,1.2-0.3l0.2,0.1C72.1,193,72.2,192.6,72.4,192.3z"
           />
           <path
             id="path665"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M70,202.9l0.5,0l0-0.4l0.2-0.1l0.3,1.2l-0.1,0.4l-0.2-0.1C70.5,203.6,70.2,203.2,70,202.9z"
           />
           <path
             id="path697"
-            style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+            style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
             d="M297.7,29.9c0.2,0.6-0.3,1.2-0.3,1.8l1.2-0.6l0.4,0.4l-0.1,0.5c-0.3,0-1.2,0.5-1.6,0.7l0.5,0.1
 			l1-0.4l0.5,0.3l0,0.4c-0.9,0-1.6,1-2.2,1.4c-0.4,0.3-1,0.6-1.5,0.8l-0.3,0.6c0,0,0.7-0.6,0.7-0.6c0.8-0.3,1.4-0.9,2.2-0.8l0.2,0.3
 			l-1.3,0.9l2.3-0.9c0.1,0.2,0.1,0.6-0.1,0.8l0.2,0.2l-0.3,1.1l0.4,0.2l0-0.4l0.2-0.3l0.5-0.2l-0.2-0.2l0-0.7l0.5,0.5l0.4-0.3l0-0.8
@@ -2626,7 +2626,7 @@ const UkMap = ({ width, selected }) => {
           <g>
             <path
               id="polyline703_00000124143132189615603480000000536061097343372960_"
-              style={{ fill: selected === "scotland" ? "#e1b3a1" : "#ffffff" }}
+              style={{ fill: selected === "scotland" ? "#78706d" : "#ffffff" }}
               d="M287.1,345.7L287.1,345.7l-0.4,0.3
 				l-0.2,0.1l-0.6,0.3L285,347l0,0l-0.1,0.2l0.1,1l0,0.3l-0.3,0.8l-0.5-0.1l-0.4,0.2l-0.1,0.2l0.1,0.3l-0.1,0.3l-0.3,0.2l-0.1,0.5
 				l-0.3,0.1l-0.2-0.1l-0.1-0.1l-0.3,0l-0.3,0.2l0,0.7l-0.1,0.3l-0.7,0.1l-0.4,0.3l0,0.3l0.4,0.6l-0.7,0.3l-0.4,0.5l-0.1,0.5

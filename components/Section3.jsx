@@ -76,13 +76,13 @@ const Section3 = ({
         <div className="flex w-full flex-col">
           <div>
             <div className="flex w-full flex-col items-start mb-4">
-              <p className="mb-1 text-left mt-0">
+              {/* <p className="mb-1 text-left mt-0">
                 The graphic shows energy demand and activities’ frequency every
                 30 minutes in UK’s region.
-              </p>
-              <div className="text-xs font-light uppercase text-left mb-2 opacity-60">
+              </p> */}
+              <div className="text-xs uppercase text-left mb-2 opacity-60">
                 Select the month, THE REGIONS or the activities to explore the
-                data. MOUSE OVER ON THE GRAPHICS TO READ THEM
+                data. MOUSE OVER ON THE GRAPHICS TO READ THEM.
               </div>
               <div
                 className="flex justify-start"
