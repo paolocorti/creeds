@@ -38,7 +38,8 @@ const Section1 = ({
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const size = useWindowDimension();
-  const vizWidth = getVizWidth("single", size);
+  //const vizWidth = getVizWidth("single", size);
+  const vizWidth = 400;
   const [open, setHowToReadOpen] = useState(false);
   const changeMonth = () => {
     if (selectedMonth < 13) {

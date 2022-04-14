@@ -88,7 +88,8 @@ const Section4 = ({
       : [];
 
   const size = useWindowDimension();
-  const vizWidth = getVizWidth("multiple", size);
+  //const vizWidth = getVizWidth("multiple", size);
+  const vizWidth = 400;
   const [open, setHowToReadOpen] = useState(false);
   const [allowEvents, setAllowEvents] = useState(false);
   const [copied, setCopied] = useState(false);
