@@ -34,7 +34,7 @@ const Section3 = ({
   const [selectedCompareRegion2, setSelectedCompareRegion2] =
     useState("south_east");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = useWindowDimension();
+  //const size = useWindowDimension();
   //const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
   const vizWidth = 400;

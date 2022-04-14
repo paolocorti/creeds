@@ -28,7 +28,7 @@ const Section5 = ({
     useState("london");
   const [selectedCompareRegion2, setSelectedCompareRegion2] = useState("wales");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = useWindowDimension();
+  //const size = useWindowDimension();
   //const vizWidth = getVizWidth("multiple", size);
   const vizWidth = 400;
   const [allowEvents, setAllowEvents] = useState(false);

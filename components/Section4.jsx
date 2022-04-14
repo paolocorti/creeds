@@ -87,7 +87,7 @@ const Section4 = ({
       ? flatten(groupedGas2[selectedCompareSeason2])
       : [];
 
-  const size = useWindowDimension();
+  //const size = useWindowDimension();
   //const vizWidth = getVizWidth("multiple", size);
   const vizWidth = 400;
   const [open, setHowToReadOpen] = useState(false);

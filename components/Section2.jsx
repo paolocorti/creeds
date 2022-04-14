@@ -26,7 +26,7 @@ const Section2 = ({
   const [open, setHowToReadOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
-  const size = useWindowDimension();
+  //const size = useWindowDimension();
   //const vizWidth = getVizWidth("trend", size);
   const vizWidth = 400;
 
