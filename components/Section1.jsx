@@ -199,7 +199,7 @@ const Section1 = ({
               )} */}
               </div>
               <div className="w-full md:w-1/3 px-8 items-center hidden md:flex">
-                <div className="flex flex-col" style={{ width: "280px" }}>
+                <div className="flex flex-col" style={{ minWidth: "250px" }}>
                   <div className="mt-4">
                     <RadarVerticalLegend
                       setSelectedCategory={setSelectedCategory}

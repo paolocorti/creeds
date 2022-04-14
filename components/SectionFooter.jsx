@@ -8,7 +8,7 @@ const SectionFooter = ({ link, previousChapter, nextChapter }) => {
   return (
     <div className="flex flex-col md:flex-row w-full justify-center relative items-center mt-2">
       <div
-        className="absolute left-0 cursor-pointer"
+        className="md:absolute left-0 cursor-pointer"
         //data-tip="Copy link to embed"
       >
         <CopyToClipboard text={link} onCopy={() => setCopied(true)}>

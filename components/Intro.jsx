@@ -113,11 +113,13 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           <div
             className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
             style={{
-              fontSize: "11px",
+              fontSize: "12px",
+              fontWeight: "bold",
+              lineHeight: 1.5,
             }}
             onClick={() => setAboutOpen((open) => !open)}
           >
-            CLOSE
+            CLOSE X
           </div>
         </div>
         <p className="px-0 md:px-6">
@@ -141,6 +143,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
             href="https://www.creds.ac.uk/"
             target="_blank"
             className="text-bold underline text-base"
+            style={{ fontFamily: "EB Garamond" }}
           >
             Centre for research into Energy Demand Solutions (CREDS) &#8599;
           </a>
@@ -182,7 +185,14 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
               </div>
             </div>
             <a href="mailto:j.ramirez-mendiola@reading.ac.uk" target="_blank">
-              <div className="border rounded-2xl w-36 text-sm flex justify-center ml-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
+              <div
+                className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  lineHeight: 1.5,
+                }}
+              >
                 CONTACT
               </div>
             </a>{" "}
@@ -197,7 +207,15 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
               </div>
             </div>
             <a href="mailto:j.torriti@reading.ac.uk " target="_blank">
-              <div className="border rounded-2xl w-36 text-sm flex justify-center ml-4 z-40 px-4 py-1 block cursor-pointer hover:bg-black hover:text-green">
+              <div
+                className="border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  lineHeight: 1.5,
+                }}
+              >
+                {" "}
                 CONTACT
               </div>
             </a>{" "}
@@ -221,12 +239,20 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           </a>
           <div className="text-xs mt-8">
             © Copyright 2022
+            <br />
             <br /> The visuals are made available under the Creative Commons
             License CC BY-ND 3.0, and may be used and displayed without charge
             by all commercial and non-commercial websites. <br /> Use is,
             however, only permitted with proper attribution to the project. When
             publishing one of these graphics, please include a backlink to the
             original site.
+          </div>
+          <div className="w-full flex mt-4">
+            <img src={"/creds.svg"} width={100} />
+            <div className="flex justify-center items-center ml-4">
+              <img src={"/flex.svg"} width={24} />
+              <div className="text-xs text-white">Flexibility</div>
+            </div>
           </div>
         </div>
       </div>

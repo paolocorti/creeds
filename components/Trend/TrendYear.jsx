@@ -191,7 +191,7 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
                               {j === 0 && i % 2 === 0 && (
                                 <text
                                   dx={isMobile ? 0 : internalWidth + 10}
-                                  dy={isMobile ? 70 : 60}
+                                  dy={isMobile ? 40 : 60}
                                   textAnchor={"start"}
                                   fontSize={internalWidth * 0.02}
                                   className="radial-hour-label"

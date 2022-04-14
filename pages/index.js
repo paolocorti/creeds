@@ -2,18 +2,38 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import Landing from "../components/Landing";
-import Intro from "../components/Intro";
-import Section1 from "../components/Section1";
-import Section2 from "../components/Section2";
-import Section3 from "../components/Section3";
-import Section4 from "../components/Section4";
-import Section5 from "../components/Section5";
+// import Intro from "../components/Intro";
+//import Section1 from "../components/Section1";
+// import Section2 from "../components/Section2";
+// import Section3 from "../components/Section3";
+// import Section4 from "../components/Section4";
+// import Section5 from "../components/Section5";
 import { useRouter } from "next/router";
 import { csv } from "d3-fetch";
 import { server } from "../config";
 import { flatten } from "lodash";
 import { useStore } from "../store.js";
 import { scroller } from "react-scroll";
+import dynamic from "next/dynamic";
+
+const Intro = dynamic(() => import("../components/Intro"), {
+  loading: () => <p>Loading...</p>,
+});
+const Section1 = dynamic(() => import("../components/Section1"), {
+  loading: () => <p>Loading...</p>,
+});
+const Section2 = dynamic(() => import("../components/Section2"), {
+  loading: () => <p>Loading...</p>,
+});
+const Section3 = dynamic(() => import("../components/Section3"), {
+  loading: () => <p>Loading...</p>,
+});
+const Section4 = dynamic(() => import("../components/Section4"), {
+  loading: () => <p>Loading...</p>,
+});
+const Section5 = dynamic(() => import("../components/Section5"), {
+  loading: () => <p>Loading...</p>,
+});
 
 export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
   const router = useRouter();
