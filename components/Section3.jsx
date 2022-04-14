@@ -36,7 +36,7 @@ const Section3 = ({
   const [selectedCategory, setSelectedCategory] = useState(null);
   const size = useWindowDimension();
   //const vizWidth = getVizWidth("multiple", size);
-  //const [open, setHowToReadOpen] = useState(false);
+  const [open, setHowToReadOpen] = useState(false);
   const vizWidth = 400;
 
   return (
