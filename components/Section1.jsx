@@ -37,7 +37,7 @@ const Section1 = ({
   const [playStarted, setPlayStarted] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = useWindowDimension();
+  const size = isMobile ? 600 : useWindowDimension();
   const vizWidth = getVizWidth("single", size);
   const [open, setHowToReadOpen] = useState(false);
   const changeMonth = () => {

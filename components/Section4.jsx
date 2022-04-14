@@ -15,6 +15,7 @@ import React from "react";
 import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
 import { siteUrl } from "../config";
+import { isMobile } from "react-device-detect";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
@@ -87,7 +88,7 @@ const Section4 = ({
       ? flatten(groupedGas2[selectedCompareSeason2])
       : [];
 
-  const size = useWindowDimension();
+  const size = isMobile ? 600 : useWindowDimension();
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
   const [allowEvents, setAllowEvents] = useState(false);

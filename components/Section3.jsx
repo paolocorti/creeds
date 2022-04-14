@@ -13,6 +13,7 @@ import React from "react";
 import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
 import { siteUrl } from "../config";
+import { isMobile } from "react-device-detect";
 
 const Section3 = ({
   data,
@@ -34,7 +35,7 @@ const Section3 = ({
   const [selectedCompareRegion2, setSelectedCompareRegion2] =
     useState("south_east");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = useWindowDimension();
+  const size = isMobile ? 600 : useWindowDimension();
   const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
 

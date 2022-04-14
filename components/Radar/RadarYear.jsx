@@ -21,7 +21,7 @@ const isMobileWithTablet = false;
 import ReactTooltip from "react-tooltip";
 import UkMap from "../UkMap.jsx";
 
-const pinkColor = "#fad9cd";
+const pinkColor = "#F4D2C3";
 
 const months = [
   "January",

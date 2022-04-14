@@ -8,6 +8,7 @@ import { useWindowDimension, getVizWidth } from "./utils";
 import React from "react";
 import HowToRead from "./HowToRead";
 import { siteUrl } from "../config";
+import { isMobile } from "react-device-detect";
 
 const Section2 = ({
   data,
@@ -26,7 +27,7 @@ const Section2 = ({
   const [open, setHowToReadOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
-  const size = useWindowDimension();
+  const size = isMobile ? 600 : useWindowDimension();
   const vizWidth = getVizWidth("trend", size);
 
   return (

@@ -12,6 +12,7 @@ import Loader from "./Loader";
 import HowToRead from "./HowToRead";
 import SectionFooter from "./SectionFooter.jsx";
 import { siteUrl } from "../config";
+import { isMobile } from "react-device-detect";
 
 const Section5 = ({
   data,
@@ -28,10 +29,8 @@ const Section5 = ({
     useState("london");
   const [selectedCompareRegion2, setSelectedCompareRegion2] = useState("wales");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = useWindowDimension();
+  const size = isMobile ? 600 : useWindowDimension();
   const vizWidth = getVizWidth("multiple", size);
-  const [allowEvents, setAllowEvents] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [open, setHowToReadOpen] = useState(false);
 
   return (
