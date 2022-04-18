@@ -99,7 +99,7 @@ const Section2 = ({
           {!fullscreen && (
             <SectionFooter
               nextChapter={nextChapter}
-              link={`${siteUrl}/unpacking_peaks?share=true`}
+              link={`${siteUrl}/unpacking_peaks`}
             />
           )}
         </div>

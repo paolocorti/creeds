@@ -228,7 +228,7 @@ const Section4 = ({
           {!fullscreen && (
             <SectionFooter
               nextChapter={nextChapter}
-              link={`${siteUrl}/seasons?share=true`}
+              link={`${siteUrl}/seasons`}
             />
           )}
         </div>

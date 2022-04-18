@@ -143,9 +143,7 @@ const Section5 = ({
               </div>
             </div>
           </div>
-          {!fullscreen && (
-            <SectionFooter link={`${siteUrl}/urban_rural?share=true`} />
-          )}
+          {!fullscreen && <SectionFooter link={`${siteUrl}/urban_rural`} />}
         </div>
       </RightColumn>
       <HowToRead

@@ -64,7 +64,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
     });
   }, []);
 
-  const fullscreen = router.query && router.query.share ? true : false;
+  const fullscreen = true;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">

@@ -213,7 +213,7 @@ const Section1 = ({
           {!fullscreen && (
             <SectionFooter
               nextChapter={nextChapter}
-              link={`${siteUrl}/activities?share=true`}
+              link={`${siteUrl}/activities`}
             />
           )}
         </div>

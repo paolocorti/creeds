@@ -156,6 +156,8 @@ export const regionLabels = {
 export const getEnergyPrice = (data, index) => {
   if (data.length === 0) return;
 
+  console.log(index);
+
   const d = data[0].filter((v) => {
     return String(v.time) === String(index);
   });

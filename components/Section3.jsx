@@ -152,7 +152,7 @@ const Section3 = ({
           {!fullscreen && (
             <SectionFooter
               nextChapter={nextChapter}
-              link={`${siteUrl}/spatial_variation?share=true`}
+              link={`${siteUrl}/spatial_variation`}
             />
           )}
         </div>

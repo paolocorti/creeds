@@ -64,13 +64,14 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
     });
   }, []);
 
-  const fullscreen = router.query && router.query.share ? true : false;
+  //const fullscreen = router.query && router.query.share ? true : false;
+  const fullscreen = true;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <ReactTooltip effect="solid" backgroundColor="#111" />
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center">
         <Section1
           data={data}
           energyDemand={energyDemand}

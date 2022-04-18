@@ -443,15 +443,18 @@ const RadarYear = ({
                           const dateTime2 = moment(
                             timeScale.invert(j)
                           ).toDate();
+                          const dateTimeEven = moment(
+                            timeScale3.invert(j % 2 === 0 ? j : j - 1)
+                          ).toDate();
 
                           const energyPrice = getEnergyPrice(
                             energyPriceData,
-                            dateTime
+                            dateTimeEven
                           );
 
                           const energyDemand = getEnergyDemand(
                             energyData,
-                            dateTime
+                            dateTimeEven
                           );
 
                           const topActivity = maxParsedActivtiesObject[
