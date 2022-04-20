@@ -42,7 +42,7 @@ const Section3 = ({
   return (
     <section
       name="section3"
-      className="w-full min-h-screen flex flex-col md:flex-row relative"
+      className="w-full md:min-h-screen flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
         <LeftColumn sectionTitle={"/4.spatial-vertical.svg"}>

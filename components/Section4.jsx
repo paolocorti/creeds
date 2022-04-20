@@ -97,7 +97,7 @@ const Section4 = ({
   return (
     <section
       name="section4"
-      className="w-full min-h-screen flex flex-col md:flex-row relative"
+      className="w-full md:min-h-screen flex flex-col md:flex-row relative"
     >
       {!fullscreen && (
         <LeftColumn
