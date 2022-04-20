@@ -3,11 +3,15 @@ import RightColumn from "./RightColumn";
 import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
-import React from "react";
+import React, { useEffect } from "react";
 import { LinkedinShareButton, TwitterShareButton } from "react-share";
 
-const Intro = ({ nextChapter, expanded, scrolling }) => {
+const Intro = ({ nextChapter, expanded, scrolling, setStep2 }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
+
+  useEffect(() => {
+    setStep2(true);
+  }, []);
 
   return (
     <section

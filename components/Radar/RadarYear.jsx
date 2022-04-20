@@ -117,7 +117,6 @@ const RadarYear = ({
   if (globalData.length === 0) {
     return <></>;
   }
-
   const [hover, setHover] = useState(null);
   const [hoverCategory, setHoverCategory] = useState(null);
   const [hoverTime, setHoverTime] = useState(null);
@@ -904,4 +903,4 @@ const RadarYear = ({
     </div>
   );
 };
-export default RadarYear;
+export default React.memo(RadarYear);

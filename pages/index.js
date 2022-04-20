@@ -2,12 +2,12 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import Landing from "../components/Landing";
-// import Intro from "../components/Intro";
-//import Section1 from "../components/Section1";
-// import Section2 from "../components/Section2";
-// import Section3 from "../components/Section3";
-// import Section4 from "../components/Section4";
-// import Section5 from "../components/Section5";
+import Intro from "../components/Intro";
+import Section1 from "../components/Section1";
+import Section2 from "../components/Section2";
+import Section3 from "../components/Section3";
+import Section4 from "../components/Section4";
+import Section5 from "../components/Section5";
 import { useRouter } from "next/router";
 import { csv } from "d3-fetch";
 import { server } from "../config";
@@ -16,27 +16,31 @@ import { useStore } from "../store.js";
 import { scroller } from "react-scroll";
 import dynamic from "next/dynamic";
 
-const Intro = dynamic(() => import("../components/Intro"), {
-  loading: () => <p>Loading...</p>,
-});
-const Section1 = dynamic(() => import("../components/Section1"), {
-  loading: () => <p>Loading...</p>,
-});
-const Section2 = dynamic(() => import("../components/Section2"), {
-  loading: () => <p>Loading...</p>,
-});
-const Section3 = dynamic(() => import("../components/Section3"), {
-  loading: () => <p>Loading...</p>,
-});
-const Section4 = dynamic(() => import("../components/Section4"), {
-  loading: () => <p>Loading...</p>,
-});
-const Section5 = dynamic(() => import("../components/Section5"), {
-  loading: () => <p>Loading...</p>,
-});
+// const Intro = dynamic(() => import("../components/Intro"), {
+//   loading: () => <p>Loading...</p>,
+// });
+// const Section1 = dynamic(() => import("../components/Section1"), {
+//   loading: () => <p>Loading...</p>,
+// });
+// const Section2 = dynamic(() => import("../components/Section2"), {
+//   loading: () => <p>Loading...</p>,
+// });
+// const Section3 = dynamic(() => import("../components/Section3"), {
+//   loading: () => <p>Loading...</p>,
+// });
+// const Section4 = dynamic(() => import("../components/Section4"), {
+//   loading: () => <p>Loading...</p>,
+// });
+// const Section5 = dynamic(() => import("../components/Section5"), {
+//   loading: () => <p>Loading...</p>,
+// });
 
 export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [step1, setStep1] = useState(false);
+  const [step2, setStep2] = useState(false);
+  const [step3, setStep3] = useState(false);
 
   useEffect(() => {
     const copiedValues = JSON.parse(JSON.stringify(energyDemand));
@@ -104,6 +108,8 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
               smooth: false,
             });
           }}
+          loading={loading}
+          setStep1={setStep1}
         />
         <Intro
           nextChapter={() => {
@@ -111,8 +117,9 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
               smooth: false,
             });
           }}
+          setStep2={setStep2}
         />
-        {data && (
+        {data && step1 && (
           <Section1
             data={data}
             energyDemand={energyDemand}
@@ -123,9 +130,11 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
               });
             }}
             fullscreen={false}
+            setLoading={setLoading}
+            setStep3={setStep3}
           />
         )}
-        {data && (
+        {data && step2 && (
           <Section2
             data={data}
             nextChapter={() => {
@@ -136,7 +145,7 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
             fullscreen={false}
           />
         )}
-        {data && (
+        {data && step3 && (
           <Section3
             data={data}
             energyDemand={energyDemand}
@@ -150,7 +159,7 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
             fullscreen={false}
           />
         )}
-        {data && (
+        {/* {data && (
           <Section4
             data={data}
             energyDemand={energyDemand}
@@ -175,7 +184,7 @@ export default function Home({ data, energyDemand, energyPrice, gasDemand }) {
             }}
             fullscreen={false}
           />
-        )}
+        )} */}
       </main>
 
       <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">

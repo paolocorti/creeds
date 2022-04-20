@@ -9,11 +9,17 @@ import Button from "./Button";
 import Loader from "./Loader";
 import HowToRead from "./HowToRead";
 import { useWindowDimension, getVizWidth } from "./utils";
-import { isMobile } from "react-device-detect";
+import { isMobile, isSafari } from "react-device-detect";
 import React from "react";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import SectionFooter from "./SectionFooter.jsx";
 import { siteUrl } from "../config";
+
+import {
+  useWindowSize,
+  useWindowWidth,
+  useWindowHeight,
+} from "@react-hook/window-size/throttled";
 
 let interval;
 const intervalTime = 1000;
@@ -26,19 +32,25 @@ const Section1 = ({
   previousChapter,
   nextChapter,
   fullscreen = false,
+  setLoading,
+  setStep3,
 }) => {
   console.log("Section1 render");
 
   if (data.length === 0) {
     return <></>;
   }
-
   const [selectedMonth, setSelectedMonth] = useState(1);
   const [playStarted, setPlayStarted] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const size = isMobile ? 600 : useWindowDimension();
   const vizWidth = getVizWidth("single", size);
+
+  // useEffect(() => {
+  //   //setVizWidth(getVizWidth("single", { width: width }));
+  // }, [width]);
+
   const [open, setHowToReadOpen] = useState(false);
   const changeMonth = () => {
     if (selectedMonth < 13) {
@@ -62,11 +74,14 @@ const Section1 = ({
     }
   }, [selectedMonth]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setAllowEvents(true);
-  //   }, 1500);
-  // }, []);
+  useEffect(() => {
+    if (setStep3) {
+      setStep3(true);
+    }
+    if (setLoading) {
+      setLoading(false);
+    }
+  });
 
   return (
     <section
@@ -177,26 +192,26 @@ const Section1 = ({
                 />
 
                 {/* {!allowEvents && (
-                <div className="w-full h-full flex justify-center items-center relative ">
-                  <Loader style={{ width: "100px" }} />
-                  <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
-                    LOADING
+                  <div className="w-full h-full flex justify-center items-center relative ">
+                    <Loader style={{ width: "100px" }} />
+                    <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
+                      LOADING
+                    </div>
                   </div>
-                </div>
-              )}
-              {allowEvents && (
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={energyPrice}
-                  selectedRegion={selectedRegion}
-                  selectedMonth={String(selectedMonth)}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  selectedCategory={selectedCategory}
-                />
-              )} */}
+                )}
+                {allowEvents && (
+                  <RadarYear
+                    globalData={data}
+                    energyDemand={energyDemand}
+                    gasDemand={gasDemand}
+                    energyPrice={energyPrice}
+                    selectedRegion={selectedRegion}
+                    selectedMonth={String(selectedMonth)}
+                    setSelectedMonth={setSelectedMonth}
+                    width={vizWidth}
+                    selectedCategory={selectedCategory}
+                  />
+                )} */}
               </div>
               <div className="w-full md:w-1/3 px-8 items-center hidden md:flex">
                 <div className="flex flex-col" style={{ minWidth: "250px" }}>

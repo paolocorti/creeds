@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 
 export const mobileZoom = 2.5;
 export const desktopZoom = 3.75;
@@ -156,8 +156,6 @@ export const regionLabels = {
 export const getEnergyPrice = (data, index) => {
   if (data.length === 0) return;
 
-  console.log(index);
-
   const d = data[0].filter((v) => {
     return String(v.time) === String(index);
   });
@@ -193,14 +191,18 @@ export function useWindowDimension() {
     width: undefined,
     height: undefined,
   });
+  const lastWidth = useRef();
 
   useLayoutEffect(() => {
     const debouncedResizeHandler = debounce(() => {
       console.log("***** debounced resize"); // See the cool difference in console
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      if (window?.innerWidth !== lastWidth.current) {
+        lastWidth.current = window.innerWidth;
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
     }, 100); // 100ms
 
     debouncedResizeHandler();
@@ -284,3 +286,17 @@ export const getVizWidth = (type, size, expanded) => {
       : size.width * 0.9;
   }
 };
+
+const useOnScreen = (ref) => {
+  const [isIntersecting, setIntersecting] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) =>
+      setIntersecting(entry.isIntersecting)
+    );
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+  }, []);
+  return isIntersecting;
+};
+export default useOnScreen;

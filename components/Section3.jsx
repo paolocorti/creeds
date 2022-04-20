@@ -14,6 +14,11 @@ import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
 import { siteUrl } from "../config";
 import { isMobile } from "react-device-detect";
+import {
+  useWindowSize,
+  useWindowWidth,
+  useWindowHeight,
+} from "@react-hook/window-size/throttled";
 
 const Section3 = ({
   data,
@@ -37,6 +42,8 @@ const Section3 = ({
   const [selectedCategory, setSelectedCategory] = useState(null);
   const size = isMobile ? 600 : useWindowDimension();
   const vizWidth = getVizWidth("multiple", size);
+  // const width = useWindowWidth();
+  // const vizWidth = getVizWidth("multiple", { width: width });
   const [open, setHowToReadOpen] = useState(false);
 
   return (
@@ -169,4 +176,4 @@ const Section3 = ({
   );
 };
 
-export default React.memo(Section3);
+export default Section3;

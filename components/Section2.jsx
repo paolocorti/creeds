@@ -10,6 +10,12 @@ import HowToRead from "./HowToRead";
 import { siteUrl } from "../config";
 import { isMobile } from "react-device-detect";
 
+import {
+  useWindowSize,
+  useWindowWidth,
+  useWindowHeight,
+} from "@react-hook/window-size/throttled";
+
 const Section2 = ({
   data,
   energyDemand,
@@ -28,6 +34,7 @@ const Section2 = ({
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
   const size = isMobile ? 600 : useWindowDimension();
+  //const width = useWindowWidth();
   const vizWidth = getVizWidth("trend", size);
 
   return (

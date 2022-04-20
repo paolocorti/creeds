@@ -1,39 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { isMobile } from "react-device-detect";
 import LandingCircles from "./LandingCircles";
 import LandingCirclesMobile from "./LandingCirclesMobile";
 
-const Landing = ({ nextChapter }) => {
+const Landing = ({ nextChapter, loading, setStep1 }) => {
   console.log("Landing render", isMobile);
+
+  useEffect(() => {
+    setStep1(true);
+  }, []);
 
   return (
     <section className="w-full bg-green flex flex-col justify-center items-center h-screen border-b border-black relative overflow-hidden">
       <LandingCircles />
-      <div className="absolute top-0 bottom-0 left-0 right-0 z-10 m-auto h-96">
-        <h1 className="px-8 md:px-36 text-center hidden md:block">
-          Energy demand flexibility
-          <br /> and the rhythms of <br />
-          everyday life
-        </h1>
-        <h1 className="px-8 md:px-36 text-center block md:hidden">
-          Energy demand flexibility and <br /> the rhythms <br /> of everyday{" "}
-          <br />
-          life
-        </h1>
-        <div className="flex justify-center mt-16">
-          <div
-            className="border rounded-2xl z-40 px-4 py-1 cursor-pointer bg-green hover:bg-black hover:text-green"
-            style={{
-              fontSize: "12px",
-              fontWeight: "bold",
-              lineHeight: 1.5,
-            }}
-            onClick={nextChapter}
-          >
-            START ↓
+      {loading ? (
+        <div className="absolute top-0 bottom-0 left-0 right-0 z-10 m-auto h-64">
+          <div className="px-8 text-6xl md:px-36 text-center hidden md:block">
+            LOADING
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="absolute top-0 bottom-0 left-0 right-0 z-10 m-auto h-96">
+          <h1 className="px-8 md:px-36 text-center hidden md:block">
+            Energy demand flexibility
+            <br /> and the rhythms of <br />
+            everyday life
+          </h1>
+          <h1 className="px-8 md:px-36 text-center block md:hidden">
+            Energy demand flexibility and <br /> the rhythms <br /> of everyday{" "}
+            <br />
+            life
+          </h1>
+          <div className="flex justify-center mt-16">
+            <div
+              className="border rounded-2xl z-40 px-4 py-1 cursor-pointer bg-green hover:bg-black hover:text-green"
+              style={{
+                fontSize: "12px",
+                fontWeight: "bold",
+                lineHeight: 1.5,
+              }}
+              onClick={nextChapter}
+            >
+              START ↓
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
