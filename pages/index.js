@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import Landing from "../components/Landing";
@@ -14,6 +14,7 @@ import { server } from "../config";
 import { flatten } from "lodash";
 import { useStore } from "../store.js";
 import { scroller } from "react-scroll";
+import { siteUrl } from "../config";
 
 // const Intro = dynamic(() => import("../components/Intro"), {
 //   loading: () => <p>Loading...</p>,
