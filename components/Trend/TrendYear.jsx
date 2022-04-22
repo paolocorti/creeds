@@ -190,7 +190,9 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
                             <g key={`group-${j}`}>
                               {j === 0 && i % 2 === 0 && (
                                 <text
-                                  dx={isMobile ? 0 : internalWidth + 10}
+                                  dx={
+                                    isMobile ? marginLeft : internalWidth + 10
+                                  }
                                   dy={isMobile ? 40 : 60}
                                   textAnchor={"start"}
                                   fontSize={internalWidth * 0.02}

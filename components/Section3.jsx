@@ -13,12 +13,8 @@ import React from "react";
 import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
 import { siteUrl } from "../config";
-import { isMobile } from "react-device-detect";
-import {
-  useWindowSize,
-  useWindowWidth,
-  useWindowHeight,
-} from "@react-hook/window-size/throttled";
+import { isMobile, isSafari } from "react-device-detect";
+import { ParentSize } from "@visx/responsive";
 
 const Section3 = ({
   data,
@@ -40,10 +36,6 @@ const Section3 = ({
   const [selectedCompareRegion2, setSelectedCompareRegion2] =
     useState("south_east");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = isMobile ? 600 : useWindowDimension();
-  const vizWidth = getVizWidth("multiple", size);
-  // const width = useWindowWidth();
-  // const vizWidth = getVizWidth("multiple", { width: width });
   const [open, setHowToReadOpen] = useState(false);
 
   return (
@@ -93,8 +85,6 @@ const Section3 = ({
             >
               <Button title="HOW TO READ THE GRAPHIC" callback={null} />
             </div>
-          </div>
-          <div className="flex flex-col justify-center items-center grow">
             <div className="mt-4">
               <ActivitiesMenu
                 activitiesArray={activitiesArray}
@@ -102,6 +92,8 @@ const Section3 = ({
                 setSelectedCategory={setSelectedCategory}
               />
             </div>
+          </div>
+          <div className="flex flex-col justify-center items-center grow">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
               <div
                 className="px-12 flex flex-col justify-start"
@@ -113,20 +105,23 @@ const Section3 = ({
                   setSelected={setSelectedCompareRegion1}
                   initialSlide={0}
                 />
-
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={[]}
-                  selectedRegion={selectedCompareRegion1}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  showDemand={false}
-                  selectedCategory={selectedCategory}
-                  type={"spatial_variation"}
-                />
+                <ParentSize>
+                  {(parent) => (
+                    <RadarYear
+                      globalData={data}
+                      energyDemand={energyDemand}
+                      gasDemand={gasDemand}
+                      energyPrice={[]}
+                      selectedRegion={selectedCompareRegion1}
+                      selectedMonth={selectedMonth}
+                      setSelectedMonth={setSelectedMonth}
+                      width={parent.width}
+                      showDemand={false}
+                      selectedCategory={selectedCategory}
+                      type={"spatial_variation"}
+                    />
+                  )}
+                </ParentSize>
               </div>
               <div
                 className="px-12 flex flex-col justify-start"
@@ -138,20 +133,23 @@ const Section3 = ({
                   setSelected={setSelectedCompareRegion2}
                   initialSlide={1}
                 />
-
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={[]}
-                  selectedRegion={selectedCompareRegion2}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  showDemand={false}
-                  selectedCategory={selectedCategory}
-                  type={"spatial_variation"}
-                />
+                <ParentSize>
+                  {(parent) => (
+                    <RadarYear
+                      globalData={data}
+                      energyDemand={energyDemand}
+                      gasDemand={gasDemand}
+                      energyPrice={[]}
+                      selectedRegion={selectedCompareRegion2}
+                      selectedMonth={selectedMonth}
+                      setSelectedMonth={setSelectedMonth}
+                      width={parent.width}
+                      showDemand={false}
+                      selectedCategory={selectedCategory}
+                      type={"spatial_variation"}
+                    />
+                  )}
+                </ParentSize>
               </div>
             </div>
           </div>

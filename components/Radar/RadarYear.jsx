@@ -20,6 +20,7 @@ import OuterRadial from "./OuterRadial.jsx";
 const isMobileWithTablet = false;
 import ReactTooltip from "react-tooltip";
 import UkMap from "../UkMap.jsx";
+import { isSafari } from "react-device-detect";
 
 const pinkColor = "#F4D2C3";
 
@@ -117,6 +118,7 @@ const RadarYear = ({
   if (globalData.length === 0) {
     return <></>;
   }
+
   const [hover, setHover] = useState(null);
   const [hoverCategory, setHoverCategory] = useState(null);
   const [hoverTime, setHoverTime] = useState(null);
@@ -278,7 +280,10 @@ const RadarYear = ({
     sortField: "actCategory",
   });
 
-  const mainActivities = sorted.filter((v) => v.actType === "main");
+  const mainActivities = useMemo(() => {
+    return sorted.filter((v) => v.actType === "main");
+  }, [sorted]);
+
   const parsedActivities = useMemo(() => {
     return flatten(
       mainActivities.map((v) => {
@@ -310,15 +315,12 @@ const RadarYear = ({
     });
   }, [groupedByActivties]);
 
-  const maxParsedActivtiesObject = maxParsedActivties.reduce(function (
-    acc,
-    cur,
-    i
-  ) {
-    acc[cur.time] = cur;
-    return acc;
-  },
-  {});
+  const maxParsedActivtiesObject = useMemo(() => {
+    return maxParsedActivties.reduce(function (acc, cur, i) {
+      acc[cur.time] = cur;
+      return acc;
+    }, {});
+  }, [maxParsedActivties]);
 
   return (
     <div className="radial-overview">
@@ -861,14 +863,7 @@ const RadarYear = ({
                 {[...Array(12).keys()].map((v, i) => {
                   const angle = v * 30;
                   return (
-                    <g
-                      className={
-                        v >= 4 && v <= 9
-                          ? "radial-hour-label-months-rot"
-                          : "radial-hour-label-months"
-                      }
-                      key={`g-2-${i}`}
-                    >
+                    <g key={`g-2-${i}`}>
                       <text
                         x={width * 0.521 * Math.cos(degToRad(angle - 90))}
                         y={width * 0.521 * Math.sin(degToRad(angle - 90))}
@@ -877,10 +872,13 @@ const RadarYear = ({
                         fontSize={width * 0.02 < 14 ? width * 0.02 : 14}
                         fill="#000"
                         className={
-                          v >= 5 && v <= 9
+                          v >= 4 && v <= 9
                             ? "radial-hour-label-months-rot"
                             : "radial-hour-label-months"
                         }
+                        // transform={`rotate(${
+                        //   v >= 4 && v <= 9 ? angle - 180 : angle
+                        // }deg 0 0 )`}
                         style={{
                           transform: `rotate(${angle}deg)`,
                           cursor: "pointer",
@@ -903,4 +901,4 @@ const RadarYear = ({
     </div>
   );
 };
-export default React.memo(RadarYear);
+export default RadarYear;

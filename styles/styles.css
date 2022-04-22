@@ -26,6 +26,13 @@ h1 {
   margin: 20px 0;
 }
 
+.load-title {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 20px 0;
+  font-family: "Nanum Myeongjo", serif;
+}
+
 p {
   text-align: left;
   font-size: calc(10px + 0.56vw);
@@ -98,6 +105,7 @@ p b {
   transform-origin: center;
   color: #0d0d18;
   alignment-baseline: middle;
+  position: relative;
 }
 
 .radial-hour-label-months-rot {
@@ -107,6 +115,7 @@ p b {
   color: #0d0d18;
   alignment-baseline: middle;
   transform: rotate(180deg);
+  position: relative;
 }
 
 /* .animation-width {
@@ -157,6 +166,10 @@ p b {
     font-size: 48px;
     line-height: 1.2;
   }
+
+  p {
+    font-size: 18px;
+  }
 }
 
 .categoryButton {
@@ -189,7 +202,7 @@ p b {
 .slick-slider {
   display: flex;
   align-items: center;
-  margin-top: 45px;
+  margin-top: 15px;
 }
 
 .blend {

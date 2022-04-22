@@ -20,6 +20,7 @@ import {
   useWindowWidth,
   useWindowHeight,
 } from "@react-hook/window-size/throttled";
+import { ParentSize } from "@visx/responsive";
 
 let interval;
 const intervalTime = 1000;
@@ -32,8 +33,6 @@ const Section1 = ({
   previousChapter,
   nextChapter,
   fullscreen = false,
-  setLoading,
-  setStep3,
 }) => {
   console.log("Section1 render");
 
@@ -44,9 +43,9 @@ const Section1 = ({
   const [playStarted, setPlayStarted] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = isMobile ? 600 : useWindowDimension();
-  const vizWidth = getVizWidth("single", size);
-
+  const [allowEvents, setAllowEvents] = useState(true);
+  // const size = isMobile ? 600 : useWindowDimension();
+  // const vizWidth = getVizWidth("single", size);
   // useEffect(() => {
   //   //setVizWidth(getVizWidth("single", { width: width }));
   // }, [width]);
@@ -74,14 +73,11 @@ const Section1 = ({
     }
   }, [selectedMonth]);
 
-  useEffect(() => {
-    if (setStep3) {
-      setStep3(true);
-    }
-    if (setLoading) {
-      setLoading(false);
-    }
-  });
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setAllowEvents(true);
+  //   }, 1000);
+  // });
 
   return (
     <section
@@ -179,7 +175,7 @@ const Section1 = ({
                   </div>
                 </div>
 
-                <RadarYear
+                {/* <RadarYear
                   globalData={data}
                   energyDemand={energyDemand}
                   gasDemand={gasDemand}
@@ -189,9 +185,9 @@ const Section1 = ({
                   setSelectedMonth={setSelectedMonth}
                   width={vizWidth}
                   selectedCategory={selectedCategory}
-                />
+                /> */}
 
-                {/* {!allowEvents && (
+                {!allowEvents && (
                   <div className="w-full h-full flex justify-center items-center relative ">
                     <Loader style={{ width: "100px" }} />
                     <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
@@ -199,19 +195,21 @@ const Section1 = ({
                     </div>
                   </div>
                 )}
-                {allowEvents && (
-                  <RadarYear
-                    globalData={data}
-                    energyDemand={energyDemand}
-                    gasDemand={gasDemand}
-                    energyPrice={energyPrice}
-                    selectedRegion={selectedRegion}
-                    selectedMonth={String(selectedMonth)}
-                    setSelectedMonth={setSelectedMonth}
-                    width={vizWidth}
-                    selectedCategory={selectedCategory}
-                  />
-                )} */}
+                <ParentSize>
+                  {(parent) => (
+                    <RadarYear
+                      globalData={data}
+                      energyDemand={energyDemand}
+                      gasDemand={gasDemand}
+                      energyPrice={energyPrice}
+                      selectedRegion={selectedRegion}
+                      selectedMonth={String(selectedMonth)}
+                      setSelectedMonth={setSelectedMonth}
+                      width={parent.width}
+                      selectedCategory={selectedCategory}
+                    />
+                  )}
+                </ParentSize>
               </div>
               <div className="w-full md:w-1/3 px-8 items-center hidden md:flex">
                 <div className="flex flex-col" style={{ minWidth: "250px" }}>

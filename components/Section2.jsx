@@ -8,8 +8,9 @@ import { useWindowDimension, getVizWidth } from "./utils";
 import React from "react";
 import HowToRead from "./HowToRead";
 import { siteUrl } from "../config";
-import { isMobile } from "react-device-detect";
-
+import { isMobile, isSafari } from "react-device-detect";
+import Loader from "./Loader";
+import { ParentSize } from "@visx/responsive";
 import {
   useWindowSize,
   useWindowWidth,
@@ -20,7 +21,6 @@ const Section2 = ({
   data,
   energyDemand,
   nextChapter,
-  previousChapter,
   fullscreen = false,
   scrolling,
 }) => {
@@ -33,9 +33,16 @@ const Section2 = ({
   const [open, setHowToReadOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
-  const size = isMobile ? 600 : useWindowDimension();
-  //const width = useWindowWidth();
-  const vizWidth = getVizWidth("trend", size);
+  // const size = isMobile ? 600 : useWindowDimension();
+  // //const width = useWindowWidth();
+  // const vizWidth = getVizWidth("trend", size);
+  const [allowEvents, setAllowEvents] = useState(true);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setAllowEvents(true);
+  //   }, 1000);
+  // });
 
   return (
     <section
@@ -87,21 +94,25 @@ const Section2 = ({
               <Button title="HOW TO READ THE GRAPHIC" callback={null} />
             </div>
           </div>
-          {/* {!allowEvents && (
+          {!allowEvents && (
             <div className="w-full h-96 flex justify-center items-center relative ">
               <Loader style={{ width: "100px" }} />
               <div className="text-xs absolute top-0 bottom-0 left-0 right-0 m-auto h-4">
                 LOADING
               </div>
             </div>
-          )} */}
-          <TrendYear
-            globalData={data}
-            energyDemand={energyDemand}
-            selectedRegion={selectedRegion}
-            selectedMonth={selectedMonth}
-            width={vizWidth}
-          />
+          )}
+          <ParentSize>
+            {(parent) => (
+              <TrendYear
+                globalData={data}
+                energyDemand={energyDemand}
+                selectedRegion={selectedRegion}
+                selectedMonth={selectedMonth}
+                width={parent.width}
+              />
+            )}
+          </ParentSize>
 
           {!fullscreen && (
             <SectionFooter

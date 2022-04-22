@@ -67,4 +67,4 @@ const InnerRadial = ({ width, height, data, maximum }) => {
   );
 };
 
-export default InnerRadial;
+export default React.memo(InnerRadial);

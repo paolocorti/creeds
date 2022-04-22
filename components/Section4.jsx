@@ -15,7 +15,8 @@ import React from "react";
 import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
 import { siteUrl } from "../config";
-import { isMobile } from "react-device-detect";
+import { isMobile, isSafari } from "react-device-detect";
+import { ParentSize } from "@visx/responsive";
 
 const seasonLabel = ["Winter", "Spring", "Summer", "Autumn"];
 
@@ -88,11 +89,7 @@ const Section4 = ({
       ? flatten(groupedGas2[selectedCompareSeason2])
       : [];
 
-  const size = isMobile ? 600 : useWindowDimension();
-  const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
-  const [allowEvents, setAllowEvents] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   return (
     <section
@@ -154,16 +151,16 @@ const Section4 = ({
               >
                 <Button title="HOW TO READ THE GRAPHIC" callback={null} />
               </div>
+              <div className="mt-4">
+                <ActivitiesMenu
+                  activitiesArray={activitiesArray}
+                  selectedCategory={selectedCategory}
+                  setSelectedCategory={setSelectedCategory}
+                />
+              </div>
             </div>
           </div>
           <div className="flex flex-col justify-center items-center grow">
-            <div className="mt-4">
-              <ActivitiesMenu
-                activitiesArray={activitiesArray}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-              />
-            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
               <div
                 className="px-12 flex flex-col justify-start"
@@ -178,21 +175,24 @@ const Section4 = ({
                     initialSlide={0}
                   />
                 </div>
-
-                <RadarYear
-                  globalData={seasonData1 || []}
-                  energyDemand={energyData1 || []}
-                  gasDemand={gasData1 || []}
-                  energyPrice={[]}
-                  selectedRegion={"all"}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  selectedCategory={selectedCategory}
-                  width={vizWidth}
-                  showDemand={false}
-                  innerLabel={seasonLabel[selectedCompareSeason1]}
-                  type={"season"}
-                />
+                <ParentSize>
+                  {(parent) => (
+                    <RadarYear
+                      globalData={seasonData1 || []}
+                      energyDemand={energyData1 || []}
+                      gasDemand={gasData1 || []}
+                      energyPrice={[]}
+                      selectedRegion={"all"}
+                      selectedMonth={selectedMonth}
+                      setSelectedMonth={setSelectedMonth}
+                      selectedCategory={selectedCategory}
+                      width={parent.width}
+                      showDemand={false}
+                      innerLabel={seasonLabel[selectedCompareSeason1]}
+                      type={"season"}
+                    />
+                  )}
+                </ParentSize>
               </div>
               <div
                 className="px-12 flex flex-col justify-start"
@@ -207,21 +207,24 @@ const Section4 = ({
                     initialSlide={1}
                   />
                 </div>
-
-                <RadarYear
-                  globalData={seasonData2 || []}
-                  energyDemand={energyData2 || []}
-                  gasDemand={gasData2 || []}
-                  energyPrice={[]}
-                  selectedRegion={"all"}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  selectedCategory={selectedCategory}
-                  width={vizWidth}
-                  showDemand={false}
-                  innerLabel={seasonLabel[selectedCompareSeason2]}
-                  type={"season"}
-                />
+                <ParentSize>
+                  {(parent) => (
+                    <RadarYear
+                      globalData={seasonData2 || []}
+                      energyDemand={energyData2 || []}
+                      gasDemand={gasData2 || []}
+                      energyPrice={[]}
+                      selectedRegion={"all"}
+                      selectedMonth={selectedMonth}
+                      setSelectedMonth={setSelectedMonth}
+                      selectedCategory={selectedCategory}
+                      width={parent.width}
+                      showDemand={false}
+                      innerLabel={seasonLabel[selectedCompareSeason2]}
+                      type={"season"}
+                    />
+                  )}
+                </ParentSize>
               </div>
             </div>
           </div>

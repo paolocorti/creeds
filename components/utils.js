@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { isSafari } from "react-device-detect";
 
 export const mobileZoom = 2.5;
 export const desktopZoom = 3.75;
@@ -193,10 +194,10 @@ export function useWindowDimension() {
   });
   const lastWidth = useRef();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const debouncedResizeHandler = debounce(() => {
-      console.log("***** debounced resize"); // See the cool difference in console
       if (window?.innerWidth !== lastWidth.current) {
+        console.log("***** debounced resize"); // See the cool difference in console
         lastWidth.current = window.innerWidth;
         setWindowSize({
           width: window.innerWidth,
@@ -232,7 +233,7 @@ export function useWindowSize() {
     height: undefined,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     // only execute all the code below in client side
     if (typeof window !== "undefined") {
       // Handler to call on window resize

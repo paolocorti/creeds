@@ -1,3 +1,4 @@
+import { Head } from "next/document";
 import "tailwindcss/tailwind.css";
 import "../styles/styles.css";
 

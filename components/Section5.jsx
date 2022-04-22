@@ -12,7 +12,8 @@ import Loader from "./Loader";
 import HowToRead from "./HowToRead";
 import SectionFooter from "./SectionFooter.jsx";
 import { siteUrl } from "../config";
-import { isMobile } from "react-device-detect";
+import { isMobile, isSafari } from "react-device-detect";
+import { ParentSize } from "@visx/responsive";
 
 const Section5 = ({
   data,
@@ -29,8 +30,6 @@ const Section5 = ({
     useState("london");
   const [selectedCompareRegion2, setSelectedCompareRegion2] = useState("wales");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const size = isMobile ? 600 : useWindowDimension();
-  const vizWidth = getVizWidth("multiple", size);
   const [open, setHowToReadOpen] = useState(false);
 
   return (
@@ -82,8 +81,6 @@ const Section5 = ({
             >
               <Button title="HOW TO READ THE GRAPHIC" callback={null} />
             </div>
-          </div>
-          <div className="flex flex-col justify-center items-center grow">
             <div className="mt-4">
               <ActivitiesMenu
                 activitiesArray={activitiesArray}
@@ -91,6 +88,8 @@ const Section5 = ({
                 setSelectedCategory={setSelectedCategory}
               />
             </div>
+          </div>
+          <div className="flex flex-col justify-center items-center grow">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
               <div
                 className="px-12 flex flex-col justify-start"
@@ -98,20 +97,24 @@ const Section5 = ({
                   maxWidth: "85vh",
                 }}
               >
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={[]}
-                  selectedRegion={selectedCompareRegion1}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  showDemand={false}
-                  selectedCategory={selectedCategory}
-                  innerLabel={"URBAN"}
-                  type={"urban_rural"}
-                />
+                <ParentSize>
+                  {(parent) => (
+                    <RadarYear
+                      globalData={data}
+                      energyDemand={energyDemand}
+                      gasDemand={gasDemand}
+                      energyPrice={[]}
+                      selectedRegion={selectedCompareRegion1}
+                      selectedMonth={selectedMonth}
+                      setSelectedMonth={setSelectedMonth}
+                      width={parent.width}
+                      showDemand={false}
+                      selectedCategory={selectedCategory}
+                      innerLabel={"URBAN"}
+                      type={"urban_rural"}
+                    />
+                  )}
+                </ParentSize>
               </div>
               <div
                 className="px-12 flex flex-col justify-start"
@@ -125,21 +128,24 @@ const Section5 = ({
                   initialSlide={1}
                 />
               </div> */}
-
-                <RadarYear
-                  globalData={data}
-                  energyDemand={energyDemand}
-                  gasDemand={gasDemand}
-                  energyPrice={[]}
-                  selectedRegion={selectedCompareRegion2}
-                  selectedMonth={selectedMonth}
-                  setSelectedMonth={setSelectedMonth}
-                  width={vizWidth}
-                  showDemand={false}
-                  selectedCategory={selectedCategory}
-                  innerLabel={"RURAL"}
-                  type={"urban_rural"}
-                />
+                <ParentSize>
+                  {(parent) => (
+                    <RadarYear
+                      globalData={data}
+                      energyDemand={energyDemand}
+                      gasDemand={gasDemand}
+                      energyPrice={[]}
+                      selectedRegion={selectedCompareRegion2}
+                      selectedMonth={selectedMonth}
+                      setSelectedMonth={setSelectedMonth}
+                      width={parent.width}
+                      showDemand={false}
+                      selectedCategory={selectedCategory}
+                      innerLabel={"RURAL"}
+                      type={"urban_rural"}
+                    />
+                  )}
+                </ParentSize>
               </div>
             </div>
           </div>
