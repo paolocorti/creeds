@@ -163,7 +163,7 @@ const Section4 = ({
           <div className="flex flex-col justify-center items-center grow">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
               <div
-                className="px-12 flex flex-col justify-start"
+                className="px-8 flex flex-col justify-start"
                 style={{
                   maxWidth: "85vh",
                 }}
@@ -195,7 +195,7 @@ const Section4 = ({
                 </ParentSize>
               </div>
               <div
-                className="px-12 flex flex-col justify-start"
+                className="px-8 flex flex-col justify-start"
                 style={{
                   maxWidth: "85vh",
                 }}

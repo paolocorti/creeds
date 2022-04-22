@@ -323,7 +323,7 @@ const RadarYear = ({
   }, [maxParsedActivties]);
 
   return (
-    <div className="radial-overview">
+    <div className="radial-overview h-full">
       {/* <div className="radial-overview-subtitle viz-explanation"></div>
       <div className="radial-overview-toolbar">
         {hoverTime && (
@@ -340,12 +340,11 @@ const RadarYear = ({
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-around",
           flexDirection: isMobileWithTablet ? "column" : "row",
         }}
+        className="flex justify-around h-full"
       >
-        <div className="my-0 relative flex">
+        <div className="my-0 relative flex items-center h-full">
           <svg width={width * 1.2} height={width * 1.2}>
             <circle
               cx={width * 0.6}
