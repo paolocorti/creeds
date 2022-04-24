@@ -21,6 +21,14 @@ import UkMap from "../UkMap.jsx";
 import { isSafari } from "react-device-detect";
 import { Tooltip, defaultStyles, useTooltip } from "@visx/tooltip";
 
+Object.fromEntries =
+  Object.fromEntries ||
+  function (arr) {
+    return arr.reduce(function (acc, curr) {
+      acc[curr[0]] = curr[1];
+      return acc;
+    }, {});
+  };
 const pinkColor = "#F4D2C3";
 
 const tooltipStyles = {

@@ -7,6 +7,15 @@ import { TooltipWithBounds, defaultStyles, useTooltip } from "@visx/tooltip";
 import { timeFormat } from "d3-time-format";
 import { isMobile } from "react-device-detect";
 
+Object.fromEntries =
+  Object.fromEntries ||
+  function (arr) {
+    return arr.reduce(function (acc, curr) {
+      acc[curr[0]] = curr[1];
+      return acc;
+    }, {});
+  };
+
 const formatDate = timeFormat("%-I:%M %p");
 
 const tooltipStyles = {
