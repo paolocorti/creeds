@@ -452,7 +452,7 @@ const RadarYear = ({
                           return i % 3 === 0;
                         })
                         .map((a, j) => {
-                          const index = parseInt(i / 2);
+                          const index = parseInt(i);
                           const value = posScale(index + 2);
                           const time = moment(timeScale.invert(j)).format(
                             "h:mm a"
