@@ -331,7 +331,7 @@ export default function Home({}) {
           />
         )}{" "}
         <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">
-          <div className="text-xs">
+          <div className="text-xs text-left">
             © Copyright 2022
             <br />
             <br /> The visuals are made available under the Creative Commons

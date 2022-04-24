@@ -15,6 +15,10 @@ const RadarCircleYear = ({
   setHover,
   setHoverCategory,
   time,
+  showTooltip,
+  hideTooltip,
+  tooltipLeft,
+  tooltipTop,
 }) => {
   const strokeColor = "black";
   const strokeWidth = 1;
@@ -29,18 +33,29 @@ const RadarCircleYear = ({
         r={radius}
         fill={colorByCategory[category]}
         fillOpacity={0.8}
-        data-tip={`<b>${time}</b> <br/> ${activitiesCode[factor].value}: ${
-          v ? (parseFloat(v) * 100).toFixed(1) : ""
-        }% <br/>`}
-        data-html="true"
+        // data-tip={`<b>${time}</b> <br/> ${activitiesCode[factor].value}: ${
+        //   v ? (parseFloat(v) * 100).toFixed(1) : ""
+        // }% <br/>`}
+        // data-html="true"
         onMouseEnter={() => {
           setHover(`i${index}:f${factor}`);
           setHoverCategory(factor);
-          ReactTooltip.rebuild();
+
+          showTooltip({
+            tooltipData: {
+              time: time,
+              v: activitiesCode[factor].value,
+              factor: v ? (parseFloat(v) * 100).toFixed(1) : "",
+              type: "circle",
+            },
+            tooltipLeft: tooltipLeft,
+            tooltipTop: tooltipTop,
+          });
         }}
         onMouseLeave={() => {
           setHover(null);
           setHoverCategory(null);
+          hideTooltip();
         }}
         stroke={hover === `i${index}:f${factor}` ? strokeColor : "none"}
         strokeWidth={strokeWidth}

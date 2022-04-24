@@ -21,8 +21,23 @@ const isMobileWithTablet = false;
 import ReactTooltip from "react-tooltip";
 import UkMap from "../UkMap.jsx";
 import { isSafari } from "react-device-detect";
+import { Tooltip, defaultStyles, useTooltip } from "@visx/tooltip";
 
 const pinkColor = "#F4D2C3";
+
+const tooltipStyles = {
+  ...defaultStyles,
+  backgroundColor: "rgba(0,0,0,.9)",
+  border: "0px solid white",
+  color: "white",
+  borderRadius: "12px",
+  padding: "10px",
+  fontSize: "12px",
+  lineHeight: "15px",
+  textAlign: "left",
+  width: "200px",
+  zIndex: 9999,
+};
 
 const months = [
   "January",
@@ -322,6 +337,15 @@ const RadarYear = ({
     }, {});
   }, [maxParsedActivties]);
 
+  const {
+    tooltipData,
+    tooltipLeft,
+    tooltipTop,
+    tooltipOpen,
+    showTooltip,
+    hideTooltip,
+  } = useTooltip();
+
   return (
     <div className="radial-overview h-full">
       {/* <div className="radial-overview-subtitle viz-explanation"></div>
@@ -496,19 +520,39 @@ const RadarYear = ({
                                       fillOpacity={
                                         type === "urban_rural" ? 0 : 1
                                       }
-                                      data-tip={`<b>${time}</b> <br/> top activity: ${topActivity} <br/> energy demand: ${energyDemand} ${
-                                        showDemand
-                                          ? "<br/> energy price: " + energyPrice
-                                          : ""
-                                      }`}
-                                      data-html="true"
-                                      data-position="top"
                                       onMouseEnter={() => {
                                         setHoverTime(j);
-                                        ReactTooltip.rebuild();
+
+                                        showTooltip({
+                                          tooltipData: {
+                                            time: time,
+                                            topActivity: topActivity,
+                                            energyDemand: energyDemand,
+                                            energyPrice: showDemand
+                                              ? energyPrice
+                                              : null,
+                                            type: "hour",
+                                          },
+                                          tooltipLeft:
+                                            width * 0.6 +
+                                            (width / 2) *
+                                              0.93 *
+                                              Math.cos(
+                                                degToRad((360 / 48) * j - 30)
+                                              ),
+                                          tooltipTop:
+                                            width * 0.6 +
+                                            (width / 2) *
+                                              0.93 *
+                                              Math.sin(
+                                                degToRad((360 / 48) * j - 30)
+                                              ),
+                                        });
                                       }}
                                       onMouseLeave={() => {
                                         setHoverTime(null);
+
+                                        hideTooltip();
                                       }}
                                       style={{
                                         cursor: "pointer",
@@ -583,6 +627,18 @@ const RadarYear = ({
                                     hover={hover}
                                     setHover={setHover}
                                     setHoverCategory={setHoverCategory}
+                                    showTooltip={showTooltip}
+                                    hideTooltip={hideTooltip}
+                                    tooltipLeft={
+                                      width * 0.6 +
+                                      value *
+                                        Math.cos(degToRad((360 / 48) * j - 30))
+                                    }
+                                    tooltipTop={
+                                      width * 0.6 +
+                                      value *
+                                        Math.sin(degToRad((360 / 48) * j - 30))
+                                    }
                                   />
                                 )}
                               </g>
@@ -895,6 +951,41 @@ const RadarYear = ({
               </g>
             )}
           </svg>
+          {tooltipData && (
+            <div>
+              {tooltipData.type === "circle" && (
+                <Tooltip
+                  key={Math.random()}
+                  top={tooltipTop}
+                  left={tooltipLeft}
+                  style={tooltipStyles}
+                >
+                  <b>{tooltipData.time}</b>
+                  <br />
+                  <span className="uppercase">{`${tooltipData.v}: `}</span>
+                  {`${tooltipData.factor}%`}
+                </Tooltip>
+              )}
+              {tooltipData.type === "hour" && (
+                <Tooltip
+                  key={Math.random()}
+                  top={tooltipTop}
+                  left={tooltipLeft}
+                  style={tooltipStyles}
+                >
+                  <b>{tooltipData.time}</b>
+                  <br />
+                  <span className="uppercase">{`TOP ACTIVITY: ${tooltipData.topActivity}`}</span>
+                  <br />
+                  <span className="uppercase">{`ENERGY DEMAND: ${tooltipData.energyDemand}`}</span>
+                  <br />
+                  {tooltipData.energyPrice && (
+                    <span className="uppercase">{`ENERGY PRICE: ${tooltipData.energyPrice}`}</span>
+                  )}
+                </Tooltip>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

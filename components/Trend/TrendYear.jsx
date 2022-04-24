@@ -276,7 +276,7 @@ const TrendYear = ({ selectedRegion, selectedMonth, globalData, width }) => {
                 <span className="uppercase">{`${
                   activitiesCode[tooltipData.category].value
                 }: `}</span>
-                {`${getValue(tooltipData).toFixed(2)}`}
+                {`${getValue(tooltipData).toFixed(2)}%`}
               </TooltipWithBounds>
             </div>
           )}
