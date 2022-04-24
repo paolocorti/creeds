@@ -1,4 +1,4 @@
-import Head from "next/head";
+import PageHead from "../components/PageHead";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
 import ReactTooltip from "react-tooltip";
@@ -65,12 +65,10 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
   }, []);
 
   //const fullscreen = router.query && router.query.share ? true : false;
-  const fullscreen = true;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <ReactTooltip effect="solid" backgroundColor="#111" />
-
+      <PageHead />
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center">
         <Section1
           data={data}
@@ -82,7 +80,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           nextChapter={() => {
             router.push("unpacking_peaks");
           }}
-          fullscreen={fullscreen}
+          fullscreen={true}
         />
       </main>
     </div>

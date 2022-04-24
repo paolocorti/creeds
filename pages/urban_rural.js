@@ -1,7 +1,6 @@
-import Head from "next/head";
+import PageHead from "../components/PageHead";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
-import ReactTooltip from "react-tooltip";
 import Section5 from "../components/Section5";
 import { server } from "../config";
 import { flatten } from "lodash";
@@ -70,7 +69,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <ReactTooltip effect="solid" backgroundColor="#111" />
+      <PageHead />{" "}
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Section5
           data={data}
@@ -80,7 +79,7 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           previousChapter={() => {
             router.push("seasons");
           }}
-          fullscreen={fullscreen}
+          fullscreen={true}
         />
       </main>
     </div>

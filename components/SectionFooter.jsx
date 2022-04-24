@@ -22,7 +22,7 @@ const SectionFooter = ({ link, previousChapter, nextChapter }) => {
                   lineHeight: 1.5,
                 }}
               >
-                COPIED GRAPHIC
+                COPIED URL
               </div>
             </div>
           ) : (
