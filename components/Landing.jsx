@@ -22,7 +22,7 @@ const Landing = ({ nextChapter, loading }) => {
           life
         </h1>
         {loading ? (
-          <div className="mt-16 flex justify-center items-center load-title px-8 md:px-36 text-center ">
+          <div className="mt-16 text-base md:text-lg flex justify-center items-center load-title px-8 md:px-36 text-center ">
             {loading}
           </div>
         ) : (

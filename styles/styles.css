@@ -163,11 +163,12 @@ p b {
   }
 
   h1 {
-    font-size: 48px;
+    font-size: 40px;
     line-height: 1.2;
   }
 
-  p {
+  p,
+  .garamond {
     font-size: 18px;
   }
 }
