@@ -8,7 +8,6 @@ import {
   customSort,
   getEnergyPrice,
   getEnergyDemand,
-  getTopActivity,
   activitiesCode,
 } from "../utils.js";
 import { flatten, groupBy } from "lodash";
@@ -18,7 +17,6 @@ import InnerRadial from "./InnerRadial";
 import { useStore } from "../../store.js";
 import OuterRadial from "./OuterRadial.jsx";
 const isMobileWithTablet = false;
-import ReactTooltip from "react-tooltip";
 import UkMap from "../UkMap.jsx";
 import { isSafari } from "react-device-detect";
 import { Tooltip, defaultStyles, useTooltip } from "@visx/tooltip";
@@ -346,6 +344,8 @@ const RadarYear = ({
     hideTooltip,
   } = useTooltip();
 
+  const sortedFiltered = sorted.filter((v) => v.actType === "main");
+
   return (
     <div className="radial-overview h-full">
       {/* <div className="radial-overview-subtitle viz-explanation"></div>
@@ -435,18 +435,15 @@ const RadarYear = ({
                   />
                 </g>
               )}
-              {sorted.length &&
-                sorted.map((v, i) => {
+              {sortedFiltered.length &&
+                sortedFiltered.map((v, i) => {
                   const degAngle = (360 / 144) * 3;
                   const angle = degToRad(degAngle);
-                  const angle2 = degToRad(360 / 48);
 
                   return (
                     <g
                       key={i}
                       style={{
-                        transtion: "opacity 0.2s",
-                        opacity: 1,
                         transform: "rotate(-120deg)",
                       }}
                     >
@@ -455,38 +452,20 @@ const RadarYear = ({
                           return i % 3 === 0;
                         })
                         .map((a, j) => {
-                          //const index = activitiesCode[v.actCategory].index;
                           const index = parseInt(i / 2);
                           const value = posScale(index + 2);
                           const time = moment(timeScale.invert(j)).format(
                             "h:mm a"
                           );
-                          const dateTime = moment(
-                            timeScale3.invert(j)
-                          ).toDate();
+                          // const dateTime = moment(
+                          //   timeScale3.invert(j)
+                          // ).toDate();
                           const dateTime2 = moment(
                             timeScale.invert(j)
                           ).toDate();
                           const dateTimeEven = moment(
                             timeScale3.invert(j % 2 === 0 ? j : j - 1)
                           ).toDate();
-
-                          const energyPrice = getEnergyPrice(
-                            energyPriceData,
-                            dateTimeEven
-                          );
-
-                          const energyDemand = getEnergyDemand(
-                            energyData,
-                            dateTimeEven
-                          );
-
-                          const topActivity = maxParsedActivtiesObject[
-                            String(dateTime2)
-                          ]
-                            ? maxParsedActivtiesObject[String(dateTime2)]
-                                .maxCategory
-                            : "N/A";
 
                           return (
                             <g
@@ -522,6 +501,25 @@ const RadarYear = ({
                                       }
                                       onMouseEnter={() => {
                                         setHoverTime(j);
+
+                                        const energyPrice = getEnergyPrice(
+                                          energyPriceData,
+                                          dateTimeEven
+                                        );
+
+                                        const energyDemand = getEnergyDemand(
+                                          energyData,
+                                          dateTimeEven
+                                        );
+
+                                        const topActivity =
+                                          maxParsedActivtiesObject[
+                                            String(dateTime2)
+                                          ]
+                                            ? maxParsedActivtiesObject[
+                                                String(dateTime2)
+                                              ].maxCategory
+                                            : "N/A";
 
                                         showTooltip({
                                           tooltipData: {
@@ -611,36 +609,34 @@ const RadarYear = ({
                                       : 1,
                                 }}
                               >
-                                {v.actType === "main" && (
-                                  <RadarCircleYear
-                                    angle={angle}
-                                    v={a}
-                                    index={j}
-                                    time={time}
-                                    value={value}
-                                    factor={v.actCategory}
-                                    category={v.actCategory}
-                                    color={v.actType}
-                                    width={width}
-                                    energyPrice={energyPrice}
-                                    energyDemand={energyDemand}
-                                    hover={hover}
-                                    setHover={setHover}
-                                    setHoverCategory={setHoverCategory}
-                                    showTooltip={showTooltip}
-                                    hideTooltip={hideTooltip}
-                                    tooltipLeft={
-                                      width * 0.6 +
-                                      value *
-                                        Math.cos(degToRad((360 / 48) * j - 30))
-                                    }
-                                    tooltipTop={
-                                      width * 0.6 +
-                                      value *
-                                        Math.sin(degToRad((360 / 48) * j - 30))
-                                    }
-                                  />
-                                )}
+                                <RadarCircleYear
+                                  angle={angle}
+                                  v={a}
+                                  index={j}
+                                  time={time}
+                                  value={value}
+                                  factor={v.actCategory}
+                                  category={v.actCategory}
+                                  color={v.actType}
+                                  width={width}
+                                  energyPrice={energyPrice}
+                                  energyDemand={energyDemand}
+                                  hover={hover}
+                                  setHover={setHover}
+                                  setHoverCategory={setHoverCategory}
+                                  showTooltip={showTooltip}
+                                  hideTooltip={hideTooltip}
+                                  tooltipLeft={
+                                    width * 0.6 +
+                                    value *
+                                      Math.cos(degToRad((360 / 48) * j - 30))
+                                  }
+                                  tooltipTop={
+                                    width * 0.6 +
+                                    value *
+                                      Math.sin(degToRad((360 / 48) * j - 30))
+                                  }
+                                />
                               </g>
                             </g>
                           );

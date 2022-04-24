@@ -119,8 +119,6 @@ export default function Home({}) {
   const energyPrice = globalData.energyPrice || [];
   const gasDemand = globalData.gasDemand || [];
 
-  console.log({ data, energyDemand, energyPrice, gasDemand });
-
   return (
     <div className="">
       <PageHead />

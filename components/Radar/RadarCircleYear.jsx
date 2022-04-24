@@ -1,6 +1,4 @@
-import ReactTooltip from "react-tooltip";
 import { activitiesCode, colorByCategory } from "../utils.js";
-import { useStore } from "../../store.js";
 
 const RadarCircleYear = ({
   v,
@@ -33,10 +31,6 @@ const RadarCircleYear = ({
         r={radius}
         fill={colorByCategory[category]}
         fillOpacity={0.8}
-        // data-tip={`<b>${time}</b> <br/> ${activitiesCode[factor].value}: ${
-        //   v ? (parseFloat(v) * 100).toFixed(1) : ""
-        // }% <br/>`}
-        // data-html="true"
         onMouseEnter={() => {
           setHover(`i${index}:f${factor}`);
           setHoverCategory(factor);
@@ -59,9 +53,6 @@ const RadarCircleYear = ({
         }}
         stroke={hover === `i${index}:f${factor}` ? strokeColor : "none"}
         strokeWidth={strokeWidth}
-        // style={{
-        //   mixBlendMode: "multiply",
-        // }}
       />
     </g>
   );

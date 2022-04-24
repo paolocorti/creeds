@@ -1,14 +1,4 @@
-import { useStore } from "../../store.js";
 import { activitiesArray, colorByCategory } from "../utils";
-
-{
-  /*fill={selectedCategory === "tv" ? "black" : "white"}
-          onClick={() => {
-            useStore.setState({
-              selectedCategory: selectedCategory === "tv" ? null : "tv",
-            });
-          }} */
-}
 
 const RadarVerticalLegend = ({ setSelectedCategory, selectedCategory }) => {
   return (

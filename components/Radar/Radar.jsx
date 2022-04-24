@@ -13,15 +13,6 @@ const colorScale = scaleOrdinal()
 const gradScale = scaleLinear().domain([0, 360]).range([90, 450]);
 
 let width = 1000;
-// if (typeof window !== "undefined") {
-//   width = isMobileWithTablet
-//     ? window.innerWidth * 0.9
-//     : window.innerWidth * 0.28 < 400
-//     ? window.innerWidth * 0.28
-//     : 400;
-// } else {
-//   width = 500;
-// }
 
 const posScale = scaleLinear()
   .domain([0, 17])
@@ -46,7 +37,8 @@ const Radar = ({ selected, globalData }) => {
         `${selectedData.DYEAR}-${selectedData.DMONTH}-${selectedData.DDAY}T04:00:00`
       ),
       new Date(
-        `${selectedData.DYEAR}-${selectedData.DMONTH}-${Number(selectedData.DDAY) + 1
+        `${selectedData.DYEAR}-${selectedData.DMONTH}-${
+          Number(selectedData.DDAY) + 1
         }T04:00:00`
       ),
     ]);
