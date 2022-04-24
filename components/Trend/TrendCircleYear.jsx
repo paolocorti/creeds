@@ -1,9 +1,5 @@
-import ReactTooltip from "react-tooltip";
-import { activitiesCode,colorByCategory } from "../utils.js";
-import { scalePow } from "d3-scale";
+import { activitiesCode, colorByCategory } from "../utils.js";
 import { useStore } from "../../store.js";
-
-
 
 const TrendCircleYear = ({
   v,
@@ -35,7 +31,6 @@ const TrendCircleYear = ({
         data-tip={activitiesCode[factor].value}
         onMouseEnter={() => {
           useStore.setState({ hover: `i${index}:f${factor}` });
-          ReactTooltip.rebuild();
         }}
         onMouseLeave={() => {
           useStore.setState({ hover: null });

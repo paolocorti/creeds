@@ -4,7 +4,6 @@ import { LineRadial } from "@visx/shape";
 import { scaleTime, scaleLinear } from "@visx/scale";
 import { curveLinear } from "@visx/curve";
 import moment from "moment";
-import ReactTooltip from "react-tooltip";
 
 // utils
 function extent(data, value) {
@@ -77,14 +76,6 @@ const OuterRadial = ({ width, height, data, line, maximum, type }) => {
                 cx={valueV * Math.cos(angleV - Math.PI / 2)}
                 cy={valueV * Math.sin(angleV - Math.PI / 2)}
                 r={3}
-                data-tip={`<b>${time}</b> <br/> ${parseFloat(
-                  maxData.value
-                ).toFixed(1)}`}
-                data-html="true"
-                onMouseEnter={() => {
-                  console.log("here");
-                  ReactTooltip.rebuild();
-                }}
               />
             </>
           );

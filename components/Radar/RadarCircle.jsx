@@ -1,4 +1,3 @@
-import ReactTooltip from "react-tooltip";
 import { activities } from "../utils.js";
 import { scalePow } from "d3-scale";
 
@@ -34,7 +33,6 @@ const RadarCircle = ({
         onMouseEnter={() => {
           console.log(`i${index}:f${factor}`);
           setHover(`i${index}:f${factor}`);
-          ReactTooltip.rebuild();
         }}
         onMouseLeave={() => {
           setHover(null);
@@ -42,15 +40,6 @@ const RadarCircle = ({
         stroke={hover === `i${index}:f${factor}` ? strokeColor : "none"}
         strokeWidth={strokeWidth}
       />
-      {/* {category && (
-        <text
-          dx={value * Math.cos(angle * index) + 10}
-          dy={value * Math.sin(angle * index) + 10}
-          fill={"#fefefe"}
-        >
-          {category}
-        </text>
-      )} */}
     </g>
   );
 };

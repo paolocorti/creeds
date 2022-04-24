@@ -1,7 +1,6 @@
 import PageHead from "../components/PageHead";
 import React, { useState, useEffect } from "react";
 import { csv } from "d3-fetch";
-import ReactTooltip from "react-tooltip";
 import Section1 from "../components/Section1";
 import { server } from "../config";
 import { flatten } from "lodash";
