@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { isMobile } from "react-device-detect";
 import LandingCircles from "./LandingCircles";
-import LandingCirclesMobile from "./LandingCirclesMobile";
+import Loader from "./Loader";
 
 const Landing = ({ nextChapter, loading }) => {
   console.log("Landing render");
@@ -22,7 +22,8 @@ const Landing = ({ nextChapter, loading }) => {
           life
         </h1>
         {loading ? (
-          <div className="mt-16 text-base md:text-lg flex justify-center items-center load-title px-8 md:px-36 text-center ">
+          <div className="mt-16 text-xs uppercase mb-2 opacity-60 flex justify-center items-center load-title px-8 md:px-36 text-center ">
+            <Loader />
             {loading}
           </div>
         ) : (

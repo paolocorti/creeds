@@ -15,13 +15,7 @@ import { siteUrl } from "../config";
 import { isMobile, isSafari } from "react-device-detect";
 import { ParentSize } from "@visx/responsive";
 
-const Section5 = ({
-  data,
-  energyDemand,
-  gasDemand,
-  fullscreen = false,
-  previousChapter,
-}) => {
+const Section5 = ({ data, energyDemand, gasDemand, fullscreen = false }) => {
   console.log("Section5 render");
 
   const [selectedMonth, setSelectedMonth] = useState("1");
@@ -31,6 +25,11 @@ const Section5 = ({
   const [selectedCompareRegion2, setSelectedCompareRegion2] = useState("wales");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [open, setHowToReadOpen] = useState(false);
+  const [mobile, setMobile] = useState(false);
+
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [isMobile]);
 
   return (
     <section
@@ -122,12 +121,6 @@ const Section5 = ({
                   maxWidth: "85vh",
                 }}
               >
-                {/* <div>
-                <RegionMenu
-                  setSelected={setSelectedCompareRegion2}
-                  initialSlide={1}
-                />
-              </div> */}
                 <ParentSize>
                   {(parent) => (
                     <RadarYear
@@ -151,15 +144,27 @@ const Section5 = ({
           </div>
           {!fullscreen && <SectionFooter link={`${siteUrl}/urban_rural`} />}
         </div>
+        {mobile && (
+          <HowToRead
+            text={
+              "The graphic shows the half-hourly evolution of key elements over the course of a day by for urban and rural regions.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+            }
+            image={"/legend-5.png"}
+            readOpen={open}
+            setHowToReadOpen={setHowToReadOpen}
+          />
+        )}
       </RightColumn>
-      <HowToRead
-        text={
-          "The graphic shows the half-hourly evolution of key elements over the course of a day by for urban and rural regions.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
-        }
-        image={"/legend-5.png"}
-        readOpen={open}
-        setHowToReadOpen={setHowToReadOpen}
-      />
+      {!mobile && (
+        <HowToRead
+          text={
+            "The graphic shows the half-hourly evolution of key elements over the course of a day by for urban and rural regions.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+          }
+          image={"/legend-5.png"}
+          readOpen={open}
+          setHowToReadOpen={setHowToReadOpen}
+        />
+      )}
     </section>
   );
 };

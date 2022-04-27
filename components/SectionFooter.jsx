@@ -6,7 +6,7 @@ const SectionFooter = ({ link, previousChapter, nextChapter }) => {
   const [copied, setCopied] = useState(false);
 
   return (
-    <div className="flex flex-col md:flex-row w-full justify-center relative items-center mt-2">
+    <div className="flex flex-col md:flex-row w-full justify-center relative items-start md:items-center mt-2">
       <div
         className="md:absolute left-0 cursor-pointer"
         //data-tip="Copy link to embed"
@@ -47,7 +47,7 @@ const SectionFooter = ({ link, previousChapter, nextChapter }) => {
         </div>
       )}
       {nextChapter && (
-        <div className="ml-2 mt-4 md:mt-0">
+        <div className="md:ml-2 mt-4 md:mt-0">
           <Button title="NEXT CHAPTER ↓" callback={nextChapter} />
         </div>
       )}

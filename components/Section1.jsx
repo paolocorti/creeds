@@ -44,11 +44,16 @@ const Section1 = ({
   const [selectedRegion, setSelectedRegion] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [allowEvents, setAllowEvents] = useState(true);
+  const [mobile, setMobile] = useState(false);
   // const size = isMobile ? 600 : useWindowDimension();
   // const vizWidth = getVizWidth("single", size);
   // useEffect(() => {
   //   //setVizWidth(getVizWidth("single", { width: width }));
   // }, [width]);
+
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [isMobile]);
 
   const [open, setHowToReadOpen] = useState(false);
   const changeMonth = () => {
@@ -154,6 +159,7 @@ const Section1 = ({
                   className="w-full flex justify-center"
                   style={{
                     opacity: playStarted ? 0.4 : 1,
+                    pointerEvents: playStarted ? "none" : "all",
                   }}
                 >
                   <div onClick={startPlay} className="text-md">
@@ -230,15 +236,27 @@ const Section1 = ({
             />
           )}
         </div>
+        {mobile && (
+          <HowToRead
+            text={
+              "The graphic shows the half-hourly evolution of three key elements over the course of a day.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>- The price of electricity, to reflect the impact of energy demand on our power generation systems (inner layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+            }
+            image={"/legend-1.png"}
+            readOpen={open}
+            setHowToReadOpen={setHowToReadOpen}
+          />
+        )}
       </RightColumn>
-      <HowToRead
-        text={
-          "The graphic shows the half-hourly evolution of three key elements over the course of a day.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>- The price of electricity, to reflect the impact of energy demand on our power generation systems (inner layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
-        }
-        image={"/legend-1.png"}
-        readOpen={open}
-        setHowToReadOpen={setHowToReadOpen}
-      />
+      {!mobile && (
+        <HowToRead
+          text={
+            "The graphic shows the half-hourly evolution of three key elements over the course of a day.<br/><br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>- The price of electricity, to reflect the impact of energy demand on our power generation systems (inner layer)<br/><br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
+          }
+          image={"/legend-1.png"}
+          readOpen={open}
+          setHowToReadOpen={setHowToReadOpen}
+        />
+      )}
     </section>
   );
 };

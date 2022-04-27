@@ -37,12 +37,11 @@ const Section2 = ({
   // //const width = useWindowWidth();
   // const vizWidth = getVizWidth("trend", size);
   const [allowEvents, setAllowEvents] = useState(true);
+  const [mobile, setMobile] = useState(false);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setAllowEvents(true);
-  //   }, 1000);
-  // });
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [isMobile]);
 
   return (
     <section
@@ -121,13 +120,23 @@ const Section2 = ({
             />
           )}
         </div>
+        {mobile && (
+          <HowToRead
+            text={""}
+            image={"/legend-2.png"}
+            readOpen={open}
+            setHowToReadOpen={setHowToReadOpen}
+          />
+        )}
       </RightColumn>
-      <HowToRead
-        text={""}
-        image={"/legend-2.png"}
-        readOpen={open}
-        setHowToReadOpen={setHowToReadOpen}
-      />
+      {!mobile && (
+        <HowToRead
+          text={""}
+          image={"/legend-2.png"}
+          readOpen={open}
+          setHowToReadOpen={setHowToReadOpen}
+        />
+      )}
     </section>
   );
 };

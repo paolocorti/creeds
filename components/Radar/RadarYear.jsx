@@ -39,9 +39,9 @@ const tooltipStyles = {
   borderRadius: "12px",
   padding: "10px",
   fontSize: "12px",
-  lineHeight: "15px",
+  lineHeight: "16px",
   textAlign: "left",
-  width: "200px",
+  width: "180px",
   zIndex: 9999,
 };
 
@@ -583,7 +583,7 @@ const RadarYear = ({
                                   {j % 2 === 0 && !isSafari && (
                                     <text
                                       dx={0}
-                                      dy={(width / 2) * 0.98}
+                                      dy={(width / 2) * 0.99}
                                       textAnchor={"middle"}
                                       className={
                                         j > 26 || j < 6
@@ -592,7 +592,9 @@ const RadarYear = ({
                                       }
                                       style={{
                                         fontSize:
-                                          width * 0.02 < 14 ? width * 0.02 : 14,
+                                          width * 0.023 < 14
+                                            ? width * 0.023
+                                            : 14,
                                         cursor: "pointer",
                                         pointerEvents: "none",
                                       }}
@@ -616,7 +618,9 @@ const RadarYear = ({
                                       textAnchor={"middle"}
                                       style={{
                                         fontSize:
-                                          width * 0.02 < 14 ? width * 0.02 : 14,
+                                          width * 0.023 < 14
+                                            ? width * 0.023
+                                            : 14,
                                         cursor: "pointer",
                                         pointerEvents: "none",
                                       }}
@@ -728,7 +732,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     -14,
                     14
                   )}
@@ -747,7 +751,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     16,
                     44
                   )}
@@ -765,7 +769,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     46,
                     74
                   )}
@@ -783,7 +787,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     76,
                     104
                   )}
@@ -801,7 +805,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     106,
                     134
                   )}
@@ -819,7 +823,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     136,
                     164
                   )}
@@ -837,7 +841,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     166,
                     194
                   )}
@@ -855,7 +859,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     196,
                     224
                   )}
@@ -873,7 +877,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     226,
                     254
                   )}
@@ -893,7 +897,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     256,
                     284
                   )}
@@ -913,7 +917,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     286,
                     314
                   )}
@@ -933,7 +937,7 @@ const RadarYear = ({
                   d={describeArc(
                     width * 0.6,
                     width * 0.6,
-                    width * 0.505,
+                    width * 0.51,
                     316,
                     344
                   )}
@@ -946,13 +950,20 @@ const RadarYear = ({
                 {[...Array(12).keys()].map((v, i) => {
                   const angle = v * 30;
                   return (
-                    <g key={`g-2-${i}`}>
+                    <g
+                      key={`g-2-${i}`}
+                      className={
+                        v >= 4 && v <= 9
+                          ? "radial-hour-label-months-rot"
+                          : "radial-hour-label-months"
+                      }
+                    >
                       <text
-                        x={width * 0.521 * Math.cos(degToRad(angle - 90))}
-                        y={width * 0.521 * Math.sin(degToRad(angle - 90))}
+                        x={width * 0.53 * Math.cos(degToRad(angle - 90))}
+                        y={width * 0.53 * Math.sin(degToRad(angle - 90))}
                         dy={0}
                         textAnchor="middle"
-                        fontSize={width * 0.02 < 14 ? width * 0.02 : 14}
+                        fontSize={width * 0.023 < 14 ? width * 0.023 : 14}
                         fill="#000"
                         className={
                           v >= 4 && v <= 9
@@ -983,16 +994,18 @@ const RadarYear = ({
                 {[...Array(12).keys()].map((v, i) => {
                   const angle = v * 30;
                   return (
-                    <g>
+                    <g transform={`translate(0,0) rotate(${angle} 0 0)`}>
                       <text
-                        x={
-                          width * 0.6 +
-                          width * 0.525 * Math.cos(degToRad(angle - 90))
-                        }
-                        y={
-                          width * 0.6 +
-                          width * 0.525 * Math.sin(degToRad(angle - 90))
-                        }
+                        // x={
+                        //   width * 0.6 +
+                        //   width * 0.525 * Math.cos(degToRad(angle - 90))
+                        // }
+                        // y={
+                        //   width * 0.6 +
+                        //   width * 0.525 * Math.sin(degToRad(angle - 90))
+                        // }
+                        x={0}
+                        y={0}
                         fontSize={width * 0.016 < 14 ? width * 0.016 : 14}
                         fill="#000"
                         textAnchor={

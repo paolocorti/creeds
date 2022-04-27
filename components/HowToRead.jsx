@@ -1,7 +1,7 @@
 const HowToRead = ({ setHowToReadOpen, readOpen, text, image }) => {
   return (
     <div
-      className={`w-full md:w-4/5 bg-lightgreen p-8 absolute z-50 h-full overflow-y-auto overflow ${
+      className={`w-full md:w-4/5 bg-lightgreen p-4 md:p-8 absolute top-0 z-50 h-full overflow-y-auto overflow ${
         readOpen ? "left-0" : "-left-full"
       } transition-all duration-500	box-shadow shadow-gray-300`}
     >

@@ -27,36 +27,42 @@ const LandingCircles = () => {
       xmlSpace="preserve"
     >
       <g id="dots">
-        <motion.circle
+        <motion.g
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
-          transition={{ duration: 2, repeat: "Infinity", repeatType: "mirror" }}
-          className="st0"
-          cx={46.405}
-          cy={506.621}
-          r={5.187}
-        />
-        <circle className="st0" cx={23.315} cy={474.738} r={4.516} />
-        <circle className="st0" cx={6.088} cy={404.996} r={3.61} />
-        <circle className="st0" cx={9.161} cy={354.585} r={3.277} />
-        <circle className="st0" cx={15.161} cy={324.395} r={2.735} />
-        <circle className="st0" cx={40.776} cy={277.763} r={2.33} />
-        <circle className="st0" cx={48.946} cy={234.096} r={2.141} />
-        <circle className="st0" cx={66.527} cy={179.529} r={1.965} />
-        <circle className="st0" cx={94.144} cy={149.327} r={1.995} />
-        <circle className="st0" cx={124.543} cy={106.959} r={1.934} />
-        <circle className="st0" cx={149.882} cy={86.029} r={2.251} />
-        <circle className="st0" cx={194.355} cy={46.983} r={2.197} />
-        <circle className="st0" cx={245.006} cy={21.911} r={1.903} />
-        <motion.circle
-          animate={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
-          transition={{ duration: 2, repeat: "Infinity", repeatType: "mirror" }}
-          className="st0"
-          cx={287.03}
-          cy={12.869}
-          r={2.141}
-        />
+          transition={{
+            duration: 2,
+            repeat: "Infinity",
+            repeatType: "mirror",
+          }}
+        >
+          <circle
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            transition={{
+              duration: 2,
+              repeat: "Infinity",
+              repeatType: "mirror",
+            }}
+            className="st0"
+            cx={46.405}
+            cy={506.621}
+            r={5.187}
+          />
+          <circle className="st0" cx={23.315} cy={474.738} r={4.516} />
+          <circle className="st0" cx={6.088} cy={404.996} r={3.61} />
+          <circle className="st0" cx={9.161} cy={354.585} r={3.277} />
+          <circle className="st0" cx={15.161} cy={324.395} r={2.735} />
+          <circle className="st0" cx={40.776} cy={277.763} r={2.33} />
+          <circle className="st0" cx={48.946} cy={234.096} r={2.141} />
+          <circle className="st0" cx={66.527} cy={179.529} r={1.965} />
+          <circle className="st0" cx={94.144} cy={149.327} r={1.995} />
+          <circle className="st0" cx={124.543} cy={106.959} r={1.934} />
+          <circle className="st0" cx={149.882} cy={86.029} r={2.251} />
+          <circle className="st0" cx={194.355} cy={46.983} r={2.197} />
+          <circle className="st0" cx={245.006} cy={21.911} r={1.903} />
+          <circle className="st0" cx={287.03} cy={12.869} r={2.141} />
+        </motion.g>
         <circle className="st0" cx={330.099} cy={17.847} r={2.113} />
         <circle className="st0" cx={368.943} cy={22.654} r={2.055} />
         <circle className="st0" cx={436.335} cy={17.306} r={1.805} />
@@ -85,37 +91,51 @@ const LandingCircles = () => {
         <circle className="st0" cx={137.957} cy={124.579} r={5.381} />
         <circle className="st0" cx={179.469} cy={95.221} r={4.066} />
         <circle className="st0" cx={214.751} cy={69.885} r={3.821} />
-        <motion.circle
-          transform="rotate(-63.429 254.287 48.055)"
-          className="st0"
+        <motion.g
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
-          transition={{ duration: 2, repeat: "Infinity", repeatType: "mirror" }}
-          cx={254.289}
-          cy={48.058}
-          r={3.542}
-        />
-        <circle className="st0" cx={271.506} cy={33.941} r={2.822} />
-        <circle className="st0" cx={322.786} cy={25.542} r={2.864} />
-        <circle className="st0" cx={372.685} cy={22.111} r={3.028} />
-        <circle className="st0" cx={422.807} cy={31.207} r={3.991} />
-        <circle className="st0" cx={482.992} cy={59.898} r={4.211} />
-        <circle className="st0" cx={521.698} cy={45.895} r={5.164} />
-        <circle className="st0" cx={546.868} cy={62.014} r={5.175} />
-        <circle className="st0" cx={595.614} cy={117.187} r={4.875} />
-        <circle className="st0" cx={622.369} cy={149.991} r={4.826} />
-        <circle className="st0" cx={661.071} cy={173.504} r={4.542} />
-        <circle className="st0" cx={699.409} cy={209.628} r={4.036} />
-        <circle className="st0" cx={707.101} cy={246.989} r={3.277} />
-        <circle className="st0" cx={718.611} cy={297.737} r={2.906} />
-        <circle className="st0" cx={730.934} cy={345.057} r={2.432} />
-        <circle className="st0" cx={729.381} cy={376.262} r={2.278} />
-        <circle className="st0" cx={712.877} cy={438.264} r={1.702} />
-        <circle className="st0" cx={719.952} cy={468.437} r={1.592} />
-        <circle className="st0" cx={100.409} cy={538.766} r={4.366} />
-        <circle className="st0" cx={67.843} cy={482.48} r={4.139} />
-        <circle className="st0" cx={53.467} cy={471.055} r={3.258} />
-        <circle className="st0" cx={53.235} cy={405.221} r={3.295} />
+          transition={{
+            duration: 2,
+            repeat: "Infinity",
+            repeatType: "mirror",
+          }}
+        >
+          <circle
+            transform="rotate(-63.429 254.287 48.055)"
+            className="st0"
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            transition={{
+              duration: 2,
+              repeat: "Infinity",
+              repeatType: "mirror",
+            }}
+            cx={254.289}
+            cy={48.058}
+            r={3.542}
+          />
+          <circle className="st0" cx={271.506} cy={33.941} r={2.822} />
+          <circle className="st0" cx={322.786} cy={25.542} r={2.864} />
+          <circle className="st0" cx={372.685} cy={22.111} r={3.028} />
+          <circle className="st0" cx={422.807} cy={31.207} r={3.991} />
+          <circle className="st0" cx={482.992} cy={59.898} r={4.211} />
+          <circle className="st0" cx={521.698} cy={45.895} r={5.164} />
+          <circle className="st0" cx={546.868} cy={62.014} r={5.175} />
+          <circle className="st0" cx={595.614} cy={117.187} r={4.875} />
+          <circle className="st0" cx={622.369} cy={149.991} r={4.826} />
+          <circle className="st0" cx={661.071} cy={173.504} r={4.542} />
+          <circle className="st0" cx={699.409} cy={209.628} r={4.036} />
+          <circle className="st0" cx={707.101} cy={246.989} r={3.277} />
+          <circle className="st0" cx={718.611} cy={297.737} r={2.906} />
+          <circle className="st0" cx={730.934} cy={345.057} r={2.432} />
+          <circle className="st0" cx={729.381} cy={376.262} r={2.278} />
+          <circle className="st0" cx={712.877} cy={438.264} r={1.702} />
+          <circle className="st0" cx={719.952} cy={468.437} r={1.592} />
+          <circle className="st0" cx={100.409} cy={538.766} r={4.366} />
+          <circle className="st0" cx={67.843} cy={482.48} r={4.139} />
+          <circle className="st0" cx={53.467} cy={471.055} r={3.258} />
+          <circle className="st0" cx={53.235} cy={405.221} r={3.295} />
+        </motion.g>
         <circle className="st0" cx={50.879} cy={376.195} r={2.599} />
         <circle className="st0" cx={44.369} cy={319.131} r={2.406} />
         <circle className="st0" cx={64.68} cy={273.272} r={2.304} />
@@ -459,30 +479,40 @@ const LandingCircles = () => {
           rx={3.183}
           ry={3.184}
         />
-        <circle className="st0" cx={518.226} cy={233.414} r={2.553} />
-        <circle className="st0" cx={536.812} cy={251.759} r={2.713} />
-        <circle className="st0" cx={560.939} cy={283.81} r={1.995} />
-        <circle className="st0" cx={560.435} cy={300.711} r={2.304} />
-        <circle className="st0" cx={580.544} cy={316.858} r={1.995} />
-        <circle className="st0" cx={582.975} cy={362.526} r={1.995} />
-        <circle className="st0" cx={580.503} cy={390.176} r={1.666} />
-        <circle className="st0" cx={572.846} cy={411.804} r={1.629} />
-        <circle className="st0" cx={573.198} cy={439.542} r={1.474} />
-        <circle className="st0" cx={565.881} cy={457.85} r={1.474} />
-        <circle className="st0" cx={534.204} cy={474.365} r={1.042} />
-        <circle className="st0" cx={538.218} cy={513.161} r={0.919} />
-        <circle className="st0" cx={501.479} cy={518.593} r={0.602} />
-        <circle className="st0" cx={284.99} cy={542.531} r={1.514} />
-        <circle className="st0" cx={271.431} cy={535.227} r={2.224} />
-        <circle className="st0" cx={234.279} cy={505.558} r={2.251} />
-        <circle className="st0" cx={229.37} cy={488.105} r={2.553} />
-        <circle className="st0" cx={212.16} cy={464.66} r={2.141} />
-        <circle className="st0" cx={206.045} cy={455.418} r={2.304} />
-        <circle className="st0" cx={179.354} cy={426.564} r={2.141} />
-        <circle className="st0" cx={187.601} cy={389.978} r={2.169} />
-        <circle className="st0" cx={198.096} cy={361.775} r={1.934} />
-        <circle className="st0" cx={186.181} cy={362.853} r={2.084} />
-        <circle className="st0" cx={196.438} cy={330.096} r={2.406} />
+        <motion.g
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{
+            duration: 2,
+            repeat: "Infinity",
+            repeatType: "mirror",
+          }}
+        >
+          <circle className="st0" cx={518.226} cy={233.414} r={2.553} />
+          <circle className="st0" cx={536.812} cy={251.759} r={2.713} />
+          <circle className="st0" cx={560.939} cy={283.81} r={1.995} />
+          <circle className="st0" cx={560.435} cy={300.711} r={2.304} />
+          <circle className="st0" cx={580.544} cy={316.858} r={1.995} />
+          <circle className="st0" cx={582.975} cy={362.526} r={1.995} />
+          <circle className="st0" cx={580.503} cy={390.176} r={1.666} />
+          <circle className="st0" cx={572.846} cy={411.804} r={1.629} />
+          <circle className="st0" cx={573.198} cy={439.542} r={1.474} />
+          <circle className="st0" cx={565.881} cy={457.85} r={1.474} />
+          <circle className="st0" cx={534.204} cy={474.365} r={1.042} />
+          <circle className="st0" cx={538.218} cy={513.161} r={0.919} />
+          <circle className="st0" cx={501.479} cy={518.593} r={0.602} />
+          <circle className="st0" cx={284.99} cy={542.531} r={1.514} />
+          <circle className="st0" cx={271.431} cy={535.227} r={2.224} />
+          <circle className="st0" cx={234.279} cy={505.558} r={2.251} />
+          <circle className="st0" cx={229.37} cy={488.105} r={2.553} />
+          <circle className="st0" cx={212.16} cy={464.66} r={2.141} />
+          <circle className="st0" cx={206.045} cy={455.418} r={2.304} />
+          <circle className="st0" cx={179.354} cy={426.564} r={2.141} />
+          <circle className="st0" cx={187.601} cy={389.978} r={2.169} />
+          <circle className="st0" cx={198.096} cy={361.775} r={1.934} />
+          <circle className="st0" cx={186.181} cy={362.853} r={2.084} />
+          <circle className="st0" cx={196.438} cy={330.096} r={2.406} />
+        </motion.g>
         <circle className="st0" cx={210.594} cy={307.151} r={2.947} />
         <circle className="st0" cx={220.778} cy={285.042} r={2.691} />
         <circle className="st0" cx={230.911} cy={268.23} r={2.622} />
@@ -1109,7 +1139,7 @@ const LandingCircles = () => {
           //strokeDasharray: 1000,
         }}
         initial={{ pathLength: 0, strokeWidth: 2 }}
-        animate={{ pathLength: 1, strokeWidth: 3 }}
+        animate={{ pathLength: 1, strokeWidth: 2 }}
         transition={transition}
       />
 
@@ -1122,9 +1152,23 @@ const LandingCircles = () => {
           // strokeMiterlimit: 10,
           strokeDasharray: 500,
         }}
-        initial={{ strokeDashoffset: 0, strokeWidth: 1 }}
-        animate={{ strokeDashoffset: 1000, strokeWidth: 2 }}
+        initial={{ strokeDashoffset: 0, opacity: 0, strokeWidth: 1 }}
+        animate={{ strokeDashoffset: 1000, opacity: 1, strokeWidth: 1 }}
         transition={transition2}
+      />
+
+      <path
+        id="line-pink"
+        d="M417.06 22.487c13.928 4.193 35.932 9.277 48.897 11.297s34.184 7.204 47.152 11.52c12.968 4.315 33.124 13.706 44.791 20.869 11.668 7.162 28.644 20.319 37.725 29.237s22.651 25.347 30.154 36.51c7.503 11.162 18.336 29.955 24.073 41.762 5.737 11.806 17.645 28.993 26.461 38.192 8.816 9.199 25.376 24.135 36.8 33.192 11.423 9.056 23.913 27.231 27.755 40.389 3.841 13.157 8.834 34.346 11.096 47.086 2.262 12.74 3.922 34.777 3.69 48.972s-1.837 35.914-3.567 48.265c-1.73 12.351-9.074 32.326-16.32 44.39-7.247 12.063-19.032 30.347-26.19 40.63-7.16 10.285-15.403 28.664-18.32 40.844-2.918 12.18-9.415 32.5-14.438 45.156-5.023 12.656-16.132 30.466-24.686 39.578s-24.552 22.27-35.551 29.24-27.204 21.543-36.01 32.383c-8.807 10.84-25.7 24.735-37.543 30.877-11.842 6.142-32.15 14.302-45.128 18.134s-34.711 5.424-48.294 3.538-34.984-3.954-47.559-4.594c-12.574-.64-33.261-.73-45.97-.2s-32.62-3.562-44.244-9.093c-11.624-5.531-32.034-10.519-45.355-11.084s-35.056-3.887-48.298-7.382c-13.243-3.495-31.857-13.22-41.365-21.612-9.508-8.391-27.382-21.282-39.72-28.647-12.34-7.364-27.596-23.295-33.905-35.402-6.31-12.106-13.789-32.668-16.62-45.693-2.833-13.025-6.606-33.744-8.384-46.043s-9.664-31.504-17.521-42.678-18.381-29.938-23.384-41.697-11.66-32.814-14.79-46.79c-3.132-13.976-5.085-35.728-4.34-48.337.743-12.609 3.58-33.62 6.304-46.69s7.955-33.945 11.625-46.386 13.745-31.612 22.389-42.602 21.418-29.438 28.389-40.995 18.333-31.493 25.251-44.301c6.918-12.808 22.358-26.93 34.31-31.382s31.612-13.69 43.687-20.531 31.768-16.793 43.76-22.118c11.992-5.324 30.813-16.251 41.823-24.282 11.01-8.03 30.227-16.436 42.705-18.679s34.083-5.966 48.013-8.273 36.724-.764 50.652 3.43z"
+        style={{
+          fill: "none",
+          stroke: "#fadbd2",
+          //stroke: "red",
+          // strokeMiterlimit: 10,
+          transformBox: "fill-box",
+          transformOrigin: "center",
+          transform: "rotate(20deg)",
+        }}
       />
     </svg>
   );
