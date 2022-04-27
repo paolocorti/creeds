@@ -479,7 +479,7 @@ const RadarYear = ({
                             <g
                               transform={`translate(0,0) rotate(${
                                 (360 / 48) * j
-                              })`}
+                              } 0 0)`}
                               key={`g-${j}`}
                             >
                               {i === 0 && (
@@ -580,7 +580,7 @@ const RadarYear = ({
                                     />
                                   </g>
 
-                                  {j % 2 === 0 && (
+                                  {j % 2 === 0 && !isSafari && (
                                     <text
                                       dx={0}
                                       dy={(width / 2) * 0.98}
@@ -590,6 +590,30 @@ const RadarYear = ({
                                           ? "radial-hour-label-rot"
                                           : "radial-hour-label"
                                       }
+                                      style={{
+                                        fontSize:
+                                          width * 0.02 < 14 ? width * 0.02 : 14,
+                                        cursor: "pointer",
+                                        pointerEvents: "none",
+                                      }}
+                                    >
+                                      {moment(timeScale.invert(j)).format("ha")}
+                                    </text>
+                                  )}
+                                  {j % 2 === 0 && isSafari && (
+                                    <text
+                                      x={0}
+                                      y={
+                                        (width / 2) *
+                                        (j > 26 || j < 6 ? -1 : 1) *
+                                        (j > 26 || j < 6 ? 0.97 : 0.99)
+                                      }
+                                      className={
+                                        j > 26 || j < 6
+                                          ? "radial-hour-label-rot"
+                                          : "radial-hour-label"
+                                      }
+                                      textAnchor={"middle"}
                                       style={{
                                         fontSize:
                                           width * 0.02 < 14 ? width * 0.02 : 14,
@@ -917,7 +941,7 @@ const RadarYear = ({
               </g>
             )}
 
-            {selectedMonth && (
+            {selectedMonth && !isSafari && (
               <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
                 {[...Array(12).keys()].map((v, i) => {
                   const angle = v * 30;
@@ -940,6 +964,53 @@ const RadarYear = ({
                         // }deg 0 0 )`}
                         style={{
                           transform: `rotate(${angle}deg)`,
+                          cursor: "pointer",
+                          opacity: selectedMonth === String(v + 1) ? 1 : 0.4,
+                        }}
+                        onClick={() =>
+                          selectedMonth ? setSelectedMonth(String(v + 1)) : null
+                        }
+                      >
+                        {months[v].toUpperCase()}
+                      </text>
+                    </g>
+                  );
+                })}
+              </g>
+            )}
+            {selectedMonth && isSafari && (
+              <g>
+                {[...Array(12).keys()].map((v, i) => {
+                  const angle = v * 30;
+                  return (
+                    <g>
+                      <text
+                        x={
+                          width * 0.6 +
+                          width * 0.525 * Math.cos(degToRad(angle - 90))
+                        }
+                        y={
+                          width * 0.6 +
+                          width * 0.525 * Math.sin(degToRad(angle - 90))
+                        }
+                        fontSize={width * 0.016 < 14 ? width * 0.016 : 14}
+                        fill="#000"
+                        textAnchor={
+                          v === 0 || v === 6
+                            ? "middle"
+                            : v > 6
+                            ? "end"
+                            : "start"
+                        }
+                        className={
+                          v >= 4 && v <= 9
+                            ? "radial-hour-label-months-rot"
+                            : "radial-hour-label-months"
+                        }
+                        // transform={`rotate(${
+                        //   v >= 4 && v <= 9 ? angle - 180 : angle
+                        // } 0 0 )`}
+                        style={{
                           cursor: "pointer",
                           opacity: selectedMonth === String(v + 1) ? 1 : 0.4,
                         }}
