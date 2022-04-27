@@ -993,46 +993,41 @@ const RadarYear = ({
               <g>
                 {[...Array(12).keys()].map((v, i) => {
                   const angle = v * 30;
+                  console.log(v);
                   return (
-                    <g transform={`translate(0,0) rotate(${angle} 0 0)`}>
-                      <text
-                        // x={
-                        //   width * 0.6 +
-                        //   width * 0.525 * Math.cos(degToRad(angle - 90))
-                        // }
-                        // y={
-                        //   width * 0.6 +
-                        //   width * 0.525 * Math.sin(degToRad(angle - 90))
-                        // }
-                        x={0}
-                        y={0}
-                        fontSize={width * 0.016 < 14 ? width * 0.016 : 14}
-                        fill="#000"
-                        textAnchor={
-                          v === 0 || v === 6
-                            ? "middle"
-                            : v > 6
-                            ? "end"
-                            : "start"
-                        }
-                        className={
-                          v >= 4 && v <= 9
-                            ? "radial-hour-label-months-rot"
-                            : "radial-hour-label-months"
-                        }
-                        // transform={`rotate(${
-                        //   v >= 4 && v <= 9 ? angle - 180 : angle
-                        // } 0 0 )`}
-                        style={{
-                          cursor: "pointer",
-                          opacity: selectedMonth === String(v + 1) ? 1 : 0.4,
-                        }}
-                        onClick={() =>
-                          selectedMonth ? setSelectedMonth(String(v + 1)) : null
-                        }
-                      >
-                        {months[v].toUpperCase()}
-                      </text>
+                    <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
+                      <g transform={`translate(0,0) rotate(${angle} 0 0)`}>
+                        <text
+                          x={0}
+                          y={
+                            (width / 2) *
+                            (v >= 0 && v < 6 ? -1 : 1) *
+                            (v >= 0 && v < 6 ? 1.07 : 1.07)
+                          }
+                          fontSize={width * 0.023 < 14 ? width * 0.023 : 14}
+                          fill="#000"
+                          textAnchor={"middle"}
+                          className={
+                            v >= 4 && v <= 9
+                              ? "radial-hour-label-months-rot"
+                              : "radial-hour-label-months"
+                          }
+                          // transform={`rotate(${
+                          //   v >= 4 && v <= 9 ? angle - 180 : angle
+                          // } 0 0 )`}
+                          style={{
+                            cursor: "pointer",
+                            opacity: selectedMonth === String(v + 1) ? 1 : 0.4,
+                          }}
+                          onClick={() =>
+                            selectedMonth
+                              ? setSelectedMonth(String(v + 1))
+                              : null
+                          }
+                        >
+                          {months[v].toUpperCase()}
+                        </text>
+                      </g>
                     </g>
                   );
                 })}
