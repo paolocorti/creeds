@@ -21,10 +21,13 @@ const Landing = ({ nextChapter, loading }) => {
           <br />
           life
         </h1>
+
         {loading ? (
-          <div className="mt-16 text-xs uppercase mb-2 opacity-60 flex justify-center items-center load-title px-8 md:px-36 text-center ">
-            <Loader />
-            {loading}
+          <div className="flex flex-col justify-center items-center">
+            <Loader style={{ width: "50px" }} />
+            <div className="mt-16 text-xs uppercase mb-2 flex flex-col justify-center items-center load-title px-8 md:px-36 text-center ">
+              {loading}
+            </div>
           </div>
         ) : (
           <div className="flex justify-center mt-16">

@@ -2,10 +2,7 @@ import { motion } from "framer-motion";
 
 const Loader = ({ style }) => {
   return (
-    <motion.div
-      animate={{ rotate: 360 }}
-      transition={{ repeat: Infinity, duration: 2 }}
-    >
+    <div className="animate-loader">
       <svg x="0px" y="0px" viewBox="0 0 42 42" style={style}>
         {/* <path
           class="st0"
@@ -34,7 +31,7 @@ const Loader = ({ style }) => {
         />
         <circle r={3} cx={21} cy={39} fill="010202" stroke="none" />
       </svg>
-    </motion.div>
+    </div>
   );
 };
 

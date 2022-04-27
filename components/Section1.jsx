@@ -45,11 +45,6 @@ const Section1 = ({
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [allowEvents, setAllowEvents] = useState(true);
   const [mobile, setMobile] = useState(false);
-  // const size = isMobile ? 600 : useWindowDimension();
-  // const vizWidth = getVizWidth("single", size);
-  // useEffect(() => {
-  //   //setVizWidth(getVizWidth("single", { width: width }));
-  // }, [width]);
 
   useEffect(() => {
     setMobile(isMobile);
