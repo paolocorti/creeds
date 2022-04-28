@@ -18,7 +18,7 @@ import { useStore } from "../../store.js";
 import OuterRadial from "./OuterRadial.jsx";
 const isMobileWithTablet = false;
 import UkMap from "../UkMap.jsx";
-import { isSafari } from "react-device-detect";
+import { isIOS, isSafari } from "react-device-detect";
 import { Tooltip, defaultStyles, useTooltip } from "@visx/tooltip";
 
 Object.fromEntries =
@@ -602,7 +602,7 @@ const RadarYear = ({
                                       {moment(timeScale.invert(j)).format("ha")}
                                     </text>
                                   )}
-                                  {j % 2 === 0 && isSafari && (
+                                  {j % 2 === 0 && (isSafari || isIOS) && (
                                     <text
                                       x={0}
                                       y={
@@ -989,7 +989,7 @@ const RadarYear = ({
                 })}
               </g>
             )}
-            {selectedMonth && isSafari && (
+            {selectedMonth && (isSafari || isIOS) && (
               <g>
                 {[...Array(12).keys()].map((v, i) => {
                   const angle = v * 30;
@@ -1001,8 +1001,8 @@ const RadarYear = ({
                           x={0}
                           y={
                             (width / 2) *
-                            (v >= 0 && v < 6 ? -1 : 1) *
-                            (v >= 0 && v < 6 ? 1.07 : 1.07)
+                            ((v >= 0 && v < 4) || v > 9 ? -1 : 1) *
+                            1.07
                           }
                           fontSize={width * 0.023 < 14 ? width * 0.023 : 14}
                           fill="#000"
