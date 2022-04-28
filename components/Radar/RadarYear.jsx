@@ -945,7 +945,7 @@ const RadarYear = ({
               </g>
             )}
 
-            {selectedMonth && !isSafari && (
+            {selectedMonth && !isSafari && !isIOS && (
               <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
                 {[...Array(12).keys()].map((v, i) => {
                   const angle = v * 30;
@@ -993,7 +993,6 @@ const RadarYear = ({
               <g>
                 {[...Array(12).keys()].map((v, i) => {
                   const angle = v * 30;
-                  console.log(v);
                   return (
                     <g transform={`translate(${width * 0.6}, ${width * 0.6})`}>
                       <g transform={`translate(0,0) rotate(${angle} 0 0)`}>
