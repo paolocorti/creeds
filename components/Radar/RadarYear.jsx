@@ -580,7 +580,7 @@ const RadarYear = ({
                                     />
                                   </g>
 
-                                  {j % 2 === 0 && !isSafari && (
+                                  {j % 2 === 0 && !isSafari && !isIOS && (
                                     <text
                                       dx={0}
                                       dy={(width / 2) * 0.99}

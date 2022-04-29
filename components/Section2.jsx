@@ -122,7 +122,9 @@ const Section2 = ({
         </div>
         {mobile && (
           <HowToRead
-            text={""}
+            text={
+              "The graphic shows the daily activities' frequency every 10 minutes"
+            }
             image={"/legend-2.png"}
             readOpen={open}
             setHowToReadOpen={setHowToReadOpen}
@@ -131,7 +133,9 @@ const Section2 = ({
       </RightColumn>
       {!mobile && (
         <HowToRead
-          text={""}
+          text={
+            "The graphic shows the daily activities' frequency every 10 minutes"
+          }
           image={"/legend-2.png"}
           readOpen={open}
           setHowToReadOpen={setHowToReadOpen}
