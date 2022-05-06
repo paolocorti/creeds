@@ -78,7 +78,8 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           nextChapter={() => {
             router.push("urban_rural");
           }}
-          fullscreen={true}
+          fullscreen={false}
+          shared={true}
         />
       </main>
     </div>

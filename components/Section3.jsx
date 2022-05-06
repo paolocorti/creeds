@@ -20,6 +20,7 @@ const Section3 = ({
   nextChapter,
   previousChapter,
   fullscreen = false,
+  shared = false,
 }) => {
   console.log("Section3 render");
 
@@ -161,7 +162,7 @@ const Section3 = ({
             </div>
           </div>
 
-          {!fullscreen && (
+          {!shared && (
             <SectionFooter
               nextChapter={nextChapter}
               link={`${siteUrl}/spatial_variation`}

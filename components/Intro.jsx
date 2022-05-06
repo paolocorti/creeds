@@ -37,7 +37,7 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
             </div>
           </div>
         )}
-        <h1 className="text-left">
+        <h1 className="text-left mt-0">
           Energy demand flexibility and the rhythms of everyday life
         </h1>
       </LeftColumn>
@@ -88,10 +88,8 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
             <p className="garamond px-0 md:px-6">
               Our everyday life – what we do at home, at work, at school, when
               moving around – and its relation to energy demand is rather
-              complex.
-              <br />
-              As part of our work as energy researchers, we have introduced
-              fresh approaches to thinking about the social-temporal
+              complex. As part of our work as energy researchers, we have
+              introduced fresh approaches to thinking about the social-temporal
               organisation of energy demand. We also try to understand what
               these mean in terms of the ‘different flexibilities’ across
               different temporal scales and dimensions of everyday life such as

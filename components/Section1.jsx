@@ -24,6 +24,7 @@ const Section1 = ({
   previousChapter,
   nextChapter,
   fullscreen = false,
+  shared = false,
 }) => {
   console.log("Section1 render");
 
@@ -220,7 +221,7 @@ const Section1 = ({
               </div>
             </div>
           </div>
-          {!fullscreen && (
+          {!shared && (
             <SectionFooter
               nextChapter={nextChapter}
               link={`${siteUrl}/activities`}

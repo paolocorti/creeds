@@ -16,6 +16,7 @@ const Section2 = ({
   nextChapter,
   fullscreen = false,
   scrolling,
+  shared = false,
 }) => {
   console.log("Section2 render");
 
@@ -108,7 +109,7 @@ const Section2 = ({
             )}
           </ParentSize>
 
-          {!fullscreen && (
+          {!shared && (
             <SectionFooter
               nextChapter={nextChapter}
               link={`${siteUrl}/unpacking_peaks`}

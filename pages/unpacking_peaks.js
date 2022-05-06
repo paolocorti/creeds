@@ -77,7 +77,8 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           nextChapter={() => {
             router.push("spatial_variation");
           }}
-          fullscreen={true}
+          fullscreen={false}
+          shared={true}
         />
       </main>
     </div>

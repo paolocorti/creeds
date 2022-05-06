@@ -79,7 +79,8 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           nextChapter={() => {
             router.push("unpacking_peaks");
           }}
-          fullscreen={true}
+          fullscreen={false}
+          shared={true}
         />
       </main>
     </div>

@@ -12,7 +12,13 @@ import SectionFooter from "./SectionFooter.jsx";
 import { isMobile, isSafari } from "react-device-detect";
 import { ParentSize } from "@visx/responsive";
 
-const Section5 = ({ data, energyDemand, gasDemand, fullscreen = false }) => {
+const Section5 = ({
+  data,
+  energyDemand,
+  gasDemand,
+  fullscreen = false,
+  shared = false,
+}) => {
   console.log("Section5 render");
 
   const [selectedMonth, setSelectedMonth] = useState("1");
@@ -145,7 +151,7 @@ const Section5 = ({ data, energyDemand, gasDemand, fullscreen = false }) => {
               </div>
             </div>
           </div>
-          {!fullscreen && <SectionFooter link={`${siteUrl}/urban_rural`} />}
+          {!shared && <SectionFooter link={`${siteUrl}/urban_rural`} />}
         </div>
         {mobile && (
           <HowToRead

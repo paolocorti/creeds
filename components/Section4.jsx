@@ -25,6 +25,7 @@ const Section4 = ({
   nextChapter,
   previousChapter,
   fullscreen = false,
+  shared = false,
 }) => {
   console.log("Section4 render");
 
@@ -236,7 +237,7 @@ const Section4 = ({
               </div>
             </div>
           </div>
-          {!fullscreen && (
+          {!shared && (
             <SectionFooter
               nextChapter={nextChapter}
               link={`${siteUrl}/seasons`}

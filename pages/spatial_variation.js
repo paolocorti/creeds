@@ -78,7 +78,8 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
           nextChapter={() => {
             router.push("seasons");
           }}
-          fullscreen={true}
+          fullscreen={false}
+          shared={true}
         />
       </main>
     </div>
