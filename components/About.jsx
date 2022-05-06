@@ -6,7 +6,7 @@ const About = ({ aboutOpen, setAboutOpen }) => {
     <div
       className={`w-full md:w-4/5 bg-lightgreen p-8 z-50 overflow-y-auto overflow ${
         aboutOpen ? "left-0" : "-left-full"
-      } transition-all duration-500	box-shadow fixed top-0 h-screen`}
+      } transition-all duration-500	box-shadow fixed top-0 h-full md:h-screen min-h-screen`}
     >
       <div className="flex w-full justify-end">
         <div
@@ -21,7 +21,7 @@ const About = ({ aboutOpen, setAboutOpen }) => {
           CLOSE X
         </div>
       </div>
-      <p className="px-0 md:px-6">
+      <p className="px-0 md:px-6 !text-base">
         The aim of this project was to provide you with accessible,
         user-friendly visualisations that show the ways in which our activities
         impact our energy demands. These visualisations condense a wealth of
@@ -34,7 +34,7 @@ const About = ({ aboutOpen, setAboutOpen }) => {
         those periods where there is potential to be more flexible, thus
         reducing the strain on out power systems.
       </p>
-      <p className="px-0 md:px-6">
+      <p className="px-0 md:px-6 !text-base">
         {" "}
         This project was brought to you by the Flexibility of Demand theme at
         the{" "}

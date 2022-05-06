@@ -1,11 +1,19 @@
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
+import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
 import React, { useEffect } from "react";
+import About from "./About";
+import { isMobile } from "react-device-detect";
 
 const Intro = ({ nextChapter, expanded, scrolling }) => {
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [mobile, setMobile] = useState(false);
+
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [isMobile]);
 
   return (
     <section
@@ -14,6 +22,21 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
       className="w-full flex flex-col md:flex-row "
     >
       <LeftColumn sectionTitle={"/1.energy-vertical.svg"} expanded={expanded}>
+        {mobile && (
+          <div className="cursor-pointer">
+            <div
+              className="sticky bottom-4 border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+              style={{
+                fontSize: "12px",
+                fontWeight: "bold",
+                lineHeight: 1.5,
+              }}
+              onClick={() => setAboutOpen((open) => !open)}
+            >
+              ABOUT
+            </div>
+          </div>
+        )}
         <h1 className="text-left">
           Energy demand flexibility and the rhythms of everyday life
         </h1>
@@ -88,6 +111,8 @@ const Intro = ({ nextChapter, expanded, scrolling }) => {
           </div>
         </div>
       </RightColumn>
+
+      <About aboutOpen={aboutOpen} setAboutOpen={setAboutOpen} />
     </section>
   );
 };

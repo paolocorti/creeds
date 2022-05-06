@@ -13,33 +13,15 @@ import { server } from "../config";
 import { flatten } from "lodash";
 import { useStore } from "../store.js";
 import { scroller } from "react-scroll";
-import { siteUrl } from "../config";
+import { isMobile } from "react-device-detect";
 import About from "../components/About";
-
-// const Intro = dynamic(() => import("../components/Intro"), {
-//   loading: () => <p>Loading...</p>,
-// });
-// const Section1 = dynamic(() => import("../components/Section1"), {
-//   loading: () => <p>Loading...</p>,
-// });
-// const Section2 = dynamic(() => import("../components/Section2"), {
-//   loading: () => <p>Loading...</p>,
-// });
-// const Section3 = dynamic(() => import("../components/Section3"), {
-//   loading: () => <p>Loading...</p>,
-// });
-// const Section4 = dynamic(() => import("../components/Section4"), {
-//   loading: () => <p>Loading...</p>,
-// });
-// const Section5 = dynamic(() => import("../components/Section5"), {
-//   loading: () => <p>Loading...</p>,
-// });
 
 export default function Home({}) {
   const router = useRouter();
   const [loading, setLoading] = useState("Loading energy distributions");
   const [globalData, setData] = useState([]);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [mobile, setMobile] = useState(false);
 
   useEffect(async () => {
     const dataCsv = await csv(
@@ -121,6 +103,10 @@ export default function Home({}) {
   const energyPrice = globalData.energyPrice || [];
   const gasDemand = globalData.gasDemand || [];
 
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [isMobile]);
+
   return (
     <div className="">
       <PageHead />
@@ -132,7 +118,7 @@ export default function Home({}) {
           overflow: !loading ? "auto" : "hidden",
         }}
       >
-        <About aboutOpen={aboutOpen} setAboutOpen={setAboutOpen} />
+        {!mobile && <About aboutOpen={aboutOpen} setAboutOpen={setAboutOpen} />}
         <Landing
           nextChapter={() => {
             scroller.scrollTo("intro", {
@@ -149,17 +135,19 @@ export default function Home({}) {
           }}
         />
         <div className="relative">
-          <div
-            className="fixed bottom-8 bg-green left-8 border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
-            style={{
-              fontSize: "12px",
-              fontWeight: "bold",
-              lineHeight: 1.5,
-            }}
-            onClick={() => setAboutOpen((open) => !open)}
-          >
-            ABOUT
-          </div>
+          {!mobile && (
+            <div
+              className="fixed bottom-8 bg-green left-8 border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+              style={{
+                fontSize: "12px",
+                fontWeight: "bold",
+                lineHeight: 1.5,
+              }}
+              onClick={() => setAboutOpen((open) => !open)}
+            >
+              ABOUT
+            </div>
+          )}
           {data.length && (
             <Section1
               data={data}
@@ -225,7 +213,7 @@ export default function Home({}) {
               fullscreen={false}
             />
           )}{" "}
-          <footer className="bg-lightgreen flex items-start flex-col justify-center w-full pt-8 pb-16 px-4 md:px-8">
+          <footer className="bg-lightgreen flex items-start flex-col justify-center w-full pt-8 pb-24 px-4 md:px-8">
             <div className="text-xs text-left">
               © Copyright 2022
               <br />

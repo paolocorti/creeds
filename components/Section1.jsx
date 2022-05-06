@@ -1,5 +1,4 @@
 import { useEffect, useState, Suspense } from "react";
-import { useStore } from "../store.js";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import RadarVerticalLegend from "./Radar/RadarVeticalLegend";
@@ -8,16 +7,10 @@ import { colorByCategory, activitiesArray } from "./utils";
 import Button from "./Button";
 import Loader from "./Loader";
 import HowToRead from "./HowToRead";
-import { useWindowDimension, getVizWidth } from "./utils";
 import { isMobile, isSafari } from "react-device-detect";
 import React from "react";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import SectionFooter from "./SectionFooter.jsx";
-import {
-  useWindowSize,
-  useWindowWidth,
-  useWindowHeight,
-} from "@react-hook/window-size/throttled";
 import { ParentSize } from "@visx/responsive";
 
 let interval;
