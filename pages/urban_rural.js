@@ -7,11 +7,20 @@ import { flatten } from "lodash";
 import { useStore } from "../store.js";
 import { useRouter } from "next/router";
 
-export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
+export default function Home() {
   const router = useRouter();
+  const [globalData, setData] = useState([]);
+  const [loading, setLoading] = useState("Loading energy distributions");
 
-  useEffect(() => {
-    const copiedValues = JSON.parse(JSON.stringify(energyDemand));
+  useEffect(async () => {
+    const dataCsv = await csv(
+      `${server}/data/activity_frequency_distributions.csv`
+    );
+    setLoading("Loading energy demand");
+    const energyDemandCsv = await csv(
+      `${server}/data/mean_daily_elec_demand_profiles.csv`
+    );
+    const copiedValues = JSON.parse(JSON.stringify(energyDemandCsv));
     delete copiedValues.columns;
     const allValues = flatten(
       copiedValues.map((v) => {
@@ -28,24 +37,11 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
       energyMaximum: max,
     });
 
-    const copiedValues2 = JSON.parse(JSON.stringify(gasDemand));
-    delete copiedValues2.columns;
-    const allValues2 = flatten(
-      copiedValues2.map((v) => {
-        delete v.month;
-        delete v.region;
-        delete v.season;
-        const val = Object.values(v);
-        const parsed = val.map((n) => parseFloat(n));
-        return parsed;
-      })
+    setLoading("Loading energy price");
+    const energyPriceCsv = await csv(
+      `${server}/data/hourly_average_price_electricity.csv`
     );
-    const max2 = Math.max(...allValues2);
-    useStore.setState({
-      gasMaximum: max2,
-    });
-
-    const copiedValues3 = JSON.parse(JSON.stringify(energyPrice));
+    const copiedValues3 = JSON.parse(JSON.stringify(energyPriceCsv));
     delete copiedValues3.columns;
     const allValues3 = flatten(
       copiedValues3.map((v) => {
@@ -62,10 +58,39 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
       energyPriceMaximum: max3,
     });
 
-    return () => {};
+    setLoading("Loading gas demand");
+    const gasDemandCsv = await csv(
+      `${server}/data/mean_daily_gas_demand_profiles.csv`
+    );
+    const copiedValues2 = JSON.parse(JSON.stringify(gasDemandCsv));
+    delete copiedValues2.columns;
+    const allValues2 = flatten(
+      copiedValues2.map((v) => {
+        delete v.month;
+        delete v.region;
+        delete v.season;
+        const val = Object.values(v);
+        const parsed = val.map((n) => parseFloat(n));
+        return parsed;
+      })
+    );
+    const max2 = Math.max(...allValues2);
+    useStore.setState({
+      gasMaximum: max2,
+    });
+    setData({
+      data: dataCsv,
+      energyDemand: energyDemandCsv,
+      energyPrice: energyPriceCsv,
+      gasDemand: gasDemandCsv,
+    });
+    setLoading(false);
   }, []);
 
-  const fullscreen = true;
+  const data = globalData.data || [];
+  const energyDemand = globalData.energyDemand || [];
+  const energyPrice = globalData.energyPrice || [];
+  const gasDemand = globalData.gasDemand || [];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -85,32 +110,4 @@ export default function Home({ data, energyDemand, gasDemand, energyPrice }) {
       </main>
     </div>
   );
-}
-
-export async function getStaticProps(context) {
-  const data = await csv(`${server}/data/activity_frequency_distributions.csv`);
-  const energyDemand = await csv(
-    `${server}/data/mean_daily_elec_demand_profiles.csv`
-  );
-  const gasDemand = await csv(
-    `${server}/data/mean_daily_gas_demand_profiles.csv`
-  );
-  const energyPrice = await csv(
-    `${server}/data/hourly_average_price_electricity.csv`
-  );
-
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      data: data,
-      energyDemand: energyDemand,
-      gasDemand: gasDemand,
-      energyPrice: energyPrice,
-    },
-  };
 }

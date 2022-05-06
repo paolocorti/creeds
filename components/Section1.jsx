@@ -3,11 +3,11 @@ import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 import RadarVerticalLegend from "./Radar/RadarVeticalLegend";
 import RadarYear from "./Radar/RadarYear";
-import { colorByCategory, activitiesArray } from "./utils";
+import { activitiesArray } from "./utils";
 import Button from "./Button";
 import Loader from "./Loader";
 import HowToRead from "./HowToRead";
-import { isMobile, isSafari } from "react-device-detect";
+import { isMobile } from "react-device-detect";
 import React from "react";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import SectionFooter from "./SectionFooter.jsx";
@@ -21,7 +21,6 @@ const Section1 = ({
   energyDemand,
   energyPrice,
   gasDemand,
-  previousChapter,
   nextChapter,
   fullscreen = false,
   shared = false,
@@ -111,7 +110,11 @@ const Section1 = ({
         </LeftColumn>
       )}
       <RightColumn fullscreen={fullscreen}>
-        <div className="flex flex-col justify-between h-full">
+        <div
+          className={`flex flex-col ${
+            shared ? "justify-start" : "justify-between"
+          } h-full`}
+        >
           <div className="flex w-full flex-col items-start mb-4">
             {/* <p className="mb-1 text-left mt-0">
               The graphic shows the half-hourly evolution of three key elements
@@ -131,7 +134,11 @@ const Section1 = ({
               <Button title="HOW TO READ THE GRAPHIC" callback={null} />
             </div>
           </div>
-          <div className="flex flex-col justify-center items-center grow">
+          <div
+            className={`flex flex-col justify-center items-center grow ${
+              shared ? "mt-16" : ""
+            } `}
+          >
             <div className="w-full mb-4 visible md:hidden">
               <ActivitiesMenu
                 activitiesArray={activitiesArray}
