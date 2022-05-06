@@ -5,13 +5,10 @@ import RadarYear from "./Radar/RadarYear";
 import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import Button from "./Button";
-import { useWindowDimension, getVizWidth } from "./utils";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import React from "react";
 import Loader from "./Loader";
 import HowToRead from "./HowToRead";
 import SectionFooter from "./SectionFooter.jsx";
-import { siteUrl } from "../config";
 import { isMobile, isSafari } from "react-device-detect";
 import { ParentSize } from "@visx/responsive";
 
@@ -30,6 +27,12 @@ const Section5 = ({ data, energyDemand, gasDemand, fullscreen = false }) => {
   useEffect(() => {
     setMobile(isMobile);
   }, [isMobile]);
+
+  const [siteUrl, setSiteUrl] = useState(null);
+
+  useEffect(() => {
+    setSiteUrl(window.location.origin);
+  }, []);
 
   return (
     <section

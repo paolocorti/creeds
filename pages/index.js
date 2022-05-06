@@ -14,6 +14,7 @@ import { flatten } from "lodash";
 import { useStore } from "../store.js";
 import { scroller } from "react-scroll";
 import { siteUrl } from "../config";
+import About from "../components/About";
 
 // const Intro = dynamic(() => import("../components/Intro"), {
 //   loading: () => <p>Loading...</p>,
@@ -38,6 +39,7 @@ export default function Home({}) {
   const router = useRouter();
   const [loading, setLoading] = useState("Loading energy distributions");
   const [globalData, setData] = useState([]);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   useEffect(async () => {
     const dataCsv = await csv(
@@ -130,6 +132,7 @@ export default function Home({}) {
           overflow: !loading ? "auto" : "hidden",
         }}
       >
+        <About aboutOpen={aboutOpen} setAboutOpen={setAboutOpen} />
         <Landing
           nextChapter={() => {
             scroller.scrollTo("intro", {
@@ -145,119 +148,104 @@ export default function Home({}) {
             });
           }}
         />
-        {data.length && (
-          <Section1
-            data={data}
-            energyDemand={energyDemand}
-            energyPrice={energyPrice}
-            nextChapter={() => {
-              scroller.scrollTo("section2", {
-                smooth: false,
-              });
+        <div className="relative">
+          <div
+            className="fixed bottom-8 bg-green left-8 border rounded-2xl w-24 z-40 px-4 py-1 cursor-pointer hover:bg-black hover:text-green"
+            style={{
+              fontSize: "12px",
+              fontWeight: "bold",
+              lineHeight: 1.5,
             }}
-            fullscreen={false}
-            setLoading={setLoading}
-          />
-        )}
-        {data.length && (
-          <Section2
-            data={data}
-            nextChapter={() => {
-              scroller.scrollTo("section3", {
-                smooth: false,
-              });
-            }}
-            fullscreen={false}
-          />
-        )}
-        {data.length && (
-          <Section3
-            data={data}
-            energyDemand={energyDemand}
-            gasDemand={gasDemand}
-            energyPrice={energyPrice}
-            nextChapter={() => {
-              scroller.scrollTo("section4", {
-                smooth: false,
-              });
-            }}
-            fullscreen={false}
-          />
-        )}
-        {data.length && (
-          <Section4
-            data={data}
-            energyDemand={energyDemand}
-            gasDemand={gasDemand}
-            energyPrice={energyPrice}
-            nextChapter={() => {
-              scroller.scrollTo("section5", {
-                smooth: false,
-              });
-            }}
-            fullscreen={false}
-          />
-        )}
-        {data.length && (
-          <Section5
-            data={data}
-            energyDemand={energyDemand}
-            gasDemand={gasDemand}
-            energyPrice={energyPrice}
-            previousChapter={() => {
-              router.push("seasons");
-            }}
-            fullscreen={false}
-          />
-        )}{" "}
-        <footer className="bg-lightgreen flex items-start flex-col justify-center w-full py-8 px-4 md:px-8">
-          <div className="text-xs text-left">
-            © Copyright 2022
-            <br />
-            <br /> The visuals are made available under the Creative Commons
-            License CC BY-ND 3.0, and may be used and displayed without charge
-            by all commercial and non-commercial websites. <br /> Use is,
-            however, only permitted with proper attribution to the project. When
-            publishing one of these graphics, please include a backlink to the
-            original site.
+            onClick={() => setAboutOpen((open) => !open)}
+          >
+            ABOUT
           </div>
-          <div className="w-full flex mt-4">
-            <img src={"/creds.svg"} width={100} />
-            <div className="flex justify-center items-center ml-4">
-              <img src={"/flex.svg"} width={24} />
-              <div className="text-xs text-white">Flexibility</div>
+          {data.length && (
+            <Section1
+              data={data}
+              energyDemand={energyDemand}
+              energyPrice={energyPrice}
+              nextChapter={() => {
+                scroller.scrollTo("section2", {
+                  smooth: false,
+                });
+              }}
+              fullscreen={false}
+              setLoading={setLoading}
+            />
+          )}
+          {data.length && (
+            <Section2
+              data={data}
+              nextChapter={() => {
+                scroller.scrollTo("section3", {
+                  smooth: false,
+                });
+              }}
+              fullscreen={false}
+            />
+          )}
+          {data.length && (
+            <Section3
+              data={data}
+              energyDemand={energyDemand}
+              gasDemand={gasDemand}
+              energyPrice={energyPrice}
+              nextChapter={() => {
+                scroller.scrollTo("section4", {
+                  smooth: false,
+                });
+              }}
+              fullscreen={false}
+            />
+          )}
+          {data.length && (
+            <Section4
+              data={data}
+              energyDemand={energyDemand}
+              gasDemand={gasDemand}
+              energyPrice={energyPrice}
+              nextChapter={() => {
+                scroller.scrollTo("section5", {
+                  smooth: false,
+                });
+              }}
+              fullscreen={false}
+            />
+          )}
+          {data.length && (
+            <Section5
+              data={data}
+              energyDemand={energyDemand}
+              gasDemand={gasDemand}
+              energyPrice={energyPrice}
+              previousChapter={() => {
+                router.push("seasons");
+              }}
+              fullscreen={false}
+            />
+          )}{" "}
+          <footer className="bg-lightgreen flex items-start flex-col justify-center w-full pt-8 pb-16 px-4 md:px-8">
+            <div className="text-xs text-left">
+              © Copyright 2022
+              <br />
+              <br /> The visuals are made available under the Creative Commons
+              License CC BY-ND 3.0, and may be used and displayed without charge
+              by all commercial and non-commercial websites. <br /> Use is,
+              however, only permitted with proper attribution to the project.
+              When publishing one of these graphics, please include a backlink
+              to the original site.
             </div>
-          </div>
-        </footer>
+            <div className="w-full flex mt-4">
+              <img src={"/creds.svg"} width={100} />
+              <div className="flex justify-center items-center ml-4">
+                <img src={"/flex.svg"} width={24} />
+                <div className="text-xs text-white">Flexibility</div>
+              </div>
+            </div>
+          </footer>
+        </div>
       </main>
     </div>
   );
 }
-
-// export async function getStaticProps(context) {
-//   const data = await csv(`${server}/data/activity_frequency_distributions.csv`);
-//   const energyDemand = await csv(
-//     `${server}/data/mean_daily_elec_demand_profiles.csv`
-//   );
-//   const gasDemand = await csv(
-//     `${server}/data/mean_daily_gas_demand_profiles.csv`
-//   );
-//   const energyPrice = await csv(
-//     `${server}/data/hourly_average_price_electricity.csv`
-//   );
-
-//   if (!data) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: {
-//       data: data,
-//       energyDemand: energyDemand,
-//       gasDemand: gasDemand,
-//       energyPrice: energyPrice,
-//     },
-//   };
-// }

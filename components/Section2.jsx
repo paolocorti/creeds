@@ -4,18 +4,11 @@ import RightColumn from "./RightColumn";
 import TrendYear from "./Trend/TrendYear";
 import SectionFooter from "./SectionFooter.jsx";
 import Button from "./Button";
-import { useWindowDimension, getVizWidth } from "./utils";
 import React from "react";
 import HowToRead from "./HowToRead";
-import { siteUrl } from "../config";
 import { isMobile, isSafari } from "react-device-detect";
 import Loader from "./Loader";
 import { ParentSize } from "@visx/responsive";
-import {
-  useWindowSize,
-  useWindowWidth,
-  useWindowHeight,
-} from "@react-hook/window-size/throttled";
 
 const Section2 = ({
   data,
@@ -33,11 +26,13 @@ const Section2 = ({
   const [open, setHowToReadOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState("1");
   const [selectedRegion, setSelectedRegion] = useState("all");
-  // const size = isMobile ? 600 : useWindowDimension();
-  // //const width = useWindowWidth();
-  // const vizWidth = getVizWidth("trend", size);
   const [allowEvents, setAllowEvents] = useState(true);
   const [mobile, setMobile] = useState(false);
+  const [siteUrl, setSiteUrl] = useState(null);
+
+  useEffect(() => {
+    setSiteUrl(window.location.origin);
+  }, []);
 
   useEffect(() => {
     setMobile(isMobile);
@@ -123,7 +118,7 @@ const Section2 = ({
         {mobile && (
           <HowToRead
             text={
-              "The graphic shows the daily activities' frequency every 10 minutes"
+              "In the UK, peaks in demand for electricity consistently occur in the early evening; we start observing significant increases by around 4pm, followed by a peak occurring roughly between 6pm and 7pm, and start observing significant decreases by 8pm.<br/><br/> The graphic shows the proportion of people engaging in each of the activities listed, at every 10 min. The shaded band highlights the portion of the day where the peaks in demand are usually observed."
             }
             image={"/legend-2.png"}
             readOpen={open}
@@ -134,7 +129,7 @@ const Section2 = ({
       {!mobile && (
         <HowToRead
           text={
-            "The graphic shows the daily activities' frequency every 10 minutes"
+            "In the UK, peaks in demand for electricity consistently occur in the early evening; we start observing significant increases by around 4pm, followed by a peak occurring roughly between 6pm and 7pm, and start observing significant decreases by 8pm.<br/><br/> The graphic shows the proportion of people engaging in each of the activities listed, at every 10 min. The shaded band highlights the portion of the day where the peaks in demand are usually observed."
           }
           image={"/legend-2.png"}
           readOpen={open}

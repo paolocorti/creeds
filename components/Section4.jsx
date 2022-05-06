@@ -8,13 +8,9 @@ import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import { groupBy, flatten } from "lodash";
 import SeasonMenu from "./SeasonMenu.jsx";
 import Button from "./Button";
-import { useWindowDimension, getVizWidth } from "./utils";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import HowToRead from "./HowToRead";
 import React from "react";
-import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
-import { siteUrl } from "../config";
 import { isMobile, isSafari } from "react-device-detect";
 import { ParentSize } from "@visx/responsive";
 
@@ -96,6 +92,12 @@ const Section4 = ({
   useEffect(() => {
     setMobile(isMobile);
   }, [isMobile]);
+
+  const [siteUrl, setSiteUrl] = useState(null);
+
+  useEffect(() => {
+    setSiteUrl(window.location.origin);
+  }, []);
 
   return (
     <section

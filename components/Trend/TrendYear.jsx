@@ -33,7 +33,7 @@ const tooltipStyles = {
 const getDate = (d) => {
   return d && d.time;
 };
-const getValue = (d) => parseFloat(d.value);
+const getValue = (d) => parseFloat(d.value) * 100;
 
 const isMobileWithTablet = false;
 

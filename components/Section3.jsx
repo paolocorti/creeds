@@ -7,12 +7,9 @@ import RegionMenu from "./RegionMenu.jsx";
 import { colorByCategory, activitiesArray } from "./utils";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import Button from "./Button";
-import { useWindowDimension, getVizWidth } from "./utils";
 import HowToRead from "./HowToRead";
 import React from "react";
-import Loader from "./Loader";
 import SectionFooter from "./SectionFooter.jsx";
-import { siteUrl } from "../config";
 import { isMobile, isSafari } from "react-device-detect";
 import { ParentSize } from "@visx/responsive";
 
@@ -38,6 +35,11 @@ const Section3 = ({
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [open, setHowToReadOpen] = useState(false);
   const [mobile, setMobile] = useState(false);
+  const [siteUrl, setSiteUrl] = useState(null);
+
+  useEffect(() => {
+    setSiteUrl(window.location.origin);
+  }, []);
 
   useEffect(() => {
     setMobile(isMobile);

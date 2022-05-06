@@ -13,8 +13,6 @@ import { isMobile, isSafari } from "react-device-detect";
 import React from "react";
 import ActivitiesMenu from "./ActivitiesMenu.jsx";
 import SectionFooter from "./SectionFooter.jsx";
-import { siteUrl } from "../config";
-
 import {
   useWindowSize,
   useWindowWidth,
@@ -45,6 +43,11 @@ const Section1 = ({
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [allowEvents, setAllowEvents] = useState(true);
   const [mobile, setMobile] = useState(false);
+  const [siteUrl, setSiteUrl] = useState(null);
+
+  useEffect(() => {
+    setSiteUrl(window.location.origin);
+  }, []);
 
   useEffect(() => {
     setMobile(isMobile);
