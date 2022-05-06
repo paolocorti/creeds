@@ -11,6 +11,7 @@ export default function Home() {
   const router = useRouter();
   const [globalData, setData] = useState([]);
   const [loading, setLoading] = useState("Loading energy distributions");
+
   useEffect(async () => {
     const dataCsv = await csv(
       `${server}/data/activity_frequency_distributions.csv`
