@@ -91,6 +91,8 @@ export default function Home() {
   const energyDemand = globalData.energyDemand || [];
   const energyPrice = globalData.energyPrice || [];
 
+  //const fullscreen = router.query && router.query.share ? true : false;
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <PageHead />
@@ -105,7 +107,7 @@ export default function Home() {
           nextChapter={() => {
             router.push("unpacking_peaks");
           }}
-          fullscreen={false}
+          fullscreen={true}
           shared={true}
         />
       </main>

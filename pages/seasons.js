@@ -107,7 +107,7 @@ export default function Home() {
           nextChapter={() => {
             router.push("urban_rural");
           }}
-          fullscreen={false}
+          fullscreen={true}
           shared={true}
         />
       </main>

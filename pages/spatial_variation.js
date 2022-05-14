@@ -107,7 +107,7 @@ export default function Home() {
           nextChapter={() => {
             router.push("seasons");
           }}
-          fullscreen={false}
+          fullscreen={true}
           shared={true}
         />
       </main>

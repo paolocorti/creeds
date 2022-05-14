@@ -171,12 +171,7 @@ const Section4 = ({
           </div>
           <div className="flex flex-col justify-center items-center grow">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-              <div
-                className="px-8 flex flex-col justify-start"
-                style={{
-                  maxWidth: "85vh",
-                }}
-              >
+              <div className="px-8 flex flex-col justify-start items-center">
                 <div>
                   <SeasonMenu
                     setSelected={setSelectedCompareSeason1}
@@ -184,31 +179,33 @@ const Section4 = ({
                     initialSlide={0}
                   />
                 </div>
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={seasonData1 || []}
-                      energyDemand={energyData1 || []}
-                      gasDemand={gasData1 || []}
-                      energyPrice={[]}
-                      selectedRegion={"all"}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      selectedCategory={selectedCategory}
-                      width={parent.width}
-                      showDemand={false}
-                      innerLabel={seasonLabel[selectedCompareSeason1]}
-                      type={"season"}
-                    />
-                  )}
-                </ParentSize>
+                <div
+                  className="w-full"
+                  style={{
+                    maxWidth: "55vh",
+                  }}
+                >
+                  <ParentSize>
+                    {(parent) => (
+                      <RadarYear
+                        globalData={seasonData1 || []}
+                        energyDemand={energyData1 || []}
+                        gasDemand={gasData1 || []}
+                        energyPrice={[]}
+                        selectedRegion={"all"}
+                        selectedMonth={selectedMonth}
+                        setSelectedMonth={setSelectedMonth}
+                        selectedCategory={selectedCategory}
+                        width={parent.width}
+                        showDemand={false}
+                        innerLabel={seasonLabel[selectedCompareSeason1]}
+                        type={"season"}
+                      />
+                    )}
+                  </ParentSize>
+                </div>
               </div>
-              <div
-                className="px-8 flex flex-col justify-start"
-                style={{
-                  maxWidth: "85vh",
-                }}
-              >
+              <div className="px-8 flex flex-col justify-start items-center">
                 <div>
                   <SeasonMenu
                     setSelected={setSelectedCompareSeason2}
@@ -216,31 +213,39 @@ const Section4 = ({
                     initialSlide={1}
                   />
                 </div>
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={seasonData2 || []}
-                      energyDemand={energyData2 || []}
-                      gasDemand={gasData2 || []}
-                      energyPrice={[]}
-                      selectedRegion={"all"}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      selectedCategory={selectedCategory}
-                      width={parent.width}
-                      showDemand={false}
-                      innerLabel={seasonLabel[selectedCompareSeason2]}
-                      type={"season"}
-                    />
-                  )}
-                </ParentSize>
+                <div
+                  className="w-full"
+                  style={{
+                    maxWidth: "55vh",
+                  }}
+                >
+                  <ParentSize>
+                    {(parent) => (
+                      <RadarYear
+                        globalData={seasonData2 || []}
+                        energyDemand={energyData2 || []}
+                        gasDemand={gasData2 || []}
+                        energyPrice={[]}
+                        selectedRegion={"all"}
+                        selectedMonth={selectedMonth}
+                        setSelectedMonth={setSelectedMonth}
+                        selectedCategory={selectedCategory}
+                        width={parent.width}
+                        showDemand={false}
+                        innerLabel={seasonLabel[selectedCompareSeason2]}
+                        type={"season"}
+                      />
+                    )}
+                  </ParentSize>
+                </div>
               </div>
             </div>
           </div>
           {!shared && (
             <SectionFooter
               nextChapter={nextChapter}
-              link={`${siteUrl}/seasons`}
+              //link={`${siteUrl}/seasons`}
+              link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/seasons" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="${siteUrl}/seasons"></iframe></div>`}
             />
           )}
         </div>

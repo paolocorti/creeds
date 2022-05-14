@@ -112,7 +112,7 @@ const Section1 = ({
       <RightColumn fullscreen={fullscreen}>
         <div
           className={`flex flex-col ${
-            shared ? "justify-start" : "justify-between"
+            shared ? "justify-between" : "justify-between"
           } h-full`}
         >
           <div className="flex w-full flex-col items-start mb-4">
@@ -136,7 +136,7 @@ const Section1 = ({
           </div>
           <div
             className={`flex flex-col justify-center items-center grow ${
-              shared ? "mt-16" : ""
+              shared ? "" : ""
             } `}
           >
             <div className="w-full mb-4 visible md:hidden">
@@ -151,7 +151,7 @@ const Section1 = ({
               <div
                 className="w-full md:w-1/2 px-8 flex flex-col"
                 style={{
-                  maxWidth: "85vh",
+                  maxWidth: "75vh",
                 }}
               >
                 <div
@@ -228,12 +228,13 @@ const Section1 = ({
               </div>
             </div>
           </div>
-          {!shared && (
-            <SectionFooter
-              nextChapter={nextChapter}
-              link={`${siteUrl}/activities`}
-            />
-          )}
+          <SectionFooter
+            nextChapter={nextChapter}
+            shared={shared}
+            homeCallback={() => (window.location.href = siteUrl)}
+            shareUrl={`${siteUrl}/activities`}
+            link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/activities" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="${siteUrl}/activities"></iframe></div>`}
+          />
         </div>
         {mobile && (
           <HowToRead

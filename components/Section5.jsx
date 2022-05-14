@@ -99,59 +99,68 @@ const Section5 = ({
           </div>
           <div className="flex flex-col justify-center items-center grow">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
-              <div
-                className="px-8 flex flex-col justify-start"
-                style={{
-                  maxWidth: "85vh",
-                }}
-              >
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={data}
-                      energyDemand={energyDemand}
-                      gasDemand={gasDemand}
-                      energyPrice={[]}
-                      selectedRegion={selectedCompareRegion1}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      width={parent.width}
-                      showDemand={false}
-                      selectedCategory={selectedCategory}
-                      innerLabel={"URBAN"}
-                      type={"urban_rural"}
-                    />
-                  )}
-                </ParentSize>
+              <div className="px-8 flex flex-col justify-start items-center">
+                <div
+                  className="w-full"
+                  style={{
+                    maxWidth: "55vh",
+                  }}
+                >
+                  <ParentSize>
+                    {(parent) => (
+                      <RadarYear
+                        globalData={data}
+                        energyDemand={energyDemand}
+                        gasDemand={gasDemand}
+                        energyPrice={[]}
+                        selectedRegion={selectedCompareRegion1}
+                        selectedMonth={selectedMonth}
+                        setSelectedMonth={setSelectedMonth}
+                        width={parent.width}
+                        showDemand={false}
+                        selectedCategory={selectedCategory}
+                        innerLabel={"URBAN"}
+                        type={"urban_rural"}
+                      />
+                    )}
+                  </ParentSize>
+                </div>
               </div>
-              <div
-                className="px-8 flex flex-col justify-start"
-                style={{
-                  maxWidth: "85vh",
-                }}
-              >
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={data}
-                      energyDemand={energyDemand}
-                      gasDemand={gasDemand}
-                      energyPrice={[]}
-                      selectedRegion={selectedCompareRegion2}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      width={parent.width}
-                      showDemand={false}
-                      selectedCategory={selectedCategory}
-                      innerLabel={"RURAL"}
-                      type={"urban_rural"}
-                    />
-                  )}
-                </ParentSize>
+              <div className="px-8 flex flex-col justify-start items-center">
+                <div
+                  className="w-full"
+                  style={{
+                    maxWidth: "55vh",
+                  }}
+                >
+                  <ParentSize>
+                    {(parent) => (
+                      <RadarYear
+                        globalData={data}
+                        energyDemand={energyDemand}
+                        gasDemand={gasDemand}
+                        energyPrice={[]}
+                        selectedRegion={selectedCompareRegion2}
+                        selectedMonth={selectedMonth}
+                        setSelectedMonth={setSelectedMonth}
+                        width={parent.width}
+                        showDemand={false}
+                        selectedCategory={selectedCategory}
+                        innerLabel={"RURAL"}
+                        type={"urban_rural"}
+                      />
+                    )}
+                  </ParentSize>
+                </div>
               </div>
             </div>
           </div>
-          {!shared && <SectionFooter link={`${siteUrl}/urban_rural`} />}
+          {!shared && (
+            <SectionFooter
+              //link={`${siteUrl}/urban_rural`}
+              link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/urban_rural" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="${siteUrl}/urban_rural"></iframe></div>`}
+            />
+          )}
         </div>
         {mobile && (
           <HowToRead

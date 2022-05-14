@@ -103,61 +103,65 @@ const Section3 = ({
           </div>
           <div className="flex flex-col justify-center items-center grow">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
-              <div
-                className="px-8 flex flex-col justify-start"
-                style={{
-                  maxWidth: "85vh",
-                }}
-              >
+              <div className="px-8 flex flex-col justify-start items-center">
                 <RegionMenu
                   setSelected={setSelectedCompareRegion1}
                   initialSlide={0}
                 />
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={data}
-                      energyDemand={energyDemand}
-                      gasDemand={gasDemand}
-                      energyPrice={[]}
-                      selectedRegion={selectedCompareRegion1}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      width={parent.width}
-                      showDemand={false}
-                      selectedCategory={selectedCategory}
-                      type={"spatial_variation"}
-                    />
-                  )}
-                </ParentSize>
+                <div
+                  className="w-full"
+                  style={{
+                    maxWidth: "55vh",
+                  }}
+                >
+                  <ParentSize>
+                    {(parent) => (
+                      <RadarYear
+                        globalData={data}
+                        energyDemand={energyDemand}
+                        gasDemand={gasDemand}
+                        energyPrice={[]}
+                        selectedRegion={selectedCompareRegion1}
+                        selectedMonth={selectedMonth}
+                        setSelectedMonth={setSelectedMonth}
+                        width={parent.width}
+                        showDemand={false}
+                        selectedCategory={selectedCategory}
+                        type={"spatial_variation"}
+                      />
+                    )}
+                  </ParentSize>
+                </div>
               </div>
-              <div
-                className="px-8 flex flex-col justify-start"
-                style={{
-                  maxWidth: "85vh",
-                }}
-              >
+              <div className="px-8 flex flex-col justify-start items-center">
                 <RegionMenu
                   setSelected={setSelectedCompareRegion2}
                   initialSlide={1}
                 />
-                <ParentSize>
-                  {(parent) => (
-                    <RadarYear
-                      globalData={data}
-                      energyDemand={energyDemand}
-                      gasDemand={gasDemand}
-                      energyPrice={[]}
-                      selectedRegion={selectedCompareRegion2}
-                      selectedMonth={selectedMonth}
-                      setSelectedMonth={setSelectedMonth}
-                      width={parent.width}
-                      showDemand={false}
-                      selectedCategory={selectedCategory}
-                      type={"spatial_variation"}
-                    />
-                  )}
-                </ParentSize>
+                <div
+                  className="w-full"
+                  style={{
+                    maxWidth: "55vh",
+                  }}
+                >
+                  <ParentSize>
+                    {(parent) => (
+                      <RadarYear
+                        globalData={data}
+                        energyDemand={energyDemand}
+                        gasDemand={gasDemand}
+                        energyPrice={[]}
+                        selectedRegion={selectedCompareRegion2}
+                        selectedMonth={selectedMonth}
+                        setSelectedMonth={setSelectedMonth}
+                        width={parent.width}
+                        showDemand={false}
+                        selectedCategory={selectedCategory}
+                        type={"spatial_variation"}
+                      />
+                    )}
+                  </ParentSize>
+                </div>
               </div>
             </div>
           </div>
@@ -165,7 +169,8 @@ const Section3 = ({
           {!shared && (
             <SectionFooter
               nextChapter={nextChapter}
-              link={`${siteUrl}/spatial_variation`}
+              //link={`${siteUrl}/spatial_variation`}
+              link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/spatial_variation" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="${siteUrl}/spatial_variation"></iframe></div>`}
             />
           )}
         </div>

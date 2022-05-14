@@ -103,7 +103,7 @@ export default function Home() {
           nextChapter={() => {
             router.push("spatial_variation");
           }}
-          fullscreen={false}
+          fullscreen={true}
           shared={true}
         />
       </main>

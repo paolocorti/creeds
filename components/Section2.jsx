@@ -109,12 +109,13 @@ const Section2 = ({
             )}
           </ParentSize>
 
-          {!shared && (
-            <SectionFooter
-              nextChapter={nextChapter}
-              link={`${siteUrl}/unpacking_peaks`}
-            />
-          )}
+          <SectionFooter
+            nextChapter={nextChapter}
+            shared={shared}
+            homeCallback={() => (window.location.href = siteUrl)}
+            shareUrl={`${siteUrl}/unpacking_peaks`}
+            link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/unpacking_peaks" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="${siteUrl}/unpacking_peaks"></iframe></div>`}
+          />
         </div>
         {mobile && (
           <HowToRead
