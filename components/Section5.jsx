@@ -155,15 +155,13 @@ const Section5 = ({
               </div>
             </div>
           </div>
-          {!shared && (
-            <SectionFooter
-              shareUrl={`${siteUrl}/urban_rural`}
-              shared={shared}
-              homeCallback={() => (window.location.href = siteUrl)}
-              title={"Urban vs rural"}
-              link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/urban_rural" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Urban vs rural"></iframe></div>`}
-            />
-          )}
+          <SectionFooter
+            shareUrl={`${siteUrl}/urban_rural`}
+            shared={shared}
+            homeCallback={() => (window.location.href = siteUrl)}
+            title={"Urban vs rural"}
+            link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/urban_rural" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Urban vs rural"></iframe></div>`}
+          />
         </div>
         {mobile && (
           <HowToRead

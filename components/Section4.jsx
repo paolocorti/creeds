@@ -241,16 +241,14 @@ const Section4 = ({
               </div>
             </div>
           </div>
-          {!shared && (
-            <SectionFooter
-              nextChapter={nextChapter}
-              shareUrl={`${siteUrl}/seasons`}
-              shared={shared}
-              homeCallback={() => (window.location.href = siteUrl)}
-              title={"Season of the year"}
-              link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/seasons" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Season of the year"></iframe></div>`}
-            />
-          )}
+          <SectionFooter
+            nextChapter={nextChapter}
+            shareUrl={`${siteUrl}/seasons`}
+            shared={shared}
+            homeCallback={() => (window.location.href = siteUrl)}
+            title={"Season of the year"}
+            link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/seasons" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Season of the year"></iframe></div>`}
+          />
         </div>
         {mobile && (
           <HowToRead
