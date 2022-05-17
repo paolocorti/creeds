@@ -169,8 +169,11 @@ const Section3 = ({
           {!shared && (
             <SectionFooter
               nextChapter={nextChapter}
-              //link={`${siteUrl}/spatial_variation`}
-              link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/spatial_variation" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="${siteUrl}/spatial_variation"></iframe></div>`}
+              shared={shared}
+              homeCallback={() => (window.location.href = siteUrl)}
+              shareUrl={`${siteUrl}/spatial_variation`}
+              title={"Spatial variation"}
+              link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/spatial_variation" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Spatial variation"></iframe></div>`}
             />
           )}
         </div>
