@@ -94,7 +94,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <PageHead />
+      <PageHead shareImage="thumb-share3.png" />
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center w-full">
         <Section3
           data={data}

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { siteUrl } from "../config";
 
-const PageHead = () => {
+const PageHead = ({ shareImage = "share.jpg" }) => {
   return (
     <Head>
       <title>Energy demand flexibility and the rhythms of everyday life</title>
@@ -27,8 +27,8 @@ const PageHead = () => {
         }
       />
       <meta property="og:url" content={`${siteUrl}`} />
-      <meta property="og:image" content={`${siteUrl}/share.jpg`} />
-      <meta property="twitter:image" content={`${siteUrl}/share.jpg`} />
+      <meta property="og:image" content={`${siteUrl}/${shareImage}`} />
+      <meta property="twitter:image" content={`${siteUrl}/${shareImage}`} />
       <link rel="alternate" hreflang="it" href="" />
       <link rel="icon" href="/favicon.ico" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
