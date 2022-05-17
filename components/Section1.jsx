@@ -233,7 +233,8 @@ const Section1 = ({
             shared={shared}
             homeCallback={() => (window.location.href = siteUrl)}
             shareUrl={`${siteUrl}/activities`}
-            link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/activities" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="${siteUrl}/activities"></iframe></div>`}
+            title={"Activities, demand and price"}
+            link={`<div style="padding:65.25% 0 0 0;position:relative;"><iframe src="${siteUrl}/activities" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Activities, demand and price"></iframe></div>`}
           />
         </div>
         {mobile && (

@@ -225,3 +225,17 @@ p b {
     transform: rotate(360deg);
   }
 }
+.share-tooltip {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  border: 0px solid white !important;
+  color: white !important;
+  border-radius: 50px !important;
+  padding: 10px !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  text-align: center !important;
+  width: 160px !important;
+  z-index: 9999 !important;
+  font-family: "Inter" !important;
+  text-transform: uppercase;
+}
