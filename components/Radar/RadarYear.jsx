@@ -1061,10 +1061,10 @@ const RadarYear = ({
                   <br />
                   <span className="uppercase">{`TOP ACTIVITY: ${tooltipData.topActivity}`}</span>
                   <br />
-                  <span className="uppercase">{`ENERGY DEMAND: ${tooltipData.energyDemand}`}</span>
+                  <span className="uppercase">{`ENERGY DEMAND: ${tooltipData.energyDemand} Wh`}</span>
                   <br />
                   {tooltipData.energyPrice && (
-                    <span className="uppercase">{`ENERGY PRICE: ${tooltipData.energyPrice}`}</span>
+                    <span className="uppercase">{`ENERGY PRICE: ${tooltipData.energyPrice} GBP/MWh`}</span>
                   )}
                 </Tooltip>
               )}
