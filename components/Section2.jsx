@@ -123,7 +123,7 @@ const Section2 = ({
             text={
               "In the UK, peaks in demand for electricity consistently occur in the early evening; we start observing significant increases by around 4pm, followed by a peak occurring roughly between 6pm and 7pm, and start observing significant decreases by 8pm.<br/><br/> The graphic shows the proportion of people engaging in each of the activities listed, at every 10 min. The shaded band highlights the portion of the day where the peaks in demand are usually observed."
             }
-            image={"/legend-2.png"}
+            image={"/legend-mobile-2.png"}
             readOpen={open}
             setHowToReadOpen={setHowToReadOpen}
           />

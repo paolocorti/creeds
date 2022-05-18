@@ -180,7 +180,7 @@ const Section3 = ({
             text={
               "The graphic shows the half-hourly evolution of key elements over the course of a day in UK’s regions.<br/>Every 30 minutes, we can observe:<br/>- The amount of people doing certain activities to understand the origin of our demand for energy (mid layer)<br/>- The typical levels of demand for gas and electricity to reflect the varying intensity of energy consumption (outer layer)<br/>In the case of the activity data, the size of the bubbles is proportional to the amount of people doing the activity in question – the bigger the bubble, the more people are doing said activity at that particular time of day."
             }
-            image={"/legend-3.png"}
+            image={"/legend-mobile-3.png"}
             readOpen={open}
             setHowToReadOpen={setHowToReadOpen}
           />
