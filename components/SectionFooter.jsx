@@ -52,7 +52,7 @@ const SectionFooter = ({
               summary={
                 "Our everyday life – what we do at home, at work, at school, when moving around – and its relation to energy demand is rather complex. As part of our work as energy researchers, we have introduced fresh approaches to thinking about the social-temporal organisation of energy demand."
               }
-              via={shareUrl}
+              source={shareUrl}
             >
               <img
                 src="/share-linkedin.svg"
