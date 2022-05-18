@@ -354,7 +354,7 @@ const RadarYear = ({
 
   const sortedFiltered = sorted.filter((v) => v.actType === "main");
 
-  console.log({ isSafari });
+  console.log({ gasData });
 
   return (
     <div className="radial-overview h-full">

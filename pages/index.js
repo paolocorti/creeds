@@ -153,6 +153,7 @@ export default function Home({}) {
               data={data}
               energyDemand={energyDemand}
               energyPrice={energyPrice}
+              gasDemand={gasDemand}
               nextChapter={() => {
                 scroller.scrollTo("section2", {
                   smooth: false,
