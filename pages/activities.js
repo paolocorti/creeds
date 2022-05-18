@@ -95,7 +95,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <PageHead shareImage="thumb-share1.png" />
+      <PageHead shareImage="thumb-share1.png" shareUrl="/activities" />
       <main className="flex flex-col items-center justify-center w-full flex-1 text-center">
         <Section1
           data={data}

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { siteUrl } from "../config";
 
-const PageHead = ({ shareImage = "share.jpg" }) => {
+const PageHead = ({ shareImage = "share.jpg", shareUrl = "" }) => {
   return (
     <Head>
       <title>Energy demand flexibility and the rhythms of everyday life</title>
@@ -26,7 +26,7 @@ const PageHead = ({ shareImage = "share.jpg" }) => {
           "Our everyday life – what we do at home, at work, at school, when moving around – and its relation to energy demand is rather complex. As part of our work as energy researchers, we have introduced fresh approaches to thinking about the social-temporal organisation of energy demand."
         }
       />
-      <meta property="og:url" content={`${siteUrl}`} />
+      <meta property="og:url" content={`${siteUrl}${shareUrl}`} />
       <meta property="og:image" content={`${siteUrl}/${shareImage}`} />
       <meta property="twitter:image" content={`${siteUrl}/${shareImage}`} />
       <link rel="alternate" hreflang="it" href="" />
