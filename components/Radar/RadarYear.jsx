@@ -41,7 +41,7 @@ const tooltipStyles = {
   fontSize: "12px",
   lineHeight: "16px",
   textAlign: "left",
-  width: "180px",
+  width: "210px",
   zIndex: 9999,
 };
 
